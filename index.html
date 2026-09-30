@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>TechniPro CI</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -168,16 +170,21 @@
     🔧 TechniPro CI
   </div>
 
- <nav>
-  <a href="#">Accueil</a>
-  <a href="#services">Services</a>
-  <a href="#techniciens">Professionnels</a>
-  <button onclick="showLogin()">Se connecter</button>
-  <button onclick="showRegister()">Créer un compte</button>
-</nav>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#techniciens">Professionnels</a>
+
+    <button onclick="showLogin()">
+      Se connecter
+    </button>
+
+    <button onclick="showRegister()">
+      Créer un compte
+    </button>
+  </nav>
 
 </header>
-
 
 <section class="hero">
 
@@ -220,7 +227,6 @@
   </div>
 
 </section>
-
 
 <section class="section" id="services">
 
@@ -280,7 +286,6 @@
 
 </section>
 
-
 <section class="section" id="techniciens">
 
   <h2>Professionnels</h2>
@@ -309,7 +314,6 @@
 
 </section>
 
-
 <footer>
 
   <p>
@@ -322,9 +326,17 @@
   </p>
 
 </footer>
-<div id="authModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;">
 
-  <div style="background:white; max-width:450px; margin:60px auto; padding:30px; border-radius:12px;">
+<!-- FENÊTRE CONNEXION / INSCRIPTION -->
+
+<div
+  id="authModal"
+  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;"
+>
+
+  <div
+    style="background:white; max-width:450px; margin:60px auto; padding:30px; border-radius:12px;"
+  >
 
     <h2 id="authTitle" style="margin-bottom:20px;">
       Créer un compte
@@ -362,8 +374,15 @@
       id="userType"
       style="width:100%; padding:12px; margin-bottom:10px;"
     >
-      <option value="client">Client</option>
-      <option value="professionnel">Professionnel</option>
+
+      <option value="client">
+        Client
+      </option>
+
+      <option value="professionnel">
+        Professionnel
+      </option>
+
     </select>
 
     <input
@@ -373,7 +392,11 @@
       style="width:100%; padding:12px; margin-bottom:15px;"
     >
 
-    <button onclick="createAccount()" style="width:100%;">
+    <button
+      id="authButton"
+      onclick="createAccount()"
+      style="width:100%;"
+    >
       Créer mon compte
     </button>
 
@@ -384,7 +407,10 @@
       Fermer
     </button>
 
-    <p id="authMessage" style="margin-top:15px; text-align:center;"></p>
+    <p
+      id="authMessage"
+      style="margin-top:15px; text-align:center;"
+    ></p>
 
   </div>
 
@@ -428,80 +454,243 @@
   }
 
 </script>
+
 <script>
 
   function showRegister() {
+
     document.getElementById("authModal").style.display = "block";
-    document.getElementById("authTitle").textContent = "Créer un compte";
+
+    document.getElementById("authTitle").textContent =
+      "Créer un compte";
+
+    document.getElementById("fullName").style.display =
+      "block";
+
+    document.getElementById("phone").style.display =
+      "block";
+
+    document.getElementById("authCity").style.display =
+      "block";
+
+    document.getElementById("userType").style.display =
+      "block";
+
+    document.getElementById("authButton").textContent =
+      "Créer mon compte";
+
+    document.getElementById("authButton").onclick =
+      createAccount;
+
   }
 
-  function closeAuth() {
-    document.getElementById("authModal").style.display = "none";
+
+  function showLogin() {
+
+    document.getElementById("authModal").style.display =
+      "block";
+
+    document.getElementById("authTitle").textContent =
+      "Se connecter";
+
+    document.getElementById("fullName").style.display =
+      "none";
+
+    document.getElementById("phone").style.display =
+      "none";
+
+    document.getElementById("authCity").style.display =
+      "none";
+
+    document.getElementById("userType").style.display =
+      "none";
+
+    document.getElementById("authButton").textContent =
+      "Se connecter";
+
+    document.getElementById("authButton").onclick =
+      loginAccount;
+
   }
+
+
+  function closeAuth() {
+
+    document.getElementById("authModal").style.display =
+      "none";
+
+  }
+
+
+  async function loginAccount() {
+
+    const email =
+      document.getElementById("authEmail").value;
+
+    const password =
+      document.getElementById("authPassword").value;
+
+    const message =
+      document.getElementById("authMessage");
+
+    if (!email || !password) {
+
+      message.textContent =
+        "Veuillez saisir votre e-mail et votre mot de passe.";
+
+      return;
+    }
+
+    message.textContent =
+      "Connexion en cours...";
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+
+        email: email,
+        password: password
+
+      });
+
+    if (error) {
+
+      message.textContent =
+        "E-mail ou mot de passe incorrect.";
+
+      return;
+    }
+
+    message.textContent =
+      "Connexion réussie !";
+
+    setTimeout(() => {
+
+      closeAuth();
+
+    }, 1500);
+
+  }
+
 
   async function createAccount() {
 
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("authEmail").value;
-    const phone = document.getElementById("phone").value;
-    const city = document.getElementById("authCity").value;
-    const userType = document.getElementById("userType").value;
-    const password = document.getElementById("authPassword").value;
-    const message = document.getElementById("authMessage");
+    const fullName =
+      document.getElementById("fullName").value;
 
-    if (!fullName || !email || !phone || !city || !password) {
-      message.textContent = "Veuillez remplir tous les champs.";
+    const email =
+      document.getElementById("authEmail").value;
+
+    const phone =
+      document.getElementById("phone").value;
+
+    const city =
+      document.getElementById("authCity").value;
+
+    const userType =
+      document.getElementById("userType").value;
+
+    const password =
+      document.getElementById("authPassword").value;
+
+    const message =
+      document.getElementById("authMessage");
+
+
+    if (
+      !fullName ||
+      !email ||
+      !phone ||
+      !city ||
+      !password
+    ) {
+
+      message.textContent =
+        "Veuillez remplir tous les champs.";
+
       return;
     }
 
-    message.textContent = "Création du compte...";
 
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password
-    });
+    message.textContent =
+      "Création du compte...";
+
+
+    const { data, error } =
+      await supabaseClient.auth.signUp({
+
+        email: email,
+        password: password
+
+      });
+
 
     if (error) {
-      message.textContent = error.message;
+
+      message.textContent =
+        error.message;
+
       return;
     }
+
 
     const user = data.user;
 
-    const { error: profileError } = await supabaseClient
-      .from("profiles")
-      .insert({
-        id: user.id,
-        full_name: fullName,
-        phone: phone,
-        city: city,
-        user_type: userType
-      });
+
+    const { error: profileError } =
+      await supabaseClient
+        .from("profiles")
+        .insert({
+
+          id: user.id,
+          full_name: fullName,
+          phone: phone,
+          city: city,
+          user_type: userType
+
+        });
+
 
     if (profileError) {
-      message.textContent = profileError.message;
+
+      message.textContent =
+        profileError.message;
+
       return;
     }
 
-    message.textContent = "Compte créé avec succès !";
+
+    message.textContent =
+      "Compte créé avec succès !";
+
+
+    setTimeout(() => {
+
+      closeAuth();
+
+    }, 1500);
 
   }
 
 </script>
 
+
+<!-- CONNEXION SUPABASE -->
+
 <script>
 
-  const SUPABASE_URL = "https://spznzkneagjawragvijg.supabase.co";
+  const SUPABASE_URL =
+    "https://spznzkneagjawragvijg.supabase.co";
 
   const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
 
   const { createClient } = supabase;
 
-  const supabaseClient = createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+  const supabaseClient =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
 </script>
 
