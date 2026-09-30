@@ -322,7 +322,73 @@
   </p>
 
 </footer>
+<div id="authModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;">
 
+  <div style="background:white; max-width:450px; margin:60px auto; padding:30px; border-radius:12px;">
+
+    <h2 id="authTitle" style="margin-bottom:20px;">
+      Créer un compte
+    </h2>
+
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Nom complet"
+      style="width:100%; padding:12px; margin-bottom:10px;"
+    >
+
+    <input
+      type="email"
+      id="authEmail"
+      placeholder="Adresse e-mail"
+      style="width:100%; padding:12px; margin-bottom:10px;"
+    >
+
+    <input
+      type="tel"
+      id="phone"
+      placeholder="Téléphone"
+      style="width:100%; padding:12px; margin-bottom:10px;"
+    >
+
+    <input
+      type="text"
+      id="authCity"
+      placeholder="Ville"
+      style="width:100%; padding:12px; margin-bottom:10px;"
+    >
+
+    <select
+      id="userType"
+      style="width:100%; padding:12px; margin-bottom:10px;"
+    >
+      <option value="client">Client</option>
+      <option value="professionnel">Professionnel</option>
+    </select>
+
+    <input
+      type="password"
+      id="authPassword"
+      placeholder="Mot de passe"
+      style="width:100%; padding:12px; margin-bottom:15px;"
+    >
+
+    <button onclick="createAccount()" style="width:100%;">
+      Créer mon compte
+    </button>
+
+    <button
+      onclick="closeAuth()"
+      style="width:100%; margin-top:10px; background:#777;"
+    >
+      Fermer
+    </button>
+
+    <p id="authMessage" style="margin-top:15px; text-align:center;"></p>
+
+  </div>
+
+</div>
 
 <script>
 
@@ -364,6 +430,67 @@
 </script>
 <script>
 
+  function showRegister() {
+    document.getElementById("authModal").style.display = "block";
+    document.getElementById("authTitle").textContent = "Créer un compte";
+  }
+
+  function closeAuth() {
+    document.getElementById("authModal").style.display = "none";
+  }
+
+  async function createAccount() {
+
+    const fullName = document.getElementById("fullName").value;
+    const email = document.getElementById("authEmail").value;
+    const phone = document.getElementById("phone").value;
+    const city = document.getElementById("authCity").value;
+    const userType = document.getElementById("userType").value;
+    const password = document.getElementById("authPassword").value;
+    const message = document.getElementById("authMessage");
+
+    if (!fullName || !email || !phone || !city || !password) {
+      message.textContent = "Veuillez remplir tous les champs.";
+      return;
+    }
+
+    message.textContent = "Création du compte...";
+
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      message.textContent = error.message;
+      return;
+    }
+
+    const user = data.user;
+
+    const { error: profileError } = await supabaseClient
+      .from("profiles")
+      .insert({
+        id: user.id,
+        full_name: fullName,
+        phone: phone,
+        city: city,
+        user_type: userType
+      });
+
+    if (profileError) {
+      message.textContent = profileError.message;
+      return;
+    }
+
+    message.textContent = "Compte créé avec succès !";
+
+  }
+
+</script>
+
+<script>
+
   const SUPABASE_URL = "https://spznzkneagjawragvijg.supabase.co";
 
   const SUPABASE_PUBLISHABLE_KEY =
@@ -377,5 +504,6 @@
   );
 
 </script>
+
 </body>
 </html>
