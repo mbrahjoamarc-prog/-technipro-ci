@@ -28,6 +28,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 15px;
     }
 
     .logo {
@@ -35,10 +36,17 @@
       font-weight: bold;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 15px;
     }
 
     .hero {
@@ -133,6 +141,41 @@
       color: #555;
     }
 
+    /* PROFESSIONNELS */
+
+    #professionalsSection {
+      display: none;
+    }
+
+    .professional-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .professional-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .professional-card h3 {
+      color: #0b5ed7;
+      margin-bottom: 8px;
+    }
+
+    .professional-card p {
+      margin: 8px 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .contact-button {
+      width: 100%;
+      margin-top: 12px;
+    }
+
     /* TABLEAU DE BORD */
 
     #dashboard {
@@ -143,7 +186,7 @@
     }
 
     .dashboard-box {
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
       background: white;
       padding: 35px;
@@ -179,9 +222,41 @@
       color: #0b5ed7;
     }
 
+    .profile-form {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid #ddd;
+    }
+
+    .profile-form h3 {
+      margin-bottom: 15px;
+      color: #0b5ed7;
+    }
+
+    .profile-form input,
+    .profile-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-family: Arial, sans-serif;
+    }
+
+    .profile-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .save-button {
+      width: 100%;
+      margin-top: 5px;
+    }
+
     .logout-button {
       background: #dc3545;
       width: 100%;
+      margin-top: 15px;
     }
 
     .logout-button:hover {
@@ -196,6 +271,46 @@
       margin-top: 30px;
     }
 
+    /* FENÊTRE CONNEXION */
+
+    #authModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .auth-box {
+      background: white;
+      max-width: 450px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .auth-box input,
+    .auth-box select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+    }
+
+    .auth-box button {
+      width: 100%;
+    }
+
+    #authMessage {
+      margin-top: 15px;
+      text-align: center;
+    }
+
     @media (max-width: 650px) {
 
       .hero h1 {
@@ -208,17 +323,19 @@
 
       header {
         flex-direction: column;
-        gap: 10px;
       }
 
       nav {
         margin-top: 5px;
-        text-align: center;
       }
 
       nav a,
       nav button {
         margin: 4px;
+      }
+
+      .auth-box {
+        margin: 20px;
       }
     }
   </style>
@@ -242,7 +359,7 @@
       Services
     </a>
 
-    <a href="#techniciens">
+    <a href="#professionalsSection">
       Professionnels
     </a>
 
@@ -315,7 +432,7 @@
 
       </select>
 
-      <button onclick="searchService()">
+      <button onclick="searchProfessionals()">
         Rechercher
       </button>
 
@@ -385,11 +502,24 @@
   </section>
 
 
-  <section class="section" id="techniciens">
+  <!-- LISTE DES PROFESSIONNELS -->
+
+  <section class="section" id="professionalsSection">
 
     <h2>
-      Professionnels
+      Professionnels disponibles
     </h2>
+
+    <div
+      id="professionalList"
+      class="professional-grid"
+    >
+    </div>
+
+  </section>
+
+
+  <section class="section">
 
     <div class="empty">
 
@@ -398,17 +528,17 @@
       </div>
 
       <h3>
-        Les professionnels pourront bientôt rejoindre TechniPro CI
+        Vous êtes professionnel ?
       </h3>
 
       <p>
-        Les entreprises et professionnels pourront créer leur
-        profil, présenter leurs services et recevoir des demandes
-        de clients.
+        Créez votre profil professionnel sur TechniPro CI,
+        présentez vos services et permettez aux clients
+        de vous contacter.
       </p>
 
-      <button onclick="registerProfessional()">
-        Je suis professionnel
+      <button onclick="showRegisterProfessional()">
+        Créer mon profil professionnel
       </button>
 
     </div>
@@ -429,64 +559,86 @@
     </h2>
 
     <p>
-      Bienvenue dans votre espace personnel.
+      Gérez vos informations personnelles et votre profil.
     </p>
+
 
     <div class="profile-info">
 
       <div class="profile-item">
-
         <strong>Nom complet</strong>
-
-        <span id="dashboardName">
-          Chargement...
-        </span>
-
+        <span id="dashboardName">Chargement...</span>
       </div>
 
-
       <div class="profile-item">
-
         <strong>Adresse e-mail</strong>
-
-        <span id="dashboardEmail">
-          Chargement...
-        </span>
-
+        <span id="dashboardEmail">Chargement...</span>
       </div>
 
-
       <div class="profile-item">
-
         <strong>📱 Téléphone</strong>
-
-        <span id="dashboardPhone">
-          Chargement...
-        </span>
-
+        <span id="dashboardPhone">Chargement...</span>
       </div>
 
-
       <div class="profile-item">
-
         <strong>📍 Ville</strong>
-
-        <span id="dashboardCity">
-          Chargement...
-        </span>
-
+        <span id="dashboardCity">Chargement...</span>
       </div>
-
 
       <div class="profile-item">
-
         <strong>👥 Type de compte</strong>
-
-        <span id="dashboardUserType">
-          Chargement...
-        </span>
-
+        <span id="dashboardUserType">Chargement...</span>
       </div>
+
+    </div>
+
+
+    <!-- FORMULAIRE PROFESSIONNEL -->
+
+    <div
+      id="professionalForm"
+      class="profile-form"
+      style="display:none;"
+    >
+
+      <h3>
+        🧑‍🔧 Mon profil professionnel
+      </h3>
+
+      <input
+        type="text"
+        id="profession"
+        placeholder="Votre profession (ex : Électricien)"
+      >
+
+      <input
+        type="text"
+        id="quartier"
+        placeholder="Votre quartier"
+      >
+
+      <input
+        type="text"
+        id="services"
+        placeholder="Services proposés (ex : installation, dépannage...)"
+      >
+
+      <textarea
+        id="description"
+        placeholder="Présentez votre activité et votre expérience..."
+      ></textarea>
+
+      <button
+        class="save-button"
+        onclick="saveProfessionalProfile()"
+      >
+        Enregistrer mon profil professionnel
+      </button>
+
+      <p
+        id="profileMessage"
+        style="text-align:center; margin-top:12px;"
+      ></p>
 
     </div>
 
@@ -519,14 +671,9 @@
 
 <!-- FENÊTRE CONNEXION / INSCRIPTION -->
 
-<div
-  id="authModal"
-  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;"
->
+<div id="authModal">
 
-  <div
-    style="background:white; max-width:450px; margin:60px auto; padding:30px; border-radius:12px;"
-  >
+  <div class="auth-box">
 
     <h2
       id="authTitle"
@@ -540,7 +687,6 @@
       type="text"
       id="fullName"
       placeholder="Nom complet"
-      style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
 
@@ -548,7 +694,6 @@
       type="email"
       id="authEmail"
       placeholder="Adresse e-mail"
-      style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
 
@@ -556,7 +701,6 @@
       type="tel"
       id="phone"
       placeholder="Téléphone"
-      style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
 
@@ -564,14 +708,10 @@
       type="text"
       id="authCity"
       placeholder="Ville"
-      style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
 
-    <select
-      id="userType"
-      style="width:100%; padding:12px; margin-bottom:10px;"
-    >
+    <select id="userType">
 
       <option value="client">
         Client
@@ -588,14 +728,12 @@
       type="password"
       id="authPassword"
       placeholder="Mot de passe"
-      style="width:100%; padding:12px; margin-bottom:15px;"
     >
 
 
     <button
       id="authButton"
       onclick="createAccount()"
-      style="width:100%;"
     >
       Créer mon compte
     </button>
@@ -603,16 +741,13 @@
 
     <button
       onclick="closeAuth()"
-      style="width:100%; margin-top:10px; background:#777;"
+      style="margin-top:10px; background:#777;"
     >
       Fermer
     </button>
 
 
-    <p
-      id="authMessage"
-      style="margin-top:15px; text-align:center;"
-    ></p>
+    <p id="authMessage"></p>
 
   </div>
 
@@ -621,41 +756,219 @@
 
 <script>
 
-  function searchService() {
+  /* ==============================
+     RECHERCHE DES PROFESSIONNELS
+  ============================== */
+
+  async function searchProfessionals() {
 
     const service =
-      document.getElementById("searchInput").value;
+      document.getElementById("searchInput").value.trim();
 
     const city =
       document.getElementById("city").value;
 
-    if (!service && !city) {
+    const section =
+      document.getElementById("professionalsSection");
+
+    const list =
+      document.getElementById("professionalList");
+
+    section.style.display = "block";
+
+    list.innerHTML =
+      "<p style='text-align:center;'>Recherche en cours...</p>";
+
+
+    let query =
+      supabaseClient
+        .from("profiles")
+        .select(
+          "full_name, phone, city, profession, description, services, quartier"
+        )
+        .eq("user_type", "professionnel");
+
+
+    if (city) {
+      query = query.eq("city", city);
+    }
+
+
+    const { data, error } = await query;
+
+
+    if (error) {
+
+      console.error(error);
+
+      list.innerHTML =
+        "<p>Une erreur est survenue pendant la recherche.</p>";
+
+      return;
+    }
+
+
+    let professionals = data || [];
+
+
+    if (service) {
+
+      const search =
+        service.toLowerCase();
+
+      professionals =
+        professionals.filter((professional) => {
+
+          return (
+            (professional.profession || "")
+              .toLowerCase()
+              .includes(search)
+
+            ||
+
+            (professional.services || "")
+              .toLowerCase()
+              .includes(search)
+
+            ||
+
+            (professional.description || "")
+              .toLowerCase()
+              .includes(search)
+          );
+
+        });
+
+    }
+
+
+    if (professionals.length === 0) {
+
+      list.innerHTML = `
+        <div class="empty">
+          <h3>Aucun professionnel trouvé</h3>
+          <p>
+            Aucun professionnel ne correspond actuellement
+            à votre recherche.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    professionals.forEach((professional) => {
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "professional-card";
+
+
+      card.innerHTML = `
+
+        <h3>
+          🧑‍🔧 ${escapeHtml(
+            professional.full_name || "Professionnel"
+          )}
+        </h3>
+
+        <p>
+          <strong>Profession :</strong>
+          ${escapeHtml(
+            professional.profession || "Non renseignée"
+          )}
+        </p>
+
+        <p>
+          <strong>📍 Ville :</strong>
+          ${escapeHtml(
+            professional.city || "Non renseignée"
+          )}
+        </p>
+
+        <p>
+          <strong>Quartier :</strong>
+          ${escapeHtml(
+            professional.quartier || "Non renseigné"
+          )}
+        </p>
+
+        <p>
+          <strong>Services :</strong>
+          ${escapeHtml(
+            professional.services || "Non renseignés"
+          )}
+        </p>
+
+        <p>
+          ${escapeHtml(
+            professional.description || ""
+          )}
+        </p>
+
+        <button
+          class="contact-button"
+          onclick="contactProfessional('${escapeHtml(
+            professional.phone || ""
+          )}')"
+        >
+          📞 Contacter
+        </button>
+
+      `;
+
+
+      list.appendChild(card);
+
+    });
+
+  }
+
+
+  function contactProfessional(phone) {
+
+    if (!phone) {
 
       alert(
-        "Veuillez choisir un service ou une ville."
+        "Le numéro de téléphone de ce professionnel n'est pas disponible."
       );
 
       return;
     }
 
-    alert(
-      "Recherche : " +
-      (service || "Tous les services") +
-      " à " +
-      (city || "toutes les villes")
-    );
+
+    const cleanPhone =
+      phone.replace(/\s/g, "");
+
+
+    window.location.href =
+      "tel:" + cleanPhone;
 
   }
 
 
-  function registerProfessional() {
+  function escapeHtml(value) {
 
-    alert(
-      "L'inscription des professionnels sera bientôt disponible."
-    );
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      value;
+
+    return div.innerHTML;
 
   }
 
+
+  /* ==============================
+     INSCRIPTION
+  ============================== */
 
   function showRegister() {
 
@@ -688,6 +1001,20 @@
 
   }
 
+
+  function showRegisterProfessional() {
+
+    showRegister();
+
+    document.getElementById("userType").value =
+      "professionnel";
+
+  }
+
+
+  /* ==============================
+     CONNEXION
+  ============================== */
 
   function showLogin() {
 
@@ -732,7 +1059,7 @@
   async function loginAccount() {
 
     const email =
-      document.getElementById("authEmail").value;
+      document.getElementById("authEmail").value.trim();
 
     const password =
       document.getElementById("authPassword").value;
@@ -754,7 +1081,7 @@
       "Connexion en cours...";
 
 
-    const { data, error } =
+    const { error } =
       await supabaseClient.auth.signInWithPassword({
 
         email: email,
@@ -782,24 +1109,28 @@
 
       showDashboard();
 
-    }, 1000);
+    }, 700);
 
   }
 
 
+  /* ==============================
+     CREATION DU COMPTE
+  ============================== */
+
   async function createAccount() {
 
     const fullName =
-      document.getElementById("fullName").value;
+      document.getElementById("fullName").value.trim();
 
     const email =
-      document.getElementById("authEmail").value;
+      document.getElementById("authEmail").value.trim();
 
     const phone =
-      document.getElementById("phone").value;
+      document.getElementById("phone").value.trim();
 
     const city =
-      document.getElementById("authCity").value;
+      document.getElementById("authCity").value.trim();
 
     const userType =
       document.getElementById("userType").value;
@@ -821,6 +1152,15 @@
 
       message.textContent =
         "Veuillez remplir tous les champs.";
+
+      return;
+    }
+
+
+    if (password.length < 6) {
+
+      message.textContent =
+        "Le mot de passe doit contenir au moins 6 caractères.";
 
       return;
     }
@@ -848,7 +1188,17 @@
     }
 
 
-    const user = data.user;
+    const user =
+      data.user;
+
+
+    if (!user) {
+
+      message.textContent =
+        "Le compte n'a pas pu être créé.";
+
+      return;
+    }
 
 
     const { error: profileError } =
@@ -882,10 +1232,18 @@
 
       closeAuth();
 
-    }, 1500);
+      if (userType === "professionnel") {
+        showDashboard();
+      }
+
+    }, 1000);
 
   }
 
+
+  /* ==============================
+     TABLEAU DE BORD
+  ============================== */
 
   async function showDashboard() {
 
@@ -915,7 +1273,9 @@
     const { data: profile, error } =
       await supabaseClient
         .from("profiles")
-        .select("full_name, phone, city, user_type")
+        .select(
+          "full_name, phone, city, user_type, profession, description, services, quartier"
+        )
         .eq("id", user.id)
         .single();
 
@@ -932,18 +1292,44 @@
 
 
     document.getElementById("dashboardName").textContent =
-      profile.full_name;
+      profile.full_name || "";
 
     document.getElementById("dashboardPhone").textContent =
-      profile.phone;
+      profile.phone || "";
 
     document.getElementById("dashboardCity").textContent =
-      profile.city;
+      profile.city || "";
 
     document.getElementById("dashboardUserType").textContent =
       profile.user_type === "professionnel"
         ? "Professionnel"
         : "Client";
+
+
+    if (profile.user_type === "professionnel") {
+
+      document.getElementById("professionalForm").style.display =
+        "block";
+
+
+      document.getElementById("profession").value =
+        profile.profession || "";
+
+      document.getElementById("quartier").value =
+        profile.quartier || "";
+
+      document.getElementById("services").value =
+        profile.services || "";
+
+      document.getElementById("description").value =
+        profile.description || "";
+
+    } else {
+
+      document.getElementById("professionalForm").style.display =
+        "none";
+
+    }
 
 
     document.getElementById("loginButton").style.display =
@@ -960,6 +1346,89 @@
 
   }
 
+
+  /* ==============================
+     ENREGISTRER LE PROFIL PRO
+  ============================== */
+
+  async function saveProfessionalProfile() {
+
+    const profession =
+      document.getElementById("profession").value.trim();
+
+    const quartier =
+      document.getElementById("quartier").value.trim();
+
+    const services =
+      document.getElementById("services").value.trim();
+
+    const description =
+      document.getElementById("description").value.trim();
+
+    const message =
+      document.getElementById("profileMessage");
+
+
+    if (!profession || !services) {
+
+      message.textContent =
+        "Veuillez au minimum renseigner votre profession et vos services.";
+
+      return;
+    }
+
+
+    message.textContent =
+      "Enregistrement en cours...";
+
+
+    const { data: { user } } =
+      await supabaseClient.auth.getUser();
+
+
+    if (!user) {
+
+      message.textContent =
+        "Vous devez être connecté.";
+
+      return;
+    }
+
+
+    const { error } =
+      await supabaseClient
+        .from("profiles")
+        .update({
+
+          profession: profession,
+          quartier: quartier,
+          services: services,
+          description: description
+
+        })
+        .eq("id", user.id);
+
+
+    if (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Erreur : " + error.message;
+
+      return;
+    }
+
+
+    message.textContent =
+      "✅ Profil professionnel enregistré avec succès !";
+
+  }
+
+
+  /* ==============================
+     ACCUEIL
+  ============================== */
 
   function showHome() {
 
@@ -972,9 +1441,14 @@
   }
 
 
+  /* ==============================
+     DECONNEXION
+  ============================== */
+
   async function logoutAccount() {
 
     await supabaseClient.auth.signOut();
+
 
     document.getElementById("loginButton").style.display =
       "inline-block";
@@ -988,18 +1462,18 @@
     document.getElementById("headerLogoutButton").style.display =
       "none";
 
+
     showHome();
+
 
     alert("Vous êtes déconnecté.");
 
   }
 
-</script>
 
-
-<!-- SUPABASE -->
-
-<script>
+  /* ==============================
+     SUPABASE
+  ============================== */
 
   const SUPABASE_URL =
     "https://spznzkneagjawragvijg.supabase.co";
@@ -1007,7 +1481,8 @@
   const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
 
-  const { createClient } = supabase;
+  const { createClient } =
+    supabase;
 
   const supabaseClient =
     createClient(
