@@ -133,6 +133,61 @@
       color: #555;
     }
 
+    /* TABLEAU DE BORD */
+
+    #dashboard {
+      display: none;
+      padding: 50px 7%;
+      background: #eef3f8;
+      min-height: 500px;
+    }
+
+    .dashboard-box {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.10);
+    }
+
+    .dashboard-box h2 {
+      color: #0b5ed7;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-box > p {
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    .profile-info {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .profile-item {
+      background: #f5f7fa;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .profile-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #0b5ed7;
+    }
+
+    .logout-button {
+      background: #dc3545;
+      width: 100%;
+    }
+
+    .logout-button:hover {
+      background: #b02a37;
+    }
+
     footer {
       background: #17202a;
       color: white;
@@ -142,6 +197,7 @@
     }
 
     @media (max-width: 650px) {
+
       .hero h1 {
         font-size: 30px;
       }
@@ -157,6 +213,12 @@
 
       nav {
         margin-top: 5px;
+        text-align: center;
+      }
+
+      nav a,
+      nav button {
+        margin: 4px;
       }
     }
   </style>
@@ -171,148 +233,275 @@
   </div>
 
   <nav>
-    <a href="#">Accueil</a>
-    <a href="#services">Services</a>
-    <a href="#techniciens">Professionnels</a>
 
-    <button onclick="showLogin()">
+    <a href="#" onclick="showHome()">
+      Accueil
+    </a>
+
+    <a href="#services">
+      Services
+    </a>
+
+    <a href="#techniciens">
+      Professionnels
+    </a>
+
+    <button id="loginButton" onclick="showLogin()">
       Se connecter
     </button>
 
-    <button onclick="showRegister()">
+    <button id="registerButton" onclick="showRegister()">
       Créer un compte
     </button>
+
+    <button
+      id="dashboardButton"
+      onclick="showDashboard()"
+      style="display:none;"
+    >
+      Mon espace
+    </button>
+
+    <button
+      id="headerLogoutButton"
+      onclick="logoutAccount()"
+      style="display:none; background:#dc3545;"
+    >
+      Déconnexion
+    </button>
+
   </nav>
 
 </header>
 
-<section class="hero">
 
-  <h1>Trouvez le professionnel qu'il vous faut</h1>
+<!-- PAGE PRINCIPALE -->
 
-  <p>
-    Trouvez facilement une entreprise ou un professionnel
-    pour vos travaux et services en Côte d'Ivoire.
-  </p>
+<div id="homePage">
 
-  <div class="search">
+  <section class="hero">
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Quel service recherchez-vous ?"
-    >
-
-    <select id="city">
-
-      <option value="">
-        Choisir une ville
-      </option>
-
-      <option>Abidjan</option>
-      <option>Abobo</option>
-      <option>Cocody</option>
-      <option>Yopougon</option>
-      <option>Marcory</option>
-      <option>Port-Bouët</option>
-      <option>Bouaké</option>
-      <option>Yamoussoukro</option>
-
-    </select>
-
-    <button onclick="searchService()">
-      Rechercher
-    </button>
-
-  </div>
-
-</section>
-
-<section class="section" id="services">
-
-  <h2>Nos services</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <div class="icon">⚡</div>
-      <h3>Électricité</h3>
-      <p>
-        Installation, entretien et dépannage électrique.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🚰</div>
-      <h3>Plomberie</h3>
-      <p>
-        Réparation et installation des équipements sanitaires.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="icon">❄️</div>
-      <h3>Climatisation</h3>
-      <p>
-        Installation, entretien et dépannage de climatiseurs.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="icon">💻</div>
-      <h3>Informatique</h3>
-      <p>
-        Assistance informatique et dépannage.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🚗</div>
-      <h3>Mécanique</h3>
-      <p>
-        Entretien et réparation automobile.
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🔧</div>
-      <h3>Autres services</h3>
-      <p>
-        Trouvez le professionnel adapté à votre besoin.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<section class="section" id="techniciens">
-
-  <h2>Professionnels</h2>
-
-  <div class="empty">
-
-    <div style="font-size: 50px;">
-      👨‍🔧
-    </div>
-
-    <h3>
-      Les professionnels pourront bientôt rejoindre TechniPro CI
-    </h3>
+    <h1>
+      Trouvez le professionnel qu'il vous faut
+    </h1>
 
     <p>
-      Les entreprises et professionnels pourront créer leur
-      profil, présenter leurs services et recevoir des demandes
-      de clients.
+      Trouvez facilement une entreprise ou un professionnel
+      pour vos travaux et services en Côte d'Ivoire.
     </p>
 
-    <button onclick="registerProfessional()">
-      Je suis professionnel
+    <div class="search">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Quel service recherchez-vous ?"
+      >
+
+      <select id="city">
+
+        <option value="">
+          Choisir une ville
+        </option>
+
+        <option>Abidjan</option>
+        <option>Abobo</option>
+        <option>Cocody</option>
+        <option>Yopougon</option>
+        <option>Marcory</option>
+        <option>Port-Bouët</option>
+        <option>Bouaké</option>
+        <option>Yamoussoukro</option>
+
+      </select>
+
+      <button onclick="searchService()">
+        Rechercher
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="section" id="services">
+
+    <h2>
+      Nos services
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Électricité</h3>
+        <p>
+          Installation, entretien et dépannage électrique.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚰</div>
+        <h3>Plomberie</h3>
+        <p>
+          Réparation et installation des équipements sanitaires.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">❄️</div>
+        <h3>Climatisation</h3>
+        <p>
+          Installation, entretien et dépannage de climatiseurs.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>Informatique</h3>
+        <p>
+          Assistance informatique et dépannage.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚗</div>
+        <h3>Mécanique</h3>
+        <p>
+          Entretien et réparation automobile.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>Autres services</h3>
+        <p>
+          Trouvez le professionnel adapté à votre besoin.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="section" id="techniciens">
+
+    <h2>
+      Professionnels
+    </h2>
+
+    <div class="empty">
+
+      <div style="font-size:50px;">
+        👨‍🔧
+      </div>
+
+      <h3>
+        Les professionnels pourront bientôt rejoindre TechniPro CI
+      </h3>
+
+      <p>
+        Les entreprises et professionnels pourront créer leur
+        profil, présenter leurs services et recevoir des demandes
+        de clients.
+      </p>
+
+      <button onclick="registerProfessional()">
+        Je suis professionnel
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- TABLEAU DE BORD -->
+
+<section id="dashboard">
+
+  <div class="dashboard-box">
+
+    <h2>
+      👤 Mon espace TechniPro CI
+    </h2>
+
+    <p>
+      Bienvenue dans votre espace personnel.
+    </p>
+
+    <div class="profile-info">
+
+      <div class="profile-item">
+
+        <strong>Nom complet</strong>
+
+        <span id="dashboardName">
+          Chargement...
+        </span>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <strong>Adresse e-mail</strong>
+
+        <span id="dashboardEmail">
+          Chargement...
+        </span>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <strong>📱 Téléphone</strong>
+
+        <span id="dashboardPhone">
+          Chargement...
+        </span>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <strong>📍 Ville</strong>
+
+        <span id="dashboardCity">
+          Chargement...
+        </span>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <strong>👥 Type de compte</strong>
+
+        <span id="dashboardUserType">
+          Chargement...
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logoutAccount()"
+    >
+      Se déconnecter
     </button>
 
   </div>
 
 </section>
+
 
 <footer>
 
@@ -327,6 +516,7 @@
 
 </footer>
 
+
 <!-- FENÊTRE CONNEXION / INSCRIPTION -->
 
 <div
@@ -338,9 +528,13 @@
     style="background:white; max-width:450px; margin:60px auto; padding:30px; border-radius:12px;"
   >
 
-    <h2 id="authTitle" style="margin-bottom:20px;">
+    <h2
+      id="authTitle"
+      style="margin-bottom:20px;"
+    >
       Créer un compte
     </h2>
+
 
     <input
       type="text"
@@ -349,12 +543,14 @@
       style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
+
     <input
       type="email"
       id="authEmail"
       placeholder="Adresse e-mail"
       style="width:100%; padding:12px; margin-bottom:10px;"
     >
+
 
     <input
       type="tel"
@@ -363,12 +559,14 @@
       style="width:100%; padding:12px; margin-bottom:10px;"
     >
 
+
     <input
       type="text"
       id="authCity"
       placeholder="Ville"
       style="width:100%; padding:12px; margin-bottom:10px;"
     >
+
 
     <select
       id="userType"
@@ -385,12 +583,14 @@
 
     </select>
 
+
     <input
       type="password"
       id="authPassword"
       placeholder="Mot de passe"
       style="width:100%; padding:12px; margin-bottom:15px;"
     >
+
 
     <button
       id="authButton"
@@ -400,12 +600,14 @@
       Créer mon compte
     </button>
 
+
     <button
       onclick="closeAuth()"
       style="width:100%; margin-top:10px; background:#777;"
     >
       Fermer
     </button>
+
 
     <p
       id="authMessage"
@@ -415,6 +617,7 @@
   </div>
 
 </div>
+
 
 <script>
 
@@ -453,13 +656,11 @@
 
   }
 
-</script>
-
-<script>
 
   function showRegister() {
 
-    document.getElementById("authModal").style.display = "block";
+    document.getElementById("authModal").style.display =
+      "block";
 
     document.getElementById("authTitle").textContent =
       "Créer un compte";
@@ -481,6 +682,9 @@
 
     document.getElementById("authButton").onclick =
       createAccount;
+
+    document.getElementById("authMessage").textContent =
+      "";
 
   }
 
@@ -511,6 +715,9 @@
     document.getElementById("authButton").onclick =
       loginAccount;
 
+    document.getElementById("authMessage").textContent =
+      "";
+
   }
 
 
@@ -533,6 +740,7 @@
     const message =
       document.getElementById("authMessage");
 
+
     if (!email || !password) {
 
       message.textContent =
@@ -541,8 +749,10 @@
       return;
     }
 
+
     message.textContent =
       "Connexion en cours...";
+
 
     const { data, error } =
       await supabaseClient.auth.signInWithPassword({
@@ -552,6 +762,7 @@
 
       });
 
+
     if (error) {
 
       message.textContent =
@@ -560,14 +771,18 @@
       return;
     }
 
+
     message.textContent =
       "Connexion réussie !";
+
 
     setTimeout(() => {
 
       closeAuth();
 
-    }, 1500);
+      showDashboard();
+
+    }, 1000);
 
   }
 
@@ -671,10 +886,118 @@
 
   }
 
+
+  async function showDashboard() {
+
+    document.getElementById("homePage").style.display =
+      "none";
+
+    document.getElementById("dashboard").style.display =
+      "block";
+
+
+    const { data: { user } } =
+      await supabaseClient.auth.getUser();
+
+
+    if (!user) {
+
+      showHome();
+
+      return;
+    }
+
+
+    document.getElementById("dashboardEmail").textContent =
+      user.email;
+
+
+    const { data: profile, error } =
+      await supabaseClient
+        .from("profiles")
+        .select("full_name, phone, city, user_type")
+        .eq("id", user.id)
+        .single();
+
+
+    if (error) {
+
+      console.error(error);
+
+      document.getElementById("dashboardName").textContent =
+        "Profil introuvable";
+
+      return;
+    }
+
+
+    document.getElementById("dashboardName").textContent =
+      profile.full_name;
+
+    document.getElementById("dashboardPhone").textContent =
+      profile.phone;
+
+    document.getElementById("dashboardCity").textContent =
+      profile.city;
+
+    document.getElementById("dashboardUserType").textContent =
+      profile.user_type === "professionnel"
+        ? "Professionnel"
+        : "Client";
+
+
+    document.getElementById("loginButton").style.display =
+      "none";
+
+    document.getElementById("registerButton").style.display =
+      "none";
+
+    document.getElementById("dashboardButton").style.display =
+      "inline-block";
+
+    document.getElementById("headerLogoutButton").style.display =
+      "inline-block";
+
+  }
+
+
+  function showHome() {
+
+    document.getElementById("homePage").style.display =
+      "block";
+
+    document.getElementById("dashboard").style.display =
+      "none";
+
+  }
+
+
+  async function logoutAccount() {
+
+    await supabaseClient.auth.signOut();
+
+    document.getElementById("loginButton").style.display =
+      "inline-block";
+
+    document.getElementById("registerButton").style.display =
+      "inline-block";
+
+    document.getElementById("dashboardButton").style.display =
+      "none";
+
+    document.getElementById("headerLogoutButton").style.display =
+      "none";
+
+    showHome();
+
+    alert("Vous êtes déconnecté.");
+
+  }
+
 </script>
 
 
-<!-- CONNEXION SUPABASE -->
+<!-- SUPABASE -->
 
 <script>
 
