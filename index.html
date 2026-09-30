@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TechniPro CI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #17202a;
+    }
+
+    header {
+      background: #0b5ed7;
+      color: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b5ed7, #063b8c);
+      color: white;
+      padding: 70px 7%;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .search {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search input,
+    .search select {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+    }
+
+    button {
+      background: #0b5ed7;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #084298;
+    }
+
+    .section {
+      padding: 50px 7%;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .card .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .empty {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .empty p {
+      margin: 12px 0 20px;
+      color: #555;
+    }
+
+    footer {
+      background: #17202a;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 650px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .search {
+        flex-direction: column;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    🔧 TechniPro CI
+  </div>
+
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#techniciens">Professionnels</a>
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>Trouvez le professionnel qu'il vous faut</h1>
+
+  <p>
+    Trouvez facilement une entreprise ou un professionnel
+    pour vos travaux et services en Côte d'Ivoire.
+  </p>
+
+  <div class="search">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Quel service recherchez-vous ?"
+    >
+
+    <select id="city">
+
+      <option value="">
+        Choisir une ville
+      </option>
+
+      <option>Abidjan</option>
+      <option>Abobo</option>
+      <option>Cocody</option>
+      <option>Yopougon</option>
+      <option>Marcory</option>
+      <option>Port-Bouët</option>
+      <option>Bouaké</option>
+      <option>Yamoussoukro</option>
+
+    </select>
+
+    <button onclick="searchService()">
+      Rechercher
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="services">
+
+  <h2>Nos services</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Électricité</h3>
+      <p>
+        Installation, entretien et dépannage électrique.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚰</div>
+      <h3>Plomberie</h3>
+      <p>
+        Réparation et installation des équipements sanitaires.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">❄️</div>
+      <h3>Climatisation</h3>
+      <p>
+        Installation, entretien et dépannage de climatiseurs.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Informatique</h3>
+      <p>
+        Assistance informatique et dépannage.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚗</div>
+      <h3>Mécanique</h3>
+      <p>
+        Entretien et réparation automobile.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>Autres services</h3>
+      <p>
+        Trouvez le professionnel adapté à votre besoin.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="techniciens">
+
+  <h2>Professionnels</h2>
+
+  <div class="empty">
+
+    <div style="font-size: 50px;">
+      👨‍🔧
+    </div>
+
+    <h3>
+      Les professionnels pourront bientôt rejoindre TechniPro CI
+    </h3>
+
+    <p>
+      Les entreprises et professionnels pourront créer leur
+      profil, présenter leurs services et recevoir des demandes
+      de clients.
+    </p>
+
+    <button onclick="registerProfessional()">
+      Je suis professionnel
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 TechniPro CI - Tous droits réservés.
+  </p>
+
+  <p>
+    Mettre en relation les professionnels et leurs clients
+    en Côte d'Ivoire.
+  </p>
+
+</footer>
+
+
+<script>
+
+  function searchService() {
+
+    const service =
+      document.getElementById("searchInput").value;
+
+    const city =
+      document.getElementById("city").value;
+
+    if (!service && !city) {
+
+      alert(
+        "Veuillez choisir un service ou une ville."
+      );
+
+      return;
+    }
+
+    alert(
+      "Recherche : " +
+      (service || "Tous les services") +
+      " à " +
+      (city || "toutes les villes")
+    );
+
+  }
+
+
+  function registerProfessional() {
+
+    alert(
+      "L'inscription des professionnels sera bientôt disponible."
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
