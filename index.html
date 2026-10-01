@@ -385,10 +385,6 @@
       color: #842029;
     }
 
-    /* =====================================================
-       NOTIFICATIONS
-    ===================================================== */
-
     .notification-card {
       border-left: 5px solid #0b5ed7;
       margin-top: 20px;
@@ -448,10 +444,6 @@
     .notification-read-btn:hover {
       background: #e9ecef;
     }
-
-    /* =====================================================
-       AVIS
-    ===================================================== */
 
     .star-selector {
       display: flex;
@@ -632,8 +624,10 @@
       <div class="service-icon">⚡</div>
       <h3>Électricien</h3>
       <p>Installations et dépannages électriques.</p>
-      <button class="primary-btn"
-        onclick="selectService('Électricien')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Électricien')"
+      >
         Rechercher
       </button>
     </div>
@@ -642,8 +636,10 @@
       <div class="service-icon">🚰</div>
       <h3>Plombier</h3>
       <p>Installation et réparation de plomberie.</p>
-      <button class="primary-btn"
-        onclick="selectService('Plombier')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Plombier')"
+      >
         Rechercher
       </button>
     </div>
@@ -652,8 +648,10 @@
       <div class="service-icon">🧱</div>
       <h3>Maçon</h3>
       <p>Travaux de construction et rénovation.</p>
-      <button class="primary-btn"
-        onclick="selectService('Maçon')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Maçon')"
+      >
         Rechercher
       </button>
     </div>
@@ -662,8 +660,10 @@
       <div class="service-icon">🎨</div>
       <h3>Peintre</h3>
       <p>Peinture intérieure et extérieure.</p>
-      <button class="primary-btn"
-        onclick="selectService('Peintre')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Peintre')"
+      >
         Rechercher
       </button>
     </div>
@@ -672,8 +672,10 @@
       <div class="service-icon">🪚</div>
       <h3>Menuisier</h3>
       <p>Travaux de menuiserie et fabrication.</p>
-      <button class="primary-btn"
-        onclick="selectService('Menuisier')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Menuisier')"
+      >
         Rechercher
       </button>
     </div>
@@ -682,8 +684,10 @@
       <div class="service-icon">🚗</div>
       <h3>Mécanicien</h3>
       <p>Entretien et réparation automobile.</p>
-      <button class="primary-btn"
-        onclick="selectService('Mécanicien')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Mécanicien')"
+      >
         Rechercher
       </button>
     </div>
@@ -692,8 +696,10 @@
       <div class="service-icon">❄️</div>
       <h3>Climatisation</h3>
       <p>Installation et dépannage de climatiseurs.</p>
-      <button class="primary-btn"
-        onclick="selectService('Climatisation')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Climatisation')"
+      >
         Rechercher
       </button>
     </div>
@@ -702,8 +708,10 @@
       <div class="service-icon">💻</div>
       <h3>Informatique</h3>
       <p>Assistance informatique et dépannage.</p>
-      <button class="primary-btn"
-        onclick="selectService('Informatique')">
+      <button
+        class="primary-btn"
+        onclick="selectService('Informatique')"
+      >
         Rechercher
       </button>
     </div>
@@ -719,7 +727,10 @@
     Professionnels disponibles
   </h2>
 
-  <div id="searchMessage" class="message"></div>
+  <div
+    id="searchMessage"
+    class="message"
+  ></div>
 
   <div
     id="professionalsGrid"
@@ -791,7 +802,6 @@
             <option value="Man">Man</option>
             <option value="Abengourou">Abengourou</option>
             <option value="Grand-Bassam">Grand-Bassam</option>
-
           </select>
         </div>
 
@@ -931,7 +941,6 @@
       class="message"
     ></div>
 
-
     <div id="dashboardContent">
 
       <div class="dashboard-card">
@@ -950,8 +959,6 @@
       </div>
 
 
-      <!-- NOTIFICATIONS CLIENT -->
-
       <div
         id="notificationsCard"
         class="dashboard-card notification-card hidden"
@@ -966,8 +973,6 @@
       </div>
 
 
-      <!-- NOTIFICATIONS PROFESSIONNEL -->
-
       <div
         id="professionalNotificationsCard"
         class="dashboard-card notification-card hidden"
@@ -981,8 +986,6 @@
 
       </div>
 
-
-      <!-- PROFIL PROFESSIONNEL -->
 
       <div
         id="professionalProfileCard"
@@ -1052,8 +1055,6 @@
       </div>
 
 
-      <!-- DEMANDES PROFESSIONNEL -->
-
       <div
         id="professionalRequestsCard"
         class="dashboard-card"
@@ -1075,8 +1076,6 @@
 
       </div>
 
-
-      <!-- DEMANDES CLIENT -->
 
       <div
         id="clientRequestsCard"
@@ -1114,10 +1113,6 @@
 
 </footer>
 
-
-<!-- =====================================================
-     MODAL DEMANDE DE SERVICE
-====================================================== -->
 
 <div
   id="requestModal"
@@ -1280,10 +1275,6 @@
 </div>
 
 
-<!-- =====================================================
-     MODAL AVIS
-====================================================== -->
-
 <div
   id="reviewModal"
   class="hidden"
@@ -1375,41 +1366,31 @@
           type="button"
           onclick="selectRating(1)"
           data-rating="1"
-        >
-          ★
-        </button>
+        >★</button>
 
         <button
           type="button"
           onclick="selectRating(2)"
           data-rating="2"
-        >
-          ★
-        </button>
+        >★</button>
 
         <button
           type="button"
           onclick="selectRating(3)"
           data-rating="3"
-        >
-          ★
-        </button>
+        >★</button>
 
         <button
           type="button"
           onclick="selectRating(4)"
           data-rating="4"
-        >
-          ★
-        </button>
+        >★</button>
 
         <button
           type="button"
           onclick="selectRating(5)"
           data-rating="5"
-        >
-          ★
-        </button>
+        >★</button>
 
       </div>
 
@@ -1808,11 +1789,6 @@ async function loginUser(event) {
 
     await loadUserProfile();
 
-    /*
-      CORRECTION AVIS :
-      après connexion, on recharge immédiatement
-      la liste des professionnels et leurs avis.
-    */
     await searchProfessionals();
 
 
@@ -2292,10 +2268,6 @@ async function loadClientNotifications() {
 }
 
 
-/* =========================================================
-   MARQUER NOTIFICATION CLIENT COMME LUE
-========================================================= */
-
 async function markClientNotificationRead(
   requestId,
   button
@@ -2549,10 +2521,6 @@ async function loadProfessionalNotifications() {
 }
 
 
-/* =========================================================
-   MARQUER NOTIFICATION PROFESSIONNELLE COMME LUE
-========================================================= */
-
 async function markProfessionalNotificationRead(
   requestId,
   button
@@ -2671,10 +2639,6 @@ function updateNotificationBadge(count) {
 }
 
 
-/* =========================================================
-   ACTUALISER BADGE CLIENT
-========================================================= */
-
 async function refreshClientNotificationBadge() {
 
   if (!currentUser) return;
@@ -2726,10 +2690,6 @@ async function refreshClientNotificationBadge() {
 }
 
 
-/* =========================================================
-   ACTUALISER BADGE PROFESSIONNEL
-========================================================= */
-
 async function refreshProfessionalNotificationBadge() {
 
   if (!currentUser) return;
@@ -2777,10 +2737,6 @@ async function refreshProfessionalNotificationBadge() {
   );
 }
 
-
-/* =========================================================
-   BADGE AUTOMATIQUE
-========================================================= */
 
 async function refreshNotificationBadge() {
 
@@ -2915,7 +2871,7 @@ async function saveProfessionalProfile(
 
 /* =========================================================
    RECHERCHE PROFESSIONNELS
-   VERSION CORRIGÉE POUR LES AVIS
+   CORRECTION COMPLETE DES AVIS
 ========================================================= */
 
 async function searchProfessionals() {
@@ -2941,6 +2897,7 @@ async function searchProfessionals() {
     !cityInput ||
     !grid
   ) {
+
     console.error(
       "❌ Éléments de recherche introuvables."
     );
@@ -2962,6 +2919,10 @@ async function searchProfessionals() {
 
 
   try {
+
+    /* =====================================================
+       1. CHARGER LES PROFESSIONNELS
+    ===================================================== */
 
     let query =
       supabaseClient
@@ -2989,12 +2950,24 @@ async function searchProfessionals() {
     } = await query;
 
 
-    if (error) throw error;
+    if (error) {
+
+      console.error(
+        "❌ ERREUR PROFESSIONNELS :",
+        error
+      );
+
+      throw error;
+    }
 
 
     let professionals =
       data || [];
 
+
+    /* =====================================================
+       2. FILTRER PAR PROFESSION
+    ===================================================== */
 
     if (profession) {
 
@@ -3003,22 +2976,22 @@ async function searchProfessionals() {
           profile => {
 
             const p =
-              (
-                profile.profession ||
-                ""
-              ).toLowerCase();
+              String(
+                profile.profession || ""
+              )
+              .toLowerCase();
 
             const s =
-              (
-                profile.services ||
-                ""
-              ).toLowerCase();
+              String(
+                profile.services || ""
+              )
+              .toLowerCase();
 
             const d =
-              (
-                profile.description ||
-                ""
-              ).toLowerCase();
+              String(
+                profile.description || ""
+              )
+              .toLowerCase();
 
 
             return (
@@ -3026,28 +2999,48 @@ async function searchProfessionals() {
               s.includes(profession) ||
               d.includes(profession)
             );
+
           }
         );
     }
 
 
-    /*
-      =====================================================
-      CHARGEMENT DES AVIS
-      =====================================================
-    */
+    console.log(
+      "👨‍🔧 PROFESSIONNELS TROUVÉS :",
+      professionals
+    );
+
+
+    /* =====================================================
+       3. RÉCUPÉRER LES ID DES PROFESSIONNELS
+    ===================================================== */
 
     const professionalIds =
-      professionals.map(
-        profile => profile.id
-      );
+      professionals
+        .map(
+          profile =>
+            String(
+              profile.id || ""
+            ).trim()
+        )
+        .filter(Boolean);
 
+
+    console.log(
+      "🆔 ID PROFESSIONNELS :",
+      professionalIds
+    );
+
+
+    /* =====================================================
+       4. CHARGER LES AVIS
+    ===================================================== */
 
     let reviews = [];
 
 
     if (
-      professionalIds.length
+      professionalIds.length > 0
     ) {
 
       const {
@@ -3057,7 +3050,7 @@ async function searchProfessionals() {
         await supabaseClient
           .from("reviews")
           .select(
-            "professional_id, rating, comment, created_at"
+            "id, professional_id, rating, comment, created_at"
           )
           .in(
             "professional_id",
@@ -3087,18 +3080,24 @@ async function searchProfessionals() {
 
 
         console.log(
-          "✅ AVIS CHARGÉS :",
+          "⭐ AVIS RÉCUPÉRÉS DE SUPABASE :",
           reviews
         );
+
       }
+
+    } else {
+
+      console.log(
+        "⚠️ Aucun professionnel trouvé, donc aucun avis à charger."
+      );
+
     }
 
 
-    /*
-      =====================================================
-      REGROUPEMENT DES AVIS PAR PROFESSIONNEL
-      =====================================================
-    */
+    /* =====================================================
+       5. REGROUPER LES AVIS
+    ===================================================== */
 
     const reviewsByProfessional = {};
 
@@ -3106,38 +3105,65 @@ async function searchProfessionals() {
     reviews.forEach(
       review => {
 
+        const professionalId =
+          String(
+            review.professional_id || ""
+          )
+          .trim()
+          .toLowerCase();
+
+
+        if (!professionalId) {
+          return;
+        }
+
+
         if (
           !reviewsByProfessional[
-            review.professional_id
+            professionalId
           ]
         ) {
 
           reviewsByProfessional[
-            review.professional_id
+            professionalId
           ] = [];
+
         }
 
 
         reviewsByProfessional[
-          review.professional_id
+          professionalId
         ].push(review);
+
       }
     );
 
 
-    /*
-      =====================================================
-      CALCUL MOYENNE + NOMBRE D'AVIS
-      =====================================================
-    */
+    console.log(
+      "📚 AVIS GROUPÉS :",
+      reviewsByProfessional
+    );
+
+
+    /* =====================================================
+       6. AJOUTER LES NOTES À CHAQUE PROFESSIONNEL
+    ===================================================== */
 
     professionals =
       professionals.map(
         profile => {
 
+          const profileId =
+            String(
+              profile.id || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
           const profileReviews =
             reviewsByProfessional[
-              profile.id
+              profileId
             ] || [];
 
 
@@ -3146,23 +3172,41 @@ async function searchProfessionals() {
               (
                 sum,
                 review
-              ) =>
-                sum +
-                Number(
-                  review.rating
-                ),
+              ) => {
+
+                return (
+                  sum +
+                  Number(
+                    review.rating || 0
+                  )
+                );
+
+              },
               0
             );
 
 
           const average =
-            profileReviews.length
+            profileReviews.length > 0
               ? total /
                 profileReviews.length
               : 0;
 
 
+          console.log(
+            "⭐ PROFESSIONNEL :",
+            profile.full_name,
+            "| ID :",
+            profileId,
+            "| AVIS :",
+            profileReviews.length,
+            "| MOYENNE :",
+            average
+          );
+
+
           return {
+
             ...profile,
 
             reviews:
@@ -3173,16 +3217,22 @@ async function searchProfessionals() {
 
             ratingCount:
               profileReviews.length
+
           };
+
         }
       );
 
 
     console.log(
-      "👨‍🔧 PROFESSIONNELS AVEC AVIS :",
+      "✅ PROFESSIONNELS AVEC NOTES :",
       professionals
     );
 
+
+    /* =====================================================
+       7. AFFICHER
+    ===================================================== */
 
     displayProfessionals(
       professionals
@@ -3192,6 +3242,7 @@ async function searchProfessionals() {
     showSection(
       "professionalsSection"
     );
+
 
   } catch (error) {
 
@@ -3207,7 +3258,9 @@ async function searchProfessionals() {
       error.message,
       "error"
     );
+
   }
+
 }
 
 
@@ -4715,11 +4768,6 @@ async function submitReview() {
 
         await loadClientRequests();
 
-        /*
-          Recharger également les professionnels
-          afin que la nouvelle note apparaisse
-          immédiatement.
-        */
         await searchProfessionals();
 
       },
@@ -4848,12 +4896,6 @@ async function checkSession() {
 
     await refreshNotificationBadge();
 
-    /*
-      CORRECTION AVIS :
-      lorsqu'une session existe déjà,
-      on recharge aussi les professionnels
-      et leurs avis.
-    */
     await searchProfessionals();
 
   } else {
