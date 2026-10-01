@@ -50,10 +50,29 @@
       cursor: pointer;
       font-size: 15px;
       padding: 8px;
+      position: relative;
     }
 
     nav button:hover {
       text-decoration: underline;
+    }
+
+    /* Badge notification */
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -3px;
+      background: #dc3545;
+      color: white;
+      border-radius: 50%;
+      min-width: 18px;
+      height: 18px;
+      padding: 2px 5px;
+      font-size: 11px;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero {
@@ -321,6 +340,49 @@
       color: #842029;
     }
 
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    .notification-card {
+      border-left: 5px solid #0b5ed7;
+      margin-top: 20px;
+    }
+
+    .notification-card h2 {
+      margin-bottom: 15px;
+    }
+
+    .notification-item {
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .notification-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .notification-accepted {
+      background: #d1e7dd;
+      color: #0f5132;
+      border-left: 4px solid #198754;
+    }
+
+    .notification-refused {
+      background: #f8d7da;
+      color: #842029;
+      border-left: 4px solid #dc3545;
+    }
+
+    .notification-empty {
+      background: #f8f9fa;
+      color: #6c757d;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
     footer {
       background: #212529;
       color: white;
@@ -355,12 +417,42 @@
   <div class="logo">🔧 TechniPro CI</div>
 
   <nav>
-    <button onclick="showSection('homeSection')">Accueil</button>
-    <button onclick="showSection('servicesSection')">Services</button>
-    <button onclick="showSection('professionalsSection')">Professionnels</button>
-    <button onclick="showSection('accountSection')">Mon compte</button>
-    <button onclick="showSection('dashboardSection')">Mon espace</button>
-    <button id="logoutBtn" onclick="logout()" class="hidden">Déconnexion</button>
+
+    <button onclick="showSection('homeSection')">
+      Accueil
+    </button>
+
+    <button onclick="showSection('servicesSection')">
+      Services
+    </button>
+
+    <button onclick="showSection('professionalsSection')">
+      Professionnels
+    </button>
+
+    <button onclick="showSection('accountSection')">
+      Mon compte
+    </button>
+
+    <button onclick="showSection('dashboardSection')">
+      Mon espace
+
+      <span
+        id="notificationBadge"
+        class="notification-badge"
+      >
+        0
+      </span>
+    </button>
+
+    <button
+      id="logoutBtn"
+      onclick="logout()"
+      class="hidden"
+    >
+      Déconnexion
+    </button>
+
   </nav>
 </header>
 
@@ -384,19 +476,53 @@
       >
 
       <select id="searchCity">
-        <option value="">Toutes les villes</option>
-        <option value="Abidjan">Abidjan</option>
-        <option value="Bouaké">Bouaké</option>
-        <option value="Yamoussoukro">Yamoussoukro</option>
-        <option value="Korhogo">Korhogo</option>
-        <option value="San-Pédro">San-Pédro</option>
-        <option value="Daloa">Daloa</option>
-        <option value="Man">Man</option>
-        <option value="Abengourou">Abengourou</option>
-        <option value="Grand-Bassam">Grand-Bassam</option>
+
+        <option value="">
+          Toutes les villes
+        </option>
+
+        <option value="Abidjan">
+          Abidjan
+        </option>
+
+        <option value="Bouaké">
+          Bouaké
+        </option>
+
+        <option value="Yamoussoukro">
+          Yamoussoukro
+        </option>
+
+        <option value="Korhogo">
+          Korhogo
+        </option>
+
+        <option value="San-Pédro">
+          San-Pédro
+        </option>
+
+        <option value="Daloa">
+          Daloa
+        </option>
+
+        <option value="Man">
+          Man
+        </option>
+
+        <option value="Abengourou">
+          Abengourou
+        </option>
+
+        <option value="Grand-Bassam">
+          Grand-Bassam
+        </option>
+
       </select>
 
-      <button class="primary-btn" onclick="searchProfessionals()">
+      <button
+        class="primary-btn"
+        onclick="searchProfessionals()"
+      >
         🔎 Rechercher
       </button>
 
@@ -408,80 +534,194 @@
 
 <section id="servicesSection">
 
-  <h2 class="section-title">Nos services</h2>
+  <h2 class="section-title">
+    Nos services
+  </h2>
 
   <div class="services-grid">
 
     <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <h3>Électricien</h3>
-      <p>Installations et dépannages électriques.</p>
-      <button class="primary-btn" onclick="selectService('Électricien')">
+
+      <div class="service-icon">
+        ⚡
+      </div>
+
+      <h3>
+        Électricien
+      </h3>
+
+      <p>
+        Installations et dépannages électriques.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Électricien')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🚰</div>
-      <h3>Plombier</h3>
-      <p>Installation et réparation de plomberie.</p>
-      <button class="primary-btn" onclick="selectService('Plombier')">
+
+      <div class="service-icon">
+        🚰
+      </div>
+
+      <h3>
+        Plombier
+      </h3>
+
+      <p>
+        Installation et réparation de plomberie.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Plombier')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🧱</div>
-      <h3>Maçon</h3>
-      <p>Travaux de construction et rénovation.</p>
-      <button class="primary-btn" onclick="selectService('Maçon')">
+
+      <div class="service-icon">
+        🧱
+      </div>
+
+      <h3>
+        Maçon
+      </h3>
+
+      <p>
+        Travaux de construction et rénovation.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Maçon')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🎨</div>
-      <h3>Peintre</h3>
-      <p>Peinture intérieure et extérieure.</p>
-      <button class="primary-btn" onclick="selectService('Peintre')">
+
+      <div class="service-icon">
+        🎨
+      </div>
+
+      <h3>
+        Peintre
+      </h3>
+
+      <p>
+        Peinture intérieure et extérieure.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Peintre')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🪚</div>
-      <h3>Menuisier</h3>
-      <p>Travaux de menuiserie et fabrication.</p>
-      <button class="primary-btn" onclick="selectService('Menuisier')">
+
+      <div class="service-icon">
+        🪚
+      </div>
+
+      <h3>
+        Menuisier
+      </h3>
+
+      <p>
+        Travaux de menuiserie et fabrication.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Menuisier')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🚗</div>
-      <h3>Mécanicien</h3>
-      <p>Entretien et réparation automobile.</p>
-      <button class="primary-btn" onclick="selectService('Mécanicien')">
+
+      <div class="service-icon">
+        🚗
+      </div>
+
+      <h3>
+        Mécanicien
+      </h3>
+
+      <p>
+        Entretien et réparation automobile.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Mécanicien')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">❄️</div>
-      <h3>Climatisation</h3>
-      <p>Installation et dépannage de climatiseurs.</p>
-      <button class="primary-btn" onclick="selectService('Climatisation')">
+
+      <div class="service-icon">
+        ❄️
+      </div>
+
+      <h3>
+        Climatisation
+      </h3>
+
+      <p>
+        Installation et dépannage de climatiseurs.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Climatisation')"
+      >
         Rechercher
       </button>
+
     </div>
 
     <div class="service-card">
-      <div class="service-icon">💻</div>
-      <h3>Informatique</h3>
-      <p>Assistance informatique et dépannage.</p>
-      <button class="primary-btn" onclick="selectService('Informatique')">
+
+      <div class="service-icon">
+        💻
+      </div>
+
+      <h3>
+        Informatique
+      </h3>
+
+      <p>
+        Assistance informatique et dépannage.
+      </p>
+
+      <button
+        class="primary-btn"
+        onclick="selectService('Informatique')"
+      >
         Rechercher
       </button>
+
     </div>
 
   </div>
@@ -490,23 +730,39 @@
 
 <section id="professionalsSection">
 
-  <h2 class="section-title">Professionnels disponibles</h2>
+  <h2 class="section-title">
+    Professionnels disponibles
+  </h2>
 
-  <div id="searchMessage" class="message"></div>
+  <div
+    id="searchMessage"
+    class="message"
+  ></div>
 
-  <div id="professionalsGrid" class="professional-grid"></div>
+  <div
+    id="professionalsGrid"
+    class="professional-grid"
+  ></div>
 
 </section>
 
 <section id="accountSection">
 
-  <h2 class="section-title">Mon compte</h2>
+  <h2 class="section-title">
+    Mon compte
+  </h2>
 
   <div class="form-container">
 
-    <div id="accountMessage" class="message"></div>
+    <div
+      id="accountMessage"
+      class="message"
+    ></div>
 
-    <div id="registerCard" class="account-card">
+    <div
+      id="registerCard"
+      class="account-card"
+    >
 
       <h2 style="margin-bottom:20px;">
         Créer un compte
@@ -515,69 +771,170 @@
       <form onsubmit="registerUser(event)">
 
         <div class="form-group">
-          <label>Nom complet</label>
-          <input type="text" id="registerName" required>
+
+          <label>
+            Nom complet
+          </label>
+
+          <input
+            type="text"
+            id="registerName"
+            required
+          >
+
         </div>
 
         <div class="form-group">
-          <label>Téléphone</label>
-          <input type="tel" id="registerPhone" required>
+
+          <label>
+            Téléphone
+          </label>
+
+          <input
+            type="tel"
+            id="registerPhone"
+            required
+          >
+
         </div>
 
         <div class="form-group">
-          <label>Ville</label>
-          <select id="registerCity" required>
-            <option value="">Choisir une ville</option>
-            <option value="Abidjan">Abidjan</option>
-            <option value="Bouaké">Bouaké</option>
-            <option value="Yamoussoukro">Yamoussoukro</option>
-            <option value="Korhogo">Korhogo</option>
-            <option value="San-Pédro">San-Pédro</option>
-            <option value="Daloa">Daloa</option>
-            <option value="Man">Man</option>
-            <option value="Abengourou">Abengourou</option>
-            <option value="Grand-Bassam">Grand-Bassam</option>
+
+          <label>
+            Ville
+          </label>
+
+          <select
+            id="registerCity"
+            required
+          >
+
+            <option value="">
+              Choisir une ville
+            </option>
+
+            <option value="Abidjan">
+              Abidjan
+            </option>
+
+            <option value="Bouaké">
+              Bouaké
+            </option>
+
+            <option value="Yamoussoukro">
+              Yamoussoukro
+            </option>
+
+            <option value="Korhogo">
+              Korhogo
+            </option>
+
+            <option value="San-Pédro">
+              San-Pédro
+            </option>
+
+            <option value="Daloa">
+              Daloa
+            </option>
+
+            <option value="Man">
+              Man
+            </option>
+
+            <option value="Abengourou">
+              Abengourou
+            </option>
+
+            <option value="Grand-Bassam">
+              Grand-Bassam
+            </option>
+
           </select>
+
         </div>
 
         <div class="form-group">
-          <label>Type de compte</label>
-          <select id="registerType" required>
-            <option value="">Choisir</option>
-            <option value="client">Client</option>
-            <option value="professionnel">Professionnel</option>
+
+          <label>
+            Type de compte
+          </label>
+
+          <select
+            id="registerType"
+            required
+          >
+
+            <option value="">
+              Choisir
+            </option>
+
+            <option value="client">
+              Client
+            </option>
+
+            <option value="professionnel">
+              Professionnel
+            </option>
+
           </select>
+
         </div>
 
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="registerEmail" required>
+
+          <label>
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="registerEmail"
+            required
+          >
+
         </div>
 
         <div class="form-group">
-          <label>Mot de passe</label>
+
+          <label>
+            Mot de passe
+          </label>
+
           <input
             type="password"
             id="registerPassword"
             required
             minlength="6"
           >
+
         </div>
 
-        <button type="submit" class="primary-btn" style="width:100%;">
+        <button
+          type="submit"
+          class="primary-btn"
+          style="width:100%;"
+        >
           Créer mon compte
         </button>
 
       </form>
 
       <div class="switch-form">
+
         Déjà inscrit ?
-        <button onclick="showLoginForm()">Se connecter</button>
+
+        <button onclick="showLoginForm()">
+          Se connecter
+        </button>
+
       </div>
 
     </div>
 
-    <div id="loginCard" class="account-card hidden">
+    <div
+      id="loginCard"
+      class="account-card hidden"
+    >
 
       <h2 style="margin-bottom:20px;">
         Se connecter
@@ -586,24 +943,51 @@
       <form onsubmit="loginUser(event)">
 
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="loginEmail" required>
+
+          <label>
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="loginEmail"
+            required
+          >
+
         </div>
 
         <div class="form-group">
-          <label>Mot de passe</label>
-          <input type="password" id="loginPassword" required>
+
+          <label>
+            Mot de passe
+          </label>
+
+          <input
+            type="password"
+            id="loginPassword"
+            required
+          >
+
         </div>
 
-        <button type="submit" class="primary-btn" style="width:100%;">
+        <button
+          type="submit"
+          class="primary-btn"
+          style="width:100%;"
+        >
           Se connecter
         </button>
 
       </form>
 
       <div class="switch-form">
+
         Pas encore de compte ?
-        <button onclick="showRegisterForm()">Créer un compte</button>
+
+        <button onclick="showRegisterForm()">
+          Créer un compte
+        </button>
+
       </div>
 
     </div>
@@ -614,21 +998,50 @@
 
 <section id="dashboardSection">
 
-  <h2 class="section-title">Mon espace</h2>
+  <h2 class="section-title">
+    Mon espace
+  </h2>
 
   <div class="form-container">
 
-    <div id="dashboardMessage" class="message"></div>
+    <div
+      id="dashboardMessage"
+      class="message"
+    ></div>
 
     <div id="dashboardContent">
 
       <div class="dashboard-card">
 
-        <h2>Mon profil</h2>
+        <h2>
+          Mon profil
+        </h2>
 
-        <div id="userInformation" class="dashboard-info">
+        <div
+          id="userInformation"
+          class="dashboard-info"
+        >
           Chargement...
         </div>
+
+      </div>
+
+      <!-- =================================================
+           NOTIFICATIONS CLIENT
+      ================================================== -->
+
+      <div
+        id="notificationsCard"
+        class="dashboard-card notification-card hidden"
+      >
+
+        <h2>
+          🔔 Notifications
+        </h2>
+
+        <div
+          id="notificationsList"
+        ></div>
 
       </div>
 
@@ -638,7 +1051,9 @@
         style="margin-top:20px;"
       >
 
-        <h2>Mon profil professionnel</h2>
+        <h2>
+          Mon profil professionnel
+        </h2>
 
         <p style="margin:10px 0 20px;">
           Complétez votre profil afin que les clients puissent vous trouver.
@@ -647,38 +1062,58 @@
         <form onsubmit="saveProfessionalProfile(event)">
 
           <div class="form-group">
-            <label>Profession</label>
+
+            <label>
+              Profession
+            </label>
+
             <input
               type="text"
               id="professionalProfession"
               placeholder="Ex : Électricien"
             >
+
           </div>
 
           <div class="form-group">
-            <label>Quartier</label>
+
+            <label>
+              Quartier
+            </label>
+
             <input
               type="text"
               id="professionalQuartier"
               placeholder="Ex : Abobo Anonkoua-Kouté"
             >
+
           </div>
 
           <div class="form-group">
-            <label>Services proposés</label>
+
+            <label>
+              Services proposés
+            </label>
+
             <input
               type="text"
               id="professionalServices"
               placeholder="Ex : Installation, dépannage, réparation"
             >
+
           </div>
 
           <div class="form-group">
-            <label>Description</label>
+
+            <label>
+              Description
+            </label>
+
             <textarea
               id="professionalDescription"
               placeholder="Présentez votre activité..."
             ></textarea>
+
           </div>
 
           <button
@@ -699,7 +1134,9 @@
         style="margin-top:20px;"
       >
 
-        <h2>📨 Demandes de services reçues</h2>
+        <h2>
+          📨 Demandes de services reçues
+        </h2>
 
         <p style="margin:10px 0 20px;">
           Les clients qui vous envoient une demande apparaîtront ici.
@@ -718,7 +1155,9 @@
         style="margin-top:20px;"
       >
 
-        <h2>📋 Mes demandes de services</h2>
+        <h2>
+          📋 Mes demandes de services
+        </h2>
 
         <p style="margin:10px 0 20px;">
           Retrouvez ici les demandes que vous avez envoyées.
@@ -738,7 +1177,11 @@
 </section>
 
 <footer>
-  <p>© 2026 TechniPro CI — Tous droits réservés.</p>
+
+  <p>
+    © 2026 TechniPro CI — Tous droits réservés.
+  </p>
+
 </footer>
 
 <div
@@ -776,7 +1219,9 @@
       "
     >
 
-      <h2>📨 Demander un service</h2>
+      <h2>
+        📨 Demander un service
+      </h2>
 
       <button
         onclick="closeRequestModal()"
@@ -791,62 +1236,98 @@
 
     </div>
 
-    <div id="requestModalMessage" class="message"></div>
+    <div
+      id="requestModalMessage"
+      class="message"
+    ></div>
 
     <form onsubmit="submitServiceRequest(event)">
 
-      <input type="hidden" id="requestProfessionalId">
+      <input
+        type="hidden"
+        id="requestProfessionalId"
+      >
 
       <div class="form-group">
-        <label>Professionnel</label>
+
+        <label>
+          Professionnel
+        </label>
+
         <input
           type="text"
           id="requestProfessionalName"
           readonly
         >
+
       </div>
 
       <div class="form-group">
-        <label>Service demandé</label>
+
+        <label>
+          Service demandé
+        </label>
+
         <input
           type="text"
           id="requestService"
           required
         >
+
       </div>
 
       <div class="form-group">
-        <label>Décrivez votre besoin</label>
+
+        <label>
+          Décrivez votre besoin
+        </label>
+
         <textarea
           id="requestDescription"
           required
         ></textarea>
+
       </div>
 
       <div class="form-group">
-        <label>Votre ville</label>
+
+        <label>
+          Votre ville
+        </label>
+
         <input
           type="text"
           id="requestCity"
           required
         >
+
       </div>
 
       <div class="form-group">
-        <label>Votre quartier</label>
+
+        <label>
+          Votre quartier
+        </label>
+
         <input
           type="text"
           id="requestQuartier"
         >
+
       </div>
 
       <div class="form-group">
-        <label>Votre téléphone</label>
+
+        <label>
+          Votre téléphone
+        </label>
+
         <input
           type="tel"
           id="requestPhone"
           required
         >
+
       </div>
 
       <button
@@ -1174,7 +1655,11 @@ async function loginUser(event) {
       .classList.remove("hidden");
 
     setTimeout(() => {
-      showSection("dashboardSection");
+
+      showSection(
+        "dashboardSection"
+      );
+
     }, 700);
 
   } catch (error) {
@@ -1204,6 +1689,8 @@ async function logout() {
   document
     .getElementById("logoutBtn")
     .classList.add("hidden");
+
+  updateNotificationBadge(0);
 
   showSection("homeSection");
 
@@ -1327,6 +1814,11 @@ async function loadDashboard() {
       "clientRequestsCard"
     );
 
+  const notificationsCard =
+    document.getElementById(
+      "notificationsCard"
+    );
+
   if (
     currentProfile.user_type ===
     "professionnel"
@@ -1341,6 +1833,11 @@ async function loadDashboard() {
     clientRequestsCard
       .classList.add("hidden");
 
+    notificationsCard
+      .classList.add("hidden");
+
+    updateNotificationBadge(0);
+
     await loadProfessionalRequests();
 
   } else {
@@ -1354,7 +1851,211 @@ async function loadDashboard() {
     clientRequestsCard
       .classList.remove("hidden");
 
+    notificationsCard
+      .classList.remove("hidden");
+
     await loadClientRequests();
+
+    await loadClientNotifications();
+  }
+}
+
+
+/* =========================================================
+   NOTIFICATIONS CLIENT
+========================================================= */
+
+async function loadClientNotifications() {
+
+  if (!currentUser) return;
+
+  const container =
+    document.getElementById(
+      "notificationsList"
+    );
+
+  const card =
+    document.getElementById(
+      "notificationsCard"
+    );
+
+  if (!container || !card) return;
+
+  container.innerHTML =
+    "<p>Chargement des notifications...</p>";
+
+  try {
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("service_requests")
+      .select("*")
+      .eq(
+        "client_id",
+        currentUser.id
+      )
+      .in(
+        "status",
+        ["acceptee", "refusee"]
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
+    if (error) {
+
+      console.error(
+        "Erreur notifications :",
+        error
+      );
+
+      throw error;
+    }
+
+    const notifications =
+      data || [];
+
+    updateNotificationBadge(
+      notifications.length
+    );
+
+    if (!notifications.length) {
+
+      container.innerHTML = `
+
+        <div class="notification-empty">
+
+          🔔 Aucune nouvelle notification.
+
+          <br><br>
+
+          Vous serez informé ici lorsque
+          le professionnel répondra à votre demande.
+
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML = "";
+
+    notifications.forEach(request => {
+
+      const item =
+        document.createElement("div");
+
+      if (
+        request.status ===
+        "acceptee"
+      ) {
+
+        item.className =
+          "notification-item notification-accepted";
+
+        item.innerHTML = `
+
+          <strong>
+            🟢 Demande acceptée
+          </strong>
+
+          <br>
+
+          Votre demande de
+          <strong>
+            ${escapeHTML(request.service)}
+          </strong>
+          a été acceptée par le professionnel.
+
+          <br>
+
+          <small>
+            📅 ${formatDate(request.created_at)}
+          </small>
+        `;
+
+      } else {
+
+        item.className =
+          "notification-item notification-refused";
+
+        item.innerHTML = `
+
+          <strong>
+            🔴 Demande refusée
+          </strong>
+
+          <br>
+
+          Votre demande de
+          <strong>
+            ${escapeHTML(request.service)}
+          </strong>
+          a été refusée par le professionnel.
+
+          <br>
+
+          <small>
+            📅 ${formatDate(request.created_at)}
+          </small>
+        `;
+      }
+
+      container.appendChild(item);
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    updateNotificationBadge(0);
+
+    container.innerHTML = `
+
+      <div class="notification-empty">
+
+        ❌ Impossible de charger les notifications :
+
+        ${escapeHTML(error.message)}
+
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   BADGE NOTIFICATION
+========================================================= */
+
+function updateNotificationBadge(count) {
+
+  const badge =
+    document.getElementById(
+      "notificationBadge"
+    );
+
+  if (!badge) return;
+
+  if (count > 0) {
+
+    badge.textContent =
+      count > 9
+        ? "9+"
+        : count;
+
+    badge.style.display =
+      "flex";
+
+  } else {
+
+    badge.style.display =
+      "none";
   }
 }
 
@@ -1465,7 +2166,10 @@ async function searchProfessionals() {
       supabaseClient
         .from("profiles")
         .select("*")
-        .eq("user_type", "professionnel");
+        .eq(
+          "user_type",
+          "professionnel"
+        );
 
     if (city) {
 
@@ -1559,7 +2263,9 @@ function displayProfessionals(
         style="grid-column:1/-1;text-align:center;"
       >
 
-        <h3>😕 Aucun professionnel trouvé</h3>
+        <h3>
+          😕 Aucun professionnel trouvé
+        </h3>
 
         <p>
           Essayez une autre profession ou une autre ville.
@@ -1623,7 +2329,9 @@ function displayProfessionals(
 
     card.innerHTML = `
 
-      <h3>${profession}</h3>
+      <h3>
+        ${profession}
+      </h3>
 
       <p>
         👤 <strong>${name}</strong>
@@ -1654,12 +2362,14 @@ function displayProfessionals(
               href="tel:${phone}"
               style="text-decoration:none;flex:1;"
             >
+
               <button
                 class="primary-btn"
                 style="width:100%;"
               >
                 📞 Contacter
               </button>
+
             </a>
           `
           : ""
@@ -1911,14 +2621,25 @@ async function submitServiceRequest(
   try {
 
     const requestData = {
-      client_id: currentUser.id,
-      professional_id: professionalId,
+
+      client_id:
+        currentUser.id,
+
+      professional_id:
+        professionalId,
+
       service,
+
       description,
+
       city,
+
       quartier,
+
       phone,
-      status: "en_attente"
+
+      status:
+        "en_attente"
     };
 
     console.log(
@@ -2045,7 +2766,9 @@ async function loadProfessionalRequests() {
 
         <div class="request-card">
 
-          <h3>Aucune demande pour le moment</h3>
+          <h3>
+            Aucune demande pour le moment
+          </h3>
 
           <p>
             Les nouvelles demandes de clients
@@ -2161,9 +2884,11 @@ async function loadProfessionalRequests() {
                     )}"
                     style="text-decoration:none;"
                   >
+
                     <button class="primary-btn">
                       📞 Appeler
                     </button>
+
                   </a>
                 `
                 : ""
@@ -2316,7 +3041,9 @@ async function loadClientRequests() {
 
         <div class="request-card">
 
-          <h3>Aucune demande envoyée</h3>
+          <h3>
+            Aucune demande envoyée
+          </h3>
 
           <p>
             Vos demandes de services apparaîtront ici.
@@ -2324,6 +3051,8 @@ async function loadClientRequests() {
 
         </div>
       `;
+
+      updateNotificationBadge(0);
 
       return;
     }
@@ -2507,6 +3236,8 @@ async function checkSession() {
       .classList.add(
         "hidden"
       );
+
+    updateNotificationBadge(0);
   }
 }
 
@@ -2544,6 +3275,8 @@ supabaseClient.auth.onAuthStateChange(
         .classList.add(
           "hidden"
         );
+
+      updateNotificationBadge(0);
     }
   }
 );
@@ -2563,12 +3296,8 @@ document.addEventListener(
 
     await checkSession();
 
-    /*
-      Affiche les professionnels
-      disponibles au démarrage.
-    */
-
     await searchProfessionals();
+
   }
 );
 
