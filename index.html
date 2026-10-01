@@ -3005,6 +3005,10 @@ async function searchProfessionals() {
     /*
       Charger les avis des professionnels
       trouvés dans la recherche.
+
+      IMPORTANT :
+      On ne récupère ici que les colonnes
+      nécessaires à l'affichage public des avis.
     */
 
     const professionalIds =
@@ -3024,7 +3028,9 @@ async function searchProfessionals() {
       } =
         await supabaseClient
           .from("reviews")
-          .select("*")
+          .select(
+            "professional_id, rating, comment, created_at"
+          )
           .in(
             "professional_id",
             professionalIds
@@ -4027,12 +4033,6 @@ async function updateRequestStatus(
           status:
             newStatus,
 
-          /*
-            Dès que le professionnel répond,
-            son ancienne notification de nouvelle
-            demande n'est plus pertinente.
-          */
-
           professional_notification_read:
             true
         })
@@ -4357,11 +4357,6 @@ async function openReviewModal(
 
   try {
 
-    /*
-      Récupérer la demande afin d'obtenir
-      le professionnel concerné.
-    */
-
     const {
       data: request,
       error
@@ -4405,10 +4400,6 @@ async function openReviewModal(
       return;
     }
 
-
-    /*
-      Récupérer le profil du professionnel.
-    */
 
     const {
       data: professional,
