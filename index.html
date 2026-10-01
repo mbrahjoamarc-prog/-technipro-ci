@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TechniPro CI</title>
+  <title>TechniPro CI - Trouvez un professionnel</title>
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -18,46 +19,64 @@
     body {
       font-family: Arial, sans-serif;
       background: #f5f7fa;
-      color: #17202a;
+      color: #222;
     }
 
     header {
-      background: #0b5ed7;
+      background: #0d6efd;
       color: white;
-      padding: 18px 7%;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     nav {
       display: flex;
       align-items: center;
+      gap: 15px;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
-    nav a {
+    nav a,
+    nav button {
       color: white;
       text-decoration: none;
-      margin-left: 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    nav a:hover,
+    nav button:hover {
+      text-decoration: underline;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0b5ed7, #063b8c);
+      background: linear-gradient(135deg, #0d6efd, #004bb5);
       color: white;
-      padding: 70px 7%;
       text-align: center;
+      padding: 70px 20px;
     }
 
     .hero h1 {
-      font-size: 42px;
+      font-size: 40px;
       margin-bottom: 15px;
     }
 
@@ -66,85 +85,72 @@
       margin-bottom: 30px;
     }
 
-    .search {
-      max-width: 750px;
+    .search-box {
+      max-width: 850px;
       margin: auto;
       background: white;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 15px;
+      border-radius: 12px;
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .search input,
-    .search select {
+    .search-box input,
+    .search-box select {
       flex: 1;
+      min-width: 200px;
       padding: 14px;
       border: 1px solid #ddd;
-      border-radius: 7px;
+      border-radius: 8px;
+      font-size: 15px;
     }
 
-    button {
-      background: #0b5ed7;
+    .search-box button {
+      padding: 14px 22px;
+      background: #198754;
       color: white;
       border: none;
-      padding: 14px 22px;
-      border-radius: 7px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
     }
 
-    button:hover {
-      background: #084298;
-    }
-
     .section {
-      padding: 50px 7%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
     }
 
     .section h2 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+      font-size: 30px;
     }
 
-    .cards {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
-    .card {
+    .service-card {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
       text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .card .icon {
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-card .icon {
       font-size: 40px;
       margin-bottom: 15px;
-    }
-
-    .empty {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
-
-    .empty p {
-      margin: 12px 0 20px;
-      color: #555;
-    }
-
-    /* PROFESSIONNELS */
-
-    #professionalsSection {
-      display: none;
     }
 
     .professional-grid {
@@ -161,181 +167,153 @@
     }
 
     .professional-card h3 {
-      color: #0b5ed7;
-      margin-bottom: 8px;
+      color: #0d6efd;
+      margin-bottom: 10px;
     }
 
     .professional-card p {
-      margin: 8px 0;
-      color: #555;
+      margin: 7px 0;
       line-height: 1.5;
     }
 
-    .contact-button {
+    .professional-card button {
       width: 100%;
-      margin-top: 12px;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #198754;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    /* TABLEAU DE BORD */
-
-    #dashboard {
-      display: none;
-      padding: 50px 7%;
-      background: #eef3f8;
-      min-height: 500px;
-    }
-
-    .dashboard-box {
-      max-width: 750px;
+    .account-box {
+      max-width: 500px;
       margin: auto;
       background: white;
-      padding: 35px;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.10);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
-    .dashboard-box h2 {
-      color: #0b5ed7;
-      margin-bottom: 10px;
-    }
-
-    .dashboard-box > p {
-      margin-bottom: 25px;
-      color: #555;
-    }
-
-    .profile-info {
-      display: grid;
-      gap: 12px;
+    .account-box h2 {
       margin-bottom: 25px;
     }
 
-    .profile-item {
-      background: #f5f7fa;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .profile-item strong {
-      display: block;
-      margin-bottom: 5px;
-      color: #0b5ed7;
-    }
-
-    .profile-form {
-      margin-top: 25px;
-      padding-top: 25px;
-      border-top: 1px solid #ddd;
-    }
-
-    .profile-form h3 {
-      margin-bottom: 15px;
-      color: #0b5ed7;
-    }
-
+    .account-box input,
+    .account-box select,
+    .account-box textarea,
     .profile-form input,
     .profile-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
+      padding: 13px;
+      margin-bottom: 15px;
       border: 1px solid #ddd;
-      border-radius: 7px;
-      font-family: Arial, sans-serif;
+      border-radius: 8px;
+      font-size: 15px;
     }
 
+    .account-box textarea,
     .profile-form textarea {
-      min-height: 100px;
+      min-height: 120px;
       resize: vertical;
     }
 
+    .account-box button,
     .save-button {
       width: 100%;
-      margin-top: 5px;
-    }
-
-    .logout-button {
-      background: #dc3545;
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .logout-button:hover {
-      background: #b02a37;
-    }
-
-    footer {
-      background: #17202a;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #0d6efd;
       color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .account-box button:hover,
+    .save-button:hover {
+      background: #0b5ed7;
+    }
+
+    .switch-mode {
       text-align: center;
-      padding: 25px;
-      margin-top: 30px;
+      margin-top: 15px;
+      color: #0d6efd;
+      cursor: pointer;
     }
 
-    /* FENÊTRE CONNEXION */
-
-    #authModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 1000;
-      overflow-y: auto;
-    }
-
-    .auth-box {
+    .dashboard {
+      max-width: 900px;
+      margin: auto;
       background: white;
-      max-width: 450px;
-      margin: 40px auto;
       padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .dashboard-info {
+      margin-bottom: 30px;
+    }
+
+    .dashboard-info p {
+      margin: 8px 0;
+    }
+
+    .profile-form {
+      margin-top: 30px;
+      padding: 25px;
+      background: #f8f9fa;
       border-radius: 12px;
     }
 
-    .auth-box input,
-    .auth-box select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-radius: 7px;
+    .profile-form h3 {
+      margin-bottom: 20px;
     }
 
-    .auth-box button {
-      width: 100%;
+    .logout-button {
+      background: #dc3545 !important;
     }
 
-    #authMessage {
-      margin-top: 15px;
+    .message {
       text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
-    @media (max-width: 650px) {
+    footer {
+      background: #212529;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
 
-      .hero h1 {
-        font-size: 30px;
-      }
+    #professionalsSection {
+      display: none;
+    }
 
-      .search {
-        flex-direction: column;
-      }
+    #accountSection {
+      display: none;
+    }
 
-      header {
+    #dashboardSection {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
         flex-direction: column;
       }
 
       nav {
-        margin-top: 5px;
+        justify-content: center;
       }
 
-      nav a,
-      nav button {
-        margin: 4px;
-      }
-
-      .auth-box {
-        margin: 20px;
+      .hero h1 {
+        font-size: 30px;
       }
     }
   </style>
@@ -343,93 +321,65 @@
 
 <body>
 
-<header>
+  <!-- ================= HEADER ================= -->
 
-  <div class="logo">
-    🔧 TechniPro CI
-  </div>
+  <header>
+    <div class="navbar">
 
-  <nav>
+      <div class="logo">
+        🛠️ TechniPro CI
+      </div>
 
-    <a href="#" onclick="showHome()">
-      Accueil
-    </a>
+      <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#servicesSection">Services</a>
+        <a href="#professionalsSection">Professionnels</a>
 
-    <a href="#services">
-      Services
-    </a>
+        <button id="accountButton" onclick="showAccount()">
+          Mon compte
+        </button>
 
-    <a href="#professionalsSection">
-      Professionnels
-    </a>
+        <button id="dashboardButton" onclick="showDashboard()" style="display:none;">
+          Mon espace
+        </button>
 
-    <button id="loginButton" onclick="showLogin()">
-      Se connecter
-    </button>
+        <button id="logoutButton" class="logout-button" onclick="logout()" style="display:none;">
+          Déconnexion
+        </button>
+      </nav>
 
-    <button id="registerButton" onclick="showRegister()">
-      Créer un compte
-    </button>
-
-    <button
-      id="dashboardButton"
-      onclick="showDashboard()"
-      style="display:none;"
-    >
-      Mon espace
-    </button>
-
-    <button
-      id="headerLogoutButton"
-      onclick="logoutAccount()"
-      style="display:none; background:#dc3545;"
-    >
-      Déconnexion
-    </button>
-
-  </nav>
-
-</header>
+    </div>
+  </header>
 
 
-<!-- PAGE PRINCIPALE -->
+  <!-- ================= ACCUEIL ================= -->
 
-<div id="homePage">
+  <section class="hero" id="accueil">
 
-  <section class="hero">
-
-    <h1>
-      Trouvez le professionnel qu'il vous faut
-    </h1>
+    <h1>Trouvez le professionnel qu'il vous faut</h1>
 
     <p>
-      Trouvez facilement une entreprise ou un professionnel
-      pour vos travaux et services en Côte d'Ivoire.
+      TechniPro CI vous met en relation avec des professionnels
+      près de chez vous.
     </p>
 
-    <div class="search">
+    <div class="search-box">
 
       <input
         type="text"
-        id="searchInput"
-        placeholder="Quel service recherchez-vous ?"
+        id="searchProfession"
+        placeholder="Ex : Électricien, plombier..."
       >
 
-      <select id="city">
-
-        <option value="">
-          Choisir une ville
-        </option>
-
-        <option>Abidjan</option>
-        <option>Abobo</option>
-        <option>Cocody</option>
-        <option>Yopougon</option>
-        <option>Marcory</option>
-        <option>Port-Bouët</option>
-        <option>Bouaké</option>
-        <option>Yamoussoukro</option>
-
+      <select id="searchCity">
+        <option value="">Toutes les villes</option>
+        <option value="Abidjan">Abidjan</option>
+        <option value="Bouaké">Bouaké</option>
+        <option value="Yamoussoukro">Yamoussoukro</option>
+        <option value="Korhogo">Korhogo</option>
+        <option value="San-Pédro">San-Pédro</option>
+        <option value="Daloa">Daloa</option>
+        <option value="Man">Man</option>
       </select>
 
       <button onclick="searchProfessionals()">
@@ -441,60 +391,60 @@
   </section>
 
 
-  <section class="section" id="services">
+  <!-- ================= SERVICES ================= -->
 
-    <h2>
-      Nos services
-    </h2>
+  <section class="section" id="servicesSection">
 
-    <div class="cards">
+    <h2>Nos services</h2>
 
-      <div class="card">
+    <div class="services-grid">
+
+      <div class="service-card" onclick="selectService('Électricien')">
         <div class="icon">⚡</div>
         <h3>Électricité</h3>
-        <p>
-          Installation, entretien et dépannage électrique.
-        </p>
+        <p>Installation et dépannage électrique.</p>
       </div>
 
-      <div class="card">
+      <div class="service-card" onclick="selectService('Plombier')">
         <div class="icon">🚰</div>
         <h3>Plomberie</h3>
-        <p>
-          Réparation et installation des équipements sanitaires.
-        </p>
+        <p>Réparation et installation sanitaire.</p>
       </div>
 
-      <div class="card">
+      <div class="service-card" onclick="selectService('Maçon')">
+        <div class="icon">🧱</div>
+        <h3>Maçonnerie</h3>
+        <p>Construction et travaux de maçonnerie.</p>
+      </div>
+
+      <div class="service-card" onclick="selectService('Peintre')">
+        <div class="icon">🎨</div>
+        <h3>Peinture</h3>
+        <p>Peinture intérieure et extérieure.</p>
+      </div>
+
+      <div class="service-card" onclick="selectService('Menuisier')">
+        <div class="icon">🪚</div>
+        <h3>Menuiserie</h3>
+        <p>Travaux de bois et fabrication.</p>
+      </div>
+
+      <div class="service-card" onclick="selectService('Mécanicien')">
+        <div class="icon">🔧</div>
+        <h3>Mécanique</h3>
+        <p>Entretien et réparation automobile.</p>
+      </div>
+
+      <div class="service-card" onclick="selectService('Climatisation')">
         <div class="icon">❄️</div>
         <h3>Climatisation</h3>
-        <p>
-          Installation, entretien et dépannage de climatiseurs.
-        </p>
+        <p>Installation et entretien de climatiseurs.</p>
       </div>
 
-      <div class="card">
+      <div class="service-card" onclick="selectService('Informatique')">
         <div class="icon">💻</div>
         <h3>Informatique</h3>
-        <p>
-          Assistance informatique et dépannage.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🚗</div>
-        <h3>Mécanique</h3>
-        <p>
-          Entretien et réparation automobile.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🔧</div>
-        <h3>Autres services</h3>
-        <p>
-          Trouvez le professionnel adapté à votre besoin.
-        </p>
+        <p>Assistance informatique et dépannage.</p>
       </div>
 
     </div>
@@ -502,995 +452,1284 @@
   </section>
 
 
-  <!-- LISTE DES PROFESSIONNELS -->
+  <!-- ================= PROFESSIONNELS ================= -->
 
   <section class="section" id="professionalsSection">
 
-    <h2>
-      Professionnels disponibles
-    </h2>
+    <h2>Professionnels disponibles</h2>
 
-    <div
-      id="professionalList"
-      class="professional-grid"
-    >
-    </div>
+    <div id="professionalsList" class="professional-grid"></div>
 
-  </section>
-
-
-  <section class="section">
-
-    <div class="empty">
-
-      <div style="font-size:50px;">
-        👨‍🔧
-      </div>
-
-      <h3>
-        Vous êtes professionnel ?
-      </h3>
-
-      <p>
-        Créez votre profil professionnel sur TechniPro CI,
-        présentez vos services et permettez aux clients
-        de vous contacter.
-      </p>
-
-      <button onclick="showRegisterProfessional()">
-        Créer mon profil professionnel
-      </button>
-
-    </div>
+    <p
+      id="searchMessage"
+      class="message"
+    ></p>
 
   </section>
 
-</div>
 
+  <!-- ================= COMPTE ================= -->
 
-<!-- TABLEAU DE BORD -->
+  <section class="section" id="accountSection">
 
-<section id="dashboard">
+    <div class="account-box">
 
-  <div class="dashboard-box">
+      <h2 id="accountTitle">
+        Créer un compte
+      </h2>
 
-    <h2>
-      👤 Mon espace TechniPro CI
-    </h2>
+      <!-- INSCRIPTION -->
 
-    <p>
-      Gérez vos informations personnelles et votre profil.
-    </p>
+      <div id="registerForm">
 
-
-    <div class="profile-info">
-
-      <div class="profile-item">
-        <strong>Nom complet</strong>
-        <span id="dashboardName">Chargement...</span>
-      </div>
-
-      <div class="profile-item">
-        <strong>Adresse e-mail</strong>
-        <span id="dashboardEmail">Chargement...</span>
-      </div>
-
-      <div class="profile-item">
-        <strong>📱 Téléphone</strong>
-        <span id="dashboardPhone">Chargement...</span>
-      </div>
-
-      <div class="profile-item">
-        <strong>📍 Ville</strong>
-        <span id="dashboardCity">Chargement...</span>
-      </div>
-
-      <div class="profile-item">
-        <strong>👥 Type de compte</strong>
-        <span id="dashboardUserType">Chargement...</span>
-      </div>
-
-    </div>
-
-
-    <!-- FORMULAIRE PROFESSIONNEL -->
-
-    <div
-      id="professionalForm"
-      class="profile-form"
-      style="display:none;"
-    >
-
-      <h3>
-        🧑‍🔧 Mon profil professionnel
-      </h3>
-
-      <input
-        type="text"
-        id="profession"
-        placeholder="Votre profession (ex : Électricien)"
-      >
-
-      <input
-        type="text"
-        id="quartier"
-        placeholder="Votre quartier"
-      >
-
-      <input
-        type="text"
-        id="services"
-        placeholder="Services proposés (ex : installation, dépannage...)"
-      >
-
-      <textarea
-        id="description"
-        placeholder="Présentez votre activité et votre expérience..."
-      ></textarea>
-
-      <button
-        class="save-button"
-        onclick="saveProfessionalProfile()"
-      >
-        Enregistrer mon profil professionnel
-      </button>
-
-      <p
-        id="profileMessage"
-        style="text-align:center; margin-top:12px;"
-      ></p>
-
-    </div>
-
-
-    <button
-      class="logout-button"
-      onclick="logoutAccount()"
-    >
-      Se déconnecter
-    </button>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  <p>
-    © 2026 TechniPro CI - Tous droits réservés.
-  </p>
-
-  <p>
-    Mettre en relation les professionnels et leurs clients
-    en Côte d'Ivoire.
-  </p>
-
-</footer>
-
-
-<!-- FENÊTRE CONNEXION / INSCRIPTION -->
-
-<div id="authModal">
-
-  <div class="auth-box">
-
-    <h2
-      id="authTitle"
-      style="margin-bottom:20px;"
-    >
-      Créer un compte
-    </h2>
-
-
-    <input
-      type="text"
-      id="fullName"
-      placeholder="Nom complet"
-    >
-
-
-    <input
-      type="email"
-      id="authEmail"
-      placeholder="Adresse e-mail"
-    >
-
-
-    <input
-      type="tel"
-      id="phone"
-      placeholder="Téléphone"
-    >
-
-
-    <input
-      type="text"
-      id="authCity"
-      placeholder="Ville"
-    >
-
-
-    <select id="userType">
-
-      <option value="client">
-        Client
-      </option>
-
-      <option value="professionnel">
-        Professionnel
-      </option>
-
-    </select>
-
-
-    <input
-      type="password"
-      id="authPassword"
-      placeholder="Mot de passe"
-    >
-
-
-    <button
-      id="authButton"
-      onclick="createAccount()"
-    >
-      Créer mon compte
-    </button>
-
-
-    <button
-      onclick="closeAuth()"
-      style="margin-top:10px; background:#777;"
-    >
-      Fermer
-    </button>
-
-
-    <p id="authMessage"></p>
-
-  </div>
-
-</div>
-
-
-<script>
-
-  /* ==============================
-     RECHERCHE DES PROFESSIONNELS
-  ============================== */
-
-  async function searchProfessionals() {
-
-    const service =
-      document.getElementById("searchInput").value.trim();
-
-    const city =
-      document.getElementById("city").value;
-
-    const section =
-      document.getElementById("professionalsSection");
-
-    const list =
-      document.getElementById("professionalList");
-
-    section.style.display = "block";
-
-    list.innerHTML =
-      "<p style='text-align:center;'>Recherche en cours...</p>";
-
-
-    let query =
-      supabaseClient
-        .from("profiles")
-        .select(
-          "full_name, phone, city, profession, description, services, quartier"
-        )
-        .eq("user_type", "professionnel");
-
-
-    if (city) {
-      query = query.eq("city", city);
-    }
-
-
-    const { data, error } = await query;
-
-
-    if (error) {
-
-      console.error(error);
-
-      list.innerHTML =
-        "<p>Une erreur est survenue pendant la recherche.</p>";
-
-      return;
-    }
-
-
-    let professionals = data || [];
-
-
-    if (service) {
-
-      const search =
-        service.toLowerCase();
-
-      professionals =
-        professionals.filter((professional) => {
-
-          return (
-            (professional.profession || "")
-              .toLowerCase()
-              .includes(search)
-
-            ||
-
-            (professional.services || "")
-              .toLowerCase()
-              .includes(search)
-
-            ||
-
-            (professional.description || "")
-              .toLowerCase()
-              .includes(search)
-          );
-
-        });
-
-    }
-
-
-    if (professionals.length === 0) {
-
-      list.innerHTML = `
-        <div class="empty">
-          <h3>Aucun professionnel trouvé</h3>
-          <p>
-            Aucun professionnel ne correspond actuellement
-            à votre recherche.
-          </p>
-        </div>
-      `;
-
-      return;
-    }
-
-
-    list.innerHTML = "";
-
-
-    professionals.forEach((professional) => {
-
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "professional-card";
-
-
-      card.innerHTML = `
-
-        <h3>
-          🧑‍🔧 ${escapeHtml(
-            professional.full_name || "Professionnel"
-          )}
-        </h3>
-
-        <p>
-          <strong>Profession :</strong>
-          ${escapeHtml(
-            professional.profession || "Non renseignée"
-          )}
-        </p>
-
-        <p>
-          <strong>📍 Ville :</strong>
-          ${escapeHtml(
-            professional.city || "Non renseignée"
-          )}
-        </p>
-
-        <p>
-          <strong>Quartier :</strong>
-          ${escapeHtml(
-            professional.quartier || "Non renseigné"
-          )}
-        </p>
-
-        <p>
-          <strong>Services :</strong>
-          ${escapeHtml(
-            professional.services || "Non renseignés"
-          )}
-        </p>
-
-        <p>
-          ${escapeHtml(
-            professional.description || ""
-          )}
-        </p>
-
-        <button
-          class="contact-button"
-          onclick="contactProfessional('${escapeHtml(
-            professional.phone || ""
-          )}')"
+        <input
+          type="text"
+          id="registerName"
+          placeholder="Nom complet"
         >
-          📞 Contacter
+
+        <input
+          type="tel"
+          id="registerPhone"
+          placeholder="Numéro de téléphone"
+        >
+
+        <select id="registerCity">
+
+          <option value="">
+            Choisissez votre ville
+          </option>
+
+          <option value="Abidjan">
+            Abidjan
+          </option>
+
+          <option value="Bouaké">
+            Bouaké
+          </option>
+
+          <option value="Yamoussoukro">
+            Yamoussoukro
+          </option>
+
+          <option value="Korhogo">
+            Korhogo
+          </option>
+
+          <option value="San-Pédro">
+            San-Pédro
+          </option>
+
+          <option value="Daloa">
+            Daloa
+          </option>
+
+          <option value="Man">
+            Man
+          </option>
+
+        </select>
+
+        <select id="registerType">
+
+          <option value="">
+            Type de compte
+          </option>
+
+          <option value="client">
+            Client
+          </option>
+
+          <option value="professionnel">
+            Professionnel
+          </option>
+
+        </select>
+
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Adresse e-mail"
+        >
+
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Mot de passe"
+        >
+
+        <button onclick="register()">
+          Créer mon compte
         </button>
 
-      `;
+        <p
+          id="registerMessage"
+          class="message"
+        ></p>
+
+        <p
+          class="switch-mode"
+          onclick="showLoginForm()"
+        >
+          J'ai déjà un compte
+        </p>
+
+      </div>
 
 
-      list.appendChild(card);
+      <!-- CONNEXION -->
 
-    });
+      <div id="loginForm" style="display:none;">
 
-  }
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Adresse e-mail"
+        >
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Mot de passe"
+        >
+
+        <button onclick="login()">
+          Se connecter
+        </button>
+
+        <p
+          id="loginMessage"
+          class="message"
+        ></p>
+
+        <p
+          class="switch-mode"
+          onclick="showRegisterForm()"
+        >
+          Créer un compte
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
-  function contactProfessional(phone) {
+  <!-- ================= TABLEAU DE BORD ================= -->
 
-    if (!phone) {
+  <section class="section" id="dashboardSection">
 
-      alert(
-        "Le numéro de téléphone de ce professionnel n'est pas disponible."
+    <div class="dashboard">
+
+      <h2>Mon espace</h2>
+
+      <div
+        id="dashboardInfo"
+        class="dashboard-info"
+      ></div>
+
+
+      <!-- FORMULAIRE PROFESSIONNEL -->
+
+      <div
+        id="professionalForm"
+        class="profile-form"
+        style="display:none;"
+      >
+
+        <h3>
+          🧑‍🔧 Mon profil professionnel
+        </h3>
+
+        <input
+          type="text"
+          id="profession"
+          placeholder="Votre profession (ex : Électricien)"
+        >
+
+        <input
+          type="text"
+          id="quartier"
+          placeholder="Votre quartier"
+        >
+
+        <input
+          type="text"
+          id="services"
+          placeholder="Services proposés (ex : installation, dépannage...)"
+        >
+
+        <textarea
+          id="description"
+          placeholder="Présentez votre activité et votre expérience..."
+        ></textarea>
+
+        <button
+          class="save-button"
+          onclick="saveProfessionalProfile()"
+        >
+          Enregistrer mon profil professionnel
+        </button>
+
+        <p
+          id="profileMessage"
+          class="message"
+        ></p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <p>
+      © 2026 TechniPro CI - Tous droits réservés
+    </p>
+
+    <p style="margin-top:10px;">
+      Trouvez facilement un professionnel en Côte d'Ivoire.
+    </p>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* =====================================================
+       CONFIGURATION SUPABASE
+    ===================================================== */
+
+    const SUPABASE_URL =
+      "https://spznzkneagjawragvijg.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
+
+    const { createClient } = supabase;
+
+    const supabaseClient =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
       );
 
-      return;
-    }
 
+    /* =====================================================
+       AFFICHER LE COMPTE
+    ===================================================== */
 
-    const cleanPhone =
-      phone.replace(/\s/g, "");
+    function showAccount() {
 
+      document.getElementById("accountSection").style.display = "block";
 
-    window.location.href =
-      "tel:" + cleanPhone;
+      document.getElementById("dashboardSection").style.display = "none";
 
-  }
+      document.getElementById("professionalsSection").style.display = "none";
 
-
-  function escapeHtml(value) {
-
-    const div =
-      document.createElement("div");
-
-    div.textContent =
-      value;
-
-    return div.innerHTML;
-
-  }
-
-
-  /* ==============================
-     INSCRIPTION
-  ============================== */
-
-  function showRegister() {
-
-    document.getElementById("authModal").style.display =
-      "block";
-
-    document.getElementById("authTitle").textContent =
-      "Créer un compte";
-
-    document.getElementById("fullName").style.display =
-      "block";
-
-    document.getElementById("phone").style.display =
-      "block";
-
-    document.getElementById("authCity").style.display =
-      "block";
-
-    document.getElementById("userType").style.display =
-      "block";
-
-    document.getElementById("authButton").textContent =
-      "Créer mon compte";
-
-    document.getElementById("authButton").onclick =
-      createAccount;
-
-    document.getElementById("authMessage").textContent =
-      "";
-
-  }
-
-
-  function showRegisterProfessional() {
-
-    showRegister();
-
-    document.getElementById("userType").value =
-      "professionnel";
-
-  }
-
-
-  /* ==============================
-     CONNEXION
-  ============================== */
-
-  function showLogin() {
-
-    document.getElementById("authModal").style.display =
-      "block";
-
-    document.getElementById("authTitle").textContent =
-      "Se connecter";
-
-    document.getElementById("fullName").style.display =
-      "none";
-
-    document.getElementById("phone").style.display =
-      "none";
-
-    document.getElementById("authCity").style.display =
-      "none";
-
-    document.getElementById("userType").style.display =
-      "none";
-
-    document.getElementById("authButton").textContent =
-      "Se connecter";
-
-    document.getElementById("authButton").onclick =
-      loginAccount;
-
-    document.getElementById("authMessage").textContent =
-      "";
-
-  }
-
-
-  function closeAuth() {
-
-    document.getElementById("authModal").style.display =
-      "none";
-
-  }
-
-
-  async function loginAccount() {
-
-    const email =
-      document.getElementById("authEmail").value.trim();
-
-    const password =
-      document.getElementById("authPassword").value;
-
-    const message =
-      document.getElementById("authMessage");
-
-
-    if (!email || !password) {
-
-      message.textContent =
-        "Veuillez saisir votre e-mail et votre mot de passe.";
-
-      return;
-    }
-
-
-    message.textContent =
-      "Connexion en cours...";
-
-
-    const { error } =
-      await supabaseClient.auth.signInWithPassword({
-
-        email: email,
-        password: password
-
+      document.getElementById("accountSection").scrollIntoView({
+        behavior: "smooth"
       });
-
-
-    if (error) {
-
-      message.textContent =
-        "E-mail ou mot de passe incorrect.";
-
-      return;
     }
 
 
-    message.textContent =
-      "Connexion réussie !";
+    /* =====================================================
+       FORMULAIRE INSCRIPTION
+    ===================================================== */
 
+    function showRegisterForm() {
 
-    setTimeout(() => {
+      document.getElementById("registerForm").style.display = "block";
 
-      closeAuth();
+      document.getElementById("loginForm").style.display = "none";
 
-      showDashboard();
-
-    }, 700);
-
-  }
-
-
-  /* ==============================
-     CREATION DU COMPTE
-  ============================== */
-
-  async function createAccount() {
-
-    const fullName =
-      document.getElementById("fullName").value.trim();
-
-    const email =
-      document.getElementById("authEmail").value.trim();
-
-    const phone =
-      document.getElementById("phone").value.trim();
-
-    const city =
-      document.getElementById("authCity").value.trim();
-
-    const userType =
-      document.getElementById("userType").value;
-
-    const password =
-      document.getElementById("authPassword").value;
-
-    const message =
-      document.getElementById("authMessage");
-
-
-    if (
-      !fullName ||
-      !email ||
-      !phone ||
-      !city ||
-      !password
-    ) {
-
-      message.textContent =
-        "Veuillez remplir tous les champs.";
-
-      return;
+      document.getElementById("accountTitle").textContent =
+        "Créer un compte";
     }
 
 
-    if (password.length < 6) {
+    /* =====================================================
+       FORMULAIRE CONNEXION
+    ===================================================== */
 
-      message.textContent =
-        "Le mot de passe doit contenir au moins 6 caractères.";
+    function showLoginForm() {
 
-      return;
+      document.getElementById("registerForm").style.display = "none";
+
+      document.getElementById("loginForm").style.display = "block";
+
+      document.getElementById("accountTitle").textContent =
+        "Connexion";
     }
 
 
-    message.textContent =
-      "Création du compte...";
+    /* =====================================================
+       INSCRIPTION
+    ===================================================== */
+
+    async function register() {
+
+      const fullName =
+        document.getElementById("registerName").value.trim();
+
+      const phone =
+        document.getElementById("registerPhone").value.trim();
+
+      const city =
+        document.getElementById("registerCity").value;
+
+      const userType =
+        document.getElementById("registerType").value;
+
+      const email =
+        document.getElementById("registerEmail").value.trim();
+
+      const password =
+        document.getElementById("registerPassword").value;
+
+      const message =
+        document.getElementById("registerMessage");
 
 
-    const { data, error } =
-      await supabaseClient.auth.signUp({
-
-        email: email,
-        password: password
-
-      });
+      message.textContent = "";
 
 
-    if (error) {
+      if (
+        !fullName ||
+        !phone ||
+        !city ||
+        !userType ||
+        !email ||
+        !password
+      ) {
 
-      message.textContent =
-        error.message;
+        message.textContent =
+          "Veuillez remplir tous les champs.";
 
-      return;
-    }
-
-
-    const user =
-      data.user;
-
-
-    if (!user) {
-
-      message.textContent =
-        "Le compte n'a pas pu être créé.";
-
-      return;
-    }
-
-
-    const { error: profileError } =
-      await supabaseClient
-        .from("profiles")
-        .insert({
-
-          id: user.id,
-          full_name: fullName,
-          phone: phone,
-          city: city,
-          user_type: userType
-
-        });
-
-
-    if (profileError) {
-
-      message.textContent =
-        profileError.message;
-
-      return;
-    }
-
-
-    message.textContent =
-      "Compte créé avec succès !";
-
-
-    setTimeout(() => {
-
-      closeAuth();
-
-      if (userType === "professionnel") {
-        showDashboard();
+        return;
       }
 
-    }, 1000);
 
-  }
+      if (password.length < 6) {
 
+        message.textContent =
+          "Le mot de passe doit contenir au moins 6 caractères.";
 
-  /* ==============================
-     TABLEAU DE BORD
-  ============================== */
-
-  async function showDashboard() {
-
-    document.getElementById("homePage").style.display =
-      "none";
-
-    document.getElementById("dashboard").style.display =
-      "block";
+        return;
+      }
 
 
-    const { data: { user } } =
-      await supabaseClient.auth.getUser();
+      message.textContent =
+        "Création du compte en cours...";
 
 
-    if (!user) {
+      try {
 
-      showHome();
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.signUp({
 
-      return;
+            email: email,
+
+            password: password
+
+          });
+
+
+        if (error) {
+
+          message.textContent =
+            "Erreur : " + error.message;
+
+          return;
+        }
+
+
+        const user = data.user;
+
+
+        if (!user) {
+
+          message.textContent =
+            "Le compte n'a pas pu être créé.";
+
+          return;
+        }
+
+
+        const {
+          error: profileError
+        } =
+          await supabaseClient
+            .from("profiles")
+            .insert({
+
+              id: user.id,
+
+              full_name: fullName,
+
+              phone: phone,
+
+              city: city,
+
+              user_type: userType
+
+            });
+
+
+        if (profileError) {
+
+          message.textContent =
+            "Compte créé mais erreur du profil : " +
+            profileError.message;
+
+          return;
+        }
+
+
+        message.textContent =
+          "✅ Compte créé avec succès !";
+
+
+        document.getElementById("registerName").value = "";
+
+        document.getElementById("registerPhone").value = "";
+
+        document.getElementById("registerCity").value = "";
+
+        document.getElementById("registerType").value = "";
+
+        document.getElementById("registerEmail").value = "";
+
+        document.getElementById("registerPassword").value = "";
+
+
+        setTimeout(() => {
+
+          showLoginForm();
+
+        }, 1500);
+
+      }
+
+      catch (error) {
+
+        message.textContent =
+          "Erreur inattendue : " + error.message;
+
+      }
+
     }
 
 
-    document.getElementById("dashboardEmail").textContent =
-      user.email;
+    /* =====================================================
+       CONNEXION
+    ===================================================== */
+
+    async function login() {
+
+      const email =
+        document.getElementById("loginEmail").value.trim();
+
+      const password =
+        document.getElementById("loginPassword").value;
+
+      const message =
+        document.getElementById("loginMessage");
 
 
-    const { data: profile, error } =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "full_name, phone, city, user_type, profession, description, services, quartier"
-        )
-        .eq("id", user.id)
-        .single();
+      message.textContent = "";
 
 
-    if (error) {
+      if (!email || !password) {
 
-      console.error(error);
+        message.textContent =
+          "Veuillez remplir tous les champs.";
 
-      document.getElementById("dashboardName").textContent =
-        "Profil introuvable";
+        return;
+      }
 
-      return;
+
+      message.textContent =
+        "Connexion en cours...";
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+          });
+
+
+        if (error) {
+
+          message.textContent =
+            "Erreur : " + error.message;
+
+          return;
+        }
+
+
+        if (!data.user) {
+
+          message.textContent =
+            "Impossible de récupérer votre compte.";
+
+          return;
+        }
+
+
+        message.textContent =
+          "✅ Connexion réussie !";
+
+
+        document.getElementById("accountSection").style.display =
+          "none";
+
+
+        await showDashboard();
+
+      }
+
+      catch (error) {
+
+        message.textContent =
+          "Erreur inattendue : " + error.message;
+
+      }
+
     }
 
 
-    document.getElementById("dashboardName").textContent =
-      profile.full_name || "";
+    /* =====================================================
+       TABLEAU DE BORD
+    ===================================================== */
 
-    document.getElementById("dashboardPhone").textContent =
-      profile.phone || "";
+    async function showDashboard() {
 
-    document.getElementById("dashboardCity").textContent =
-      profile.city || "";
+      const {
+        data: {
+          user
+        },
+        error: userError
+      } =
+        await supabaseClient.auth.getUser();
 
-    document.getElementById("dashboardUserType").textContent =
-      profile.user_type === "professionnel"
-        ? "Professionnel"
-        : "Client";
+
+      if (userError || !user) {
+
+        showAccount();
+
+        return;
+
+      }
 
 
-    if (profile.user_type === "professionnel") {
+      document.getElementById("accountSection").style.display =
+        "none";
 
-      document.getElementById("professionalForm").style.display =
+      document.getElementById("professionalsSection").style.display =
+        "none";
+
+      document.getElementById("dashboardSection").style.display =
         "block";
 
 
-      document.getElementById("profession").value =
-        profile.profession || "";
+      document.getElementById("dashboardSection").scrollIntoView({
+        behavior: "smooth"
+      });
 
-      document.getElementById("quartier").value =
-        profile.quartier || "";
 
-      document.getElementById("services").value =
-        profile.services || "";
+      const {
+        data: profile,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select(
+            "full_name, phone, city, user_type, profession, description, services, quartier"
+          )
+          .eq("id", user.id)
+          .single();
 
-      document.getElementById("description").value =
-        profile.description || "";
 
-    } else {
+      const dashboardInfo =
+        document.getElementById("dashboardInfo");
 
-      document.getElementById("professionalForm").style.display =
+
+      if (error) {
+
+        dashboardInfo.innerHTML =
+          "<p>Impossible de charger votre profil.</p>";
+
+        return;
+
+      }
+
+
+      dashboardInfo.innerHTML = `
+
+        <p>
+          <strong>Nom :</strong>
+          ${profile.full_name || ""}
+        </p>
+
+        <p>
+          <strong>Téléphone :</strong>
+          ${profile.phone || ""}
+        </p>
+
+        <p>
+          <strong>Ville :</strong>
+          ${profile.city || ""}
+        </p>
+
+        <p>
+          <strong>Type de compte :</strong>
+          ${profile.user_type || ""}
+        </p>
+
+      `;
+
+
+      const professionalForm =
+        document.getElementById("professionalForm");
+
+
+      if (profile.user_type === "professionnel") {
+
+        professionalForm.style.display =
+          "block";
+
+
+        document.getElementById("profession").value =
+          profile.profession || "";
+
+
+        document.getElementById("quartier").value =
+          profile.quartier || "";
+
+
+        document.getElementById("services").value =
+          profile.services || "";
+
+
+        document.getElementById("description").value =
+          profile.description || "";
+
+      }
+
+      else {
+
+        professionalForm.style.display =
+          "none";
+
+      }
+
+
+      document.getElementById("dashboardButton").style.display =
+        "inline-block";
+
+      document.getElementById("logoutButton").style.display =
+        "inline-block";
+
+      document.getElementById("accountButton").style.display =
         "none";
 
     }
 
 
-    document.getElementById("loginButton").style.display =
-      "none";
+    /* =====================================================
+       ENREGISTRER PROFIL PROFESSIONNEL
+    ===================================================== */
 
-    document.getElementById("registerButton").style.display =
-      "none";
+    async function saveProfessionalProfile() {
 
-    document.getElementById("dashboardButton").style.display =
-      "inline-block";
+      const professionInput =
+        document.getElementById("profession");
 
-    document.getElementById("headerLogoutButton").style.display =
-      "inline-block";
+      const quartierInput =
+        document.getElementById("quartier");
 
-  }
+      const servicesInput =
+        document.getElementById("services");
 
+      const descriptionInput =
+        document.getElementById("description");
 
-  /* ==============================
-     ENREGISTRER LE PROFIL PRO
-  ============================== */
-
-  async function saveProfessionalProfile() {
-
-    const profession =
-      document.getElementById("profession").value.trim();
-
-    const quartier =
-      document.getElementById("quartier").value.trim();
-
-    const services =
-      document.getElementById("services").value.trim();
-
-    const description =
-      document.getElementById("description").value.trim();
-
-    const message =
-      document.getElementById("profileMessage");
+      const message =
+        document.getElementById("profileMessage");
 
 
-    if (!profession || !services) {
+      if (
+        !professionInput ||
+        !quartierInput ||
+        !servicesInput ||
+        !descriptionInput ||
+        !message
+      ) {
+
+        alert(
+          "Erreur : impossible de trouver les champs du profil."
+        );
+
+        return;
+
+      }
+
+
+      const profession =
+        professionInput.value.trim();
+
+      const quartier =
+        quartierInput.value.trim();
+
+      const services =
+        servicesInput.value.trim();
+
+      const description =
+        descriptionInput.value.trim();
+
+
+      message.textContent = "";
+
+
+      /* IMPORTANT :
+         profession + services sont obligatoires
+      */
+
+      if (!profession || !services) {
+
+        message.textContent =
+          "Veuillez au minimum renseigner votre profession et vos services.";
+
+        return;
+
+      }
+
 
       message.textContent =
-        "Veuillez au minimum renseigner votre profession et vos services.";
+        "Enregistrement en cours...";
 
-      return;
+
+      try {
+
+        const {
+          data: {
+            user
+          },
+          error: userError
+        } =
+          await supabaseClient.auth.getUser();
+
+
+        if (userError || !user) {
+
+          message.textContent =
+            "Votre session a expiré. Veuillez vous reconnecter.";
+
+          return;
+
+        }
+
+
+        const {
+          error: updateError
+        } =
+          await supabaseClient
+            .from("profiles")
+            .update({
+
+              profession: profession,
+
+              quartier: quartier,
+
+              services: services,
+
+              description: description
+
+            })
+            .eq("id", user.id);
+
+
+        if (updateError) {
+
+          console.error(
+            "Erreur Supabase :",
+            updateError
+          );
+
+          message.textContent =
+            "❌ Erreur lors de l'enregistrement : " +
+            updateError.message;
+
+          return;
+
+        }
+
+
+        message.textContent =
+          "✅ Profil professionnel enregistré avec succès !";
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+          "❌ Une erreur inattendue est survenue : " +
+          error.message;
+
+      }
+
     }
 
 
-    message.textContent =
-      "Enregistrement en cours...";
+    /* =====================================================
+       RECHERCHE PROFESSIONNELS
+    ===================================================== */
+
+    async function searchProfessionals() {
+
+      const profession =
+        document
+          .getElementById("searchProfession")
+          .value
+          .trim()
+          .toLowerCase();
 
 
-    const { data: { user } } =
-      await supabaseClient.auth.getUser();
+      const city =
+        document.getElementById("searchCity").value;
 
 
-    if (!user) {
+      const professionalsSection =
+        document.getElementById(
+          "professionalsSection"
+        );
 
-      message.textContent =
-        "Vous devez être connecté.";
 
-      return;
+      const professionalsList =
+        document.getElementById(
+          "professionalsList"
+        );
+
+
+      const searchMessage =
+        document.getElementById(
+          "searchMessage"
+        );
+
+
+      professionalsSection.style.display =
+        "block";
+
+
+      professionalsSection.scrollIntoView({
+        behavior: "smooth"
+      });
+
+
+      professionalsList.innerHTML =
+        "<p>Recherche en cours...</p>";
+
+
+      searchMessage.textContent = "";
+
+
+      try {
+
+        let query =
+          supabaseClient
+            .from("profiles")
+            .select(
+              "full_name, phone, city, profession, description, services, quartier"
+            )
+            .eq(
+              "user_type",
+              "professionnel"
+            );
+
+
+        if (city) {
+
+          query =
+            query.eq(
+              "city",
+              city
+            );
+
+        }
+
+
+        const {
+          data,
+          error
+        } =
+          await query;
+
+
+        if (error) {
+
+          professionalsList.innerHTML = "";
+
+          searchMessage.textContent =
+            "Erreur : " +
+            error.message;
+
+          return;
+
+        }
+
+
+        let results =
+          data || [];
+
+
+        if (profession) {
+
+          results =
+            results.filter(
+              professional => {
+
+                const professionText =
+                  (
+                    professional.profession ||
+                    ""
+                  ).toLowerCase();
+
+
+                const servicesText =
+                  (
+                    professional.services ||
+                    ""
+                  ).toLowerCase();
+
+
+                const descriptionText =
+                  (
+                    professional.description ||
+                    ""
+                  ).toLowerCase();
+
+
+                return (
+
+                  professionText.includes(
+                    profession
+                  )
+
+                  ||
+
+                  servicesText.includes(
+                    profession
+                  )
+
+                  ||
+
+                  descriptionText.includes(
+                    profession
+                  )
+
+                );
+
+              }
+            );
+
+        }
+
+
+        if (!results.length) {
+
+          professionalsList.innerHTML =
+            "<p>Aucun professionnel trouvé.</p>";
+
+          return;
+
+        }
+
+
+        professionalsList.innerHTML =
+          "";
+
+
+        results.forEach(
+          professional => {
+
+            const card =
+              document.createElement(
+                "div"
+              );
+
+
+            card.className =
+              "professional-card";
+
+
+            card.innerHTML = `
+
+              <h3>
+                ${professional.profession || "Professionnel"}
+              </h3>
+
+              <p>
+                <strong>Nom :</strong>
+                ${professional.full_name || ""}
+              </p>
+
+              <p>
+                <strong>Ville :</strong>
+                ${professional.city || ""}
+              </p>
+
+              <p>
+                <strong>Quartier :</strong>
+                ${professional.quartier || ""}
+              </p>
+
+              <p>
+                <strong>Services :</strong>
+                ${professional.services || ""}
+              </p>
+
+              <p>
+                <strong>Description :</strong>
+                ${professional.description || ""}
+              </p>
+
+              ${
+                professional.phone
+                ?
+                `
+                <button
+                  onclick="contactProfessional('${professional.phone}')"
+                >
+                  📞 Contacter
+                </button>
+                `
+                :
+                ""
+              }
+
+            `;
+
+
+            professionalsList.appendChild(
+              card
+            );
+
+          }
+        );
+
+      }
+
+      catch (error) {
+
+        professionalsList.innerHTML =
+          "";
+
+        searchMessage.textContent =
+          "Erreur inattendue : " +
+          error.message;
+
+      }
+
     }
 
 
-    const { error } =
-      await supabaseClient
-        .from("profiles")
-        .update({
+    /* =====================================================
+       SÉLECTION D'UN SERVICE
+    ===================================================== */
 
-          profession: profession,
-          quartier: quartier,
-          services: services,
-          description: description
+    function selectService(service) {
 
-        })
-        .eq("id", user.id);
+      document.getElementById(
+        "searchProfession"
+      ).value =
+        service;
 
 
-    if (error) {
+      searchProfessionals();
 
-      console.error(error);
-
-      message.textContent =
-        "Erreur : " + error.message;
-
-      return;
     }
 
 
-    message.textContent =
-      "✅ Profil professionnel enregistré avec succès !";
+    /* =====================================================
+       CONTACT PROFESSIONNEL
+    ===================================================== */
 
-  }
+    function contactProfessional(phone) {
 
+      if (!phone) {
 
-  /* ==============================
-     ACCUEIL
-  ============================== */
+        return;
 
-  function showHome() {
-
-    document.getElementById("homePage").style.display =
-      "block";
-
-    document.getElementById("dashboard").style.display =
-      "none";
-
-  }
+      }
 
 
-  /* ==============================
-     DECONNEXION
-  ============================== */
-
-  async function logoutAccount() {
-
-    await supabaseClient.auth.signOut();
+      const cleanPhone =
+        phone.replace(
+          /\s+/g,
+          ""
+        );
 
 
-    document.getElementById("loginButton").style.display =
-      "inline-block";
+      window.location.href =
+        "tel:" + cleanPhone;
 
-    document.getElementById("registerButton").style.display =
-      "inline-block";
-
-    document.getElementById("dashboardButton").style.display =
-      "none";
-
-    document.getElementById("headerLogoutButton").style.display =
-      "none";
+    }
 
 
-    showHome();
+    /* =====================================================
+       DÉCONNEXION
+    ===================================================== */
+
+    async function logout() {
+
+      const {
+        error
+      } =
+        await supabaseClient.auth.signOut();
 
 
-    alert("Vous êtes déconnecté.");
+      if (error) {
 
-  }
+        alert(
+          "Erreur lors de la déconnexion : " +
+          error.message
+        );
+
+        return;
+
+      }
 
 
-  /* ==============================
-     SUPABASE
-  ============================== */
+      document.getElementById(
+        "dashboardSection"
+      ).style.display =
+        "none";
 
-  const SUPABASE_URL =
-    "https://spznzkneagjawragvijg.supabase.co";
 
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
+      document.getElementById(
+        "professionalsSection"
+      ).style.display =
+        "none";
 
-  const { createClient } =
-    supabase;
 
-  const supabaseClient =
-    createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
+      document.getElementById(
+        "accountSection"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "dashboardButton"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "logoutButton"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "accountButton"
+      ).style.display =
+        "inline-block";
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =====================================================
+       VÉRIFIER LA SESSION AU CHARGEMENT
+    ===================================================== */
+
+    async function checkSession() {
+
+      try {
+
+        const {
+          data: {
+            user
+          }
+        } =
+          await supabaseClient.auth.getUser();
+
+
+        if (user) {
+
+          document.getElementById(
+            "dashboardButton"
+          ).style.display =
+            "inline-block";
+
+
+          document.getElementById(
+            "logoutButton"
+          ).style.display =
+            "inline-block";
+
+
+          document.getElementById(
+            "accountButton"
+          ).style.display =
+            "none";
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.log(
+          "Aucune session active."
+        );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       LANCEMENT
+    ===================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        checkSession();
+
+      }
     );
 
-</script>
+  </script>
 
 </body>
 </html>
