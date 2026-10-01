@@ -1808,6 +1808,13 @@ async function loginUser(event) {
 
     await loadUserProfile();
 
+    /*
+      CORRECTION AVIS :
+      après connexion, on recharge immédiatement
+      la liste des professionnels et leurs avis.
+    */
+    await searchProfessionals();
+
 
     showMessage(
       "accountMessage",
@@ -2908,26 +2915,48 @@ async function saveProfessionalProfile(
 
 /* =========================================================
    RECHERCHE PROFESSIONNELS
+   VERSION CORRIGÉE POUR LES AVIS
 ========================================================= */
 
 async function searchProfessionals() {
 
+  const professionInput =
+    document.getElementById(
+      "searchProfession"
+    );
+
+  const cityInput =
+    document.getElementById(
+      "searchCity"
+    );
+
+  const grid =
+    document.getElementById(
+      "professionalsGrid"
+    );
+
+
+  if (
+    !professionInput ||
+    !cityInput ||
+    !grid
+  ) {
+    console.error(
+      "❌ Éléments de recherche introuvables."
+    );
+
+    return;
+  }
+
+
   const profession =
-    document
-      .getElementById(
-        "searchProfession"
-      )
-      .value
+    professionInput.value
       .trim()
       .toLowerCase();
 
 
   const city =
-    document
-      .getElementById(
-        "searchCity"
-      )
-      .value
+    cityInput.value
       .trim()
       .toLowerCase();
 
@@ -3003,12 +3032,9 @@ async function searchProfessionals() {
 
 
     /*
-      Charger les avis des professionnels
-      trouvés dans la recherche.
-
-      IMPORTANT :
-      On ne récupère ici que les colonnes
-      nécessaires à l'affichage public des avis.
+      =====================================================
+      CHARGEMENT DES AVIS
+      =====================================================
     */
 
     const professionalIds =
@@ -3020,7 +3046,9 @@ async function searchProfessionals() {
     let reviews = [];
 
 
-    if (professionalIds.length) {
+    if (
+      professionalIds.length
+    ) {
 
       const {
         data: reviewData,
@@ -3046,17 +3074,31 @@ async function searchProfessionals() {
       if (reviewError) {
 
         console.error(
-          "Erreur chargement avis :",
+          "❌ ERREUR CHARGEMENT AVIS :",
           reviewError
         );
+
+        reviews = [];
 
       } else {
 
         reviews =
           reviewData || [];
+
+
+        console.log(
+          "✅ AVIS CHARGÉS :",
+          reviews
+        );
       }
     }
 
+
+    /*
+      =====================================================
+      REGROUPEMENT DES AVIS PAR PROFESSIONNEL
+      =====================================================
+    */
 
     const reviewsByProfessional = {};
 
@@ -3082,6 +3124,12 @@ async function searchProfessionals() {
       }
     );
 
+
+    /*
+      =====================================================
+      CALCUL MOYENNE + NOMBRE D'AVIS
+      =====================================================
+    */
 
     professionals =
       professionals.map(
@@ -3116,15 +3164,24 @@ async function searchProfessionals() {
 
           return {
             ...profile,
+
             reviews:
               profileReviews,
+
             ratingAverage:
               average,
+
             ratingCount:
               profileReviews.length
           };
         }
       );
+
+
+    console.log(
+      "👨‍🔧 PROFESSIONNELS AVEC AVIS :",
+      professionals
+    );
 
 
     displayProfessionals(
@@ -3138,7 +3195,11 @@ async function searchProfessionals() {
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "❌ ERREUR RECHERCHE PROFESSIONNELS :",
+      error
+    );
+
 
     showMessage(
       "searchMessage",
@@ -3196,6 +3257,9 @@ function displayProfessionals(
     document.getElementById(
       "professionalsGrid"
     );
+
+
+  if (!grid) return;
 
 
   grid.innerHTML = "";
@@ -3303,7 +3367,9 @@ function displayProfessionals(
       let ratingHTML = "";
 
 
-      if (ratingCount > 0) {
+      if (
+        ratingCount > 0
+      ) {
 
         ratingHTML = `
 
@@ -3318,8 +3384,7 @@ function displayProfessionals(
             </span>
 
             <span class="rating-count">
-              (${ratingCount}
-              ${ratingCount > 1 ? "avis" : "avis"})
+              (${ratingCount} avis)
             </span>
 
           </div>
@@ -4137,11 +4202,6 @@ async function loadClientRequests() {
     }
 
 
-    /*
-      Vérifier les avis existants pour les demandes
-      acceptées.
-    */
-
     const acceptedRequestIds =
       data
         .filter(
@@ -4655,6 +4715,13 @@ async function submitReview() {
 
         await loadClientRequests();
 
+        /*
+          Recharger également les professionnels
+          afin que la nouvelle note apparaisse
+          immédiatement.
+        */
+        await searchProfessionals();
+
       },
       1000
     );
@@ -4780,6 +4847,14 @@ async function checkSession() {
 
 
     await refreshNotificationBadge();
+
+    /*
+      CORRECTION AVIS :
+      lorsqu'une session existe déjà,
+      on recharge aussi les professionnels
+      et leurs avis.
+    */
+    await searchProfessionals();
 
   } else {
 
