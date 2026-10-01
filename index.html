@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -205,6 +206,16 @@
       border: 1px solid #ddd;
     }
 
+    .btn-call {
+      background: #198754;
+      color: white;
+    }
+
+    .btn-contact {
+      background: #6f42c1;
+      color: white;
+    }
+
     .section-title {
       margin-bottom: 20px;
       font-size: 28px;
@@ -258,6 +269,52 @@
       margin-top: 10px;
     }
 
+    /* =====================================================
+       AVATAR PROFESSIONNEL
+    ===================================================== */
+
+    .professional-avatar {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #004bb5
+      );
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .profile-avatar-large {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #004bb5
+      );
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: bold;
+      margin: 0 auto 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+    }
+
+    /* =====================================================
+       RATING
+    ===================================================== */
+
     .rating-box {
       margin: 12px 0;
       padding: 10px;
@@ -307,6 +364,10 @@
       line-height: 1.5;
     }
 
+    /* =====================================================
+       FORMULAIRES
+    ===================================================== */
+
     .form-card {
       max-width: 650px;
       margin: auto;
@@ -354,6 +415,10 @@
       color: #055160;
     }
 
+    /* =====================================================
+       DEMANDES
+    ===================================================== */
+
     .request-card {
       margin-bottom: 15px;
     }
@@ -382,6 +447,10 @@
       color: #842029;
     }
 
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
     .notification-card {
       margin-bottom: 12px;
       border-left: 5px solid #0d6efd;
@@ -390,6 +459,10 @@
     .notification-card.unread {
       background: #eef5ff;
     }
+
+    /* =====================================================
+       MODALES
+    ===================================================== */
 
     .modal {
       position: fixed;
@@ -426,6 +499,61 @@
       font-size: 28px;
       cursor: pointer;
     }
+
+    /* =====================================================
+       PROFIL DETAILLE
+    ===================================================== */
+
+    .professional-detail {
+      text-align: center;
+    }
+
+    .professional-detail-name {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .professional-detail-profession {
+      color: #0d6efd;
+      font-weight: bold;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .detail-info {
+      text-align: left;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .detail-info div {
+      padding: 7px 0;
+      line-height: 1.5;
+    }
+
+    .detail-description {
+      text-align: left;
+      background: white;
+      border: 1px solid #e9ecef;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .profile-action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* =====================================================
+       ETOILES SELECTEUR
+    ===================================================== */
 
     .star-selector {
       display: flex;
@@ -464,6 +592,7 @@
     }
 
     @media (max-width: 700px) {
+
       .search-box {
         grid-template-columns: 1fr;
       }
@@ -476,44 +605,80 @@
         width: 100%;
         justify-content: center;
       }
+
+      nav button {
+        font-size: 12px;
+        padding: 8px 9px;
+      }
+
+      .professional-card {
+        padding: 18px;
+      }
+
+      .profile-action-buttons .btn,
+      .form-actions .btn {
+        width: 100%;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="header-container">
 
-    <div class="logo" onclick="showSection('homeSection')">
+    <div
+      class="logo"
+      onclick="showSection('homeSection')"
+    >
       🔧 TechniPro CI
     </div>
 
     <nav>
-      <button onclick="showSection('homeSection')">
+
+      <button
+        onclick="showSection('homeSection')"
+      >
         Accueil
       </button>
 
-      <button onclick="showSection('professionalsSection'); searchProfessionals();">
+      <button
+        onclick="showSection('professionalsSection'); searchProfessionals();"
+      >
         Professionnels
       </button>
 
-      <button onclick="showSection('servicesSection')">
+      <button
+        onclick="showSection('servicesSection')"
+      >
         Services
       </button>
 
-      <button onclick="showSection('accountSection')">
+      <button
+        onclick="showSection('accountSection')"
+      >
         Mon compte
       </button>
 
       <div class="notification-wrapper">
-        <button onclick="showSection('dashboardSection'); loadDashboard();">
+
+        <button
+          onclick="showSection('dashboardSection'); loadDashboard();"
+        >
           🔔 Notifications
         </button>
+
         <span
           id="notificationBadge"
           class="notification-badge hidden"
-        >0</span>
+        >
+          0
+        </span>
+
       </div>
 
       <button
@@ -523,20 +688,31 @@
       >
         Déconnexion
       </button>
+
     </nav>
 
   </div>
+
 </header>
 
 
 <main class="container">
 
-  <!-- ACCUEIL -->
-  <section id="homeSection" class="active">
+
+  <!-- =====================================================
+       ACCUEIL
+  ===================================================== -->
+
+  <section
+    id="homeSection"
+    class="active"
+  >
 
     <div class="hero">
 
-      <h1>Bienvenue sur TechniPro CI</h1>
+      <h1>
+        Bienvenue sur TechniPro CI
+      </h1>
 
       <p>
         Trouvez facilement un professionnel près de chez vous
@@ -573,42 +749,86 @@
       Services populaires
     </h2>
 
+
     <div class="services-grid">
 
       <div
         class="service-card"
         onclick="selectService('Électricien')"
       >
-        <div class="service-icon">⚡</div>
-        <h3>Électricité</h3>
-        <p>Installation et dépannage électrique.</p>
+
+        <div class="service-icon">
+          ⚡
+        </div>
+
+        <h3>
+          Électricité
+        </h3>
+
+        <p>
+          Installation et dépannage électrique.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Plombier')"
       >
-        <div class="service-icon">🚰</div>
-        <h3>Plomberie</h3>
-        <p>Réparation et installation sanitaire.</p>
+
+        <div class="service-icon">
+          🚰
+        </div>
+
+        <h3>
+          Plomberie
+        </h3>
+
+        <p>
+          Réparation et installation sanitaire.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Climatisation')"
       >
-        <div class="service-icon">❄️</div>
-        <h3>Climatisation</h3>
-        <p>Installation et entretien de climatiseurs.</p>
+
+        <div class="service-icon">
+          ❄️
+        </div>
+
+        <h3>
+          Climatisation
+        </h3>
+
+        <p>
+          Installation et entretien de climatiseurs.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Mécanicien')"
       >
-        <div class="service-icon">🔧</div>
-        <h3>Mécanique</h3>
-        <p>Entretien et réparation automobile.</p>
+
+        <div class="service-icon">
+          🔧
+        </div>
+
+        <h3>
+          Mécanique
+        </h3>
+
+        <p>
+          Entretien et réparation automobile.
+        </p>
+
       </div>
 
     </div>
@@ -616,8 +836,13 @@
   </section>
 
 
-  <!-- SERVICES -->
-  <section id="servicesSection">
+  <!-- =====================================================
+       SERVICES
+  ===================================================== -->
+
+  <section
+    id="servicesSection"
+  >
 
     <h2 class="section-title">
       Nos services
@@ -629,36 +854,79 @@
         class="service-card"
         onclick="selectService('Électricien')"
       >
-        <div class="service-icon">⚡</div>
-        <h3>Électricien</h3>
-        <p>Installation, dépannage et maintenance.</p>
+
+        <div class="service-icon">
+          ⚡
+        </div>
+
+        <h3>
+          Électricien
+        </h3>
+
+        <p>
+          Installation, dépannage et maintenance.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Plombier')"
       >
-        <div class="service-icon">🚰</div>
-        <h3>Plombier</h3>
-        <p>Installation et réparation plomberie.</p>
+
+        <div class="service-icon">
+          🚰
+        </div>
+
+        <h3>
+          Plombier
+        </h3>
+
+        <p>
+          Installation et réparation plomberie.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Climatisation')"
       >
-        <div class="service-icon">❄️</div>
-        <h3>Climatisation</h3>
-        <p>Entretien et dépannage climatisation.</p>
+
+        <div class="service-icon">
+          ❄️
+        </div>
+
+        <h3>
+          Climatisation
+        </h3>
+
+        <p>
+          Entretien et dépannage climatisation.
+        </p>
+
       </div>
+
 
       <div
         class="service-card"
         onclick="selectService('Mécanicien')"
       >
-        <div class="service-icon">🚗</div>
-        <h3>Mécanicien</h3>
-        <p>Réparation et entretien automobile.</p>
+
+        <div class="service-icon">
+          🚗
+        </div>
+
+        <h3>
+          Mécanicien
+        </h3>
+
+        <p>
+          Réparation et entretien automobile.
+        </p>
+
       </div>
 
     </div>
@@ -666,8 +934,13 @@
   </section>
 
 
-  <!-- PROFESSIONNELS -->
-  <section id="professionalsSection">
+  <!-- =====================================================
+       PROFESSIONNELS
+  ===================================================== -->
+
+  <section
+    id="professionalsSection"
+  >
 
     <h2 class="section-title">
       Professionnels disponibles
@@ -686,8 +959,13 @@
   </section>
 
 
-  <!-- COMPTE -->
-  <section id="accountSection">
+  <!-- =====================================================
+       COMPTE
+  ===================================================== -->
+
+  <section
+    id="accountSection"
+  >
 
     <div
       id="loginForm"
@@ -704,22 +982,34 @@
       ></div>
 
       <div class="form-group">
-        <label>Email</label>
+
+        <label>
+          Email
+        </label>
+
         <input
           id="loginEmail"
           type="email"
           placeholder="Votre email"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Mot de passe</label>
+
+        <label>
+          Mot de passe
+        </label>
+
         <input
           id="loginPassword"
           type="password"
           placeholder="Votre mot de passe"
         >
+
       </div>
+
 
       <button
         class="btn btn-primary"
@@ -727,6 +1017,7 @@
       >
         Se connecter
       </button>
+
 
       <button
         class="btn btn-light"
@@ -752,60 +1043,102 @@
         class="message"
       ></div>
 
+
       <div class="form-group">
-        <label>Nom complet</label>
+
+        <label>
+          Nom complet
+        </label>
+
         <input
           id="registerFullName"
           type="text"
           placeholder="Nom et prénom"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Téléphone</label>
+
+        <label>
+          Téléphone
+        </label>
+
         <input
           id="registerPhone"
           type="text"
           placeholder="Numéro de téléphone"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Ville</label>
+
+        <label>
+          Ville
+        </label>
+
         <input
           id="registerCity"
           type="text"
           placeholder="Ville"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Type de compte</label>
+
+        <label>
+          Type de compte
+        </label>
+
         <select id="registerUserType">
-          <option value="client">Client</option>
+
+          <option value="client">
+            Client
+          </option>
+
           <option value="professionnel">
             Professionnel
           </option>
+
         </select>
+
       </div>
 
+
       <div class="form-group">
-        <label>Email</label>
+
+        <label>
+          Email
+        </label>
+
         <input
           id="registerEmail"
           type="email"
           placeholder="Votre email"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Mot de passe</label>
+
+        <label>
+          Mot de passe
+        </label>
+
         <input
           id="registerPassword"
           type="password"
           placeholder="Mot de passe"
         >
+
       </div>
+
 
       <div class="form-actions">
 
@@ -830,12 +1163,18 @@
   </section>
 
 
-  <!-- DASHBOARD -->
-  <section id="dashboardSection">
+  <!-- =====================================================
+       DASHBOARD
+  ===================================================== -->
+
+  <section
+    id="dashboardSection"
+  >
 
     <h2 class="section-title">
       Mon tableau de bord
     </h2>
+
 
     <div
       id="dashboardMessage"
@@ -844,6 +1183,7 @@
 
 
     <div class="dashboard-grid">
+
 
       <div class="dashboard-card">
 
@@ -857,6 +1197,7 @@
         ></div>
 
       </div>
+
 
       <div
         class="dashboard-card"
@@ -911,8 +1252,13 @@
   </section>
 
 
-  <!-- PROFIL PROFESSIONNEL -->
-  <section id="professionalProfileSection">
+  <!-- =====================================================
+       PROFIL PROFESSIONNEL
+  ===================================================== -->
+
+  <section
+    id="professionalProfileSection"
+  >
 
     <div class="form-card">
 
@@ -920,49 +1266,71 @@
         Mon profil professionnel
       </h2>
 
+
       <div
         id="profileMessage"
         class="message"
       ></div>
 
+
       <div class="form-group">
-        <label>Profession</label>
+
+        <label>
+          Profession
+        </label>
 
         <input
           id="professionalProfession"
           type="text"
           placeholder="Ex : Électricien"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Quartier</label>
+
+        <label>
+          Quartier
+        </label>
 
         <input
           id="professionalQuartier"
           type="text"
           placeholder="Ex : Abobo"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Services proposés</label>
+
+        <label>
+          Services proposés
+        </label>
 
         <input
           id="professionalServices"
           type="text"
           placeholder="Ex : Installation électrique, dépannage"
         >
+
       </div>
 
+
       <div class="form-group">
-        <label>Description</label>
+
+        <label>
+          Description
+        </label>
 
         <textarea
           id="professionalDescription"
           placeholder="Présentez vos services..."
         ></textarea>
+
       </div>
+
 
       <div class="form-actions">
 
@@ -972,6 +1340,7 @@
         >
           💾 Enregistrer mon profil professionnel
         </button>
+
 
         <button
           class="btn btn-secondary"
@@ -989,7 +1358,10 @@
 </main>
 
 
-<!-- MODAL DEMANDE -->
+<!-- =========================================================
+     MODAL DEMANDE
+========================================================= -->
+
 <div
   id="requestModal"
   class="modal"
@@ -1004,68 +1376,97 @@
       ×
     </button>
 
+
     <h2>
       Demander ce service
     </h2>
+
 
     <div
       id="requestMessage"
       class="message"
     ></div>
 
+
     <input
       id="requestProfessionalId"
       type="hidden"
     >
 
+
     <div class="form-group">
-      <label>Service</label>
+
+      <label>
+        Service
+      </label>
 
       <input
         id="requestService"
         type="text"
         readonly
       >
+
     </div>
 
+
     <div class="form-group">
-      <label>Ville</label>
+
+      <label>
+        Ville
+      </label>
 
       <input
         id="requestCity"
         type="text"
         placeholder="Votre ville"
       >
+
     </div>
 
+
     <div class="form-group">
-      <label>Quartier</label>
+
+      <label>
+        Quartier
+      </label>
 
       <input
         id="requestQuartier"
         type="text"
         placeholder="Votre quartier"
       >
+
     </div>
 
+
     <div class="form-group">
-      <label>Téléphone</label>
+
+      <label>
+        Téléphone
+      </label>
 
       <input
         id="requestPhone"
         type="text"
         placeholder="Votre numéro"
       >
+
     </div>
 
+
     <div class="form-group">
-      <label>Description du besoin</label>
+
+      <label>
+        Description du besoin
+      </label>
 
       <textarea
         id="requestDescription"
         placeholder="Expliquez votre besoin..."
       ></textarea>
+
     </div>
+
 
     <button
       class="btn btn-primary"
@@ -1079,7 +1480,10 @@
 </div>
 
 
-<!-- MODAL AVIS -->
+<!-- =========================================================
+     MODAL AVIS
+========================================================= -->
+
 <div
   id="reviewModal"
   class="modal"
@@ -1094,30 +1498,36 @@
       ×
     </button>
 
+
     <h2>
       ⭐ Laisser un avis
     </h2>
+
 
     <div
       id="reviewMessage"
       class="message"
     ></div>
 
+
     <input
       id="reviewRequestId"
       type="hidden"
     >
+
 
     <input
       id="reviewProfessionalId"
       type="hidden"
     >
 
+
     <div class="form-group">
 
       <label>
         Votre note
       </label>
+
 
       <div
         id="starSelector"
@@ -1127,29 +1537,40 @@
         <button
           type="button"
           onclick="selectRating(1)"
-        >★</button>
+        >
+          ★
+        </button>
 
         <button
           type="button"
           onclick="selectRating(2)"
-        >★</button>
+        >
+          ★
+        </button>
 
         <button
           type="button"
           onclick="selectRating(3)"
-        >★</button>
+        >
+          ★
+        </button>
 
         <button
           type="button"
           onclick="selectRating(4)"
-        >★</button>
+        >
+          ★
+        </button>
 
         <button
           type="button"
           onclick="selectRating(5)"
-        >★</button>
+        >
+          ★
+        </button>
 
       </div>
+
 
       <input
         id="reviewRating"
@@ -1158,6 +1579,7 @@
       >
 
     </div>
+
 
     <div class="form-group">
 
@@ -1172,6 +1594,7 @@
 
     </div>
 
+
     <button
       class="btn btn-primary"
       onclick="submitReview()"
@@ -1184,10 +1607,41 @@
 </div>
 
 
+<!-- =========================================================
+     MODAL PROFIL PROFESSIONNEL
+========================================================= -->
+
+<div
+  id="professionalDetailModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      onclick="closeProfessionalDetail()"
+    >
+      ×
+    </button>
+
+
+    <div
+      id="professionalDetailContent"
+      class="professional-detail"
+    ></div>
+
+  </div>
+
+</div>
+
+
 <footer>
+
   <p>
     © 2026 TechniPro CI — Mise en relation entre clients et professionnels.
   </p>
+
 </footer>
 
 
@@ -1215,7 +1669,9 @@
   ========================================================= */
 
   let currentUser = null;
+
   let currentProfile = null;
+
   let selectedRating = 0;
 
 
@@ -1254,11 +1710,16 @@
   ) {
 
     const element =
-      document.getElementById(elementId);
+      document.getElementById(
+        elementId
+      );
 
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
-    element.textContent = message;
+    element.textContent =
+      message;
 
     element.className =
       "message " + type;
@@ -1266,12 +1727,18 @@
   }
 
 
-  function hideMessage(elementId) {
+  function hideMessage(
+    elementId
+  ) {
 
     const element =
-      document.getElementById(elementId);
+      document.getElementById(
+        elementId
+      );
 
-    if (!element) return;
+    if (!element) {
+      return;
+    }
 
     element.textContent = "";
 
@@ -1281,28 +1748,86 @@
   }
 
 
-  function showSection(sectionId) {
+  function showSection(
+    sectionId
+  ) {
 
     const sections =
-      document.querySelectorAll("main section");
+      document.querySelectorAll(
+        "main section"
+      );
 
     sections.forEach(
       section => {
-        section.classList.remove("active");
+
+        section.classList.remove(
+          "active"
+        );
+
       }
     );
 
+
     const target =
-      document.getElementById(sectionId);
+      document.getElementById(
+        sectionId
+      );
+
 
     if (target) {
-      target.classList.add("active");
+
+      target.classList.add(
+        "active"
+      );
+
     }
+
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+
+  }
+
+
+  /* =========================================================
+     AVATAR / INITIALES
+  ========================================================= */
+
+  function getInitials(
+    name
+  ) {
+
+    const cleanName =
+      String(name || "")
+        .trim();
+
+
+    if (!cleanName) {
+      return "TP";
+    }
+
+
+    const parts =
+      cleanName
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    if (parts.length === 1) {
+
+      return parts[0]
+        .substring(0, 2)
+        .toUpperCase();
+
+    }
+
+
+    return (
+      parts[0].charAt(0) +
+      parts[1].charAt(0)
+    ).toUpperCase();
 
   }
 
@@ -1314,15 +1839,30 @@
   function showLoginForm() {
 
     document
-      .getElementById("loginForm")
-      .classList.remove("hidden");
+      .getElementById(
+        "loginForm"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
 
     document
-      .getElementById("registerForm")
-      .classList.add("hidden");
+      .getElementById(
+        "registerForm"
+      )
+      .classList.add(
+        "hidden"
+      );
 
-    hideMessage("accountMessage");
-    hideMessage("registerMessage");
+
+    hideMessage(
+      "accountMessage"
+    );
+
+    hideMessage(
+      "registerMessage"
+    );
 
   }
 
@@ -1330,15 +1870,30 @@
   function showRegisterForm() {
 
     document
-      .getElementById("loginForm")
-      .classList.add("hidden");
+      .getElementById(
+        "loginForm"
+      )
+      .classList.add(
+        "hidden"
+      );
+
 
     document
-      .getElementById("registerForm")
-      .classList.remove("hidden");
+      .getElementById(
+        "registerForm"
+      )
+      .classList.remove(
+        "hidden"
+      );
 
-    hideMessage("accountMessage");
-    hideMessage("registerMessage");
+
+    hideMessage(
+      "accountMessage"
+    );
+
+    hideMessage(
+      "registerMessage"
+    );
 
   }
 
@@ -1351,36 +1906,53 @@
 
     const fullName =
       document
-        .getElementById("registerFullName")
+        .getElementById(
+          "registerFullName"
+        )
         .value
         .trim();
+
 
     const phone =
       document
-        .getElementById("registerPhone")
+        .getElementById(
+          "registerPhone"
+        )
         .value
         .trim();
+
 
     const city =
       document
-        .getElementById("registerCity")
+        .getElementById(
+          "registerCity"
+        )
         .value
         .trim();
+
 
     const userType =
       document
-        .getElementById("registerUserType")
+        .getElementById(
+          "registerUserType"
+        )
         .value;
+
 
     const email =
       document
-        .getElementById("registerEmail")
+        .getElementById(
+          "registerEmail"
+        )
         .value
         .trim();
 
+
     const password =
       document
-        .getElementById("registerPassword")
+        .getElementById(
+          "registerPassword"
+        )
         .value;
 
 
@@ -1397,6 +1969,7 @@
       );
 
       return;
+
     }
 
 
@@ -1406,10 +1979,12 @@
         data,
         error
       } =
-        await supabaseClient.auth.signUp({
-          email,
-          password
-        });
+        await supabaseClient
+          .auth
+          .signUp({
+            email,
+            password
+          });
 
 
       if (error) {
@@ -1426,6 +2001,7 @@
         );
 
         return;
+
       }
 
 
@@ -1466,7 +2042,11 @@
 
       setTimeout(
         () => {
-          showSection("homeSection");
+
+          showSection(
+            "homeSection"
+          );
+
         },
         1000
       );
@@ -1478,6 +2058,7 @@
         "❌ ERREUR INSCRIPTION :",
         error
       );
+
 
       showMessage(
         "registerMessage",
@@ -1498,17 +2079,25 @@
 
     const email =
       document
-        .getElementById("loginEmail")
+        .getElementById(
+          "loginEmail"
+        )
         .value
         .trim();
 
+
     const password =
       document
-        .getElementById("loginPassword")
+        .getElementById(
+          "loginPassword"
+        )
         .value;
 
 
-    if (!email || !password) {
+    if (
+      !email ||
+      !password
+    ) {
 
       showMessage(
         "accountMessage",
@@ -1517,6 +2106,7 @@
       );
 
       return;
+
     }
 
 
@@ -1526,10 +2116,12 @@
         data,
         error
       } =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
+        await supabaseClient
+          .auth
+          .signInWithPassword({
+            email,
+            password
+          });
 
 
       if (error) {
@@ -1545,8 +2137,12 @@
 
 
       document
-        .getElementById("logoutBtn")
-        .classList.remove("hidden");
+        .getElementById(
+          "logoutBtn"
+        )
+        .classList.remove(
+          "hidden"
+        );
 
 
       await refreshNotificationBadge();
@@ -1559,7 +2155,9 @@
       );
 
 
-      showSection("homeSection");
+      showSection(
+        "homeSection"
+      );
 
 
     } catch (error) {
@@ -1568,6 +2166,7 @@
         "❌ ERREUR CONNEXION :",
         error
       );
+
 
       showMessage(
         "accountMessage",
@@ -1586,18 +2185,33 @@
 
   async function logout() {
 
-    await supabaseClient.auth.signOut();
+    await supabaseClient
+      .auth
+      .signOut();
+
 
     currentUser = null;
+
     currentProfile = null;
 
+
     document
-      .getElementById("logoutBtn")
-      .classList.add("hidden");
+      .getElementById(
+        "logoutBtn"
+      )
+      .classList.add(
+        "hidden"
+      );
 
-    updateNotificationBadge(0);
 
-    showSection("homeSection");
+    updateNotificationBadge(
+      0
+    );
+
+
+    showSection(
+      "homeSection"
+    );
 
   }
 
@@ -1635,6 +2249,7 @@
       );
 
       return;
+
     }
 
 
@@ -1644,36 +2259,59 @@
 
     if (
       currentProfile &&
-      currentProfile.user_type === "professionnel"
+      currentProfile.user_type ===
+      "professionnel"
     ) {
 
-      document
-        .getElementById("professionalProfileCard")
-        .classList.remove("hidden");
+      const profileCard =
+        document.getElementById(
+          "professionalProfileCard"
+        );
+
+
+      if (profileCard) {
+
+        profileCard.classList.remove(
+          "hidden"
+        );
+
+      }
 
 
       document
-        .getElementById("professionalProfession")
+        .getElementById(
+          "professionalProfession"
+        )
         .value =
-        currentProfile.profession || "";
+        currentProfile.profession ||
+        "";
 
 
       document
-        .getElementById("professionalQuartier")
+        .getElementById(
+          "professionalQuartier"
+        )
         .value =
-        currentProfile.quartier || "";
+        currentProfile.quartier ||
+        "";
 
 
       document
-        .getElementById("professionalServices")
+        .getElementById(
+          "professionalServices"
+        )
         .value =
-        currentProfile.services || "";
+        currentProfile.services ||
+        "";
 
 
       document
-        .getElementById("professionalDescription")
+        .getElementById(
+          "professionalDescription"
+        )
         .value =
-        currentProfile.description || "";
+        currentProfile.description ||
+        "";
 
     }
 
@@ -1695,30 +2333,42 @@
       );
 
       return;
+
     }
 
 
     const profession =
       document
-        .getElementById("professionalProfession")
+        .getElementById(
+          "professionalProfession"
+        )
         .value
         .trim();
+
 
     const quartier =
       document
-        .getElementById("professionalQuartier")
+        .getElementById(
+          "professionalQuartier"
+        )
         .value
         .trim();
+
 
     const services =
       document
-        .getElementById("professionalServices")
+        .getElementById(
+          "professionalServices"
+        )
         .value
         .trim();
 
+
     const description =
       document
-        .getElementById("professionalDescription")
+        .getElementById(
+          "professionalDescription"
+        )
         .value
         .trim();
 
@@ -1732,6 +2382,7 @@
       );
 
       return;
+
     }
 
 
@@ -1747,7 +2398,8 @@
             quartier,
             services,
             description,
-            user_type: "professionnel"
+            user_type:
+              "professionnel"
           })
           .eq(
             "id",
@@ -1777,6 +2429,7 @@
         error
       );
 
+
       showMessage(
         "profileMessage",
         "❌ " + error.message,
@@ -1792,14 +2445,18 @@
      ETOILES
   ========================================================= */
 
-  function getStarsHTML(rating) {
+  function getStarsHTML(
+    rating
+  ) {
 
     const rounded =
       Math.round(
         Number(rating) || 0
       );
 
+
     let stars = "";
+
 
     for (
       let i = 1;
@@ -1814,6 +2471,7 @@
 
     }
 
+
     return stars;
 
   }
@@ -1823,8 +2481,7 @@
      RECHERCHE PROFESSIONNELS
      
      IMPORTANT :
-     Cette fonction NE fait PAS showSection().
-     Ainsi, au rafraîchissement, la page reste sur Accueil.
+     NE FAIT PAS showSection().
   ========================================================= */
 
   async function searchProfessionals() {
@@ -1834,10 +2491,12 @@
         "searchProfession"
       );
 
+
     const cityInput =
       document.getElementById(
         "searchCity"
       );
+
 
     const grid =
       document.getElementById(
@@ -1865,6 +2524,7 @@
         .trim()
         .toLowerCase();
 
+
     const city =
       cityInput.value
         .trim()
@@ -1874,7 +2534,7 @@
     try {
 
       /* =====================================================
-         1. CHARGER LES PROFESSIONNELS
+         1. PROFESSIONNELS
       ===================================================== */
 
       let query =
@@ -1922,7 +2582,7 @@
 
 
       /* =====================================================
-         2. FILTRER PAR PROFESSION
+         2. FILTRE PROFESSION
       ===================================================== */
 
       if (profession) {
@@ -1933,27 +2593,38 @@
 
               const p =
                 String(
-                  profile.profession || ""
+                  profile.profession ||
+                  ""
                 )
                 .toLowerCase();
+
 
               const s =
                 String(
-                  profile.services || ""
+                  profile.services ||
+                  ""
                 )
                 .toLowerCase();
 
+
               const d =
                 String(
-                  profile.description || ""
+                  profile.description ||
+                  ""
                 )
                 .toLowerCase();
 
 
               return (
-                p.includes(profession) ||
-                s.includes(profession) ||
-                d.includes(profession)
+                p.includes(
+                  profession
+                ) ||
+                s.includes(
+                  profession
+                ) ||
+                d.includes(
+                  profession
+                )
               );
 
             }
@@ -1985,19 +2656,11 @@
           .filter(Boolean);
 
 
-      console.log(
-        "🆔 ID PROFESSIONNELS :",
-        professionalIds
-      );
-
-
       /* =====================================================
-         4. CHARGER TOUS LES AVIS
+         4. AVIS
          
-         On récupère tous les avis puis on filtre
-         côté JavaScript. Cela évite tout problème
-         avec .in() et permet de vérifier clairement
-         les données reçues.
+         On conserve ici le système actuel.
+         Le problème des avis sera corrigé séparément.
       ===================================================== */
 
       let reviews = [];
@@ -2041,33 +2704,23 @@
               review =>
                 professionalIdSet.has(
                   String(
-                    review.professional_id || ""
+                    review.professional_id ||
+                    ""
                   )
                   .trim()
                   .toLowerCase()
                 )
             );
 
-
-        console.log(
-          "⭐ AVIS RÉCUPÉRÉS DE SUPABASE :",
-          reviewData
-        );
-
-
-        console.log(
-          "⭐ AVIS CORRESPONDANT AUX PROFESSIONNELS :",
-          reviews
-        );
-
       }
 
 
       /* =====================================================
-         5. REGROUPER LES AVIS
+         5. REGROUPEMENT AVIS
       ===================================================== */
 
-      const reviewsByProfessional = {};
+      const reviewsByProfessional =
+        {};
 
 
       reviews.forEach(
@@ -2075,7 +2728,8 @@
 
           const professionalId =
             String(
-              review.professional_id || ""
+              review.professional_id ||
+              ""
             )
             .trim()
             .toLowerCase();
@@ -2101,20 +2755,16 @@
 
           reviewsByProfessional[
             professionalId
-          ].push(review);
+          ].push(
+            review
+          );
 
         }
       );
 
 
-      console.log(
-        "📚 AVIS GROUPÉS :",
-        reviewsByProfessional
-      );
-
-
       /* =====================================================
-         6. AJOUTER NOTES ET AVIS AUX PROFILS
+         6. AJOUT NOTES
       ===================================================== */
 
       professionals =
@@ -2145,7 +2795,8 @@
                   return (
                     sum +
                     Number(
-                      review.rating || 0
+                      review.rating ||
+                      0
                     )
                   );
 
@@ -2155,22 +2806,11 @@
 
 
             const average =
-              profileReviews.length > 0
+              profileReviews.length >
+              0
                 ? total /
                   profileReviews.length
                 : 0;
-
-
-            console.log(
-              "⭐ PROFESSIONNEL :",
-              profile.full_name,
-              "| ID :",
-              profileId,
-              "| AVIS :",
-              profileReviews.length,
-              "| MOYENNE :",
-              average
-            );
 
 
             return {
@@ -2190,12 +2830,6 @@
 
           }
         );
-
-
-      console.log(
-        "✅ PROFESSIONNELS AVEC NOTES :",
-        professionals
-      );
 
 
       displayProfessionals(
@@ -2224,12 +2858,13 @@
 
 
   /* =========================================================
-     LANCER UNE RECHERCHE DEPUIS L'ACCUEIL
+     RECHERCHE DEPUIS ACCUEIL
   ========================================================= */
 
   async function runProfessionalSearch() {
 
     await searchProfessionals();
+
 
     showSection(
       "professionalsSection"
@@ -2267,10 +2902,15 @@
 
       grid.innerHTML = `
         <div class="empty-state">
-          <h3>Aucun professionnel trouvé</h3>
+
+          <h3>
+            Aucun professionnel trouvé
+          </h3>
+
           <p>
             Essayez une autre profession ou une autre ville.
           </p>
+
         </div>
       `;
 
@@ -2284,25 +2924,33 @@
 
         const ratingCount =
           Number(
-            profile.ratingCount || 0
+            profile.ratingCount ||
+            0
           );
+
 
         const ratingAverage =
           Number(
-            profile.ratingAverage || 0
+            profile.ratingAverage ||
+            0
           );
 
 
         let ratingHTML = "";
 
 
-        if (ratingCount > 0) {
+        if (
+          ratingCount > 0
+        ) {
 
           ratingHTML = `
+
             <div class="rating-box">
 
               <span class="stars">
-                ${getStarsHTML(ratingAverage)}
+                ${getStarsHTML(
+                  ratingAverage
+                )}
               </span>
 
               <span class="rating-number">
@@ -2310,16 +2958,17 @@
               </span>
 
               <span class="rating-count">
-                (${ratingCount}
-                ${ratingCount > 1 ? "avis" : "avis"})
+                (${ratingCount} avis)
               </span>
 
             </div>
+
           `;
 
         } else {
 
           ratingHTML = `
+
             <div class="rating-box">
 
               <span class="stars">
@@ -2331,17 +2980,20 @@
               </span>
 
             </div>
+
           `;
 
         }
 
 
-        let latestReviewHTML = "";
+        let latestReviewHTML =
+          "";
 
 
         if (
           profile.reviews &&
-          profile.reviews.length > 0
+          profile.reviews.length >
+          0
         ) {
 
           const latestReview =
@@ -2349,12 +3001,15 @@
 
 
           latestReviewHTML = `
+
             <div class="review-preview">
 
               <div class="review-stars">
+
                 ${getStarsHTML(
                   latestReview.rating
                 )}
+
               </div>
 
               ${
@@ -2370,13 +3025,22 @@
               }
 
             </div>
+
           `;
 
         }
 
 
+        const avatar =
+          getInitials(
+            profile.full_name
+          );
+
+
         const card =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         card.className =
@@ -2385,6 +3049,15 @@
 
         card.innerHTML = `
 
+          <div
+            class="professional-avatar"
+          >
+            ${escapeHTML(
+              avatar
+            )}
+          </div>
+
+
           <h3>
             ${escapeHTML(
               profile.profession ||
@@ -2392,19 +3065,27 @@
             )}
           </h3>
 
+
           <p>
+
             👤
+
             <strong>
               ${escapeHTML(
                 profile.full_name ||
                 "Nom non renseigné"
               )}
             </strong>
+
           </p>
+
 
           ${ratingHTML}
 
-          <div class="professional-info">
+
+          <div
+            class="professional-info"
+          >
 
             <div>
               📍 Ville :
@@ -2414,6 +3095,7 @@
               )}
             </div>
 
+
             <div>
               🏘️ Quartier :
               ${escapeHTML(
@@ -2422,6 +3104,7 @@
               )}
             </div>
 
+
             <div>
               🛠️ Services :
               ${escapeHTML(
@@ -2429,6 +3112,7 @@
                 "Non renseignés"
               )}
             </div>
+
 
             <div>
               📝
@@ -2440,14 +3124,67 @@
 
           </div>
 
+
           ${latestReviewHTML}
 
-          <div class="form-actions">
+
+          <div
+            class="form-actions"
+          >
+
+            <button
+              class="btn btn-primary"
+              onclick="openProfessionalDetailById(
+                '${escapeJS(
+                  profile.id
+                )}'
+              )"
+            >
+              👁️ Voir le profil
+            </button>
+
+
+            ${
+              profile.phone
+                ? `
+                  <button
+                    class="btn btn-call"
+                    onclick="callProfessional(
+                      '${escapeJS(
+                        profile.phone
+                      )}'
+                    )"
+                  >
+                    📞 Appeler
+                  </button>
+                `
+                : ""
+            }
+
+
+            <button
+              class="btn btn-contact"
+              onclick="openRequestModal(
+                '${escapeJS(
+                  profile.id
+                )}',
+                '${escapeJS(
+                  profile.profession ||
+                  profile.services ||
+                  ""
+                )}'
+              )"
+            >
+              💬 Contacter
+            </button>
+
 
             <button
               class="btn btn-primary"
               onclick="openRequestModal(
-                '${escapeJS(profile.id)}',
+                '${escapeJS(
+                  profile.id
+                )}',
                 '${escapeJS(
                   profile.profession ||
                   profile.services ||
@@ -2463,7 +3200,9 @@
         `;
 
 
-        grid.appendChild(card);
+        grid.appendChild(
+          card
+        );
 
       }
     );
@@ -2472,16 +3211,357 @@
 
 
   /* =========================================================
+     VOIR PROFIL
+  ========================================================= */
+
+  async function openProfessionalDetailById(
+    professionalId
+  ) {
+
+    if (!professionalId) {
+      return;
+    }
+
+
+    try {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq(
+            "id",
+            professionalId
+          )
+          .maybeSingle();
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data) {
+
+        alert(
+          "Profil professionnel introuvable."
+        );
+
+        return;
+
+      }
+
+
+      openProfessionalDetail(
+        data
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR PROFIL DÉTAILLÉ :",
+        error
+      );
+
+
+      alert(
+        "Impossible de charger le profil professionnel."
+      );
+
+    }
+
+  }
+
+
+  function openProfessionalDetail(
+    profile
+  ) {
+
+    const container =
+      document.getElementById(
+        "professionalDetailContent"
+      );
+
+
+    if (!container) {
+      return;
+    }
+
+
+    const avatar =
+      getInitials(
+        profile.full_name
+      );
+
+
+    const phone =
+      String(
+        profile.phone || ""
+      ).trim();
+
+
+    const service =
+      profile.profession ||
+      profile.services ||
+      "Service professionnel";
+
+
+    container.innerHTML = `
+
+      <div
+        class="profile-avatar-large"
+      >
+        ${escapeHTML(
+          avatar
+        )}
+      </div>
+
+
+      <div
+        class="professional-detail-name"
+      >
+        ${escapeHTML(
+          profile.full_name ||
+          "Professionnel"
+        )}
+      </div>
+
+
+      <div
+        class="professional-detail-profession"
+      >
+        ${escapeHTML(
+          profile.profession ||
+          "Professionnel"
+        )}
+      </div>
+
+
+      <div
+        class="detail-info"
+      >
+
+        <div>
+          📍
+          <strong>
+            Ville :
+          </strong>
+
+          ${escapeHTML(
+            profile.city ||
+            "Non renseignée"
+          )}
+        </div>
+
+
+        <div>
+          🏘️
+          <strong>
+            Quartier :
+          </strong>
+
+          ${escapeHTML(
+            profile.quartier ||
+            "Non renseigné"
+          )}
+        </div>
+
+
+        <div>
+          🛠️
+          <strong>
+            Services :
+          </strong>
+
+          ${escapeHTML(
+            profile.services ||
+            "Non renseignés"
+          )}
+        </div>
+
+
+        ${
+          phone
+            ? `
+              <div>
+                📞
+                <strong>
+                  Téléphone :
+                </strong>
+
+                ${escapeHTML(
+                  phone
+                )}
+              </div>
+            `
+            : ""
+        }
+
+      </div>
+
+
+      <div
+        class="detail-description"
+      >
+
+        <strong>
+          📝 Présentation
+        </strong>
+
+        <br><br>
+
+        ${escapeHTML(
+          profile.description ||
+          "Aucune description disponible."
+        )}
+
+      </div>
+
+
+      <div
+        class="profile-action-buttons"
+      >
+
+        ${
+          phone
+            ? `
+              <button
+                class="btn btn-call"
+                onclick="callProfessional(
+                  '${escapeJS(
+                    phone
+                  )}'
+                )"
+              >
+                📞 Appeler
+              </button>
+            `
+            : ""
+        }
+
+
+        <button
+          class="btn btn-contact"
+          onclick="closeProfessionalDetail(); openRequestModal(
+            '${escapeJS(
+              profile.id
+            )}',
+            '${escapeJS(
+              service
+            )}'
+          )"
+        >
+          💬 Contacter
+        </button>
+
+
+        <button
+          class="btn btn-primary"
+          onclick="closeProfessionalDetail(); openRequestModal(
+            '${escapeJS(
+              profile.id
+            )}',
+            '${escapeJS(
+              service
+            )}'
+          )"
+        >
+          📩 Demander ce service
+        </button>
+
+
+        <button
+          class="btn btn-secondary"
+          onclick="closeProfessionalDetail()"
+        >
+          Retour
+        </button>
+
+      </div>
+
+    `;
+
+
+    document
+      .getElementById(
+        "professionalDetailModal"
+      )
+      .classList.add(
+        "active"
+      );
+
+  }
+
+
+  function closeProfessionalDetail() {
+
+    const modal =
+      document.getElementById(
+        "professionalDetailModal"
+      );
+
+
+    if (modal) {
+
+      modal.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     APPELER PROFESSIONNEL
+  ========================================================= */
+
+  function callProfessional(
+    phone
+  ) {
+
+    const cleanPhone =
+      String(
+        phone || ""
+      ).trim();
+
+
+    if (!cleanPhone) {
+
+      alert(
+        "Le numéro de téléphone du professionnel n'est pas disponible."
+      );
+
+      return;
+
+    }
+
+
+    window.location.href =
+      "tel:" +
+      cleanPhone;
+
+  }
+
+
+  /* =========================================================
      SELECTION SERVICE
   ========================================================= */
 
-  function selectService(service) {
+  function selectService(
+    service
+  ) {
 
     document
       .getElementById(
         "searchProfession"
       )
-      .value = service;
+      .value =
+      service;
 
 
     showSection(
@@ -2513,13 +3593,16 @@
         "accountSection"
       );
 
+
       showMessage(
         "accountMessage",
         "Veuillez vous connecter pour envoyer une demande.",
         "info"
       );
 
+
       return;
+
     }
 
 
@@ -2527,14 +3610,16 @@
       .getElementById(
         "requestProfessionalId"
       )
-      .value = professionalId;
+      .value =
+      professionalId;
 
 
     document
       .getElementById(
         "requestService"
       )
-      .value = service;
+      .value =
+      service;
 
 
     document
@@ -2542,7 +3627,8 @@
         "requestCity"
       )
       .value =
-      currentProfile?.city || "";
+      currentProfile?.city ||
+      "";
 
 
     document
@@ -2550,7 +3636,8 @@
         "requestPhone"
       )
       .value =
-      currentProfile?.phone || "";
+      currentProfile?.phone ||
+      "";
 
 
     hideMessage(
@@ -2560,9 +3647,28 @@
 
     document
       .getElementById(
+        "requestDescription"
+      )
+      .value =
+      "";
+
+
+    document
+      .getElementById(
+        "requestQuartier"
+      )
+      .value =
+      currentProfile?.quartier ||
+      "";
+
+
+    document
+      .getElementById(
         "requestModal"
       )
-      .classList.add("active");
+      .classList.add(
+        "active"
+      );
 
   }
 
@@ -2573,7 +3679,9 @@
       .getElementById(
         "requestModal"
       )
-      .classList.remove("active");
+      .classList.remove(
+        "active"
+      );
 
   }
 
@@ -2593,6 +3701,7 @@
       );
 
       return;
+
     }
 
 
@@ -2603,6 +3712,7 @@
         )
         .value;
 
+
     const service =
       document
         .getElementById(
@@ -2610,6 +3720,7 @@
         )
         .value
         .trim();
+
 
     const description =
       document
@@ -2619,6 +3730,7 @@
         .value
         .trim();
 
+
     const city =
       document
         .getElementById(
@@ -2627,6 +3739,7 @@
         .value
         .trim();
 
+
     const quartier =
       document
         .getElementById(
@@ -2634,6 +3747,7 @@
         )
         .value
         .trim();
+
 
     const phone =
       document
@@ -2657,6 +3771,7 @@
       );
 
       return;
+
     }
 
 
@@ -2666,16 +3781,28 @@
         error
       } =
         await supabaseClient
-          .from("service_requests")
+          .from(
+            "service_requests"
+          )
           .insert({
-            client_id: currentUser.id,
-            professional_id: professionalId,
+            client_id:
+              currentUser.id,
+
+            professional_id:
+              professionalId,
+
             service,
+
             description,
+
             city,
+
             quartier,
+
             phone,
-            status: "en_attente"
+
+            status:
+              "en_attente"
           });
 
 
@@ -2704,6 +3831,7 @@
         error
       );
 
+
       showMessage(
         "requestMessage",
         "❌ " + error.message,
@@ -2731,7 +3859,9 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select("*")
         .eq(
           "client_id",
@@ -2747,7 +3877,8 @@
         .order(
           "created_at",
           {
-            ascending: false
+            ascending:
+              false
           }
         );
 
@@ -2760,6 +3891,7 @@
       );
 
       return;
+
     }
 
 
@@ -2780,9 +3912,11 @@
     ) {
 
       container.innerHTML = `
+
         <div class="empty-state">
           Aucune notification.
         </div>
+
       `;
 
       return;
@@ -2797,13 +3931,16 @@
       request => {
 
         const card =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         card.className =
           "notification-card " +
           (
-            !request.client_notification_read
+            !request
+              .client_notification_read
               ? "unread"
               : ""
           );
@@ -2812,57 +3949,89 @@
         card.innerHTML = `
 
           <strong>
+
             ${
-              request.status === "acceptee"
+              request.status ===
+              "acceptee"
+
                 ? "✅ Demande acceptée"
+
                 : "❌ Demande refusée"
+
             }
+
           </strong>
+
 
           <p>
             Service :
-            ${escapeHTML(request.service)}
+            ${escapeHTML(
+              request.service
+            )}
           </p>
+
 
           <p>
-            ${escapeHTML(request.description)}
+            ${escapeHTML(
+              request.description
+            )}
           </p>
 
+
           ${
-            !request.client_notification_read
+            !request
+              .client_notification_read
+
               ? `
+
                 <button
                   class="btn btn-primary"
                   onclick="markClientNotificationRead(
-                    '${escapeJS(request.id)}'
+                    '${escapeJS(
+                      request.id
+                    )}'
                   )"
                 >
                   ✓ J’ai lu
                 </button>
+
               `
+
               : ""
           }
 
+
           ${
-            request.status === "acceptee"
+            request.status ===
+            "acceptee"
+
               ? `
+
                 <button
                   class="btn btn-warning"
                   onclick="openReviewModal(
-                    '${escapeJS(request.id)}',
-                    '${escapeJS(request.professional_id)}'
+                    '${escapeJS(
+                      request.id
+                    )}',
+                    '${escapeJS(
+                      request.professional_id
+                    )}'
                   )"
                 >
                   ⭐ Laisser un avis
                 </button>
+
               `
+
               : ""
           }
 
         `;
 
 
-        container.appendChild(card);
+        container.appendChild(
+          card
+        );
 
       }
     );
@@ -2922,7 +4091,9 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select("*")
         .eq(
           "professional_id",
@@ -2935,7 +4106,8 @@
         .order(
           "created_at",
           {
-            ascending: false
+            ascending:
+              false
           }
         );
 
@@ -2948,6 +4120,7 @@
       );
 
       return;
+
     }
 
 
@@ -2972,9 +4145,11 @@
       ) {
 
         container.innerHTML = `
+
           <div class="empty-state">
             Aucune notification.
           </div>
+
         `;
 
       }
@@ -3000,7 +4175,9 @@
 
 
         const card =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         card.id =
@@ -3011,7 +4188,8 @@
         card.className =
           "notification-card " +
           (
-            !request.professional_notification_read
+            !request
+              .professional_notification_read
               ? "unread"
               : ""
           );
@@ -3023,42 +4201,68 @@
             📩 Nouvelle demande
           </strong>
 
+
           <p>
             Service :
-            ${escapeHTML(request.service)}
+            ${escapeHTML(
+              request.service
+            )}
           </p>
 
-          <p>
-            ${escapeHTML(request.description)}
-          </p>
 
           <p>
-            📍 ${escapeHTML(request.city || "")}
-            ${request.quartier
-              ? " - " +
-                escapeHTML(request.quartier)
-              : ""}
+            ${escapeHTML(
+              request.description
+            )}
           </p>
+
+
+          <p>
+            📍
+            ${escapeHTML(
+              request.city || ""
+            )}
+
+            ${
+              request.quartier
+                ? " - " +
+                  escapeHTML(
+                    request.quartier
+                  )
+                : ""
+            }
+
+          </p>
+
 
           ${
-            !request.professional_notification_read
+            !request
+              .professional_notification_read
+
               ? `
+
                 <button
                   class="btn btn-primary"
                   onclick="markProfessionalNotificationRead(
-                    '${escapeJS(request.id)}'
+                    '${escapeJS(
+                      request.id
+                    )}'
                   )"
                 >
                   ✓ J’ai lu
                 </button>
+
               `
+
               : ""
           }
 
         `;
 
 
-        container.appendChild(card);
+        container.appendChild(
+          card
+        );
 
       }
     );
@@ -3132,9 +4336,11 @@
       badge.textContent =
         count;
 
+
       badge.classList.remove(
         "hidden"
       );
+
 
     } else {
 
@@ -3159,12 +4365,16 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select(
           "id",
           {
-            count: "exact",
-            head: true
+            count:
+              "exact",
+            head:
+              true
           }
         )
         .eq(
@@ -3192,6 +4402,7 @@
       );
 
       return 0;
+
     }
 
 
@@ -3212,12 +4423,16 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select(
           "id",
           {
-            count: "exact",
-            head: true
+            count:
+              "exact",
+            head:
+              true
           }
         )
         .eq(
@@ -3242,6 +4457,7 @@
       );
 
       return 0;
+
     }
 
 
@@ -3254,7 +4470,9 @@
 
     if (!currentUser) {
 
-      updateNotificationBadge(0);
+      updateNotificationBadge(
+        0
+      );
 
       return;
 
@@ -3265,7 +4483,8 @@
       await refreshClientNotificationBadge();
 
 
-    let professionalCount = 0;
+    let professionalCount =
+      0;
 
 
     if (
@@ -3322,7 +4541,9 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select("*")
         .eq(
           "professional_id",
@@ -3331,7 +4552,8 @@
         .order(
           "created_at",
           {
-            ascending: false
+            ascending:
+              false
           }
         );
 
@@ -3343,10 +4565,13 @@
         error
       );
 
+
       container.innerHTML = `
+
         <div class="empty-state">
           Impossible de charger les demandes.
         </div>
+
       `;
 
       return;
@@ -3360,9 +4585,11 @@
     ) {
 
       container.innerHTML = `
+
         <div class="empty-state">
           Aucune demande reçue.
         </div>
+
       `;
 
       return;
@@ -3377,7 +4604,9 @@
       request => {
 
         const card =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         card.className =
@@ -3387,53 +4616,86 @@
         card.innerHTML = `
 
           <h4>
-            ${escapeHTML(request.service)}
+            ${escapeHTML(
+              request.service
+            )}
           </h4>
 
-          <p>
-            ${escapeHTML(request.description)}
-          </p>
 
           <p>
-            📍 ${escapeHTML(request.city || "")}
+            ${escapeHTML(
+              request.description
+            )}
+          </p>
+
+
+          <p>
+            📍
+            ${escapeHTML(
+              request.city || ""
+            )}
+
             ${
               request.quartier
                 ? " - " +
-                  escapeHTML(request.quartier)
+                  escapeHTML(
+                    request.quartier
+                  )
                 : ""
             }
+
           </p>
 
+
           <p>
-            📞 ${escapeHTML(request.phone || "")}
+            📞
+            ${escapeHTML(
+              request.phone || ""
+            )}
           </p>
+
 
           <span
             class="request-status
-              ${getStatusClass(request.status)}"
+              ${getStatusClass(
+                request.status
+              )}"
           >
-            ${getStatusText(request.status)}
+            ${getStatusText(
+              request.status
+            )}
           </span>
 
+
           ${
-            request.status === "en_attente"
+            request.status ===
+            "en_attente"
+
               ? `
-                <div class="form-actions">
+
+                <div
+                  class="form-actions"
+                >
 
                   <button
                     class="btn btn-success"
                     onclick="updateRequestStatus(
-                      '${escapeJS(request.id)}',
+                      '${escapeJS(
+                        request.id
+                      )}',
                       'acceptee'
                     )"
                   >
                     ✓ Accepter
                   </button>
 
+
                   <button
                     class="btn btn-danger"
                     onclick="updateRequestStatus(
-                      '${escapeJS(request.id)}',
+                      '${escapeJS(
+                        request.id
+                      )}',
                       'refusee'
                     )"
                   >
@@ -3441,14 +4703,18 @@
                   </button>
 
                 </div>
+
               `
+
               : ""
           }
 
         `;
 
 
-        container.appendChild(card);
+        container.appendChild(
+          card
+        );
 
       }
     );
@@ -3457,7 +4723,7 @@
 
 
   /* =========================================================
-     MODIFIER STATUT DEMANDE
+     STATUT DEMANDE
   ========================================================= */
 
   async function updateRequestStatus(
@@ -3476,7 +4742,9 @@
         error
       } =
         await supabaseClient
-          .from("service_requests")
+          .from(
+            "service_requests"
+          )
           .update({
             status
           })
@@ -3541,7 +4809,9 @@
       error
     } =
       await supabaseClient
-        .from("service_requests")
+        .from(
+          "service_requests"
+        )
         .select("*")
         .eq(
           "client_id",
@@ -3550,7 +4820,8 @@
         .order(
           "created_at",
           {
-            ascending: false
+            ascending:
+              false
           }
         );
 
@@ -3573,9 +4844,11 @@
     ) {
 
       container.innerHTML = `
+
         <div class="empty-state">
           Vous n'avez envoyé aucune demande.
         </div>
+
       `;
 
       return;
@@ -3590,7 +4863,9 @@
       request => {
 
         const card =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
 
         card.className =
@@ -3600,44 +4875,68 @@
         card.innerHTML = `
 
           <h4>
-            ${escapeHTML(request.service)}
+            ${escapeHTML(
+              request.service
+            )}
           </h4>
 
+
           <p>
-            ${escapeHTML(request.description)}
+            ${escapeHTML(
+              request.description
+            )}
           </p>
+
 
           <span
             class="request-status
-              ${getStatusClass(request.status)}"
+              ${getStatusClass(
+                request.status
+              )}"
           >
-            ${getStatusText(request.status)}
+            ${getStatusText(
+              request.status
+            )}
           </span>
 
+
           ${
-            request.status === "acceptee"
+            request.status ===
+            "acceptee"
+
               ? `
-                <div style="margin-top:10px;">
+
+                <div
+                  style="margin-top:10px;"
+                >
 
                   <button
                     class="btn btn-warning"
                     onclick="openReviewModal(
-                      '${escapeJS(request.id)}',
-                      '${escapeJS(request.professional_id)}'
+                      '${escapeJS(
+                        request.id
+                      )}',
+                      '${escapeJS(
+                        request.professional_id
+                      )}'
                     )"
                   >
                     ⭐ Laisser un avis
                   </button>
 
                 </div>
+
               `
+
               : ""
           }
 
         `;
 
 
-        container.appendChild(card);
+        container.appendChild(
+          card
+        );
 
       }
     );
@@ -3685,19 +4984,23 @@
       .getElementById(
         "reviewRating"
       )
-      .value = "0";
+      .value =
+      "0";
 
 
     document
       .getElementById(
         "reviewComment"
       )
-      .value = "";
+      .value =
+      "";
 
 
     selectedRating = 0;
 
+
     updateStarSelector();
+
 
     hideMessage(
       "reviewMessage"
@@ -3733,7 +5036,9 @@
   ) {
 
     selectedRating =
-      Number(rating);
+      Number(
+        rating
+      );
 
 
     document
@@ -3788,9 +5093,6 @@
 
   /* =========================================================
      CREATION AVIS
-     
-     La fonction RPC existante est :
-     create_review
   ========================================================= */
 
   async function submitReview() {
@@ -3815,12 +5117,14 @@
         )
         .value;
 
+
     const professionalId =
       document
         .getElementById(
           "reviewProfessionalId"
         )
         .value;
+
 
     const rating =
       Number(
@@ -3830,6 +5134,7 @@
           )
           .value
       );
+
 
     const comment =
       document
@@ -3919,12 +5224,6 @@
 
           closeReviewModal();
 
-          /*
-            On recharge les professionnels afin
-            que les nouvelles étoiles apparaissent
-            immédiatement.
-          */
-
           await searchProfessionals();
 
         },
@@ -3960,20 +5259,24 @@
   ) {
 
     if (
-      status === "acceptee"
+      status ===
+      "acceptee"
     ) {
 
       return "status-acceptee";
 
     }
 
+
     if (
-      status === "refusee"
+      status ===
+      "refusee"
     ) {
 
       return "status-refusee";
 
     }
+
 
     return "status-en-attente";
 
@@ -3985,20 +5288,24 @@
   ) {
 
     if (
-      status === "acceptee"
+      status ===
+      "acceptee"
     ) {
 
       return "Acceptée";
 
     }
 
+
     if (
-      status === "refusee"
+      status ===
+      "refusee"
     ) {
 
       return "Refusée";
 
     }
+
 
     return "En attente";
 
@@ -4021,11 +5328,17 @@
       ).toLocaleDateString(
         "fr-FR",
         {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric"
+          day:
+            "2-digit",
+
+          month:
+            "2-digit",
+
+          year:
+            "numeric"
         }
       );
+
 
     } catch {
 
@@ -4048,11 +5361,13 @@
         "accountSection"
       );
 
+
       showMessage(
         "accountMessage",
         "Veuillez vous connecter pour accéder au tableau de bord.",
         "info"
       );
+
 
       return;
 
@@ -4109,6 +5424,7 @@
 
 
       await refreshNotificationBadge();
+
 
     } else {
 
@@ -4167,6 +5483,7 @@
 
           await refreshNotificationBadge();
 
+
         } else {
 
           currentUser = null;
@@ -4197,32 +5514,88 @@
      INITIALISATION
      
      IMPORTANT :
-     On affiche d'abord ACCUEIL.
-     
-     searchProfessionals() peut charger les données
-     en arrière-plan mais NE change plus la section.
+     Toujours rester sur ACCUEIL après actualisation.
   ========================================================= */
 
   document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-      /* Toujours commencer sur Accueil */
       showSection(
         "homeSection"
       );
 
 
-      /* Vérifier la connexion */
       await checkSession();
 
 
       /*
-        Charger les professionnels en arrière-plan.
-        Cette fonction ne fait plus showSection().
-        Donc l'utilisateur reste sur Accueil.
+        Chargement des professionnels
+        en arrière-plan.
+        Cette fonction ne change pas
+        la section affichée.
       */
+
       await searchProfessionals();
+
+    }
+  );
+
+
+  /* =========================================================
+     FERMETURE DES MODALES EN CLIQUANT À L'EXTÉRIEUR
+  ========================================================= */
+
+  document.addEventListener(
+    "click",
+    event => {
+
+      const requestModal =
+        document.getElementById(
+          "requestModal"
+        );
+
+
+      const reviewModal =
+        document.getElementById(
+          "reviewModal"
+        );
+
+
+      const professionalDetailModal =
+        document.getElementById(
+          "professionalDetailModal"
+        );
+
+
+      if (
+        event.target ===
+        requestModal
+      ) {
+
+        closeRequestModal();
+
+      }
+
+
+      if (
+        event.target ===
+        reviewModal
+      ) {
+
+        closeReviewModal();
+
+      }
+
+
+      if (
+        event.target ===
+        professionalDetailModal
+      ) {
+
+        closeProfessionalDetail();
+
+      }
 
     }
   );
