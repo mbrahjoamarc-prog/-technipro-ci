@@ -86,6 +86,24 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      padding: 0 4px;
+    }
+
+    .message-badge {
+      position: absolute;
+      top: -5px;
+      right: -3px;
+      min-width: 19px;
+      height: 19px;
+      background: #198754;
+      color: white;
+      border-radius: 50%;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      padding: 0 4px;
     }
 
     .hidden {
@@ -224,6 +242,11 @@
     .btn-share {
       background: #fd7e14;
       color: white;
+    }
+
+    .btn-message {
+      background: #0dcaf0;
+      color: #052c65;
     }
 
     .section-title {
@@ -507,6 +530,161 @@
     }
 
     /* =====================================================
+       MESSAGERIE
+    ===================================================== */
+
+    .message-summary-card {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .message-summary-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .message-summary-card.unread {
+      border-left: 5px solid #198754;
+      background: #f1fff7;
+    }
+
+    .message-summary-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .message-summary-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .message-summary-date {
+      color: #6c757d;
+      font-size: 12px;
+    }
+
+    .message-summary-preview {
+      color: #6c757d;
+      margin-top: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .message-unread-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #198754;
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 0 5px;
+    }
+
+    .chat-container {
+      margin-top: 15px;
+    }
+
+    .chat-messages {
+      background: #f1f3f5;
+      border-radius: 12px;
+      padding: 15px;
+      height: 420px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-empty {
+      text-align: center;
+      color: #6c757d;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .chat-message-row {
+      display: flex;
+      width: 100%;
+    }
+
+    .chat-message-row.mine {
+      justify-content: flex-end;
+    }
+
+    .chat-message-row.theirs {
+      justify-content: flex-start;
+    }
+
+    .chat-message {
+      max-width: 78%;
+      padding: 10px 13px;
+      border-radius: 14px;
+      line-height: 1.45;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .chat-message.mine {
+      background: #0d6efd;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-message.theirs {
+      background: white;
+      color: #222;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .chat-message-meta {
+      display: block;
+      margin-top: 5px;
+      font-size: 10px;
+      opacity: 0.7;
+      text-align: right;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: flex-end;
+    }
+
+    .chat-input-area textarea {
+      min-height: 55px;
+      max-height: 130px;
+      resize: vertical;
+    }
+
+    .chat-input-area .btn {
+      min-height: 55px;
+      white-space: nowrap;
+    }
+
+    .conversation-context {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 9px 12px;
+      margin-top: 8px;
+      color: #6c757d;
+      font-size: 13px;
+    }
+
+    /* =====================================================
        MODALES
     ===================================================== */
 
@@ -687,6 +865,19 @@
         align-items: flex-start;
       }
 
+      .chat-input-area {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .chat-input-area .btn {
+        width: 100%;
+      }
+
+      .chat-message {
+        max-width: 88%;
+      }
+
     }
 
   </style>
@@ -736,6 +927,25 @@
         <span
           id="notificationBadge"
           class="notification-badge hidden"
+        >
+          0
+        </span>
+
+      </div>
+
+      <!-- NOUVEAU : MESSAGERIE -->
+
+      <div class="notification-wrapper">
+
+        <button
+          onclick="openMessagesDashboard()"
+        >
+          💬 Messagerie
+        </button>
+
+        <span
+          id="messageBadge"
+          class="message-badge hidden"
         >
           0
         </span>
@@ -1301,6 +1511,26 @@
 
       </div>
 
+
+      <!-- NOUVEAU : MESSAGERIE -->
+
+      <div class="dashboard-card">
+
+        <h3>
+          💬 Messagerie
+        </h3>
+
+        <p style="margin:10px 0;">
+          Discutez avec les clients et les professionnels.
+        </p>
+
+        <div
+          id="messagesSummaryContainer"
+          style="margin-top:15px;"
+        ></div>
+
+      </div>
+
     </div>
 
 
@@ -1713,6 +1943,93 @@
 </div>
 
 
+<!-- =========================================================
+     NOUVEAU : MODAL MESSAGERIE
+========================================================= -->
+
+<div
+  id="messageModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      onclick="closeMessageModal()"
+    >
+      ×
+    </button>
+
+
+    <h2>
+      💬 <span id="messageReceiverName">Messagerie</span>
+    </h2>
+
+
+    <div
+      id="messageModalMessage"
+      class="message"
+    ></div>
+
+
+    <input
+      id="messageReceiverId"
+      type="hidden"
+    >
+
+    <input
+      id="messageRequestId"
+      type="hidden"
+    >
+
+
+    <div
+      id="conversationContext"
+      class="conversation-context"
+    ></div>
+
+
+    <div class="chat-container">
+
+      <div
+        id="chatMessages"
+        class="chat-messages"
+      >
+
+        <div class="chat-empty">
+          Chargement de la conversation...
+        </div>
+
+      </div>
+
+
+      <div class="chat-input-area">
+
+        <textarea
+          id="messageContent"
+          placeholder="Écrivez votre message..."
+          maxlength="2000"
+          onkeydown="handleMessageKeydown(event)"
+        ></textarea>
+
+
+        <button
+          class="btn btn-primary"
+          onclick="sendMessage()"
+        >
+          📤 Envoyer
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <footer>
 
   <p>
@@ -1748,6 +2065,14 @@
   let currentUser = null;
   let currentProfile = null;
   let selectedRating = 0;
+
+  /* =========================================================
+     NOUVEAU : VARIABLES MESSAGERIE
+  ========================================================= */
+
+  let currentMessageReceiverId = null;
+  let currentMessageRequestId = null;
+  let messageRefreshInterval = null;
 
 
   /* =========================================================
@@ -2339,6 +2664,8 @@
 
       await refreshNotificationBadge();
 
+      await refreshMessageBadge();
+
 
       setTimeout(
         () => {
@@ -2448,6 +2775,8 @@
 
       await refreshNotificationBadge();
 
+      await refreshMessageBadge();
+
 
       showMessage(
         "accountMessage",
@@ -2487,6 +2816,8 @@
 
   async function logout() {
 
+    closeMessageModal();
+
     await supabaseClient
       .auth
       .signOut();
@@ -2506,6 +2837,10 @@
 
 
     updateNotificationBadge(
+      0
+    );
+
+    updateMessageBadge(
       0
     );
 
@@ -2854,10 +3189,6 @@
 
     try {
 
-      /* =====================================================
-         1. PROFESSIONNELS
-      ===================================================== */
-
       let query =
         supabaseClient
           .from("profiles")
@@ -2867,12 +3198,6 @@
             "professionnel"
           );
 
-
-      /*
-        Recherche souple sur la ville.
-        Exemple :
-        "Abid" peut trouver "Abidjan".
-      */
 
       if (city) {
 
@@ -2909,10 +3234,6 @@
       let professionals =
         data || [];
 
-
-      /* =====================================================
-         2. FILTRE PROFESSION / SERVICE
-      ===================================================== */
 
       if (profession) {
 
@@ -2961,10 +3282,6 @@
 
       }
 
-
-      /* =====================================================
-         3. AVIS
-      ===================================================== */
 
       const professionalIds =
         professionals
@@ -3032,10 +3349,6 @@
       }
 
 
-      /* =====================================================
-         4. REGROUPEMENT AVIS
-      ===================================================== */
-
       const reviewsByProfessional =
         {};
 
@@ -3079,10 +3392,6 @@
         }
       );
 
-
-      /* =====================================================
-         5. AJOUT NOTES
-      ===================================================== */
 
       professionals =
         professionals.map(
@@ -3148,10 +3457,6 @@
           }
         );
 
-
-      /* =====================================================
-         6. AFFICHAGE RESULTATS
-      ===================================================== */
 
       displayProfessionals(
         professionals
@@ -3624,6 +3929,23 @@
 
 
             <button
+              class="btn btn-message"
+              onclick="openMessagingModal(
+                '${escapeJS(
+                  profile.id
+                )}',
+                '',
+                '${escapeJS(
+                  profile.full_name ||
+                  "Professionnel"
+                )}'
+              )"
+            >
+              💬 Message
+            </button>
+
+
+            <button
               class="btn btn-contact"
               onclick="openRequestModal(
                 '${escapeJS(
@@ -3902,6 +4224,23 @@
             `
             : ""
         }
+
+
+        <button
+          class="btn btn-message"
+          onclick="closeProfessionalDetail(); openMessagingModal(
+            '${escapeJS(
+              profile.id
+            )}',
+            '',
+            '${escapeJS(
+              profile.full_name ||
+              "Professionnel"
+            )}'
+          )"
+        >
+          💬 Envoyer un message
+        </button>
 
 
         <button
@@ -5102,13 +5441,29 @@
           </span>
 
 
-          ${
-            request.status ===
-            "en_attente"
+          <div class="form-actions">
 
-              ? `
+            <button
+              class="btn btn-message"
+              onclick="openMessagingModal(
+                '${escapeJS(
+                  request.client_id
+                )}',
+                '${escapeJS(
+                  request.id
+                )}',
+                'Client'
+              )"
+            >
+              💬 Message
+            </button>
 
-                <div class="form-actions">
+
+            ${
+              request.status ===
+              "en_attente"
+
+                ? `
 
                   <button
                     class="btn btn-success"
@@ -5135,12 +5490,12 @@
                     ✕ Refuser
                   </button>
 
-                </div>
+                `
 
-              `
+                : ""
+            }
 
-              : ""
-          }
+          </div>
 
         `;
 
@@ -5333,15 +5688,32 @@
           </span>
 
 
-          ${
-            request.status ===
-            "acceptee"
+          <div
+            class="form-actions"
+            style="margin-top:10px;"
+          >
 
-              ? `
+            <button
+              class="btn btn-message"
+              onclick="openMessagingModal(
+                '${escapeJS(
+                  request.professional_id
+                )}',
+                '${escapeJS(
+                  request.id
+                )}',
+                'Professionnel'
+              )"
+            >
+              💬 Message
+            </button>
 
-                <div
-                  style="margin-top:10px;"
-                >
+
+            ${
+              request.status ===
+              "acceptee"
+
+                ? `
 
                   <button
                     class="btn btn-warning"
@@ -5357,12 +5729,12 @@
                     ⭐ Laisser un avis
                   </button>
 
-                </div>
+                `
 
-              `
+                : ""
+            }
 
-              : ""
-          }
+          </div>
 
         `;
 
@@ -5786,6 +6158,1361 @@
 
 
   /* =========================================================
+     NOUVEAU : DATE + HEURE MESSAGERIE
+  ========================================================= */
+
+  function formatDateTime(
+    date
+  ) {
+
+    if (!date) {
+      return "";
+    }
+
+
+    try {
+
+      return new Date(
+        date
+      ).toLocaleString(
+        "fr-FR",
+        {
+          day:
+            "2-digit",
+
+          month:
+            "2-digit",
+
+          year:
+            "numeric",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit"
+        }
+      );
+
+
+    } catch {
+
+      return "";
+
+    }
+
+  }
+
+
+  /* =========================================================
+     MESSAGERIE
+  ========================================================= */
+
+  function updateMessageBadge(
+    count
+  ) {
+
+    const badge =
+      document.getElementById(
+        "messageBadge"
+      );
+
+
+    if (!badge) {
+      return;
+    }
+
+
+    if (
+      Number(count) > 0
+    ) {
+
+      badge.textContent =
+        count;
+
+
+      badge.classList.remove(
+        "hidden"
+      );
+
+
+    } else {
+
+      badge.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }
+
+
+  async function refreshMessageBadge() {
+
+    if (!currentUser) {
+
+      updateMessageBadge(
+        0
+      );
+
+      return 0;
+
+    }
+
+
+    const {
+      count,
+      error
+    } =
+      await supabaseClient
+        .from("messages")
+        .select(
+          "id",
+          {
+            count:
+              "exact",
+            head:
+              true
+          }
+        )
+        .eq(
+          "receiver_id",
+          currentUser.id
+        )
+        .eq(
+          "is_read",
+          false
+        );
+
+
+    if (error) {
+
+      console.error(
+        "❌ BADGE MESSAGES :",
+        error
+      );
+
+      return 0;
+
+    }
+
+
+    const total =
+      count || 0;
+
+
+    updateMessageBadge(
+      total
+    );
+
+
+    return total;
+
+  }
+
+
+  /* =========================================================
+     OUVRIR ESPACE MESSAGERIE
+  ========================================================= */
+
+  async function openMessagesDashboard() {
+
+    if (!currentUser) {
+
+      showSection(
+        "accountSection"
+      );
+
+
+      showMessage(
+        "accountMessage",
+        "Veuillez vous connecter pour accéder à la messagerie.",
+        "info"
+      );
+
+
+      return;
+
+    }
+
+
+    showSection(
+      "dashboardSection"
+    );
+
+
+    await loadDashboard();
+
+  }
+
+
+  /* =========================================================
+     CHARGER RESUME DES CONVERSATIONS
+  ========================================================= */
+
+  async function loadMessageConversations() {
+
+    const container =
+      document.getElementById(
+        "messagesSummaryContainer"
+      );
+
+
+    if (!container) {
+      return;
+    }
+
+
+    if (!currentUser) {
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+          Connectez-vous pour voir vos messages.
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML = `
+
+      <div class="loading-state">
+        💬 Chargement des conversations...
+      </div>
+
+    `;
+
+
+    try {
+
+      const {
+        data: messages,
+        error
+      } =
+        await supabaseClient
+          .from("messages")
+          .select("*")
+          .or(
+            "sender_id.eq." +
+            currentUser.id +
+            ",receiver_id.eq." +
+            currentUser.id
+          )
+          .order(
+            "created_at",
+            {
+              ascending:
+                false
+            }
+          );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (
+        !messages ||
+        messages.length === 0
+      ) {
+
+        container.innerHTML = `
+
+          <div class="empty-state">
+            💬 Aucune conversation pour le moment.
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      const conversations = {};
+
+
+      messages.forEach(
+        message => {
+
+          const otherId =
+            message.sender_id ===
+            currentUser.id
+              ? message.receiver_id
+              : message.sender_id;
+
+
+          const requestKey =
+            message.request_id ||
+            "general";
+
+
+          const key =
+            otherId +
+            "_" +
+            requestKey;
+
+
+          if (
+            !conversations[key]
+          ) {
+
+            conversations[key] = {
+
+              otherId,
+
+              requestId:
+                message.request_id,
+
+              latest:
+                message,
+
+              unreadCount:
+                0
+
+            };
+
+          }
+
+
+          if (
+            !message.is_read &&
+            message.receiver_id ===
+            currentUser.id
+          ) {
+
+            conversations[key]
+              .unreadCount++;
+
+          }
+
+        }
+      );
+
+
+      const conversationList =
+        Object.values(
+          conversations
+        );
+
+
+      const otherIds =
+        [
+          ...new Set(
+            conversationList.map(
+              conversation =>
+                conversation.otherId
+            )
+          )
+        ];
+
+
+      let profiles = [];
+
+
+      if (
+        otherIds.length > 0
+      ) {
+
+        const {
+          data: profileData,
+          error: profileError
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select(
+              "id, full_name, profession, user_type"
+            )
+            .in(
+              "id",
+              otherIds
+            );
+
+
+        if (profileError) {
+
+          console.error(
+            "❌ PROFILS MESSAGES :",
+            profileError
+          );
+
+        } else {
+
+          profiles =
+            profileData || [];
+
+        }
+
+      }
+
+
+      const profileMap = {};
+
+
+      profiles.forEach(
+        profile => {
+
+          profileMap[
+            profile.id
+          ] =
+            profile;
+
+        }
+      );
+
+
+      container.innerHTML = "";
+
+
+      conversationList.forEach(
+        conversation => {
+
+          const profile =
+            profileMap[
+              conversation.otherId
+            ] || {};
+
+
+          const name =
+            profile.full_name ||
+            (
+              profile.user_type ===
+              "professionnel"
+                ? "Professionnel"
+                : "Utilisateur"
+            );
+
+
+          const latestText =
+            conversation.latest.content ||
+            "";
+
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+
+          card.className =
+            "message-summary-card " +
+            (
+              conversation.unreadCount >
+              0
+                ? "unread"
+                : ""
+            );
+
+
+          card.onclick =
+            () => {
+
+              openMessagingModal(
+                conversation.otherId,
+                conversation.requestId ||
+                "",
+                name
+              );
+
+            };
+
+
+          card.innerHTML = `
+
+            <div class="message-summary-top">
+
+              <div class="message-summary-name">
+
+                💬
+                ${escapeHTML(
+                  name
+                )}
+
+              </div>
+
+
+              <div>
+
+                ${
+                  conversation.unreadCount >
+                  0
+
+                    ? `
+                      <span class="message-unread-count">
+                        ${conversation.unreadCount}
+                      </span>
+                    `
+
+                    : ""
+                }
+
+              </div>
+
+            </div>
+
+
+            <div class="message-summary-date">
+
+              ${formatDateTime(
+                conversation.latest.created_at
+              )}
+
+            </div>
+
+
+            <div class="message-summary-preview">
+
+              ${escapeHTML(
+                latestText
+              )}
+
+            </div>
+
+
+            ${
+              conversation.requestId
+
+                ? `
+                  <div
+                    style="
+                      margin-top:7px;
+                      font-size:12px;
+                      color:#0d6efd;
+                    "
+                  >
+                    📋 Conversation liée à une demande
+                  </div>
+                `
+
+                : `
+                  <div
+                    style="
+                      margin-top:7px;
+                      font-size:12px;
+                      color:#6c757d;
+                    "
+                  >
+                    💬 Conversation générale
+                  </div>
+                `
+            }
+
+          `;
+
+
+          container.appendChild(
+            card
+          );
+
+        }
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR CONVERSATIONS :",
+        error
+      );
+
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+
+          Impossible de charger les conversations.
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     OUVRIR UNE CONVERSATION
+  ========================================================= */
+
+  async function openMessagingModal(
+    receiverId,
+    requestId = "",
+    receiverName = ""
+  ) {
+
+    if (!currentUser) {
+
+      showSection(
+        "accountSection"
+      );
+
+
+      showMessage(
+        "accountMessage",
+        "Veuillez vous connecter pour utiliser la messagerie.",
+        "info"
+      );
+
+
+      return;
+
+    }
+
+
+    if (!receiverId) {
+
+      alert(
+        "Destinataire introuvable."
+      );
+
+      return;
+
+    }
+
+
+    if (
+      receiverId ===
+      currentUser.id
+    ) {
+
+      alert(
+        "Vous ne pouvez pas vous envoyer un message à vous-même."
+      );
+
+      return;
+
+    }
+
+
+    currentMessageReceiverId =
+      receiverId;
+
+
+    currentMessageRequestId =
+      requestId || null;
+
+
+    document
+      .getElementById(
+        "messageReceiverId"
+      )
+      .value =
+      receiverId;
+
+
+    document
+      .getElementById(
+        "messageRequestId"
+      )
+      .value =
+      requestId || "";
+
+
+    document
+      .getElementById(
+        "messageReceiverName"
+      )
+      .textContent =
+      receiverName ||
+      "Utilisateur";
+
+
+    const context =
+      document.getElementById(
+        "conversationContext"
+      );
+
+
+    if (context) {
+
+      context.textContent =
+        requestId
+          ? "📋 Conversation liée à une demande de service."
+          : "💬 Conversation générale.";
+
+    }
+
+
+    hideMessage(
+      "messageModalMessage"
+    );
+
+
+    document
+      .getElementById(
+        "messageContent"
+      )
+      .value =
+      "";
+
+
+    document
+      .getElementById(
+        "messageModal"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    /*
+      Si le nom n'a pas été fourni,
+      on le récupère depuis profiles.
+    */
+
+    if (
+      !receiverName
+    ) {
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("profiles")
+            .select(
+              "full_name"
+            )
+            .eq(
+              "id",
+              receiverId
+            )
+            .maybeSingle();
+
+
+        if (
+          !error &&
+          data
+        ) {
+
+          document
+            .getElementById(
+              "messageReceiverName"
+            )
+            .textContent =
+            data.full_name ||
+            "Utilisateur";
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "❌ NOM DESTINATAIRE :",
+          error
+        );
+
+      }
+
+    }
+
+
+    await loadMessagesConversation();
+
+
+    startMessageRefresh();
+
+  }
+
+
+  /* =========================================================
+     CHARGER CONVERSATION
+  ========================================================= */
+
+  async function loadMessagesConversation() {
+
+    if (
+      !currentUser ||
+      !currentMessageReceiverId
+    ) {
+
+      return;
+
+    }
+
+
+    const container =
+      document.getElementById(
+        "chatMessages"
+      );
+
+
+    if (!container) {
+      return;
+    }
+
+
+    try {
+
+      let query =
+        supabaseClient
+          .from("messages")
+          .select(
+            "*"
+          )
+          .or(
+            "and(sender_id.eq." +
+            currentUser.id +
+            ",receiver_id.eq." +
+            currentMessageReceiverId +
+            "),and(sender_id.eq." +
+            currentMessageReceiverId +
+            ",receiver_id.eq." +
+            currentUser.id +
+            ")"
+          )
+          .order(
+            "created_at",
+            {
+              ascending:
+                true
+            }
+          );
+
+
+      if (
+        currentMessageRequestId
+      ) {
+
+        query =
+          query.eq(
+            "request_id",
+            currentMessageRequestId
+          );
+
+      } else {
+
+        query =
+          query.is(
+            "request_id",
+            null
+          );
+
+      }
+
+
+      const {
+        data,
+        error
+      } =
+        await query;
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      const wasAtBottom =
+        (
+          container.scrollHeight -
+          container.scrollTop -
+          container.clientHeight
+        ) < 80;
+
+
+      if (
+        !data ||
+        data.length === 0
+      ) {
+
+        container.innerHTML = `
+
+          <div class="chat-empty">
+
+            💬 Aucun message pour le moment.<br>
+
+            Commencez la conversation.
+
+          </div>
+
+        `;
+
+      } else {
+
+        container.innerHTML = "";
+
+
+        data.forEach(
+          message => {
+
+            const mine =
+              message.sender_id ===
+              currentUser.id;
+
+
+            const row =
+              document.createElement(
+                "div"
+              );
+
+
+            row.className =
+              "chat-message-row " +
+              (
+                mine
+                  ? "mine"
+                  : "theirs"
+              );
+
+
+            const bubble =
+              document.createElement(
+                "div"
+              );
+
+
+            bubble.className =
+              "chat-message " +
+              (
+                mine
+                  ? "mine"
+                  : "theirs"
+              );
+
+
+            bubble.innerHTML = `
+
+              <div>
+                ${escapeHTML(
+                  message.content
+                )}
+              </div>
+
+              <span class="chat-message-meta">
+
+                ${formatDateTime(
+                  message.created_at
+                )}
+
+                ${
+                  mine
+                    ? " ✓"
+                    : ""
+                }
+
+              </span>
+
+            `;
+
+
+            row.appendChild(
+              bubble
+            );
+
+
+            container.appendChild(
+              row
+            );
+
+          }
+        );
+
+      }
+
+
+      /*
+        Marquer les messages reçus
+        comme lus.
+      */
+
+      let readQuery =
+        supabaseClient
+          .from("messages")
+          .update({
+            is_read:
+              true
+          })
+          .eq(
+            "receiver_id",
+            currentUser.id
+          )
+          .eq(
+            "sender_id",
+            currentMessageReceiverId
+          )
+          .eq(
+            "is_read",
+            false
+          );
+
+
+      if (
+        currentMessageRequestId
+      ) {
+
+        readQuery =
+          readQuery.eq(
+            "request_id",
+            currentMessageRequestId
+          );
+
+      } else {
+
+        readQuery =
+          readQuery.is(
+            "request_id",
+            null
+          );
+
+      }
+
+
+      const {
+        error: readError
+      } =
+        await readQuery;
+
+
+      if (readError) {
+
+        console.error(
+          "❌ ERREUR MARQUAGE LU :",
+          readError
+        );
+
+      }
+
+
+      await refreshMessageBadge();
+
+
+      /*
+        On ne déplace pas inutilement
+        la position si l'utilisateur
+        est déjà en train de lire.
+      */
+
+      if (
+        wasAtBottom ||
+        !data ||
+        data.length === 1
+      ) {
+
+        container.scrollTop =
+          container.scrollHeight;
+
+      }
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR CHARGEMENT MESSAGES :",
+        error
+      );
+
+
+      container.innerHTML = `
+
+        <div class="chat-empty">
+
+          ❌ Impossible de charger les messages.
+
+          <br><br>
+
+          ${escapeHTML(
+            error.message
+          )}
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     ENVOYER MESSAGE
+  ========================================================= */
+
+  async function sendMessage() {
+
+    if (!currentUser) {
+
+      showMessage(
+        "messageModalMessage",
+        "Vous devez être connecté.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !currentMessageReceiverId
+    ) {
+
+      showMessage(
+        "messageModalMessage",
+        "Destinataire introuvable.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const input =
+      document.getElementById(
+        "messageContent"
+      );
+
+
+    const content =
+      input.value.trim();
+
+
+    if (!content) {
+
+      showMessage(
+        "messageModalMessage",
+        "Écrivez un message avant de l'envoyer.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      content.length >
+      2000
+    ) {
+
+      showMessage(
+        "messageModalMessage",
+        "Le message est trop long.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("messages")
+          .insert({
+
+            sender_id:
+              currentUser.id,
+
+            receiver_id:
+              currentMessageReceiverId,
+
+            request_id:
+              currentMessageRequestId,
+
+            content,
+
+            is_read:
+              false
+
+          });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      input.value = "";
+
+
+      hideMessage(
+        "messageModalMessage"
+      );
+
+
+      await loadMessagesConversation();
+
+      await loadMessageConversations();
+
+      await refreshMessageBadge();
+
+
+      input.focus();
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR ENVOI MESSAGE :",
+        error
+      );
+
+
+      showMessage(
+        "messageModalMessage",
+        "❌ Impossible d'envoyer le message : " +
+        error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     ENTREE CLAVIER MESSAGERIE
+  ========================================================= */
+
+  function handleMessageKeydown(
+    event
+  ) {
+
+    /*
+      Sur ordinateur :
+      Entrée = envoyer.
+      Shift + Entrée = nouvelle ligne.
+
+      Sur téléphone :
+      le comportement normal du clavier
+      est conservé.
+    */
+
+    if (
+      event.key ===
+      "Enter" &&
+      !event.shiftKey
+    ) {
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  }
+
+
+  /* =========================================================
+     ACTUALISATION AUTOMATIQUE
+  ========================================================= */
+
+  function startMessageRefresh() {
+
+    stopMessageRefresh();
+
+
+    messageRefreshInterval =
+      setInterval(
+        async () => {
+
+          const modal =
+            document.getElementById(
+              "messageModal"
+            );
+
+
+          if (
+            modal &&
+            modal.classList.contains(
+              "active"
+            ) &&
+            currentMessageReceiverId
+          ) {
+
+            await loadMessagesConversation();
+
+          } else {
+
+            stopMessageRefresh();
+
+          }
+
+        },
+        8000
+      );
+
+  }
+
+
+  function stopMessageRefresh() {
+
+    if (
+      messageRefreshInterval
+    ) {
+
+      clearInterval(
+        messageRefreshInterval
+      );
+
+
+      messageRefreshInterval =
+        null;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     FERMER MESSAGERIE
+  ========================================================= */
+
+  function closeMessageModal() {
+
+    stopMessageRefresh();
+
+
+    const modal =
+      document.getElementById(
+        "messageModal"
+      );
+
+
+    if (modal) {
+
+      modal.classList.remove(
+        "active"
+      );
+
+    }
+
+
+    currentMessageReceiverId =
+      null;
+
+
+    currentMessageRequestId =
+      null;
+
+
+    const input =
+      document.getElementById(
+        "messageContent"
+      );
+
+
+    if (input) {
+      input.value = "";
+    }
+
+  }
+
+
+  /* =========================================================
      DASHBOARD
   ========================================================= */
 
@@ -5820,7 +7547,11 @@
 
     await loadClientRequests();
 
+    await loadMessageConversations();
+
     await refreshNotificationBadge();
+
+    await refreshMessageBadge();
 
   }
 
@@ -5861,6 +7592,8 @@
 
       await refreshNotificationBadge();
 
+      await refreshMessageBadge();
+
 
     } else {
 
@@ -5879,6 +7612,10 @@
 
 
       updateNotificationBadge(
+        0
+      );
+
+      updateMessageBadge(
         0
       );
 
@@ -5919,6 +7656,8 @@
 
           await refreshNotificationBadge();
 
+          await refreshMessageBadge();
+
 
         } else {
 
@@ -5937,6 +7676,10 @@
 
 
           updateNotificationBadge(
+            0
+          );
+
+          updateMessageBadge(
             0
           );
 
@@ -5968,8 +7711,6 @@
       /*
         Chargement des professionnels
         en arrière-plan.
-        Cette fonction ne change pas
-        la section affichée.
       */
 
       await searchProfessionals();
@@ -6004,6 +7745,12 @@
         );
 
 
+      const messageModal =
+        document.getElementById(
+          "messageModal"
+        );
+
+
       if (
         event.target ===
         requestModal
@@ -6033,6 +7780,16 @@
 
       }
 
+
+      if (
+        event.target ===
+        messageModal
+      ) {
+
+        closeMessageModal();
+
+      }
+
     }
   );
 
@@ -6058,6 +7815,8 @@
       closeReviewModal();
 
       closeProfessionalDetail();
+
+      closeMessageModal();
 
     }
   );
