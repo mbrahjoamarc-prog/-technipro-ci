@@ -4,76 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TechniPro CI - Trouvez un professionnel</title>
+  <title>TechniPro CI</title>
 
-  <!-- ================= SUPABASE ================= -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
       background: #f5f7fa;
       color: #222;
     }
 
     header {
-      background: #0d6efd;
+      background: #0b5ed7;
       color: white;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 25px;
       font-weight: bold;
-      white-space: nowrap;
     }
 
     nav {
       display: flex;
-      align-items: center;
-      gap: 15px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    nav a,
     nav button {
-      color: white;
-      text-decoration: none;
-      background: none;
       border: none;
+      background: transparent;
+      color: white;
       cursor: pointer;
       font-size: 15px;
+      padding: 8px;
     }
 
-    nav a:hover,
     nav button:hover {
       text-decoration: underline;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0d6efd, #004bb5);
+      background: linear-gradient(135deg, #0b5ed7, #084298);
       color: white;
+      padding: 70px 5%;
       text-align: center;
-      padding: 70px 20px;
     }
 
     .hero h1 {
@@ -87,404 +74,307 @@
     }
 
     .search-box {
-      max-width: 850px;
+      max-width: 900px;
       margin: auto;
       background: white;
       padding: 15px;
       border-radius: 12px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
       gap: 10px;
-      flex-wrap: wrap;
     }
 
-    .search-box input,
-    .search-box select {
-      flex: 1;
-      min-width: 200px;
-      padding: 14px;
-      border: 1px solid #ddd;
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 15px;
     }
 
-    .search-box button {
-      padding: 14px 22px;
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: #0b5ed7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .primary-btn:hover {
+      background: #084298;
+    }
+
+    .green-btn {
       background: #198754;
       color: white;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
+      padding: 12px 18px;
+      font-size: 15px;
       font-weight: bold;
     }
 
-    .search-box button:hover {
-      background: #157347;
+    .green-btn:hover {
+      background: #146c43;
     }
 
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
+    .red-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-weight: bold;
     }
 
-    .section h2 {
+    .gray-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 50px 5%;
+    }
+
+    .section-title {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       font-size: 30px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .service-card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
-
-    .service-card .icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .service-card h3 {
-      margin-bottom: 10px;
-    }
-
-    .professional-grid {
+    .services-grid,
+    .professional-grid,
+    .requests-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
 
-    .professional-card {
+    .service-card,
+    .professional-card,
+    .request-card,
+    .account-card,
+    .dashboard-card {
       background: white;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
+    .service-card {
+      text-align: center;
+    }
+
+    .service-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .service-icon {
+      font-size: 45px;
+    }
+
     .professional-card h3 {
-      color: #0d6efd;
-      margin-bottom: 15px;
+      color: #0b5ed7;
+      margin-bottom: 8px;
     }
 
     .professional-card p {
-      margin: 7px 0;
-      line-height: 1.5;
-    }
-
-    .professional-card button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 8px;
-      background: #198754;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .professional-card button:hover {
-      background: #157347;
-    }
-
-    .account-box {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
-
-    .account-box h2 {
-      margin-bottom: 25px;
-    }
-
-    .account-box input,
-    .account-box select,
-    .account-box textarea,
-    .profile-form input,
-    .profile-form textarea {
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .account-box input:focus,
-    .account-box select:focus,
-    .account-box textarea:focus,
-    .profile-form input:focus,
-    .profile-form textarea:focus {
-      border-color: #0d6efd;
-    }
-
-    .account-box textarea,
-    .profile-form textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .account-box button,
-    .save-button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #0d6efd;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .account-box button:hover,
-    .save-button:hover {
-      background: #0b5ed7;
-    }
-
-    .switch-mode {
-      text-align: center;
-      margin-top: 15px;
-      color: #0d6efd;
-      cursor: pointer;
-    }
-
-    .switch-mode:hover {
-      text-decoration: underline;
-    }
-
-    .dashboard {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
-
-    .dashboard > h2 {
-      margin-bottom: 25px;
-    }
-
-    .dashboard-info {
-      margin-bottom: 30px;
-    }
-
-    .dashboard-info p {
       margin: 8px 0;
       line-height: 1.5;
     }
 
-    .profile-form {
-      margin-top: 30px;
-      padding: 25px;
-      background: #f8f9fa;
-      border-radius: 12px;
+    .professional-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+      flex-wrap: wrap;
     }
 
-    .profile-form h3 {
-      margin-bottom: 20px;
+    .professional-actions button {
+      flex: 1;
+      min-width: 120px;
     }
 
-    .logout-button {
-      background: #dc3545 !important;
-      padding: 8px 12px !important;
-      border-radius: 6px !important;
+    .hidden {
+      display: none !important;
     }
 
-    .logout-button:hover {
-      background: #bb2d3b !important;
-      text-decoration: none !important;
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    .switch-form {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .switch-form button {
+      background: none;
+      border: none;
+      color: #0b5ed7;
+      font-weight: bold;
     }
 
     .message {
-      text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
-      line-height: 1.5;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
+      display: none;
     }
 
     .success {
-      color: #198754;
+      background: #d1e7dd;
+      color: #0f5132;
     }
 
     .error {
-      color: #dc3545;
+      background: #f8d7da;
+      color: #842029;
     }
 
-    .loading {
-      color: #0d6efd;
+    .info {
+      background: #cff4fc;
+      color: #055160;
     }
 
-    .empty-message {
-      text-align: center;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
+    .dashboard-info {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-info p {
+      margin: 8px 0;
+    }
+
+    .request-card {
+      border-left: 5px solid #0b5ed7;
+    }
+
+    .request-card h3 {
+      color: #0b5ed7;
+      margin-bottom: 12px;
+    }
+
+    .request-card p {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    .request-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .status-en-attente {
+      background: #fff3cd;
+      color: #664d03;
+    }
+
+    .status-acceptee {
+      background: #d1e7dd;
+      color: #0f5132;
+    }
+
+    .status-refusee {
+      background: #f8d7da;
+      color: #842029;
     }
 
     footer {
       background: #212529;
       color: white;
       text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
-    }
-
-    #professionalsSection {
-      display: none;
-    }
-
-    #accountSection {
-      display: none;
-    }
-
-    #dashboardSection {
-      display: none;
+      padding: 30px;
+      margin-top: 30px;
     }
 
     @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 30px;
+      }
 
-      .navbar {
-        flex-direction: column;
+      .search-box {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        justify-content: center;
       }
 
       nav {
         justify-content: center;
       }
-
-      .hero h1 {
-        font-size: 30px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-box input,
-      .search-box select,
-      .search-box button {
-        width: 100%;
-        min-width: 100%;
-      }
-
-      .section {
-        padding: 40px 15px;
-      }
-
-      .dashboard {
-        padding: 20px;
-      }
-
     }
-
   </style>
 </head>
 
 <body>
 
+<header>
+  <div class="logo">🔧 TechniPro CI</div>
 
-  <!-- =====================================================
-       HEADER
-  ===================================================== -->
-
-  <header>
-
-    <div class="navbar">
-
-      <div class="logo">
-        🛠️ TechniPro CI
-      </div>
-
-      <nav>
-
-        <a href="#accueil">
-          Accueil
-        </a>
-
-        <a href="#servicesSection">
-          Services
-        </a>
-
-        <a
-          href="#professionalsSection"
-          onclick="showProfessionalsSection()"
-        >
-          Professionnels
-        </a>
-
-        <button
-          id="accountButton"
-          onclick="showAccount()"
-        >
-          Mon compte
-        </button>
-
-        <button
-          id="dashboardButton"
-          onclick="showDashboard()"
-          style="display:none;"
-        >
-          Mon espace
-        </button>
-
-        <button
-          id="logoutButton"
-          class="logout-button"
-          onclick="logout()"
-          style="display:none;"
-        >
-          Déconnexion
-        </button>
-
-      </nav>
-
-    </div>
-
-  </header>
+  <nav>
+    <button onclick="showSection('homeSection')">Accueil</button>
+    <button onclick="showSection('servicesSection')">Services</button>
+    <button onclick="showSection('professionalsSection')">Professionnels</button>
+    <button onclick="showSection('accountSection')">Mon compte</button>
+    <button onclick="showSection('dashboardSection')">Mon espace</button>
+    <button id="logoutBtn" onclick="logout()" class="hidden">Déconnexion</button>
+  </nav>
+</header>
 
 
-  <!-- =====================================================
-       ACCUEIL
-  ===================================================== -->
+<!-- ACCUEIL -->
+<section id="homeSection">
 
-  <section
-    class="hero"
-    id="accueil"
-  >
-
-    <h1>
-      Trouvez le professionnel qu'il vous faut
-    </h1>
+  <div class="hero">
+    <h1>Trouvez le professionnel qu'il vous faut</h1>
 
     <p>
       TechniPro CI vous met en relation avec des professionnels
       près de chez vous.
     </p>
-
 
     <div class="search-box">
 
@@ -494,2177 +384,2099 @@
         placeholder="Ex : Électricien, plombier..."
       >
 
-
       <select id="searchCity">
-
-        <option value="">
-          Toutes les villes
-        </option>
-
-        <option value="Abidjan">
-          Abidjan
-        </option>
-
-        <option value="Bouaké">
-          Bouaké
-        </option>
-
-        <option value="Yamoussoukro">
-          Yamoussoukro
-        </option>
-
-        <option value="Korhogo">
-          Korhogo
-        </option>
-
-        <option value="San-Pédro">
-          San-Pédro
-        </option>
-
-        <option value="Daloa">
-          Daloa
-        </option>
-
-        <option value="Man">
-          Man
-        </option>
-
+        <option value="">Toutes les villes</option>
+        <option value="Abidjan">Abidjan</option>
+        <option value="Bouaké">Bouaké</option>
+        <option value="Yamoussoukro">Yamoussoukro</option>
+        <option value="Korhogo">Korhogo</option>
+        <option value="San-Pédro">San-Pédro</option>
+        <option value="Daloa">Daloa</option>
+        <option value="Man">Man</option>
+        <option value="Abengourou">Abengourou</option>
+        <option value="Grand-Bassam">Grand-Bassam</option>
       </select>
 
-
-      <button
-        onclick="searchProfessionals()"
-      >
+      <button class="primary-btn" onclick="searchProfessionals()">
         🔎 Rechercher
       </button>
 
     </div>
+  </div>
 
-  </section>
-
-
-  <!-- =====================================================
-       SERVICES
-  ===================================================== -->
-
-  <section
-    class="section"
-    id="servicesSection"
-  >
-
-    <h2>
-      Nos services
-    </h2>
+</section>
 
 
-    <div class="services-grid">
+<!-- SERVICES -->
+<section id="servicesSection">
 
+  <h2 class="section-title">Nos services</h2>
 
-      <div
-        class="service-card"
-        onclick="selectService('Électricien')"
-      >
+  <div class="services-grid">
 
-        <div class="icon">
-          ⚡
-        </div>
-
-        <h3>
-          Électricité
-        </h3>
-
-        <p>
-          Installation et dépannage électrique.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Plombier')"
-      >
-
-        <div class="icon">
-          🚰
-        </div>
-
-        <h3>
-          Plomberie
-        </h3>
-
-        <p>
-          Réparation et installation sanitaire.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Maçon')"
-      >
-
-        <div class="icon">
-          🧱
-        </div>
-
-        <h3>
-          Maçonnerie
-        </h3>
-
-        <p>
-          Construction et travaux de maçonnerie.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Peintre')"
-      >
-
-        <div class="icon">
-          🎨
-        </div>
-
-        <h3>
-          Peinture
-        </h3>
-
-        <p>
-          Peinture intérieure et extérieure.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Menuisier')"
-      >
-
-        <div class="icon">
-          🪚
-        </div>
-
-        <h3>
-          Menuiserie
-        </h3>
-
-        <p>
-          Travaux de bois et fabrication.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Mécanicien')"
-      >
-
-        <div class="icon">
-          🔧
-        </div>
-
-        <h3>
-          Mécanique
-        </h3>
-
-        <p>
-          Entretien et réparation automobile.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Climatisation')"
-      >
-
-        <div class="icon">
-          ❄️
-        </div>
-
-        <h3>
-          Climatisation
-        </h3>
-
-        <p>
-          Installation et entretien de climatiseurs.
-        </p>
-
-      </div>
-
-
-      <div
-        class="service-card"
-        onclick="selectService('Informatique')"
-      >
-
-        <div class="icon">
-          💻
-        </div>
-
-        <h3>
-          Informatique
-        </h3>
-
-        <p>
-          Assistance informatique et dépannage.
-        </p>
-
-      </div>
-
-
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Électricien</h3>
+      <p>Installations et dépannages électriques.</p>
+      <button class="primary-btn" onclick="selectService('Électricien')">
+        Rechercher
+      </button>
     </div>
 
-  </section>
+    <div class="service-card">
+      <div class="service-icon">🚰</div>
+      <h3>Plombier</h3>
+      <p>Installation et réparation de plomberie.</p>
+      <button class="primary-btn" onclick="selectService('Plombier')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🧱</div>
+      <h3>Maçon</h3>
+      <p>Travaux de construction et rénovation.</p>
+      <button class="primary-btn" onclick="selectService('Maçon')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Peintre</h3>
+      <p>Peinture intérieure et extérieure.</p>
+      <button class="primary-btn" onclick="selectService('Peintre')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🪚</div>
+      <h3>Menuisier</h3>
+      <p>Travaux de menuiserie et fabrication.</p>
+      <button class="primary-btn" onclick="selectService('Menuisier')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>Mécanicien</h3>
+      <p>Entretien et réparation automobile.</p>
+      <button class="primary-btn" onclick="selectService('Mécanicien')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">❄️</div>
+      <h3>Climatisation</h3>
+      <p>Installation et dépannage de climatiseurs.</p>
+      <button class="primary-btn" onclick="selectService('Climatisation')">
+        Rechercher
+      </button>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💻</div>
+      <h3>Informatique</h3>
+      <p>Assistance informatique et dépannage.</p>
+      <button class="primary-btn" onclick="selectService('Informatique')">
+        Rechercher
+      </button>
+    </div>
+
+  </div>
+
+</section>
 
 
-  <!-- =====================================================
-       PROFESSIONNELS
-  ===================================================== -->
+<!-- PROFESSIONNELS -->
+<section id="professionalsSection">
 
-  <section
-    class="section"
-    id="professionalsSection"
-  >
+  <h2 class="section-title">Professionnels disponibles</h2>
 
-    <h2>
-      Professionnels disponibles
-    </h2>
+  <div id="searchMessage" class="message"></div>
+
+  <div id="professionalsGrid" class="professional-grid"></div>
+
+</section>
 
 
-    <div
-      id="professionalsList"
-      class="professional-grid"
-    ></div>
+<!-- COMPTE -->
+<section id="accountSection">
+
+  <h2 class="section-title">Mon compte</h2>
+
+  <div class="form-container">
+
+    <div id="accountMessage" class="message"></div>
 
 
-    <p
-      id="searchMessage"
-      class="message"
-    ></p>
+    <!-- INSCRIPTION -->
+    <div id="registerCard" class="account-card">
 
-  </section>
-
-
-  <!-- =====================================================
-       COMPTE
-  ===================================================== -->
-
-  <section
-    class="section"
-    id="accountSection"
-  >
-
-    <div class="account-box">
-
-
-      <h2 id="accountTitle">
+      <h2 style="margin-bottom:20px;">
         Créer un compte
       </h2>
 
+      <form onsubmit="registerUser(event)">
 
-      <!-- ================= INSCRIPTION ================= -->
+        <div class="form-group">
+          <label>Nom complet</label>
+          <input
+            type="text"
+            id="registerName"
+            required
+            placeholder="Votre nom complet"
+          >
+        </div>
 
-      <div id="registerForm">
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input
+            type="tel"
+            id="registerPhone"
+            required
+            placeholder="Ex : 0700000000"
+          >
+        </div>
 
+        <div class="form-group">
+          <label>Ville</label>
+          <select id="registerCity" required>
+            <option value="">Choisir une ville</option>
+            <option value="Abidjan">Abidjan</option>
+            <option value="Bouaké">Bouaké</option>
+            <option value="Yamoussoukro">Yamoussoukro</option>
+            <option value="Korhogo">Korhogo</option>
+            <option value="San-Pédro">San-Pédro</option>
+            <option value="Daloa">Daloa</option>
+            <option value="Man">Man</option>
+            <option value="Abengourou">Abengourou</option>
+            <option value="Grand-Bassam">Grand-Bassam</option>
+          </select>
+        </div>
 
-        <input
-          type="text"
-          id="registerName"
-          placeholder="Nom complet"
-        >
+        <div class="form-group">
+          <label>Type de compte</label>
+          <select id="registerType" required>
+            <option value="">Choisir</option>
+            <option value="client">Client</option>
+            <option value="professionnel">Professionnel</option>
+          </select>
+        </div>
 
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            id="registerEmail"
+            required
+            placeholder="Votre email"
+          >
+        </div>
 
-        <input
-          type="tel"
-          id="registerPhone"
-          placeholder="Numéro de téléphone"
-        >
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input
+            type="password"
+            id="registerPassword"
+            required
+            minlength="6"
+            placeholder="Minimum 6 caractères"
+          >
+        </div>
 
-
-        <select id="registerCity">
-
-          <option value="">
-            Choisissez votre ville
-          </option>
-
-          <option value="Abidjan">
-            Abidjan
-          </option>
-
-          <option value="Bouaké">
-            Bouaké
-          </option>
-
-          <option value="Yamoussoukro">
-            Yamoussoukro
-          </option>
-
-          <option value="Korhogo">
-            Korhogo
-          </option>
-
-          <option value="San-Pédro">
-            San-Pédro
-          </option>
-
-          <option value="Daloa">
-            Daloa
-          </option>
-
-          <option value="Man">
-            Man
-          </option>
-
-        </select>
-
-
-        <select id="registerType">
-
-          <option value="">
-            Type de compte
-          </option>
-
-          <option value="client">
-            Client
-          </option>
-
-          <option value="professionnel">
-            Professionnel
-          </option>
-
-        </select>
-
-
-        <input
-          type="email"
-          id="registerEmail"
-          placeholder="Adresse e-mail"
-        >
-
-
-        <input
-          type="password"
-          id="registerPassword"
-          placeholder="Mot de passe"
-        >
-
-
-        <button
-          onclick="register()"
-        >
+        <button type="submit" class="primary-btn" style="width:100%;">
           Créer mon compte
         </button>
 
+      </form>
 
-        <p
-          id="registerMessage"
-          class="message"
-        ></p>
-
-
-        <p
-          class="switch-mode"
-          onclick="showLoginForm()"
-        >
-          J'ai déjà un compte
-        </p>
-
-
+      <div class="switch-form">
+        Déjà inscrit ?
+        <button onclick="showLoginForm()">Se connecter</button>
       </div>
 
-
-      <!-- ================= CONNEXION ================= -->
-
-      <div
-        id="loginForm"
-        style="display:none;"
-      >
+    </div>
 
 
-        <input
-          type="email"
-          id="loginEmail"
-          placeholder="Adresse e-mail"
-        >
+    <!-- CONNEXION -->
+    <div id="loginCard" class="account-card hidden">
 
+      <h2 style="margin-bottom:20px;">
+        Se connecter
+      </h2>
 
-        <input
-          type="password"
-          id="loginPassword"
-          placeholder="Mot de passe"
-        >
+      <form onsubmit="loginUser(event)">
 
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            id="loginEmail"
+            required
+            placeholder="Votre email"
+          >
+        </div>
 
-        <button
-          onclick="login()"
-        >
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input
+            type="password"
+            id="loginPassword"
+            required
+            placeholder="Votre mot de passe"
+          >
+        </div>
+
+        <button type="submit" class="primary-btn" style="width:100%;">
           Se connecter
         </button>
 
+      </form>
 
-        <p
-          id="loginMessage"
-          class="message"
-        ></p>
+      <div class="switch-form">
+        Pas encore de compte ?
+        <button onclick="showRegisterForm()">Créer un compte</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-        <p
-          class="switch-mode"
-          onclick="showRegisterForm()"
-        >
-          Créer un compte
+<!-- ESPACE PERSONNEL -->
+<section id="dashboardSection">
+
+  <h2 class="section-title">Mon espace</h2>
+
+  <div class="form-container">
+
+    <div id="dashboardMessage" class="message"></div>
+
+    <div id="dashboardContent">
+
+      <div class="dashboard-card">
+
+        <h2>Mon profil</h2>
+
+        <div id="userInformation" class="dashboard-info">
+          Chargement...
+        </div>
+
+      </div>
+
+
+      <!-- PROFIL PROFESSIONNEL -->
+      <div id="professionalProfileCard"
+           class="dashboard-card"
+           style="margin-top:20px;">
+
+        <h2>Mon profil professionnel</h2>
+
+        <p style="margin:10px 0 20px;">
+          Complétez votre profil afin que les clients puissent vous trouver.
         </p>
 
+        <form onsubmit="saveProfessionalProfile(event)">
+
+          <div class="form-group">
+            <label>Profession</label>
+            <input
+              type="text"
+              id="professionalProfession"
+              placeholder="Ex : Électricien"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>Quartier</label>
+            <input
+              type="text"
+              id="professionalQuartier"
+              placeholder="Ex : Abobo Anonkoua-Kouté"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>Services proposés</label>
+            <input
+              type="text"
+              id="professionalServices"
+              placeholder="Ex : Installation, dépannage, réparation"
+            >
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              id="professionalDescription"
+              placeholder="Présentez votre activité..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="green-btn"
+            style="width:100%;"
+          >
+            💾 Enregistrer mon profil professionnel
+          </button>
+
+        </form>
 
       </div>
 
 
+      <!-- DEMANDES DU PROFESSIONNEL -->
+      <div id="professionalRequestsCard"
+           class="dashboard-card"
+           style="margin-top:20px;">
+
+        <h2>📨 Demandes de services reçues</h2>
+
+        <p style="margin:10px 0 20px;">
+          Les clients qui vous envoient une demande apparaîtront ici.
+        </p>
+
+        <div id="professionalRequests"
+             class="requests-grid">
+        </div>
+
+      </div>
+
+
+      <!-- DEMANDES DU CLIENT -->
+      <div id="clientRequestsCard"
+           class="dashboard-card"
+           style="margin-top:20px;">
+
+        <h2>📋 Mes demandes de services</h2>
+
+        <p style="margin:10px 0 20px;">
+          Retrouvez ici les demandes que vous avez envoyées.
+        </p>
+
+        <div id="clientRequests"
+             class="requests-grid">
+        </div>
+
+      </div>
+
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- =====================================================
-       TABLEAU DE BORD
-  ===================================================== -->
+<footer>
+  <p>© 2026 TechniPro CI — Tous droits réservés.</p>
+</footer>
 
-  <section
-    class="section"
-    id="dashboardSection"
+
+<!-- MODAL DEMANDE DE SERVICE -->
+<div
+  id="requestModal"
+  class="hidden"
+  style="
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  "
+>
+
+  <div
+    style="
+      background:white;
+      width:100%;
+      max-width:600px;
+      max-height:90vh;
+      overflow:auto;
+      border-radius:15px;
+      padding:25px;
+    "
   >
 
-    <div class="dashboard">
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+    ">
 
+      <h2>📨 Demander un service</h2>
 
-      <h2>
-        Mon espace
-      </h2>
-
-
-      <div
-        id="dashboardInfo"
-        class="dashboard-info"
-      ></div>
-
-
-      <!-- ================= PROFIL PROFESSIONNEL ================= -->
-
-      <div
-        id="professionalForm"
-        class="profile-form"
-        style="display:none;"
+      <button
+        onclick="closeRequestModal()"
+        style="
+          border:none;
+          background:none;
+          font-size:25px;
+          cursor:pointer;
+        "
       >
-
-        <h3>
-          🧑‍🔧 Mon profil professionnel
-        </h3>
-
-
-        <input
-          type="text"
-          id="profession"
-          placeholder="Votre profession (ex : Électricien)"
-        >
-
-
-        <input
-          type="text"
-          id="quartier"
-          placeholder="Votre quartier"
-        >
-
-
-        <input
-          type="text"
-          id="services"
-          placeholder="Services proposés (ex : installation, dépannage...)"
-        >
-
-
-        <textarea
-          id="description"
-          placeholder="Présentez votre activité et votre expérience..."
-        ></textarea>
-
-
-        <button
-          class="save-button"
-          onclick="saveProfessionalProfile()"
-        >
-          💾 Enregistrer mon profil professionnel
-        </button>
-
-
-        <p
-          id="profileMessage"
-          class="message"
-        ></p>
-
-
-      </div>
-
+        ×
+      </button>
 
     </div>
 
-  </section>
-
-
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
-
-  <footer>
-
-    <p>
-      © 2026 TechniPro CI - Tous droits réservés
-    </p>
-
-    <p style="margin-top:10px;">
-      Trouvez facilement un professionnel en Côte d'Ivoire.
-    </p>
-
-  </footer>
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ===================================================== -->
-
-  <script>
-
-
-    /* =====================================================
-       CONFIGURATION SUPABASE
-    ===================================================== */
-
-    const SUPABASE_URL =
-      "https://spznzkneagjawragvijg.supabase.co";
-
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
-
-
-    const {
-      createClient
-    } = supabase;
-
-
-    const supabaseClient =
-      createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
-
-
-    /* =====================================================
-       OUTILS
-    ===================================================== */
-
-    function escapeHTML(value) {
-
-      return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    }
-
-
-    function setMessage(
-      element,
-      text,
-      type = ""
-    ) {
-
-      if (!element) {
-        return;
-      }
-
-      element.textContent = text;
-
-      element.className =
-        "message " + type;
-
-    }
-
-
-    /* =====================================================
-       AFFICHER LE COMPTE
-    ===================================================== */
-
-    function showAccount() {
-
-      document.getElementById(
-        "accountSection"
-      ).style.display = "block";
-
-
-      document.getElementById(
-        "dashboardSection"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "professionalsSection"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "accountSection"
-      ).scrollIntoView({
-        behavior: "smooth"
-      });
-
-    }
-
-
-    /* =====================================================
-       FORMULAIRE INSCRIPTION
-    ===================================================== */
-
-    function showRegisterForm() {
-
-      document.getElementById(
-        "registerForm"
-      ).style.display = "block";
-
-
-      document.getElementById(
-        "loginForm"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "accountTitle"
-      ).textContent =
-        "Créer un compte";
-
-    }
-
-
-    /* =====================================================
-       FORMULAIRE CONNEXION
-    ===================================================== */
-
-    function showLoginForm() {
-
-      document.getElementById(
-        "registerForm"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "loginForm"
-      ).style.display = "block";
-
-
-      document.getElementById(
-        "accountTitle"
-      ).textContent =
-        "Connexion";
-
-    }
-
-
-    /* =====================================================
-       INSCRIPTION
-    ===================================================== */
-
-    async function register() {
-
-      const fullName =
-        document
-          .getElementById("registerName")
-          .value
-          .trim();
-
-
-      const phone =
-        document
-          .getElementById("registerPhone")
-          .value
-          .trim();
-
-
-      const city =
-        document
-          .getElementById("registerCity")
-          .value;
-
-
-      const userType =
-        document
-          .getElementById("registerType")
-          .value;
-
-
-      const email =
-        document
-          .getElementById("registerEmail")
-          .value
-          .trim();
-
-
-      const password =
-        document
-          .getElementById("registerPassword")
-          .value;
-
-
-      const message =
-        document.getElementById(
-          "registerMessage"
-        );
-
-
-      setMessage(
-        message,
-        "",
-        ""
-      );
-
-
-      if (
-        !fullName ||
-        !phone ||
-        !city ||
-        !userType ||
-        !email ||
-        !password
-      ) {
-
-        setMessage(
-          message,
-          "Veuillez remplir tous les champs.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if (password.length < 6) {
-
-        setMessage(
-          message,
-          "Le mot de passe doit contenir au moins 6 caractères.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      setMessage(
-        message,
-        "Création du compte en cours...",
-        "loading"
-      );
-
-
-      try {
-
-
-        /* ================= CRÉATION COMPTE AUTH ================= */
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .auth
-            .signUp({
-
-              email: email,
-
-              password: password
-
-            });
-
-
-        if (error) {
-
-          setMessage(
-            message,
-            "❌ Erreur : " + error.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        const user =
-          data.user;
-
-
-        if (!user) {
-
-          setMessage(
-            message,
-            "❌ Le compte n'a pas pu être créé.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        /* ================= CRÉATION PROFIL ================= */
-
-        const {
-          error: profileError
-        } =
-          await supabaseClient
-            .from("profiles")
-            .insert({
-
-              id: user.id,
-
-              full_name: fullName,
-
-              phone: phone,
-
-              city: city,
-
-              user_type: userType
-
-            });
-
-
-        if (profileError) {
-
-          console.error(
-            "Erreur profil :",
-            profileError
-          );
-
-
-          setMessage(
-            message,
-            "Compte créé mais erreur lors de la création du profil : " +
-            profileError.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        setMessage(
-          message,
-          "✅ Compte créé avec succès !",
-          "success"
-        );
-
-
-        /* ================= NETTOYAGE ================= */
-
-        document.getElementById(
-          "registerName"
-        ).value = "";
-
-
-        document.getElementById(
-          "registerPhone"
-        ).value = "";
-
-
-        document.getElementById(
-          "registerCity"
-        ).value = "";
-
-
-        document.getElementById(
-          "registerType"
-        ).value = "";
-
-
-        document.getElementById(
-          "registerEmail"
-        ).value = "";
-
-
-        document.getElementById(
-          "registerPassword"
-        ).value = "";
-
-
-        /*
-          Après inscription, on affiche
-          la connexion.
-        */
-
-        setTimeout(
-          () => {
-
-            showLoginForm();
-
-          },
-          1500
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        setMessage(
-          message,
-          "❌ Erreur inattendue : " +
-          error.message,
-          "error"
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       CONNEXION
-    ===================================================== */
-
-    async function login() {
-
-      const email =
-        document
-          .getElementById("loginEmail")
-          .value
-          .trim();
-
-
-      const password =
-        document
-          .getElementById("loginPassword")
-          .value;
-
-
-      const message =
-        document.getElementById(
-          "loginMessage"
-        );
-
-
-      setMessage(
-        message,
-        "",
-        ""
-      );
-
-
-      if (!email || !password) {
-
-        setMessage(
-          message,
-          "Veuillez remplir tous les champs.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      setMessage(
-        message,
-        "Connexion en cours...",
-        "loading"
-      );
-
-
-      try {
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .auth
-            .signInWithPassword({
-
-              email: email,
-
-              password: password
-
-            });
-
-
-        if (error) {
-
-          setMessage(
-            message,
-            "❌ Erreur : " +
-            error.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        if (!data.user) {
-
-          setMessage(
-            message,
-            "❌ Impossible de récupérer votre compte.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        setMessage(
-          message,
-          "✅ Connexion réussie !",
-          "success"
-        );
-
-
-        updateNavigation(
-          true
-        );
-
-
-        setTimeout(
-          () => {
-
-            showDashboard();
-
-          },
-          700
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        setMessage(
-          message,
-          "❌ Erreur inattendue : " +
-          error.message,
-          "error"
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       TABLEAU DE BORD
-    ===================================================== */
-
-    async function showDashboard() {
-
-      const {
-        data: {
-          user
-        },
-        error: userError
-      } =
-        await supabaseClient
-          .auth
-          .getUser();
-
-
-      if (
-        userError ||
-        !user
-      ) {
-
-        showAccount();
-
-        return;
-
-      }
-
-
-      document.getElementById(
-        "accountSection"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "professionalsSection"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "dashboardSection"
-      ).style.display = "block";
-
-
-      document.getElementById(
-        "dashboardSection"
-      ).scrollIntoView({
-        behavior: "smooth"
-      });
-
-
-      const dashboardInfo =
-        document.getElementById(
-          "dashboardInfo"
-        );
-
-
-      dashboardInfo.innerHTML =
-        "<p>Chargement de votre profil...</p>";
-
-
-      try {
-
-
-        const {
-          data: profile,
-          error
-        } =
-          await supabaseClient
-            .from("profiles")
-            .select(
-              "full_name, phone, city, user_type, profession, description, services, quartier"
-            )
-            .eq(
-              "id",
-              user.id
-            )
-            .maybeSingle();
-
-
-        if (error) {
-
-          console.error(
-            "Erreur profil :",
-            error
-          );
-
-
-          dashboardInfo.innerHTML = `
-            <p class="error">
-              Impossible de charger votre profil.
-            </p>
-          `;
-
-          return;
-
-        }
-
-
-        if (!profile) {
-
-          dashboardInfo.innerHTML = `
-            <p class="error">
-              Profil introuvable.
-            </p>
-          `;
-
-          return;
-
-        }
-
-
-        /* ================= INFORMATIONS COMPTE ================= */
-
-        dashboardInfo.innerHTML = `
-
-          <p>
-            <strong>Nom :</strong>
-            ${escapeHTML(profile.full_name)}
-          </p>
-
-          <p>
-            <strong>Téléphone :</strong>
-            ${escapeHTML(profile.phone)}
-          </p>
-
-          <p>
-            <strong>Ville :</strong>
-            ${escapeHTML(profile.city)}
-          </p>
-
-          <p>
-            <strong>Type de compte :</strong>
-            ${escapeHTML(profile.user_type)}
-          </p>
-
-        `;
-
-
-        /* ================= PROFIL PROFESSIONNEL ================= */
-
-        const professionalForm =
-          document.getElementById(
-            "professionalForm"
-          );
-
-
-        if (
-          profile.user_type ===
-          "professionnel"
-        ) {
-
-
-          professionalForm.style.display =
-            "block";
-
-
-          document.getElementById(
-            "profession"
-          ).value =
-            profile.profession || "";
-
-
-          document.getElementById(
-            "quartier"
-          ).value =
-            profile.quartier || "";
-
-
-          document.getElementById(
-            "services"
-          ).value =
-            profile.services || "";
-
-
-          document.getElementById(
-            "description"
-          ).value =
-            profile.description || "";
-
-        }
-
-        else {
-
-          professionalForm.style.display =
-            "none";
-
-        }
-
-
-        updateNavigation(
-          true
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        dashboardInfo.innerHTML = `
-          <p class="error">
-            Une erreur est survenue.
-          </p>
-        `;
-
-      }
-
-    }
-
-
-    /* =====================================================
-       ENREGISTRER PROFIL PROFESSIONNEL
-    ===================================================== */
-
-    async function saveProfessionalProfile() {
-
-      const profession =
-        document
-          .getElementById("profession")
-          .value
-          .trim();
-
-
-      const quartier =
-        document
-          .getElementById("quartier")
-          .value
-          .trim();
-
-
-      const services =
-        document
-          .getElementById("services")
-          .value
-          .trim();
-
-
-      const description =
-        document
-          .getElementById("description")
-          .value
-          .trim();
-
-
-      const message =
-        document.getElementById(
-          "profileMessage"
-        );
-
-
-      setMessage(
-        message,
-        "",
-        ""
-      );
-
-
-      /* ================= VALIDATION ================= */
-
-      if (
-        !profession ||
-        !services
-      ) {
-
-        setMessage(
-          message,
-          "Veuillez au minimum renseigner votre profession et vos services.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      setMessage(
-        message,
-        "Enregistrement en cours...",
-        "loading"
-      );
-
-
-      try {
-
-
-        /* ================= UTILISATEUR CONNECTÉ ================= */
-
-        const {
-          data: {
-            user
-          },
-          error: userError
-        } =
-          await supabaseClient
-            .auth
-            .getUser();
-
-
-        if (
-          userError ||
-          !user
-        ) {
-
-          setMessage(
-            message,
-            "❌ Votre session a expiré. Veuillez vous reconnecter.",
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        /* ================= MISE À JOUR PROFILE ================= */
-
-        const {
-          error: updateError
-        } =
-          await supabaseClient
-            .from("profiles")
-            .update({
-
-              profession:
-                profession,
-
-              quartier:
-                quartier,
-
-              services:
-                services,
-
-              description:
-                description
-
-            })
-            .eq(
-              "id",
-              user.id
-            );
-
-
-        if (updateError) {
-
-          console.error(
-            "Erreur Supabase :",
-            updateError
-          );
-
-
-          setMessage(
-            message,
-            "❌ Erreur lors de l'enregistrement : " +
-            updateError.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        /* ================= SUCCÈS ================= */
-
-        setMessage(
-          message,
-          "✅ Profil professionnel enregistré avec succès !",
-          "success"
-        );
-
-
-        /* Actualiser le tableau de bord */
-
-        setTimeout(
-          () => {
-
-            showDashboard();
-
-          },
-          800
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        setMessage(
-          message,
-          "❌ Une erreur inattendue est survenue : " +
-          error.message,
-          "error"
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       RECHERCHE PROFESSIONNELS
-    ===================================================== */
-
-    async function searchProfessionals() {
-
-      const profession =
-        document
-          .getElementById("searchProfession")
-          .value
-          .trim()
-          .toLowerCase();
-
-
-      const city =
-        document
-          .getElementById("searchCity")
-          .value;
-
-
-      const professionalsSection =
-        document.getElementById(
-          "professionalsSection"
-        );
-
-
-      const professionalsList =
-        document.getElementById(
-          "professionalsList"
-        );
-
-
-      const searchMessage =
-        document.getElementById(
-          "searchMessage"
-        );
-
-
-      professionalsSection.style.display =
-        "block";
-
-
-      professionalsSection.scrollIntoView({
-        behavior: "smooth"
-      });
-
-
-      professionalsList.innerHTML =
-        "<p class='loading'>🔎 Recherche en cours...</p>";
-
-
-      searchMessage.textContent =
-        "";
-
-
-      try {
-
-
-        /* ================= REQUÊTE ================= */
-
-        let query =
-          supabaseClient
-            .from("profiles")
-            .select(
-              "full_name, phone, city, profession, description, services, quartier"
-            )
-            .eq(
-              "user_type",
-              "professionnel"
-            );
-
-
-        /* ================= FILTRE VILLE ================= */
-
-        if (city) {
-
-          query =
-            query.eq(
-              "city",
-              city
-            );
-
-        }
-
-
-        const {
-          data,
-          error
-        } =
-          await query;
-
-
-        if (error) {
-
-          console.error(
-            "Erreur recherche :",
-            error
-          );
-
-
-          professionalsList.innerHTML =
-            "";
-
-
-          setMessage(
-            searchMessage,
-            "❌ Erreur : " +
-            error.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        let results =
-          data || [];
-
-
-        /* ================= FILTRE PROFESSION / SERVICES ================= */
-
-        if (profession) {
-
-          results =
-            results.filter(
-              professional => {
-
-
-                const professionText =
-                  (
-                    professional.profession ||
-                    ""
-                  )
-                  .toLowerCase();
-
-
-                const servicesText =
-                  (
-                    professional.services ||
-                    ""
-                  )
-                  .toLowerCase();
-
-
-                const descriptionText =
-                  (
-                    professional.description ||
-                    ""
-                  )
-                  .toLowerCase();
-
-
-                return (
-
-                  professionText.includes(
-                    profession
-                  )
-
-                  ||
-
-                  servicesText.includes(
-                    profession
-                  )
-
-                  ||
-
-                  descriptionText.includes(
-                    profession
-                  )
-
-                );
-
-              }
-            );
-
-        }
-
-
-        /* ================= AUCUN RESULTAT ================= */
-
-        if (
-          !results.length
-        ) {
-
-          professionalsList.innerHTML = `
-            <div class="empty-message">
-              <p>
-                Aucun professionnel trouvé.
-              </p>
-            </div>
-          `;
-
-          return;
-
-        }
-
-
-        /* ================= AFFICHAGE ================= */
-
-        professionalsList.innerHTML =
-          "";
-
-
-        results.forEach(
-          professional => {
-
-
-            const card =
-              document.createElement(
-                "div"
-              );
-
-
-            card.className =
-              "professional-card";
-
-
-            const professionName =
-              escapeHTML(
-                professional.profession ||
-                "Professionnel"
-              );
-
-
-            const fullName =
-              escapeHTML(
-                professional.full_name ||
-                "Non renseigné"
-              );
-
-
-            const cityName =
-              escapeHTML(
-                professional.city ||
-                "Non renseignée"
-              );
-
-
-            const quartier =
-              escapeHTML(
-                professional.quartier ||
-                "Non renseigné"
-              );
-
-
-            const services =
-              escapeHTML(
-                professional.services ||
-                "Non renseigné"
-              );
-
-
-            const description =
-              escapeHTML(
-                professional.description ||
-                "Aucune description"
-              );
-
-
-            card.innerHTML = `
-
-              <h3>
-                🔧 ${professionName}
-              </h3>
-
-              <p>
-                <strong>Nom :</strong>
-                ${fullName}
-              </p>
-
-              <p>
-                <strong>Ville :</strong>
-                ${cityName}
-              </p>
-
-              <p>
-                <strong>Quartier :</strong>
-                ${quartier}
-              </p>
-
-              <p>
-                <strong>Services :</strong>
-                ${services}
-              </p>
-
-              <p>
-                <strong>Description :</strong>
-                ${description}
-              </p>
-
-            `;
-
-
-            /* ================= BOUTON TELEPHONE ================= */
-
-            if (
-              professional.phone
-            ) {
-
-              const button =
-                document.createElement(
-                  "button"
-                );
-
-
-              button.textContent =
-                "📞 Contacter";
-
-
-              button.addEventListener(
-                "click",
-                function() {
-
-                  contactProfessional(
-                    professional.phone
-                  );
-
-                }
-              );
-
-
-              card.appendChild(
-                button
-              );
-
-            }
-
-
-            professionalsList.appendChild(
-              card
-            );
-
-          }
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        professionalsList.innerHTML =
-          "";
-
-
-        setMessage(
-          searchMessage,
-          "❌ Erreur inattendue : " +
-          error.message,
-          "error"
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       AFFICHER SECTION PROFESSIONNELS
-    ===================================================== */
-
-    function showProfessionalsSection() {
-
-      const section =
-        document.getElementById(
-          "professionalsSection"
-        );
-
-
-      section.style.display =
-        "block";
-
-
-      section.scrollIntoView({
-        behavior: "smooth"
-      });
-
-
-      /*
-        Si aucune recherche n'est faite,
-        afficher tous les professionnels.
-      */
-
-      const searchValue =
-        document
-          .getElementById(
-            "searchProfession"
-          )
-          .value
-          .trim();
-
-
-      const cityValue =
-        document
-          .getElementById(
-            "searchCity"
-          )
-          .value;
-
-
-      if (
-        !searchValue &&
-        !cityValue
-      ) {
-
-        searchProfessionals();
-
-      }
-
-    }
-
-
-    /* =====================================================
-       SÉLECTION SERVICE
-    ===================================================== */
-
-    function selectService(
-      service
-    ) {
-
-      document.getElementById(
-        "searchProfession"
-      ).value =
-        service;
-
-
-      searchProfessionals();
-
-    }
-
-
-    /* =====================================================
-       CONTACT PROFESSIONNEL
-    ===================================================== */
-
-    function contactProfessional(
-      phone
-    ) {
-
-      if (!phone) {
-        return;
-      }
-
-
-      const cleanPhone =
-        String(phone)
-          .replace(
-            /\s+/g,
-            ""
-          );
-
-
-      window.location.href =
-        "tel:" + cleanPhone;
-
-    }
-
-
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
-
-    function updateNavigation(
-      connected
-    ) {
-
-      const accountButton =
-        document.getElementById(
-          "accountButton"
-        );
-
-
-      const dashboardButton =
-        document.getElementById(
-          "dashboardButton"
-        );
-
-
-      const logoutButton =
-        document.getElementById(
-          "logoutButton"
-        );
-
-
-      if (connected) {
-
-        accountButton.style.display =
-          "none";
-
-
-        dashboardButton.style.display =
-          "inline-block";
-
-
-        logoutButton.style.display =
-          "inline-block";
-
-      }
-
-      else {
-
-        accountButton.style.display =
-          "inline-block";
-
-
-        dashboardButton.style.display =
-          "none";
-
-
-        logoutButton.style.display =
-          "none";
-
-      }
-
-    }
-
-
-    /* =====================================================
-       DÉCONNEXION
-    ===================================================== */
-
-    async function logout() {
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .auth
-          .signOut();
-
-
-      if (error) {
-
-        alert(
-          "Erreur lors de la déconnexion : " +
-          error.message
-        );
-
-        return;
-
-      }
-
-
-      /* ================= RESET AFFICHAGE ================= */
-
-      document.getElementById(
-        "dashboardSection"
-      ).style.display =
-        "none";
-
-
-      document.getElementById(
-        "professionalsSection"
-      ).style.display =
-        "none";
-
-
-      document.getElementById(
-        "accountSection"
-      ).style.display =
-        "none";
-
-
-      updateNavigation(
-        false
-      );
-
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-
-
-    /* =====================================================
-       VÉRIFIER SESSION
-    ===================================================== */
-
-    async function checkSession() {
-
-      try {
-
-        const {
-          data: {
-            user
-          }
-        } =
-          await supabaseClient
-            .auth
-            .getUser();
-
-
-        if (user) {
-
-          updateNavigation(
-            true
-          );
-
-        }
-
-        else {
-
-          updateNavigation(
-            false
-          );
-
-        }
-
-      }
-
-      catch (error) {
-
-        console.log(
-          "Aucune session active."
-        );
-
-
-        updateNavigation(
-          false
-        );
-
-      }
-
-    }
-
-
-    /* =====================================================
-       CHANGEMENT DE SESSION SUPABASE
-    ===================================================== */
-
-    supabaseClient
-      .auth
-      .onAuthStateChange(
-        (
-          event,
-          session
-        ) => {
-
-          if (session) {
-
-            updateNavigation(
-              true
-            );
-
-          }
-
-          else {
-
-            updateNavigation(
-              false
-            );
-
-          }
-
-        }
-      );
-
-
-    /* =====================================================
-       LANCEMENT
-    ===================================================== */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
-
-        checkSession();
-
-      }
+    <div id="requestModalMessage" class="message"></div>
+
+    <form onsubmit="submitServiceRequest(event)">
+
+      <input type="hidden" id="requestProfessionalId">
+
+      <div class="form-group">
+        <label>Professionnel</label>
+        <input
+          type="text"
+          id="requestProfessionalName"
+          readonly
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Service demandé</label>
+        <input
+          type="text"
+          id="requestService"
+          required
+          placeholder="Ex : réparation d'une installation électrique"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Décrivez votre besoin</label>
+        <textarea
+          id="requestDescription"
+          required
+          placeholder="Expliquez clairement ce dont vous avez besoin..."
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Votre ville</label>
+        <input
+          type="text"
+          id="requestCity"
+          required
+          placeholder="Votre ville"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Votre quartier</label>
+        <input
+          type="text"
+          id="requestQuartier"
+          placeholder="Votre quartier"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Votre téléphone</label>
+        <input
+          type="tel"
+          id="requestPhone"
+          required
+          placeholder="Votre numéro"
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="green-btn"
+        style="width:100%;"
+      >
+        📤 Envoyer la demande
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /* =========================================================
+     SUPABASE
+  ========================================================= */
+
+  const SUPABASE_URL =
+    "https://spznzkneagjawragvijg.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
     );
 
 
-  </script>
+  let currentUser = null;
+  let currentProfile = null;
+
+
+  /* =========================================================
+     OUTILS
+  ========================================================= */
+
+  function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+      return "";
+    }
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+
+  function showMessage(elementId, message, type) {
+
+    const element = document.getElementById(elementId);
+
+    if (!element) return;
+
+    element.className = "message " + type;
+    element.textContent = message;
+    element.style.display = "block";
+  }
+
+
+  function hideMessage(elementId) {
+
+    const element = document.getElementById(elementId);
+
+    if (!element) return;
+
+    element.style.display = "none";
+  }
+
+
+  /* =========================================================
+     NAVIGATION
+  ========================================================= */
+
+  function showSection(sectionId) {
+
+    const sections = [
+      "homeSection",
+      "servicesSection",
+      "professionalsSection",
+      "accountSection",
+      "dashboardSection"
+    ];
+
+    sections.forEach(id => {
+
+      const section = document.getElementById(id);
+
+      if (section) {
+        section.style.display =
+          id === sectionId ? "block" : "none";
+      }
+
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    if (sectionId === "dashboardSection") {
+
+      if (!currentUser) {
+
+        showSection("accountSection");
+
+        showMessage(
+          "accountMessage",
+          "Veuillez vous connecter pour accéder à votre espace.",
+          "info"
+        );
+
+        return;
+      }
+
+      loadDashboard();
+    }
+  }
+
+
+  /* =========================================================
+     FORMULAIRES COMPTE
+  ========================================================= */
+
+  function showLoginForm() {
+
+    document
+      .getElementById("registerCard")
+      .classList.add("hidden");
+
+    document
+      .getElementById("loginCard")
+      .classList.remove("hidden");
+
+    hideMessage("accountMessage");
+  }
+
+
+  function showRegisterForm() {
+
+    document
+      .getElementById("loginCard")
+      .classList.add("hidden");
+
+    document
+      .getElementById("registerCard")
+      .classList.remove("hidden");
+
+    hideMessage("accountMessage");
+  }
+
+
+  /* =========================================================
+     INSCRIPTION
+  ========================================================= */
+
+  async function registerUser(event) {
+
+    event.preventDefault();
+
+    hideMessage("accountMessage");
+
+    const fullName =
+      document.getElementById("registerName").value.trim();
+
+    const phone =
+      document.getElementById("registerPhone").value.trim();
+
+    const city =
+      document.getElementById("registerCity").value;
+
+    const userType =
+      document.getElementById("registerType").value;
+
+    const email =
+      document.getElementById("registerEmail").value.trim();
+
+    const password =
+      document.getElementById("registerPassword").value;
+
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabaseClient.auth.signUp({
+        email: email,
+        password: password
+      });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data.user) {
+
+        throw new Error(
+          "Le compte n'a pas pu être créé."
+        );
+      }
+
+
+      const {
+        error: profileError
+      } = await supabaseClient
+        .from("profiles")
+        .insert({
+          id: data.user.id,
+          full_name: fullName,
+          phone: phone,
+          city: city,
+          user_type: userType
+        });
+
+
+      if (profileError) {
+
+        console.error(profileError);
+
+        showMessage(
+          "accountMessage",
+          "Compte créé, mais le profil n'a pas pu être enregistré : " +
+          profileError.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      showMessage(
+        "accountMessage",
+        "✅ Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
+        "success"
+      );
+
+
+      document
+        .getElementById("registerCard")
+        .classList.add("hidden");
+
+      document
+        .getElementById("loginCard")
+        .classList.remove("hidden");
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "accountMessage",
+        "❌ " + error.message,
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     CONNEXION
+  ========================================================= */
+
+  async function loginUser(event) {
+
+    event.preventDefault();
+
+    hideMessage("accountMessage");
+
+    const email =
+      document.getElementById("loginEmail").value.trim();
+
+    const password =
+      document.getElementById("loginPassword").value;
+
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      currentUser = data.user;
+
+      await loadUserProfile();
+
+
+      showMessage(
+        "accountMessage",
+        "✅ Connexion réussie !",
+        "success"
+      );
+
+
+      document
+        .getElementById("logoutBtn")
+        .classList.remove("hidden");
+
+
+      setTimeout(() => {
+
+        showSection("dashboardSection");
+
+      }, 700);
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "accountMessage",
+        "❌ " + error.message,
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     DECONNEXION
+  ========================================================= */
+
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    currentUser = null;
+    currentProfile = null;
+
+    document
+      .getElementById("logoutBtn")
+      .classList.add("hidden");
+
+    showSection("homeSection");
+
+    alert("Vous êtes déconnecté.");
+  }
+
+
+  /* =========================================================
+     PROFIL UTILISATEUR
+  ========================================================= */
+
+  async function loadUserProfile() {
+
+    if (!currentUser) return;
+
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id", currentUser.id)
+      .maybeSingle();
+
+
+    if (error) {
+
+      console.error(error);
+
+      return;
+    }
+
+
+    currentProfile = data;
+
+
+    if (!data) return;
+
+
+    document
+      .getElementById("professionalProfession")
+      .value = data.profession || "";
+
+    document
+      .getElementById("professionalQuartier")
+      .value = data.quartier || "";
+
+    document
+      .getElementById("professionalServices")
+      .value = data.services || "";
+
+    document
+      .getElementById("professionalDescription")
+      .value = data.description || "";
+  }
+
+
+  /* =========================================================
+     TABLEAU DE BORD
+  ========================================================= */
+
+  async function loadDashboard() {
+
+    if (!currentUser) return;
+
+
+    await loadUserProfile();
+
+
+    if (!currentProfile) {
+
+      document
+        .getElementById("userInformation")
+        .innerHTML =
+        "<p>Profil introuvable.</p>";
+
+      return;
+    }
+
+
+    document
+      .getElementById("userInformation")
+      .innerHTML = `
+
+        <p>
+          <strong>Nom :</strong>
+          ${escapeHTML(currentProfile.full_name)}
+        </p>
+
+        <p>
+          <strong>Téléphone :</strong>
+          ${escapeHTML(currentProfile.phone)}
+        </p>
+
+        <p>
+          <strong>Ville :</strong>
+          ${escapeHTML(currentProfile.city)}
+        </p>
+
+        <p>
+          <strong>Type de compte :</strong>
+          ${escapeHTML(currentProfile.user_type)}
+        </p>
+
+      `;
+
+
+    const professionalCard =
+      document.getElementById("professionalProfileCard");
+
+    const professionalRequestsCard =
+      document.getElementById("professionalRequestsCard");
+
+    const clientRequestsCard =
+      document.getElementById("clientRequestsCard");
+
+
+    if (currentProfile.user_type === "professionnel") {
+
+      professionalCard.classList.remove("hidden");
+
+      professionalRequestsCard.classList.remove("hidden");
+
+      clientRequestsCard.classList.add("hidden");
+
+      await loadProfessionalRequests();
+
+    } else {
+
+      professionalCard.classList.add("hidden");
+
+      professionalRequestsCard.classList.add("hidden");
+
+      clientRequestsCard.classList.remove("hidden");
+
+      await loadClientRequests();
+    }
+  }
+
+
+  /* =========================================================
+     ENREGISTRER PROFIL PROFESSIONNEL
+  ========================================================= */
+
+  async function saveProfessionalProfile(event) {
+
+    event.preventDefault();
+
+
+    if (!currentUser) {
+
+      showMessage(
+        "dashboardMessage",
+        "Veuillez vous connecter.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const profession =
+      document
+        .getElementById("professionalProfession")
+        .value.trim();
+
+    const quartier =
+      document
+        .getElementById("professionalQuartier")
+        .value.trim();
+
+    const services =
+      document
+        .getElementById("professionalServices")
+        .value.trim();
+
+    const description =
+      document
+        .getElementById("professionalDescription")
+        .value.trim();
+
+
+    try {
+
+      const {
+        error
+      } = await supabaseClient
+        .from("profiles")
+        .update({
+          profession: profession,
+          quartier: quartier,
+          services: services,
+          description: description
+        })
+        .eq("id", currentUser.id);
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      showMessage(
+        "dashboardMessage",
+        "✅ Profil professionnel enregistré avec succès !",
+        "success"
+      );
+
+
+      await loadUserProfile();
+
+      await searchProfessionals();
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "dashboardMessage",
+        "❌ " + error.message,
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     RECHERCHE PROFESSIONNELS
+  ========================================================= */
+
+  async function searchProfessionals() {
+
+    const profession =
+      document
+        .getElementById("searchProfession")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const city =
+      document
+        .getElementById("searchCity")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    try {
+
+      let query =
+        supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq("user_type", "professionnel");
+
+
+      if (city) {
+
+        query = query.ilike(
+          "city",
+          city
+        );
+      }
+
+
+      const {
+        data,
+        error
+      } = await query;
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      let professionals = data || [];
+
+
+      if (profession) {
+
+        professionals =
+          professionals.filter(profile => {
+
+            const p =
+              (profile.profession || "")
+              .toLowerCase();
+
+            const s =
+              (profile.services || "")
+              .toLowerCase();
+
+            const d =
+              (profile.description || "")
+              .toLowerCase();
+
+            return (
+              p.includes(profession) ||
+              s.includes(profession) ||
+              d.includes(profession)
+            );
+          });
+      }
+
+
+      displayProfessionals(professionals);
+
+
+      showSection("professionalsSection");
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "searchMessage",
+        "❌ Impossible de rechercher les professionnels : " +
+        error.message,
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     AFFICHER PROFESSIONNELS
+  ========================================================= */
+
+  function displayProfessionals(professionals) {
+
+    const grid =
+      document.getElementById("professionalsGrid");
+
+
+    grid.innerHTML = "";
+
+
+    if (!professionals.length) {
+
+      grid.innerHTML = `
+
+        <div class="professional-card"
+             style="grid-column:1/-1;text-align:center;">
+
+          <h3>😕 Aucun professionnel trouvé</h3>
+
+          <p>
+            Essayez une autre profession ou une autre ville.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+
+    professionals.forEach(profile => {
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "professional-card";
+
+
+      const profession =
+        escapeHTML(
+          profile.profession || "Professionnel"
+        );
+
+
+      const name =
+        escapeHTML(
+          profile.full_name || "Nom non renseigné"
+        );
+
+
+      const city =
+        escapeHTML(
+          profile.city || "Ville non renseignée"
+        );
+
+
+      const quartier =
+        escapeHTML(
+          profile.quartier || "Non renseigné"
+        );
+
+
+      const services =
+        escapeHTML(
+          profile.services || "Non renseigné"
+        );
+
+
+      const description =
+        escapeHTML(
+          profile.description ||
+          "Aucune description disponible."
+        );
+
+
+      const phone =
+        escapeHTML(
+          profile.phone || ""
+        );
+
+
+      card.innerHTML = `
+
+        <h3>${profession}</h3>
+
+        <p>
+          👤 <strong>${name}</strong>
+        </p>
+
+        <p>
+          📍 <strong>Ville :</strong> ${city}
+        </p>
+
+        <p>
+          🏘️ <strong>Quartier :</strong> ${quartier}
+        </p>
+
+        <p>
+          🛠️ <strong>Services :</strong> ${services}
+        </p>
+
+        <p>
+          📝 ${description}
+        </p>
+
+        <div class="professional-actions">
+
+          ${
+            phone
+            ? `
+              <a
+                href="tel:${phone}"
+                style="text-decoration:none;flex:1;"
+              >
+                <button
+                  class="primary-btn"
+                  style="width:100%;"
+                >
+                  📞 Contacter
+                </button>
+              </a>
+            `
+            : ""
+          }
+
+          <button
+            class="green-btn"
+            style="flex:1;"
+            onclick="openRequestModal(
+              '${profile.id}',
+              '${escapeJS(name)}',
+              '${escapeJS(profession)}'
+            )"
+          >
+            📨 Demander
+          </button>
+
+        </div>
+
+      `;
+
+
+      grid.appendChild(card);
+    });
+  }
+
+
+  function escapeJS(value) {
+
+    return String(value || "")
+      .replace(/\\/g, "\\\\")
+      .replace(/'/g, "\\'")
+      .replace(/"/g, '\\"')
+      .replace(/\n/g, "\\n")
+      .replace(/\r/g, "\\r");
+  }
+
+
+  /* =========================================================
+     SELECTION SERVICE
+  ========================================================= */
+
+  function selectService(service) {
+
+    document
+      .getElementById("searchProfession")
+      .value = service;
+
+    searchProfessionals();
+  }
+
+
+  /* =========================================================
+     OUVRIR DEMANDE
+  ========================================================= */
+
+  async function openRequestModal(
+    professionalId,
+    professionalName,
+    profession
+  ) {
+
+    if (!currentUser) {
+
+      showSection("accountSection");
+
+      showMessage(
+        "accountMessage",
+        "🔐 Connectez-vous ou créez un compte client pour envoyer une demande.",
+        "info"
+      );
+
+      return;
+    }
+
+
+    if (
+      currentProfile &&
+      currentProfile.user_type === "professionnel"
+    ) {
+
+      alert(
+        "Un compte professionnel ne peut pas envoyer une demande en tant que client."
+      );
+
+      return;
+    }
+
+
+    document
+      .getElementById("requestProfessionalId")
+      .value = professionalId;
+
+
+    document
+      .getElementById("requestProfessionalName")
+      .value = professionalName;
+
+
+    document
+      .getElementById("requestService")
+      .value = profession;
+
+
+    document
+      .getElementById("requestDescription")
+      .value = "";
+
+
+    document
+      .getElementById("requestCity")
+      .value =
+      currentProfile?.city || "";
+
+
+    document
+      .getElementById("requestQuartier")
+      .value =
+      currentProfile?.quartier || "";
+
+
+    document
+      .getElementById("requestPhone")
+      .value =
+      currentProfile?.phone || "";
+
+
+    hideMessage("requestModalMessage");
+
+
+    const modal =
+      document.getElementById("requestModal");
+
+    modal.classList.remove("hidden");
+
+    modal.style.display = "flex";
+  }
+
+
+  /* =========================================================
+     FERMER MODAL
+  ========================================================= */
+
+  function closeRequestModal() {
+
+    const modal =
+      document.getElementById("requestModal");
+
+    modal.classList.add("hidden");
+
+    modal.style.display = "none";
+  }
+
+
+  /* =========================================================
+     ENVOYER DEMANDE
+  ========================================================= */
+
+  async function submitServiceRequest(event) {
+
+    event.preventDefault();
+
+
+    if (!currentUser) {
+
+      showMessage(
+        "requestModalMessage",
+        "Veuillez vous connecter.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const professionalId =
+      document
+        .getElementById("requestProfessionalId")
+        .value;
+
+
+    const service =
+      document
+        .getElementById("requestService")
+        .value
+        .trim();
+
+
+    const description =
+      document
+        .getElementById("requestDescription")
+        .value
+        .trim();
+
+
+    const city =
+      document
+        .getElementById("requestCity")
+        .value
+        .trim();
+
+
+    const quartier =
+      document
+        .getElementById("requestQuartier")
+        .value
+        .trim();
+
+
+    const phone =
+      document
+        .getElementById("requestPhone")
+        .value
+        .trim();
+
+
+    if (!service || !description || !city || !phone) {
+
+      showMessage(
+        "requestModalMessage",
+        "Veuillez remplir tous les champs obligatoires.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    try {
+
+      const {
+        error
+      } = await supabaseClient
+        .from("service_requests")
+        .insert({
+          client_id: currentUser.id,
+          professional_id: professionalId,
+          service: service,
+          description: description,
+          city: city,
+          quartier: quartier,
+          phone: phone,
+          status: "en_attente"
+        });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      showMessage(
+        "requestModalMessage",
+        "✅ Votre demande a été envoyée au professionnel !",
+        "success"
+      );
+
+
+      setTimeout(() => {
+
+        closeRequestModal();
+
+        showSection("dashboardSection");
+
+      }, 1000);
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "requestModalMessage",
+        "❌ Impossible d'envoyer la demande : " +
+        error.message,
+        "error"
+      );
+    }
+  }
+
+
+  /* =========================================================
+     DEMANDES REÇUES PAR LE PROFESSIONNEL
+  ========================================================= */
+
+  async function loadProfessionalRequests() {
+
+    if (!currentUser) return;
+
+
+    const container =
+      document.getElementById("professionalRequests");
+
+
+    container.innerHTML =
+      "<p>Chargement des demandes...</p>";
+
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("service_requests")
+        .select("*")
+        .eq("professional_id", currentUser.id)
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data || !data.length) {
+
+        container.innerHTML = `
+
+          <div class="request-card">
+
+            <h3>Aucune demande pour le moment</h3>
+
+            <p>
+              Les nouvelles demandes de clients
+              apparaîtront ici.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML = "";
+
+
+      data.forEach(request => {
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "request-card";
+
+
+        const statusClass =
+          getStatusClass(request.status);
+
+
+        const statusText =
+          getStatusText(request.status);
+
+
+        const date =
+          formatDate(request.created_at);
+
+
+        card.innerHTML = `
+
+          <h3>
+            📨 ${escapeHTML(request.service)}
+          </h3>
+
+          <p>
+            <strong>Description :</strong><br>
+            ${escapeHTML(request.description)}
+          </p>
+
+          <p>
+            👤 <strong>Client :</strong>
+            ${escapeHTML(
+              request.phone || "Non renseigné"
+            )}
+          </p>
+
+          <p>
+            📍 <strong>Ville :</strong>
+            ${escapeHTML(
+              request.city || "Non renseignée"
+            )}
+          </p>
+
+          <p>
+            🏘️ <strong>Quartier :</strong>
+            ${escapeHTML(
+              request.quartier || "Non renseigné"
+            )}
+          </p>
+
+          <p>
+            📅 ${date}
+          </p>
+
+          <span class="status ${statusClass}">
+            ${statusText}
+          </span>
+
+          ${
+            request.status === "en_attente"
+            ? `
+
+              <div class="request-actions">
+
+                <button
+                  class="green-btn"
+                  onclick="updateRequestStatus(
+                    '${request.id}',
+                    'acceptee'
+                  )"
+                >
+                  ✅ Accepter
+                </button>
+
+                <button
+                  class="red-btn"
+                  onclick="updateRequestStatus(
+                    '${request.id}',
+                    'refusee'
+                  )"
+                >
+                  ❌ Refuser
+                </button>
+
+                ${
+                  request.phone
+                  ? `
+                    <a
+                      href="tel:${escapeHTML(request.phone)}"
+                      style="text-decoration:none;"
+                    >
+                      <button class="primary-btn">
+                        📞 Appeler
+                      </button>
+                    </a>
+                  `
+                  : ""
+                }
+
+              </div>
+
+            `
+            : ""
+          }
+
+        `;
+
+
+        container.appendChild(card);
+      });
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      container.innerHTML = `
+
+        <div class="request-card">
+
+          <p style="color:#dc3545;">
+            ❌ Impossible de charger les demandes :
+            ${escapeHTML(error.message)}
+          </p>
+
+        </div>
+
+      `;
+    }
+  }
+
+
+  /* =========================================================
+     MODIFIER STATUT DEMANDE
+  ========================================================= */
+
+  async function updateRequestStatus(
+    requestId,
+    newStatus
+  ) {
+
+    if (!currentUser) return;
+
+
+    try {
+
+      const {
+        error
+      } = await supabaseClient
+        .from("service_requests")
+        .update({
+          status: newStatus
+        })
+        .eq("id", requestId)
+        .eq("professional_id", currentUser.id);
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      await loadProfessionalRequests();
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        "Impossible de modifier la demande : " +
+        error.message
+      );
+    }
+  }
+
+
+  /* =========================================================
+     DEMANDES DU CLIENT
+  ========================================================= */
+
+  async function loadClientRequests() {
+
+    if (!currentUser) return;
+
+
+    const container =
+      document.getElementById("clientRequests");
+
+
+    container.innerHTML =
+      "<p>Chargement des demandes...</p>";
+
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("service_requests")
+        .select("*")
+        .eq("client_id", currentUser.id)
+        .order("created_at", {
+          ascending: false
+        });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data || !data.length) {
+
+        container.innerHTML = `
+
+          <div class="request-card">
+
+            <h3>Aucune demande envoyée</h3>
+
+            <p>
+              Vos demandes de services apparaîtront ici.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML = "";
+
+
+      data.forEach(request => {
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "request-card";
+
+
+        card.innerHTML = `
+
+          <h3>
+            🛠️ ${escapeHTML(request.service)}
+          </h3>
+
+          <p>
+            <strong>Votre demande :</strong><br>
+            ${escapeHTML(request.description)}
+          </p>
+
+          <p>
+            📍 ${escapeHTML(
+              request.city || ""
+            )}
+            ${
+              request.quartier
+              ? " - " + escapeHTML(request.quartier)
+              : ""
+            }
+          </p>
+
+          <p>
+            📅 ${formatDate(request.created_at)}
+          </p>
+
+          <span class="status ${getStatusClass(request.status)}">
+            ${getStatusText(request.status)}
+          </span>
+
+        `;
+
+
+        container.appendChild(card);
+      });
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      container.innerHTML = `
+
+        <div class="request-card">
+
+          <p style="color:#dc3545;">
+            ❌ Impossible de charger vos demandes :
+            ${escapeHTML(error.message)}
+          </p>
+
+        </div>
+
+      `;
+    }
+  }
+
+
+  /* =========================================================
+     STATUT
+  ========================================================= */
+
+  function getStatusClass(status) {
+
+    if (status === "acceptee") {
+      return "status-acceptee";
+    }
+
+    if (status === "refusee") {
+      return "status-refusee";
+    }
+
+    return "status-en-attente";
+  }
+
+
+  function getStatusText(status) {
+
+    if (status === "acceptee") {
+      return "✅ Demande acceptée";
+    }
+
+    if (status === "refusee") {
+      return "❌ Demande refusée";
+    }
+
+    return "⏳ En attente";
+  }
+
+
+  function formatDate(dateString) {
+
+    if (!dateString) return "";
+
+    const date =
+      new Date(dateString);
+
+    return date.toLocaleString(
+      "fr-FR",
+      {
+        dateStyle: "short",
+        timeStyle: "short"
+      }
+    );
+  }
+
+
+  /* =========================================================
+     SESSION
+  ========================================================= */
+
+  async function checkSession() {
+
+    const {
+      data
+    } = await supabaseClient.auth.getSession();
+
+
+    if (data.session) {
+
+      currentUser =
+        data.session.user;
+
+      await loadUserProfile();
+
+      document
+        .getElementById("logoutBtn")
+        .classList.remove("hidden");
+
+    } else {
+
+      currentUser = null;
+
+      document
+        .getElementById("logoutBtn")
+        .classList.add("hidden");
+    }
+  }
+
+
+  supabaseClient.auth.onAuthStateChange(
+    async (event, session) => {
+
+      if (session) {
+
+        currentUser =
+          session.user;
+
+        await loadUserProfile();
+
+        document
+          .getElementById("logoutBtn")
+          .classList.remove("hidden");
+
+      } else {
+
+        currentUser = null;
+        currentProfile = null;
+
+        document
+          .getElementById("logoutBtn")
+          .classList.add("hidden");
+      }
+    }
+  );
+
+
+  /* =========================================================
+     INITIALISATION
+  ========================================================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+      showSection("homeSection");
+
+      await checkSession();
+
+      /*
+       * On affiche les professionnels disponibles
+       * au chargement de la page.
+       */
+      await searchProfessionals();
+
+    }
+  );
+
+</script>
 
 </body>
 </html>
