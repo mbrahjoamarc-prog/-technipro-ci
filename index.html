@@ -364,11 +364,10 @@
   </nav>
 </header>
 
-
-<!-- ACCUEIL -->
 <section id="homeSection">
 
   <div class="hero">
+
     <h1>Trouvez le professionnel qu'il vous faut</h1>
 
     <p>
@@ -402,12 +401,11 @@
       </button>
 
     </div>
+
   </div>
 
 </section>
 
-
-<!-- SERVICES -->
 <section id="servicesSection">
 
   <h2 class="section-title">Nos services</h2>
@@ -490,8 +488,6 @@
 
 </section>
 
-
-<!-- PROFESSIONNELS -->
 <section id="professionalsSection">
 
   <h2 class="section-title">Professionnels disponibles</h2>
@@ -502,8 +498,6 @@
 
 </section>
 
-
-<!-- COMPTE -->
 <section id="accountSection">
 
   <h2 class="section-title">Mon compte</h2>
@@ -512,8 +506,6 @@
 
     <div id="accountMessage" class="message"></div>
 
-
-    <!-- INSCRIPTION -->
     <div id="registerCard" class="account-card">
 
       <h2 style="margin-bottom:20px;">
@@ -524,22 +516,12 @@
 
         <div class="form-group">
           <label>Nom complet</label>
-          <input
-            type="text"
-            id="registerName"
-            required
-            placeholder="Votre nom complet"
-          >
+          <input type="text" id="registerName" required>
         </div>
 
         <div class="form-group">
           <label>Téléphone</label>
-          <input
-            type="tel"
-            id="registerPhone"
-            required
-            placeholder="Ex : 0700000000"
-          >
+          <input type="tel" id="registerPhone" required>
         </div>
 
         <div class="form-group">
@@ -569,12 +551,7 @@
 
         <div class="form-group">
           <label>Email</label>
-          <input
-            type="email"
-            id="registerEmail"
-            required
-            placeholder="Votre email"
-          >
+          <input type="email" id="registerEmail" required>
         </div>
 
         <div class="form-group">
@@ -584,7 +561,6 @@
             id="registerPassword"
             required
             minlength="6"
-            placeholder="Minimum 6 caractères"
           >
         </div>
 
@@ -601,8 +577,6 @@
 
     </div>
 
-
-    <!-- CONNEXION -->
     <div id="loginCard" class="account-card hidden">
 
       <h2 style="margin-bottom:20px;">
@@ -613,22 +587,12 @@
 
         <div class="form-group">
           <label>Email</label>
-          <input
-            type="email"
-            id="loginEmail"
-            required
-            placeholder="Votre email"
-          >
+          <input type="email" id="loginEmail" required>
         </div>
 
         <div class="form-group">
           <label>Mot de passe</label>
-          <input
-            type="password"
-            id="loginPassword"
-            required
-            placeholder="Votre mot de passe"
-          >
+          <input type="password" id="loginPassword" required>
         </div>
 
         <button type="submit" class="primary-btn" style="width:100%;">
@@ -648,8 +612,6 @@
 
 </section>
 
-
-<!-- ESPACE PERSONNEL -->
 <section id="dashboardSection">
 
   <h2 class="section-title">Mon espace</h2>
@@ -670,11 +632,11 @@
 
       </div>
 
-
-      <!-- PROFIL PROFESSIONNEL -->
-      <div id="professionalProfileCard"
-           class="dashboard-card"
-           style="margin-top:20px;">
+      <div
+        id="professionalProfileCard"
+        class="dashboard-card"
+        style="margin-top:20px;"
+      >
 
         <h2>Mon profil professionnel</h2>
 
@@ -731,11 +693,11 @@
 
       </div>
 
-
-      <!-- DEMANDES DU PROFESSIONNEL -->
-      <div id="professionalRequestsCard"
-           class="dashboard-card"
-           style="margin-top:20px;">
+      <div
+        id="professionalRequestsCard"
+        class="dashboard-card"
+        style="margin-top:20px;"
+      >
 
         <h2>📨 Demandes de services reçues</h2>
 
@@ -743,17 +705,18 @@
           Les clients qui vous envoient une demande apparaîtront ici.
         </p>
 
-        <div id="professionalRequests"
-             class="requests-grid">
-        </div>
+        <div
+          id="professionalRequests"
+          class="requests-grid"
+        ></div>
 
       </div>
 
-
-      <!-- DEMANDES DU CLIENT -->
-      <div id="clientRequestsCard"
-           class="dashboard-card"
-           style="margin-top:20px;">
+      <div
+        id="clientRequestsCard"
+        class="dashboard-card"
+        style="margin-top:20px;"
+      >
 
         <h2>📋 Mes demandes de services</h2>
 
@@ -761,9 +724,10 @@
           Retrouvez ici les demandes que vous avez envoyées.
         </p>
 
-        <div id="clientRequests"
-             class="requests-grid">
-        </div>
+        <div
+          id="clientRequests"
+          class="requests-grid"
+        ></div>
 
       </div>
 
@@ -773,13 +737,10 @@
 
 </section>
 
-
 <footer>
   <p>© 2026 TechniPro CI — Tous droits réservés.</p>
 </footer>
 
-
-<!-- MODAL DEMANDE DE SERVICE -->
 <div
   id="requestModal"
   class="hidden"
@@ -788,7 +749,6 @@
     inset:0;
     background:rgba(0,0,0,0.6);
     z-index:9999;
-    display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
@@ -807,12 +767,14 @@
     "
   >
 
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:20px;
-    ">
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+      "
+    >
 
       <h2>📨 Demander un service</h2>
 
@@ -822,7 +784,6 @@
           border:none;
           background:none;
           font-size:25px;
-          cursor:pointer;
         "
       >
         ×
@@ -851,7 +812,6 @@
           type="text"
           id="requestService"
           required
-          placeholder="Ex : réparation d'une installation électrique"
         >
       </div>
 
@@ -860,7 +820,6 @@
         <textarea
           id="requestDescription"
           required
-          placeholder="Expliquez clairement ce dont vous avez besoin..."
         ></textarea>
       </div>
 
@@ -870,7 +829,6 @@
           type="text"
           id="requestCity"
           required
-          placeholder="Votre ville"
         >
       </div>
 
@@ -879,7 +837,6 @@
         <input
           type="text"
           id="requestQuartier"
-          placeholder="Votre quartier"
         >
       </div>
 
@@ -889,7 +846,6 @@
           type="tel"
           id="requestPhone"
           required
-          placeholder="Votre numéro"
         >
       </div>
 
@@ -907,860 +863,119 @@
 
 </div>
 
-
 <script>
 
-  /* =========================================================
-     SUPABASE
-  ========================================================= */
+const SUPABASE_URL =
+  "https://spznzkneagjawragvijg.supabase.co";
 
-  const SUPABASE_URL =
-    "https://spznzkneagjawragvijg.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
 
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-
-
-  let currentUser = null;
-  let currentProfile = null;
+let currentUser = null;
+let currentProfile = null;
 
 
-  /* =========================================================
-     OUTILS
-  ========================================================= */
+/* =========================================================
+   OUTILS
+========================================================= */
 
-  function escapeHTML(value) {
+function escapeHTML(value) {
 
-    if (value === null || value === undefined) {
-      return "";
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+function escapeJS(value) {
+
+  return String(value || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r");
+}
+
+
+function showMessage(elementId, message, type) {
+
+  const element =
+    document.getElementById(elementId);
+
+  if (!element) return;
+
+  element.className =
+    "message " + type;
+
+  element.textContent =
+    message;
+
+  element.style.display =
+    "block";
+}
+
+
+function hideMessage(elementId) {
+
+  const element =
+    document.getElementById(elementId);
+
+  if (!element) return;
+
+  element.style.display =
+    "none";
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showSection(sectionId) {
+
+  const sections = [
+    "homeSection",
+    "servicesSection",
+    "professionalsSection",
+    "accountSection",
+    "dashboardSection"
+  ];
+
+  sections.forEach(id => {
+
+    const section =
+      document.getElementById(id);
+
+    if (section) {
+
+      section.style.display =
+        id === sectionId
+        ? "block"
+        : "none";
     }
 
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
+  });
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
-  function showMessage(elementId, message, type) {
-
-    const element = document.getElementById(elementId);
-
-    if (!element) return;
-
-    element.className = "message " + type;
-    element.textContent = message;
-    element.style.display = "block";
-  }
-
-
-  function hideMessage(elementId) {
-
-    const element = document.getElementById(elementId);
-
-    if (!element) return;
-
-    element.style.display = "none";
-  }
-
-
-  /* =========================================================
-     NAVIGATION
-  ========================================================= */
-
-  function showSection(sectionId) {
-
-    const sections = [
-      "homeSection",
-      "servicesSection",
-      "professionalsSection",
-      "accountSection",
-      "dashboardSection"
-    ];
-
-    sections.forEach(id => {
-
-      const section = document.getElementById(id);
-
-      if (section) {
-        section.style.display =
-          id === sectionId ? "block" : "none";
-      }
-
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-    if (sectionId === "dashboardSection") {
-
-      if (!currentUser) {
-
-        showSection("accountSection");
-
-        showMessage(
-          "accountMessage",
-          "Veuillez vous connecter pour accéder à votre espace.",
-          "info"
-        );
-
-        return;
-      }
-
-      loadDashboard();
-    }
-  }
-
-
-  /* =========================================================
-     FORMULAIRES COMPTE
-  ========================================================= */
-
-  function showLoginForm() {
-
-    document
-      .getElementById("registerCard")
-      .classList.add("hidden");
-
-    document
-      .getElementById("loginCard")
-      .classList.remove("hidden");
-
-    hideMessage("accountMessage");
-  }
-
-
-  function showRegisterForm() {
-
-    document
-      .getElementById("loginCard")
-      .classList.add("hidden");
-
-    document
-      .getElementById("registerCard")
-      .classList.remove("hidden");
-
-    hideMessage("accountMessage");
-  }
-
-
-  /* =========================================================
-     INSCRIPTION
-  ========================================================= */
-
-  async function registerUser(event) {
-
-    event.preventDefault();
-
-    hideMessage("accountMessage");
-
-    const fullName =
-      document.getElementById("registerName").value.trim();
-
-    const phone =
-      document.getElementById("registerPhone").value.trim();
-
-    const city =
-      document.getElementById("registerCity").value;
-
-    const userType =
-      document.getElementById("registerType").value;
-
-    const email =
-      document.getElementById("registerEmail").value.trim();
-
-    const password =
-      document.getElementById("registerPassword").value;
-
-
-    try {
-
-      const {
-        data,
-        error
-      } = await supabaseClient.auth.signUp({
-        email: email,
-        password: password
-      });
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      if (!data.user) {
-
-        throw new Error(
-          "Le compte n'a pas pu être créé."
-        );
-      }
-
-
-      const {
-        error: profileError
-      } = await supabaseClient
-        .from("profiles")
-        .insert({
-          id: data.user.id,
-          full_name: fullName,
-          phone: phone,
-          city: city,
-          user_type: userType
-        });
-
-
-      if (profileError) {
-
-        console.error(profileError);
-
-        showMessage(
-          "accountMessage",
-          "Compte créé, mais le profil n'a pas pu être enregistré : " +
-          profileError.message,
-          "error"
-        );
-
-        return;
-      }
-
-
-      showMessage(
-        "accountMessage",
-        "✅ Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
-        "success"
-      );
-
-
-      document
-        .getElementById("registerCard")
-        .classList.add("hidden");
-
-      document
-        .getElementById("loginCard")
-        .classList.remove("hidden");
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "accountMessage",
-        "❌ " + error.message,
-        "error"
-      );
-    }
-  }
-
-
-  /* =========================================================
-     CONNEXION
-  ========================================================= */
-
-  async function loginUser(event) {
-
-    event.preventDefault();
-
-    hideMessage("accountMessage");
-
-    const email =
-      document.getElementById("loginEmail").value.trim();
-
-    const password =
-      document.getElementById("loginPassword").value;
-
-
-    try {
-
-      const {
-        data,
-        error
-      } = await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      currentUser = data.user;
-
-      await loadUserProfile();
-
-
-      showMessage(
-        "accountMessage",
-        "✅ Connexion réussie !",
-        "success"
-      );
-
-
-      document
-        .getElementById("logoutBtn")
-        .classList.remove("hidden");
-
-
-      setTimeout(() => {
-
-        showSection("dashboardSection");
-
-      }, 700);
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "accountMessage",
-        "❌ " + error.message,
-        "error"
-      );
-    }
-  }
-
-
-  /* =========================================================
-     DECONNEXION
-  ========================================================= */
-
-  async function logout() {
-
-    await supabaseClient.auth.signOut();
-
-    currentUser = null;
-    currentProfile = null;
-
-    document
-      .getElementById("logoutBtn")
-      .classList.add("hidden");
-
-    showSection("homeSection");
-
-    alert("Vous êtes déconnecté.");
-  }
-
-
-  /* =========================================================
-     PROFIL UTILISATEUR
-  ========================================================= */
-
-  async function loadUserProfile() {
-
-    if (!currentUser) return;
-
-
-    const {
-      data,
-      error
-    } = await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id", currentUser.id)
-      .maybeSingle();
-
-
-    if (error) {
-
-      console.error(error);
-
-      return;
-    }
-
-
-    currentProfile = data;
-
-
-    if (!data) return;
-
-
-    document
-      .getElementById("professionalProfession")
-      .value = data.profession || "";
-
-    document
-      .getElementById("professionalQuartier")
-      .value = data.quartier || "";
-
-    document
-      .getElementById("professionalServices")
-      .value = data.services || "";
-
-    document
-      .getElementById("professionalDescription")
-      .value = data.description || "";
-  }
-
-
-  /* =========================================================
-     TABLEAU DE BORD
-  ========================================================= */
-
-  async function loadDashboard() {
-
-    if (!currentUser) return;
-
-
-    await loadUserProfile();
-
-
-    if (!currentProfile) {
-
-      document
-        .getElementById("userInformation")
-        .innerHTML =
-        "<p>Profil introuvable.</p>";
-
-      return;
-    }
-
-
-    document
-      .getElementById("userInformation")
-      .innerHTML = `
-
-        <p>
-          <strong>Nom :</strong>
-          ${escapeHTML(currentProfile.full_name)}
-        </p>
-
-        <p>
-          <strong>Téléphone :</strong>
-          ${escapeHTML(currentProfile.phone)}
-        </p>
-
-        <p>
-          <strong>Ville :</strong>
-          ${escapeHTML(currentProfile.city)}
-        </p>
-
-        <p>
-          <strong>Type de compte :</strong>
-          ${escapeHTML(currentProfile.user_type)}
-        </p>
-
-      `;
-
-
-    const professionalCard =
-      document.getElementById("professionalProfileCard");
-
-    const professionalRequestsCard =
-      document.getElementById("professionalRequestsCard");
-
-    const clientRequestsCard =
-      document.getElementById("clientRequestsCard");
-
-
-    if (currentProfile.user_type === "professionnel") {
-
-      professionalCard.classList.remove("hidden");
-
-      professionalRequestsCard.classList.remove("hidden");
-
-      clientRequestsCard.classList.add("hidden");
-
-      await loadProfessionalRequests();
-
-    } else {
-
-      professionalCard.classList.add("hidden");
-
-      professionalRequestsCard.classList.add("hidden");
-
-      clientRequestsCard.classList.remove("hidden");
-
-      await loadClientRequests();
-    }
-  }
-
-
-  /* =========================================================
-     ENREGISTRER PROFIL PROFESSIONNEL
-  ========================================================= */
-
-  async function saveProfessionalProfile(event) {
-
-    event.preventDefault();
-
-
-    if (!currentUser) {
-
-      showMessage(
-        "dashboardMessage",
-        "Veuillez vous connecter.",
-        "error"
-      );
-
-      return;
-    }
-
-
-    const profession =
-      document
-        .getElementById("professionalProfession")
-        .value.trim();
-
-    const quartier =
-      document
-        .getElementById("professionalQuartier")
-        .value.trim();
-
-    const services =
-      document
-        .getElementById("professionalServices")
-        .value.trim();
-
-    const description =
-      document
-        .getElementById("professionalDescription")
-        .value.trim();
-
-
-    try {
-
-      const {
-        error
-      } = await supabaseClient
-        .from("profiles")
-        .update({
-          profession: profession,
-          quartier: quartier,
-          services: services,
-          description: description
-        })
-        .eq("id", currentUser.id);
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      showMessage(
-        "dashboardMessage",
-        "✅ Profil professionnel enregistré avec succès !",
-        "success"
-      );
-
-
-      await loadUserProfile();
-
-      await searchProfessionals();
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "dashboardMessage",
-        "❌ " + error.message,
-        "error"
-      );
-    }
-  }
-
-
-  /* =========================================================
-     RECHERCHE PROFESSIONNELS
-  ========================================================= */
-
-  async function searchProfessionals() {
-
-    const profession =
-      document
-        .getElementById("searchProfession")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const city =
-      document
-        .getElementById("searchCity")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    try {
-
-      let query =
-        supabaseClient
-          .from("profiles")
-          .select("*")
-          .eq("user_type", "professionnel");
-
-
-      if (city) {
-
-        query = query.ilike(
-          "city",
-          city
-        );
-      }
-
-
-      const {
-        data,
-        error
-      } = await query;
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      let professionals = data || [];
-
-
-      if (profession) {
-
-        professionals =
-          professionals.filter(profile => {
-
-            const p =
-              (profile.profession || "")
-              .toLowerCase();
-
-            const s =
-              (profile.services || "")
-              .toLowerCase();
-
-            const d =
-              (profile.description || "")
-              .toLowerCase();
-
-            return (
-              p.includes(profession) ||
-              s.includes(profession) ||
-              d.includes(profession)
-            );
-          });
-      }
-
-
-      displayProfessionals(professionals);
-
-
-      showSection("professionalsSection");
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "searchMessage",
-        "❌ Impossible de rechercher les professionnels : " +
-        error.message,
-        "error"
-      );
-    }
-  }
-
-
-  /* =========================================================
-     AFFICHER PROFESSIONNELS
-  ========================================================= */
-
-  function displayProfessionals(professionals) {
-
-    const grid =
-      document.getElementById("professionalsGrid");
-
-
-    grid.innerHTML = "";
-
-
-    if (!professionals.length) {
-
-      grid.innerHTML = `
-
-        <div class="professional-card"
-             style="grid-column:1/-1;text-align:center;">
-
-          <h3>😕 Aucun professionnel trouvé</h3>
-
-          <p>
-            Essayez une autre profession ou une autre ville.
-          </p>
-
-        </div>
-
-      `;
-
-      return;
-    }
-
-
-    professionals.forEach(profile => {
-
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "professional-card";
-
-
-      const profession =
-        escapeHTML(
-          profile.profession || "Professionnel"
-        );
-
-
-      const name =
-        escapeHTML(
-          profile.full_name || "Nom non renseigné"
-        );
-
-
-      const city =
-        escapeHTML(
-          profile.city || "Ville non renseignée"
-        );
-
-
-      const quartier =
-        escapeHTML(
-          profile.quartier || "Non renseigné"
-        );
-
-
-      const services =
-        escapeHTML(
-          profile.services || "Non renseigné"
-        );
-
-
-      const description =
-        escapeHTML(
-          profile.description ||
-          "Aucune description disponible."
-        );
-
-
-      const phone =
-        escapeHTML(
-          profile.phone || ""
-        );
-
-
-      card.innerHTML = `
-
-        <h3>${profession}</h3>
-
-        <p>
-          👤 <strong>${name}</strong>
-        </p>
-
-        <p>
-          📍 <strong>Ville :</strong> ${city}
-        </p>
-
-        <p>
-          🏘️ <strong>Quartier :</strong> ${quartier}
-        </p>
-
-        <p>
-          🛠️ <strong>Services :</strong> ${services}
-        </p>
-
-        <p>
-          📝 ${description}
-        </p>
-
-        <div class="professional-actions">
-
-          ${
-            phone
-            ? `
-              <a
-                href="tel:${phone}"
-                style="text-decoration:none;flex:1;"
-              >
-                <button
-                  class="primary-btn"
-                  style="width:100%;"
-                >
-                  📞 Contacter
-                </button>
-              </a>
-            `
-            : ""
-          }
-
-          <button
-            class="green-btn"
-            style="flex:1;"
-            onclick="openRequestModal(
-              '${profile.id}',
-              '${escapeJS(name)}',
-              '${escapeJS(profession)}'
-            )"
-          >
-            📨 Demander
-          </button>
-
-        </div>
-
-      `;
-
-
-      grid.appendChild(card);
-    });
-  }
-
-
-  function escapeJS(value) {
-
-    return String(value || "")
-      .replace(/\\/g, "\\\\")
-      .replace(/'/g, "\\'")
-      .replace(/"/g, '\\"')
-      .replace(/\n/g, "\\n")
-      .replace(/\r/g, "\\r");
-  }
-
-
-  /* =========================================================
-     SELECTION SERVICE
-  ========================================================= */
-
-  function selectService(service) {
-
-    document
-      .getElementById("searchProfession")
-      .value = service;
-
-    searchProfessionals();
-  }
-
-
-  /* =========================================================
-     OUVRIR DEMANDE
-  ========================================================= */
-
-  async function openRequestModal(
-    professionalId,
-    professionalName,
-    profession
-  ) {
+  if (sectionId === "dashboardSection") {
 
     if (!currentUser) {
 
@@ -1768,713 +983,1594 @@
 
       showMessage(
         "accountMessage",
-        "🔐 Connectez-vous ou créez un compte client pour envoyer une demande.",
+        "Veuillez vous connecter pour accéder à votre espace.",
         "info"
       );
 
       return;
     }
 
-
-    if (
-      currentProfile &&
-      currentProfile.user_type === "professionnel"
-    ) {
-
-      alert(
-        "Un compte professionnel ne peut pas envoyer une demande en tant que client."
-      );
-
-      return;
-    }
-
-
-    document
-      .getElementById("requestProfessionalId")
-      .value = professionalId;
-
-
-    document
-      .getElementById("requestProfessionalName")
-      .value = professionalName;
-
-
-    document
-      .getElementById("requestService")
-      .value = profession;
-
-
-    document
-      .getElementById("requestDescription")
-      .value = "";
-
-
-    document
-      .getElementById("requestCity")
-      .value =
-      currentProfile?.city || "";
-
-
-    document
-      .getElementById("requestQuartier")
-      .value =
-      currentProfile?.quartier || "";
-
-
-    document
-      .getElementById("requestPhone")
-      .value =
-      currentProfile?.phone || "";
-
-
-    hideMessage("requestModalMessage");
-
-
-    const modal =
-      document.getElementById("requestModal");
-
-    modal.classList.remove("hidden");
-
-    modal.style.display = "flex";
+    loadDashboard();
   }
+}
 
 
-  /* =========================================================
-     FERMER MODAL
-  ========================================================= */
+/* =========================================================
+   COMPTE
+========================================================= */
 
-  function closeRequestModal() {
+function showLoginForm() {
 
-    const modal =
-      document.getElementById("requestModal");
+  document
+    .getElementById("registerCard")
+    .classList.add("hidden");
 
-    modal.classList.add("hidden");
+  document
+    .getElementById("loginCard")
+    .classList.remove("hidden");
 
-    modal.style.display = "none";
-  }
+  hideMessage("accountMessage");
+}
 
 
-  /* =========================================================
-     ENVOYER DEMANDE
-  ========================================================= */
+function showRegisterForm() {
 
-  async function submitServiceRequest(event) {
+  document
+    .getElementById("loginCard")
+    .classList.add("hidden");
 
-    event.preventDefault();
+  document
+    .getElementById("registerCard")
+    .classList.remove("hidden");
 
+  hideMessage("accountMessage");
+}
 
-    if (!currentUser) {
 
-      showMessage(
-        "requestModalMessage",
-        "Veuillez vous connecter.",
-        "error"
-      );
+/* =========================================================
+   INSCRIPTION
+========================================================= */
 
-      return;
-    }
+async function registerUser(event) {
 
+  event.preventDefault();
 
-    const professionalId =
-      document
-        .getElementById("requestProfessionalId")
-        .value;
+  hideMessage("accountMessage");
 
+  const fullName =
+    document.getElementById("registerName").value.trim();
 
-    const service =
-      document
-        .getElementById("requestService")
-        .value
-        .trim();
+  const phone =
+    document.getElementById("registerPhone").value.trim();
 
+  const city =
+    document.getElementById("registerCity").value;
 
-    const description =
-      document
-        .getElementById("requestDescription")
-        .value
-        .trim();
+  const userType =
+    document.getElementById("registerType").value;
 
+  const email =
+    document.getElementById("registerEmail").value.trim();
 
-    const city =
-      document
-        .getElementById("requestCity")
-        .value
-        .trim();
+  const password =
+    document.getElementById("registerPassword").value;
 
-
-    const quartier =
-      document
-        .getElementById("requestQuartier")
-        .value
-        .trim();
-
-
-    const phone =
-      document
-        .getElementById("requestPhone")
-        .value
-        .trim();
-
-
-    if (!service || !description || !city || !phone) {
-
-      showMessage(
-        "requestModalMessage",
-        "Veuillez remplir tous les champs obligatoires.",
-        "error"
-      );
-
-      return;
-    }
-
-
-    try {
-
-      const {
-        error
-      } = await supabaseClient
-        .from("service_requests")
-        .insert({
-          client_id: currentUser.id,
-          professional_id: professionalId,
-          service: service,
-          description: description,
-          city: city,
-          quartier: quartier,
-          phone: phone,
-          status: "en_attente"
-        });
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      showMessage(
-        "requestModalMessage",
-        "✅ Votre demande a été envoyée au professionnel !",
-        "success"
-      );
-
-
-      setTimeout(() => {
-
-        closeRequestModal();
-
-        showSection("dashboardSection");
-
-      }, 1000);
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "requestModalMessage",
-        "❌ Impossible d'envoyer la demande : " +
-        error.message,
-        "error"
-      );
-    }
-  }
-
-
-  /* =========================================================
-     DEMANDES REÇUES PAR LE PROFESSIONNEL
-  ========================================================= */
-
-  async function loadProfessionalRequests() {
-
-    if (!currentUser) return;
-
-
-    const container =
-      document.getElementById("professionalRequests");
-
-
-    container.innerHTML =
-      "<p>Chargement des demandes...</p>";
-
-
-    try {
-
-      const {
-        data,
-        error
-      } = await supabaseClient
-        .from("service_requests")
-        .select("*")
-        .eq("professional_id", currentUser.id)
-        .order("created_at", {
-          ascending: false
-        });
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      if (!data || !data.length) {
-
-        container.innerHTML = `
-
-          <div class="request-card">
-
-            <h3>Aucune demande pour le moment</h3>
-
-            <p>
-              Les nouvelles demandes de clients
-              apparaîtront ici.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-      }
-
-
-      container.innerHTML = "";
-
-
-      data.forEach(request => {
-
-        const card =
-          document.createElement("div");
-
-        card.className =
-          "request-card";
-
-
-        const statusClass =
-          getStatusClass(request.status);
-
-
-        const statusText =
-          getStatusText(request.status);
-
-
-        const date =
-          formatDate(request.created_at);
-
-
-        card.innerHTML = `
-
-          <h3>
-            📨 ${escapeHTML(request.service)}
-          </h3>
-
-          <p>
-            <strong>Description :</strong><br>
-            ${escapeHTML(request.description)}
-          </p>
-
-          <p>
-            👤 <strong>Client :</strong>
-            ${escapeHTML(
-              request.phone || "Non renseigné"
-            )}
-          </p>
-
-          <p>
-            📍 <strong>Ville :</strong>
-            ${escapeHTML(
-              request.city || "Non renseignée"
-            )}
-          </p>
-
-          <p>
-            🏘️ <strong>Quartier :</strong>
-            ${escapeHTML(
-              request.quartier || "Non renseigné"
-            )}
-          </p>
-
-          <p>
-            📅 ${date}
-          </p>
-
-          <span class="status ${statusClass}">
-            ${statusText}
-          </span>
-
-          ${
-            request.status === "en_attente"
-            ? `
-
-              <div class="request-actions">
-
-                <button
-                  class="green-btn"
-                  onclick="updateRequestStatus(
-                    '${request.id}',
-                    'acceptee'
-                  )"
-                >
-                  ✅ Accepter
-                </button>
-
-                <button
-                  class="red-btn"
-                  onclick="updateRequestStatus(
-                    '${request.id}',
-                    'refusee'
-                  )"
-                >
-                  ❌ Refuser
-                </button>
-
-                ${
-                  request.phone
-                  ? `
-                    <a
-                      href="tel:${escapeHTML(request.phone)}"
-                      style="text-decoration:none;"
-                    >
-                      <button class="primary-btn">
-                        📞 Appeler
-                      </button>
-                    </a>
-                  `
-                  : ""
-                }
-
-              </div>
-
-            `
-            : ""
-          }
-
-        `;
-
-
-        container.appendChild(card);
-      });
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      container.innerHTML = `
-
-        <div class="request-card">
-
-          <p style="color:#dc3545;">
-            ❌ Impossible de charger les demandes :
-            ${escapeHTML(error.message)}
-          </p>
-
-        </div>
-
-      `;
-    }
-  }
-
-
-  /* =========================================================
-     MODIFIER STATUT DEMANDE
-  ========================================================= */
-
-  async function updateRequestStatus(
-    requestId,
-    newStatus
-  ) {
-
-    if (!currentUser) return;
-
-
-    try {
-
-      const {
-        error
-      } = await supabaseClient
-        .from("service_requests")
-        .update({
-          status: newStatus
-        })
-        .eq("id", requestId)
-        .eq("professional_id", currentUser.id);
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      await loadProfessionalRequests();
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(
-        "Impossible de modifier la demande : " +
-        error.message
-      );
-    }
-  }
-
-
-  /* =========================================================
-     DEMANDES DU CLIENT
-  ========================================================= */
-
-  async function loadClientRequests() {
-
-    if (!currentUser) return;
-
-
-    const container =
-      document.getElementById("clientRequests");
-
-
-    container.innerHTML =
-      "<p>Chargement des demandes...</p>";
-
-
-    try {
-
-      const {
-        data,
-        error
-      } = await supabaseClient
-        .from("service_requests")
-        .select("*")
-        .eq("client_id", currentUser.id)
-        .order("created_at", {
-          ascending: false
-        });
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      if (!data || !data.length) {
-
-        container.innerHTML = `
-
-          <div class="request-card">
-
-            <h3>Aucune demande envoyée</h3>
-
-            <p>
-              Vos demandes de services apparaîtront ici.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-      }
-
-
-      container.innerHTML = "";
-
-
-      data.forEach(request => {
-
-        const card =
-          document.createElement("div");
-
-        card.className =
-          "request-card";
-
-
-        card.innerHTML = `
-
-          <h3>
-            🛠️ ${escapeHTML(request.service)}
-          </h3>
-
-          <p>
-            <strong>Votre demande :</strong><br>
-            ${escapeHTML(request.description)}
-          </p>
-
-          <p>
-            📍 ${escapeHTML(
-              request.city || ""
-            )}
-            ${
-              request.quartier
-              ? " - " + escapeHTML(request.quartier)
-              : ""
-            }
-          </p>
-
-          <p>
-            📅 ${formatDate(request.created_at)}
-          </p>
-
-          <span class="status ${getStatusClass(request.status)}">
-            ${getStatusText(request.status)}
-          </span>
-
-        `;
-
-
-        container.appendChild(card);
-      });
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      container.innerHTML = `
-
-        <div class="request-card">
-
-          <p style="color:#dc3545;">
-            ❌ Impossible de charger vos demandes :
-            ${escapeHTML(error.message)}
-          </p>
-
-        </div>
-
-      `;
-    }
-  }
-
-
-  /* =========================================================
-     STATUT
-  ========================================================= */
-
-  function getStatusClass(status) {
-
-    if (status === "acceptee") {
-      return "status-acceptee";
-    }
-
-    if (status === "refusee") {
-      return "status-refusee";
-    }
-
-    return "status-en-attente";
-  }
-
-
-  function getStatusText(status) {
-
-    if (status === "acceptee") {
-      return "✅ Demande acceptée";
-    }
-
-    if (status === "refusee") {
-      return "❌ Demande refusée";
-    }
-
-    return "⏳ En attente";
-  }
-
-
-  function formatDate(dateString) {
-
-    if (!dateString) return "";
-
-    const date =
-      new Date(dateString);
-
-    return date.toLocaleString(
-      "fr-FR",
-      {
-        dateStyle: "short",
-        timeStyle: "short"
-      }
-    );
-  }
-
-
-  /* =========================================================
-     SESSION
-  ========================================================= */
-
-  async function checkSession() {
+  try {
 
     const {
+      data,
+      error
+    } = await supabaseClient.auth.signUp({
+      email,
+      password
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data.user) {
+      throw new Error(
+        "Le compte n'a pas pu être créé."
+      );
+    }
+
+    const {
+      error: profileError
+    } = await supabaseClient
+      .from("profiles")
+      .insert({
+        id: data.user.id,
+        full_name: fullName,
+        phone,
+        city,
+        user_type: userType
+      });
+
+    if (profileError) {
+
+      console.error(profileError);
+
+      showMessage(
+        "accountMessage",
+        "Compte créé, mais le profil n'a pas pu être enregistré : " +
+        profileError.message,
+        "error"
+      );
+
+      return;
+    }
+
+    showMessage(
+      "accountMessage",
+      "✅ Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
+      "success"
+    );
+
+    document
+      .getElementById("registerCard")
+      .classList.add("hidden");
+
+    document
+      .getElementById("loginCard")
+      .classList.remove("hidden");
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "accountMessage",
+      "❌ " + error.message,
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   CONNEXION
+========================================================= */
+
+async function loginUser(event) {
+
+  event.preventDefault();
+
+  hideMessage("accountMessage");
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  try {
+
+    const {
+      data,
+      error
+    } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    currentUser =
+      data.user;
+
+    await loadUserProfile();
+
+    showMessage(
+      "accountMessage",
+      "✅ Connexion réussie !",
+      "success"
+    );
+
+    document
+      .getElementById("logoutBtn")
+      .classList.remove("hidden");
+
+    setTimeout(() => {
+      showSection("dashboardSection");
+    }, 700);
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "accountMessage",
+      "❌ " + error.message,
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   DECONNEXION
+========================================================= */
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  currentUser = null;
+  currentProfile = null;
+
+  document
+    .getElementById("logoutBtn")
+    .classList.add("hidden");
+
+  showSection("homeSection");
+
+  alert("Vous êtes déconnecté.");
+}
+
+
+/* =========================================================
+   PROFIL
+========================================================= */
+
+async function loadUserProfile() {
+
+  if (!currentUser) return;
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id", currentUser.id)
+    .maybeSingle();
+
+  if (error) {
+
+    console.error(
+      "Erreur chargement profil :",
+      error
+    );
+
+    return;
+  }
+
+  currentProfile =
+    data;
+
+  if (!data) return;
+
+  document
+    .getElementById("professionalProfession")
+    .value =
+    data.profession || "";
+
+  document
+    .getElementById("professionalQuartier")
+    .value =
+    data.quartier || "";
+
+  document
+    .getElementById("professionalServices")
+    .value =
+    data.services || "";
+
+  document
+    .getElementById("professionalDescription")
+    .value =
+    data.description || "";
+}
+
+
+/* =========================================================
+   TABLEAU DE BORD
+========================================================= */
+
+async function loadDashboard() {
+
+  if (!currentUser) return;
+
+  hideMessage("dashboardMessage");
+
+  await loadUserProfile();
+
+  if (!currentProfile) {
+
+    document
+      .getElementById("userInformation")
+      .innerHTML =
+      "<p>Profil introuvable.</p>";
+
+    return;
+  }
+
+  document
+    .getElementById("userInformation")
+    .innerHTML = `
+
+      <p>
+        <strong>Nom :</strong>
+        ${escapeHTML(currentProfile.full_name)}
+      </p>
+
+      <p>
+        <strong>Téléphone :</strong>
+        ${escapeHTML(currentProfile.phone)}
+      </p>
+
+      <p>
+        <strong>Ville :</strong>
+        ${escapeHTML(currentProfile.city)}
+      </p>
+
+      <p>
+        <strong>Type de compte :</strong>
+        ${escapeHTML(currentProfile.user_type)}
+      </p>
+  `;
+
+  const professionalCard =
+    document.getElementById(
+      "professionalProfileCard"
+    );
+
+  const professionalRequestsCard =
+    document.getElementById(
+      "professionalRequestsCard"
+    );
+
+  const clientRequestsCard =
+    document.getElementById(
+      "clientRequestsCard"
+    );
+
+  if (
+    currentProfile.user_type ===
+    "professionnel"
+  ) {
+
+    professionalCard
+      .classList.remove("hidden");
+
+    professionalRequestsCard
+      .classList.remove("hidden");
+
+    clientRequestsCard
+      .classList.add("hidden");
+
+    await loadProfessionalRequests();
+
+  } else {
+
+    professionalCard
+      .classList.add("hidden");
+
+    professionalRequestsCard
+      .classList.add("hidden");
+
+    clientRequestsCard
+      .classList.remove("hidden");
+
+    await loadClientRequests();
+  }
+}
+
+
+/* =========================================================
+   PROFIL PROFESSIONNEL
+========================================================= */
+
+async function saveProfessionalProfile(event) {
+
+  event.preventDefault();
+
+  if (!currentUser) {
+
+    showMessage(
+      "dashboardMessage",
+      "Veuillez vous connecter.",
+      "error"
+    );
+
+    return;
+  }
+
+  const profession =
+    document
+      .getElementById("professionalProfession")
+      .value.trim();
+
+  const quartier =
+    document
+      .getElementById("professionalQuartier")
+      .value.trim();
+
+  const services =
+    document
+      .getElementById("professionalServices")
+      .value.trim();
+
+  const description =
+    document
+      .getElementById("professionalDescription")
+      .value.trim();
+
+  try {
+
+    const {
+      error
+    } = await supabaseClient
+      .from("profiles")
+      .update({
+        profession,
+        quartier,
+        services,
+        description
+      })
+      .eq("id", currentUser.id);
+
+    if (error) {
+      throw error;
+    }
+
+    showMessage(
+      "dashboardMessage",
+      "✅ Profil professionnel enregistré avec succès !",
+      "success"
+    );
+
+    await loadUserProfile();
+
+    await searchProfessionals();
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "dashboardMessage",
+      "❌ " + error.message,
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   RECHERCHE PROFESSIONNELS
+========================================================= */
+
+async function searchProfessionals() {
+
+  const profession =
+    document
+      .getElementById("searchProfession")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const city =
+    document
+      .getElementById("searchCity")
+      .value
+      .trim()
+      .toLowerCase();
+
+  try {
+
+    let query =
+      supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("user_type", "professionnel");
+
+    if (city) {
+
+      query =
+        query.ilike(
+          "city",
+          city
+        );
+    }
+
+    const {
+      data,
+      error
+    } = await query;
+
+    if (error) {
+      throw error;
+    }
+
+    let professionals =
+      data || [];
+
+    if (profession) {
+
+      professionals =
+        professionals.filter(profile => {
+
+          const p =
+            (profile.profession || "")
+              .toLowerCase();
+
+          const s =
+            (profile.services || "")
+              .toLowerCase();
+
+          const d =
+            (profile.description || "")
+              .toLowerCase();
+
+          return (
+            p.includes(profession) ||
+            s.includes(profession) ||
+            d.includes(profession)
+          );
+        });
+    }
+
+    displayProfessionals(
+      professionals
+    );
+
+    showSection(
+      "professionalsSection"
+    );
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "searchMessage",
+      "❌ Impossible de rechercher les professionnels : " +
+      error.message,
+      "error"
+    );
+  }
+}
+
+
+/* =========================================================
+   AFFICHAGE PROFESSIONNELS
+========================================================= */
+
+function displayProfessionals(
+  professionals
+) {
+
+  const grid =
+    document.getElementById(
+      "professionalsGrid"
+    );
+
+  grid.innerHTML = "";
+
+  if (!professionals.length) {
+
+    grid.innerHTML = `
+
+      <div
+        class="professional-card"
+        style="grid-column:1/-1;text-align:center;"
+      >
+
+        <h3>😕 Aucun professionnel trouvé</h3>
+
+        <p>
+          Essayez une autre profession ou une autre ville.
+        </p>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  professionals.forEach(profile => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "professional-card";
+
+    const profession =
+      escapeHTML(
+        profile.profession ||
+        "Professionnel"
+      );
+
+    const name =
+      escapeHTML(
+        profile.full_name ||
+        "Nom non renseigné"
+      );
+
+    const city =
+      escapeHTML(
+        profile.city ||
+        "Ville non renseignée"
+      );
+
+    const quartier =
+      escapeHTML(
+        profile.quartier ||
+        "Non renseigné"
+      );
+
+    const services =
+      escapeHTML(
+        profile.services ||
+        "Non renseigné"
+      );
+
+    const description =
+      escapeHTML(
+        profile.description ||
+        "Aucune description disponible."
+      );
+
+    const phone =
+      escapeHTML(
+        profile.phone ||
+        ""
+      );
+
+    card.innerHTML = `
+
+      <h3>${profession}</h3>
+
+      <p>
+        👤 <strong>${name}</strong>
+      </p>
+
+      <p>
+        📍 <strong>Ville :</strong> ${city}
+      </p>
+
+      <p>
+        🏘️ <strong>Quartier :</strong> ${quartier}
+      </p>
+
+      <p>
+        🛠️ <strong>Services :</strong> ${services}
+      </p>
+
+      <p>
+        📝 ${description}
+      </p>
+
+      <div class="professional-actions">
+
+        ${
+          phone
+          ? `
+            <a
+              href="tel:${phone}"
+              style="text-decoration:none;flex:1;"
+            >
+              <button
+                class="primary-btn"
+                style="width:100%;"
+              >
+                📞 Contacter
+              </button>
+            </a>
+          `
+          : ""
+        }
+
+        <button
+          class="green-btn"
+          style="flex:1;"
+          onclick="openRequestModal(
+            '${escapeJS(profile.id)}',
+            '${escapeJS(name)}',
+            '${escapeJS(profession)}'
+          )"
+        >
+          📨 Demander
+        </button>
+
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+
+/* =========================================================
+   SERVICE
+========================================================= */
+
+function selectService(service) {
+
+  document
+    .getElementById(
+      "searchProfession"
+    )
+    .value =
+    service;
+
+  searchProfessionals();
+}
+
+
+/* =========================================================
+   MODAL DEMANDE
+========================================================= */
+
+async function openRequestModal(
+  professionalId,
+  professionalName,
+  profession
+) {
+
+  if (!currentUser) {
+
+    showSection(
+      "accountSection"
+    );
+
+    showMessage(
+      "accountMessage",
+      "🔐 Connectez-vous ou créez un compte client pour envoyer une demande.",
+      "info"
+    );
+
+    return;
+  }
+
+  if (
+    currentProfile &&
+    currentProfile.user_type ===
+    "professionnel"
+  ) {
+
+    alert(
+      "Un compte professionnel ne peut pas envoyer une demande en tant que client."
+    );
+
+    return;
+  }
+
+  document
+    .getElementById(
+      "requestProfessionalId"
+    )
+    .value =
+    professionalId;
+
+  document
+    .getElementById(
+      "requestProfessionalName"
+    )
+    .value =
+    professionalName;
+
+  document
+    .getElementById(
+      "requestService"
+    )
+    .value =
+    profession;
+
+  document
+    .getElementById(
+      "requestDescription"
+    )
+    .value = "";
+
+  document
+    .getElementById(
+      "requestCity"
+    )
+    .value =
+    currentProfile?.city || "";
+
+  document
+    .getElementById(
+      "requestQuartier"
+    )
+    .value =
+    currentProfile?.quartier || "";
+
+  document
+    .getElementById(
+      "requestPhone"
+    )
+    .value =
+    currentProfile?.phone || "";
+
+  hideMessage(
+    "requestModalMessage"
+  );
+
+  const modal =
+    document.getElementById(
+      "requestModal"
+    );
+
+  modal.classList.remove(
+    "hidden"
+  );
+
+  modal.style.display =
+    "flex";
+}
+
+
+function closeRequestModal() {
+
+  const modal =
+    document.getElementById(
+      "requestModal"
+    );
+
+  modal.classList.add(
+    "hidden"
+  );
+
+  modal.style.display =
+    "none";
+}
+
+
+/* =========================================================
+   ENVOYER DEMANDE
+========================================================= */
+
+async function submitServiceRequest(
+  event
+) {
+
+  event.preventDefault();
+
+  if (!currentUser) {
+
+    showMessage(
+      "requestModalMessage",
+      "Veuillez vous connecter.",
+      "error"
+    );
+
+    return;
+  }
+
+  const professionalId =
+    document
+      .getElementById(
+        "requestProfessionalId"
+      )
+      .value
+      .trim();
+
+  const service =
+    document
+      .getElementById(
+        "requestService"
+      )
+      .value
+      .trim();
+
+  const description =
+    document
+      .getElementById(
+        "requestDescription"
+      )
+      .value
+      .trim();
+
+  const city =
+    document
+      .getElementById(
+        "requestCity"
+      )
+      .value
+      .trim();
+
+  const quartier =
+    document
+      .getElementById(
+        "requestQuartier"
+      )
+      .value
+      .trim();
+
+  const phone =
+    document
+      .getElementById(
+        "requestPhone"
+      )
+      .value
+      .trim();
+
+  if (
+    !professionalId ||
+    !service ||
+    !description ||
+    !city ||
+    !phone
+  ) {
+
+    showMessage(
+      "requestModalMessage",
+      "Veuillez remplir tous les champs obligatoires.",
+      "error"
+    );
+
+    return;
+  }
+
+  try {
+
+    const requestData = {
+      client_id: currentUser.id,
+      professional_id: professionalId,
+      service,
+      description,
+      city,
+      quartier,
+      phone,
+      status: "en_attente"
+    };
+
+    console.log(
+      "Envoi demande :",
+      requestData
+    );
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("service_requests")
+      .insert(requestData)
+      .select()
+      .single();
+
+    if (error) {
+
+      console.error(
+        "Erreur Supabase service_requests INSERT :",
+        error
+      );
+
+      throw error;
+    }
+
+    console.log(
+      "Demande créée :",
       data
-    } = await supabaseClient.auth.getSession();
+    );
+
+    showMessage(
+      "requestModalMessage",
+      "✅ Votre demande a été envoyée au professionnel !",
+      "success"
+    );
+
+    setTimeout(() => {
+
+      closeRequestModal();
+
+      showSection(
+        "dashboardSection"
+      );
+
+    }, 1000);
+
+  } catch (error) {
+
+    console.error(error);
+
+    let message =
+      error.message ||
+      "Une erreur est survenue.";
+
+    if (
+      message.includes(
+        "permission denied"
+      )
+    ) {
+
+      message =
+        "Accès refusé par Supabase. Vérifiez les politiques RLS de service_requests.";
+    }
+
+    showMessage(
+      "requestModalMessage",
+      "❌ Impossible d'envoyer la demande : " +
+      message,
+      "error"
+    );
+  }
+}
 
 
-    if (data.session) {
+/* =========================================================
+   DEMANDES PROFESSIONNEL
+========================================================= */
+
+async function loadProfessionalRequests() {
+
+  if (!currentUser) return;
+
+  const container =
+    document.getElementById(
+      "professionalRequests"
+    );
+
+  container.innerHTML =
+    "<p>Chargement des demandes...</p>";
+
+  try {
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("service_requests")
+      .select("*")
+      .eq(
+        "professional_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
+    if (error) {
+
+      console.error(
+        "Erreur SELECT professionnel :",
+        error
+      );
+
+      throw error;
+    }
+
+    if (!data || !data.length) {
+
+      container.innerHTML = `
+
+        <div class="request-card">
+
+          <h3>Aucune demande pour le moment</h3>
+
+          <p>
+            Les nouvelles demandes de clients
+            apparaîtront ici.
+          </p>
+
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML = "";
+
+    data.forEach(request => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "request-card";
+
+      card.innerHTML = `
+
+        <h3>
+          📨 ${escapeHTML(
+            request.service
+          )}
+        </h3>
+
+        <p>
+          <strong>Description :</strong><br>
+          ${escapeHTML(
+            request.description
+          )}
+        </p>
+
+        <p>
+          👤 <strong>Client :</strong>
+          ${escapeHTML(
+            request.phone ||
+            "Non renseigné"
+          )}
+        </p>
+
+        <p>
+          📍 <strong>Ville :</strong>
+          ${escapeHTML(
+            request.city ||
+            "Non renseignée"
+          )}
+        </p>
+
+        <p>
+          🏘️ <strong>Quartier :</strong>
+          ${escapeHTML(
+            request.quartier ||
+            "Non renseigné"
+          )}
+        </p>
+
+        <p>
+          📅 ${formatDate(
+            request.created_at
+          )}
+        </p>
+
+        <span
+          class="status ${getStatusClass(
+            request.status
+          )}"
+        >
+          ${getStatusText(
+            request.status
+          )}
+        </span>
+
+        ${
+          request.status ===
+          "en_attente"
+          ? `
+
+            <div class="request-actions">
+
+              <button
+                class="green-btn"
+                onclick="updateRequestStatus(
+                  '${escapeJS(request.id)}',
+                  'acceptee'
+                )"
+              >
+                ✅ Accepter
+              </button>
+
+              <button
+                class="red-btn"
+                onclick="updateRequestStatus(
+                  '${escapeJS(request.id)}',
+                  'refusee'
+                )"
+              >
+                ❌ Refuser
+              </button>
+
+              ${
+                request.phone
+                ? `
+                  <a
+                    href="tel:${escapeHTML(
+                      request.phone
+                    )}"
+                    style="text-decoration:none;"
+                  >
+                    <button class="primary-btn">
+                      📞 Appeler
+                    </button>
+                  </a>
+                `
+                : ""
+              }
+
+            </div>
+          `
+          : ""
+        }
+      `;
+
+      container.appendChild(
+        card
+      );
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+
+      <div class="request-card">
+
+        <p style="color:#dc3545;">
+
+          ❌ Impossible de charger les demandes :
+
+          ${escapeHTML(
+            error.message
+          )}
+
+        </p>
+
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   ACCEPTER / REFUSER
+========================================================= */
+
+async function updateRequestStatus(
+  requestId,
+  newStatus
+) {
+
+  if (!currentUser) return;
+
+  try {
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("service_requests")
+      .update({
+        status: newStatus
+      })
+      .eq(
+        "id",
+        requestId
+      )
+      .eq(
+        "professional_id",
+        currentUser.id
+      )
+      .select()
+      .single();
+
+    if (error) {
+
+      console.error(
+        "Erreur UPDATE service_requests :",
+        error
+      );
+
+      throw error;
+    }
+
+    console.log(
+      "Demande mise à jour :",
+      data
+    );
+
+    await loadProfessionalRequests();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Impossible de modifier la demande : " +
+      error.message
+    );
+  }
+}
+
+
+/* =========================================================
+   DEMANDES CLIENT
+========================================================= */
+
+async function loadClientRequests() {
+
+  if (!currentUser) return;
+
+  const container =
+    document.getElementById(
+      "clientRequests"
+    );
+
+  container.innerHTML =
+    "<p>Chargement des demandes...</p>";
+
+  try {
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("service_requests")
+      .select("*")
+      .eq(
+        "client_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
+    if (error) {
+
+      console.error(
+        "Erreur SELECT client :",
+        error
+      );
+
+      throw error;
+    }
+
+    if (!data || !data.length) {
+
+      container.innerHTML = `
+
+        <div class="request-card">
+
+          <h3>Aucune demande envoyée</h3>
+
+          <p>
+            Vos demandes de services apparaîtront ici.
+          </p>
+
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML = "";
+
+    data.forEach(request => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "request-card";
+
+      card.innerHTML = `
+
+        <h3>
+          🛠️ ${escapeHTML(
+            request.service
+          )}
+        </h3>
+
+        <p>
+          <strong>Votre demande :</strong><br>
+          ${escapeHTML(
+            request.description
+          )}
+        </p>
+
+        <p>
+          📍 ${escapeHTML(
+            request.city || ""
+          )}
+
+          ${
+            request.quartier
+            ? " - " +
+              escapeHTML(
+                request.quartier
+              )
+            : ""
+          }
+        </p>
+
+        <p>
+          📅 ${formatDate(
+            request.created_at
+          )}
+        </p>
+
+        <span
+          class="status ${getStatusClass(
+            request.status
+          )}"
+        >
+          ${getStatusText(
+            request.status
+          )}
+        </span>
+      `;
+
+      container.appendChild(
+        card
+      );
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+
+      <div class="request-card">
+
+        <p style="color:#dc3545;">
+
+          ❌ Impossible de charger vos demandes :
+
+          ${escapeHTML(
+            error.message
+          )}
+
+        </p>
+
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   STATUT
+========================================================= */
+
+function getStatusClass(status) {
+
+  if (status === "acceptee") {
+    return "status-acceptee";
+  }
+
+  if (status === "refusee") {
+    return "status-refusee";
+  }
+
+  return "status-en-attente";
+}
+
+
+function getStatusText(status) {
+
+  if (status === "acceptee") {
+    return "✅ Demande acceptée";
+  }
+
+  if (status === "refusee") {
+    return "❌ Demande refusée";
+  }
+
+  return "⏳ En attente";
+}
+
+
+function formatDate(dateString) {
+
+  if (!dateString) return "";
+
+  const date =
+    new Date(dateString);
+
+  return date.toLocaleString(
+    "fr-FR",
+    {
+      dateStyle: "short",
+      timeStyle: "short"
+    }
+  );
+}
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+async function checkSession() {
+
+  const {
+    data
+  } = await supabaseClient
+    .auth
+    .getSession();
+
+  if (data.session) {
+
+    currentUser =
+      data.session.user;
+
+    await loadUserProfile();
+
+    document
+      .getElementById(
+        "logoutBtn"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+  } else {
+
+    currentUser =
+      null;
+
+    currentProfile =
+      null;
+
+    document
+      .getElementById(
+        "logoutBtn"
+      )
+      .classList.add(
+        "hidden"
+      );
+  }
+}
+
+
+supabaseClient.auth.onAuthStateChange(
+  async (event, session) => {
+
+    if (session) {
 
       currentUser =
-        data.session.user;
+        session.user;
 
       await loadUserProfile();
 
       document
-        .getElementById("logoutBtn")
-        .classList.remove("hidden");
+        .getElementById(
+          "logoutBtn"
+        )
+        .classList.remove(
+          "hidden"
+        );
 
     } else {
 
-      currentUser = null;
+      currentUser =
+        null;
+
+      currentProfile =
+        null;
 
       document
-        .getElementById("logoutBtn")
-        .classList.add("hidden");
+        .getElementById(
+          "logoutBtn"
+        )
+        .classList.add(
+          "hidden"
+        );
     }
   }
+);
 
 
-  supabaseClient.auth.onAuthStateChange(
-    async (event, session) => {
+/* =========================================================
+   INITIALISATION
+========================================================= */
 
-      if (session) {
+document.addEventListener(
+  "DOMContentLoaded",
+  async () => {
 
-        currentUser =
-          session.user;
+    showSection(
+      "homeSection"
+    );
 
-        await loadUserProfile();
+    await checkSession();
 
-        document
-          .getElementById("logoutBtn")
-          .classList.remove("hidden");
+    /*
+      Affiche les professionnels
+      disponibles au démarrage.
+    */
 
-      } else {
-
-        currentUser = null;
-        currentProfile = null;
-
-        document
-          .getElementById("logoutBtn")
-          .classList.add("hidden");
-      }
-    }
-  );
-
-
-  /* =========================================================
-     INITIALISATION
-  ========================================================= */
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-
-      showSection("homeSection");
-
-      await checkSession();
-
-      /*
-       * On affiche les professionnels disponibles
-       * au chargement de la page.
-       */
-      await searchProfessionals();
-
-    }
-  );
+    await searchProfessionals();
+  }
+);
 
 </script>
 
