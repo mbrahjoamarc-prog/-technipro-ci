@@ -57,7 +57,6 @@
       text-decoration: underline;
     }
 
-    /* Badge notification */
     .notification-badge {
       position: absolute;
       top: -5px;
@@ -392,6 +391,7 @@
     }
 
     @media (max-width: 700px) {
+
       .hero h1 {
         font-size: 30px;
       }
@@ -414,7 +414,10 @@
 <body>
 
 <header>
-  <div class="logo">🔧 TechniPro CI</div>
+
+  <div class="logo">
+    🔧 TechniPro CI
+  </div>
 
   <nav>
 
@@ -435,6 +438,7 @@
     </button>
 
     <button onclick="showSection('dashboardSection')">
+
       Mon espace
 
       <span
@@ -443,6 +447,7 @@
       >
         0
       </span>
+
     </button>
 
     <button
@@ -454,13 +459,17 @@
     </button>
 
   </nav>
+
 </header>
+
 
 <section id="homeSection">
 
   <div class="hero">
 
-    <h1>Trouvez le professionnel qu'il vous faut</h1>
+    <h1>
+      Trouvez le professionnel qu'il vous faut
+    </h1>
 
     <p>
       TechniPro CI vous met en relation avec des professionnels
@@ -532,6 +541,7 @@
 
 </section>
 
+
 <section id="servicesSection">
 
   <h2 class="section-title">
@@ -563,6 +573,7 @@
 
     </div>
 
+
     <div class="service-card">
 
       <div class="service-icon">
@@ -585,6 +596,7 @@
       </button>
 
     </div>
+
 
     <div class="service-card">
 
@@ -609,6 +621,7 @@
 
     </div>
 
+
     <div class="service-card">
 
       <div class="service-icon">
@@ -631,6 +644,7 @@
       </button>
 
     </div>
+
 
     <div class="service-card">
 
@@ -655,6 +669,7 @@
 
     </div>
 
+
     <div class="service-card">
 
       <div class="service-icon">
@@ -678,6 +693,7 @@
 
     </div>
 
+
     <div class="service-card">
 
       <div class="service-icon">
@@ -700,6 +716,7 @@
       </button>
 
     </div>
+
 
     <div class="service-card">
 
@@ -728,6 +745,7 @@
 
 </section>
 
+
 <section id="professionalsSection">
 
   <h2 class="section-title">
@@ -746,6 +764,7 @@
 
 </section>
 
+
 <section id="accountSection">
 
   <h2 class="section-title">
@@ -758,6 +777,7 @@
       id="accountMessage"
       class="message"
     ></div>
+
 
     <div
       id="registerCard"
@@ -784,6 +804,7 @@
 
         </div>
 
+
         <div class="form-group">
 
           <label>
@@ -797,6 +818,7 @@
           >
 
         </div>
+
 
         <div class="form-group">
 
@@ -853,6 +875,7 @@
 
         </div>
 
+
         <div class="form-group">
 
           <label>
@@ -880,6 +903,7 @@
 
         </div>
 
+
         <div class="form-group">
 
           <label>
@@ -893,6 +917,7 @@
           >
 
         </div>
+
 
         <div class="form-group">
 
@@ -909,6 +934,7 @@
 
         </div>
 
+
         <button
           type="submit"
           class="primary-btn"
@@ -918,6 +944,7 @@
         </button>
 
       </form>
+
 
       <div class="switch-form">
 
@@ -930,6 +957,7 @@
       </div>
 
     </div>
+
 
     <div
       id="loginCard"
@@ -956,6 +984,7 @@
 
         </div>
 
+
         <div class="form-group">
 
           <label>
@@ -970,6 +999,7 @@
 
         </div>
 
+
         <button
           type="submit"
           class="primary-btn"
@@ -979,6 +1009,7 @@
         </button>
 
       </form>
+
 
       <div class="switch-form">
 
@@ -996,6 +1027,7 @@
 
 </section>
 
+
 <section id="dashboardSection">
 
   <h2 class="section-title">
@@ -1008,6 +1040,7 @@
       id="dashboardMessage"
       class="message"
     ></div>
+
 
     <div id="dashboardContent">
 
@@ -1025,6 +1058,7 @@
         </div>
 
       </div>
+
 
       <!-- =================================================
            NOTIFICATIONS CLIENT
@@ -1044,6 +1078,11 @@
         ></div>
 
       </div>
+
+
+      <!-- =================================================
+           PROFIL PROFESSIONNEL
+      ================================================== -->
 
       <div
         id="professionalProfileCard"
@@ -1075,6 +1114,7 @@
 
           </div>
 
+
           <div class="form-group">
 
             <label>
@@ -1088,6 +1128,7 @@
             >
 
           </div>
+
 
           <div class="form-group">
 
@@ -1103,6 +1144,7 @@
 
           </div>
 
+
           <div class="form-group">
 
             <label>
@@ -1116,6 +1158,7 @@
 
           </div>
 
+
           <button
             type="submit"
             class="green-btn"
@@ -1127,6 +1170,11 @@
         </form>
 
       </div>
+
+
+      <!-- =================================================
+           DEMANDES PROFESSIONNEL
+      ================================================== -->
 
       <div
         id="professionalRequestsCard"
@@ -1148,6 +1196,11 @@
         ></div>
 
       </div>
+
+
+      <!-- =================================================
+           DEMANDES CLIENT
+      ================================================== -->
 
       <div
         id="clientRequestsCard"
@@ -1176,6 +1229,7 @@
 
 </section>
 
+
 <footer>
 
   <p>
@@ -1183,6 +1237,11 @@
   </p>
 
 </footer>
+
+
+<!-- =====================================================
+     MODAL DEMANDE DE SERVICE
+====================================================== -->
 
 <div
   id="requestModal"
@@ -1236,10 +1295,12 @@
 
     </div>
 
+
     <div
       id="requestModalMessage"
       class="message"
     ></div>
+
 
     <form onsubmit="submitServiceRequest(event)">
 
@@ -1247,6 +1308,7 @@
         type="hidden"
         id="requestProfessionalId"
       >
+
 
       <div class="form-group">
 
@@ -1262,6 +1324,7 @@
 
       </div>
 
+
       <div class="form-group">
 
         <label>
@@ -1276,6 +1339,7 @@
 
       </div>
 
+
       <div class="form-group">
 
         <label>
@@ -1288,6 +1352,7 @@
         ></textarea>
 
       </div>
+
 
       <div class="form-group">
 
@@ -1303,6 +1368,7 @@
 
       </div>
 
+
       <div class="form-group">
 
         <label>
@@ -1315,6 +1381,7 @@
         >
 
       </div>
+
 
       <div class="form-group">
 
@@ -1330,6 +1397,7 @@
 
       </div>
 
+
       <button
         type="submit"
         class="green-btn"
@@ -1343,6 +1411,7 @@
   </div>
 
 </div>
+
 
 <script>
 
@@ -1368,7 +1437,10 @@ let currentProfile = null;
 
 function escapeHTML(value) {
 
-  if (value === null || value === undefined) {
+  if (
+    value === null ||
+    value === undefined
+  ) {
     return "";
   }
 
@@ -1392,10 +1464,16 @@ function escapeJS(value) {
 }
 
 
-function showMessage(elementId, message, type) {
+function showMessage(
+  elementId,
+  message,
+  type
+) {
 
   const element =
-    document.getElementById(elementId);
+    document.getElementById(
+      elementId
+    );
 
   if (!element) return;
 
@@ -1413,7 +1491,9 @@ function showMessage(elementId, message, type) {
 function hideMessage(elementId) {
 
   const element =
-    document.getElementById(elementId);
+    document.getElementById(
+      elementId
+    );
 
   if (!element) return;
 
@@ -1451,16 +1531,23 @@ function showSection(sectionId) {
 
   });
 
+
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 
-  if (sectionId === "dashboardSection") {
+
+  if (
+    sectionId ===
+    "dashboardSection"
+  ) {
 
     if (!currentUser) {
 
-      showSection("accountSection");
+      showSection(
+        "accountSection"
+      );
 
       showMessage(
         "accountMessage",
@@ -1490,7 +1577,9 @@ function showLoginForm() {
     .getElementById("loginCard")
     .classList.remove("hidden");
 
-  hideMessage("accountMessage");
+  hideMessage(
+    "accountMessage"
+  );
 }
 
 
@@ -1504,7 +1593,9 @@ function showRegisterForm() {
     .getElementById("registerCard")
     .classList.remove("hidden");
 
-  hideMessage("accountMessage");
+  hideMessage(
+    "accountMessage"
+  );
 }
 
 
@@ -1516,61 +1607,91 @@ async function registerUser(event) {
 
   event.preventDefault();
 
-  hideMessage("accountMessage");
+  hideMessage(
+    "accountMessage"
+  );
+
 
   const fullName =
-    document.getElementById("registerName").value.trim();
+    document
+      .getElementById("registerName")
+      .value
+      .trim();
 
   const phone =
-    document.getElementById("registerPhone").value.trim();
+    document
+      .getElementById("registerPhone")
+      .value
+      .trim();
 
   const city =
-    document.getElementById("registerCity").value;
+    document
+      .getElementById("registerCity")
+      .value;
 
   const userType =
-    document.getElementById("registerType").value;
+    document
+      .getElementById("registerType")
+      .value;
 
   const email =
-    document.getElementById("registerEmail").value.trim();
+    document
+      .getElementById("registerEmail")
+      .value
+      .trim();
 
   const password =
-    document.getElementById("registerPassword").value;
+    document
+      .getElementById("registerPassword")
+      .value;
+
 
   try {
 
     const {
       data,
       error
-    } = await supabaseClient.auth.signUp({
-      email,
-      password
-    });
+    } =
+      await supabaseClient
+        .auth
+        .signUp({
+          email,
+          password
+        });
+
 
     if (error) {
       throw error;
     }
 
+
     if (!data.user) {
+
       throw new Error(
         "Le compte n'a pas pu être créé."
       );
     }
 
+
     const {
       error: profileError
-    } = await supabaseClient
-      .from("profiles")
-      .insert({
-        id: data.user.id,
-        full_name: fullName,
-        phone,
-        city,
-        user_type: userType
-      });
+    } =
+      await supabaseClient
+        .from("profiles")
+        .insert({
+          id: data.user.id,
+          full_name: fullName,
+          phone,
+          city,
+          user_type: userType
+        });
+
 
     if (profileError) {
 
-      console.error(profileError);
+      console.error(
+        profileError
+      );
 
       showMessage(
         "accountMessage",
@@ -1582,15 +1703,18 @@ async function registerUser(event) {
       return;
     }
 
+
     showMessage(
       "accountMessage",
       "✅ Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
       "success"
     );
 
+
     document
       .getElementById("registerCard")
       .classList.add("hidden");
+
 
     document
       .getElementById("loginCard")
@@ -1617,32 +1741,48 @@ async function loginUser(event) {
 
   event.preventDefault();
 
-  hideMessage("accountMessage");
+  hideMessage(
+    "accountMessage"
+  );
+
 
   const email =
-    document.getElementById("loginEmail").value.trim();
+    document
+      .getElementById("loginEmail")
+      .value
+      .trim();
 
   const password =
-    document.getElementById("loginPassword").value;
+    document
+      .getElementById("loginPassword")
+      .value;
+
 
   try {
 
     const {
       data,
       error
-    } = await supabaseClient.auth.signInWithPassword({
-      email,
-      password
-    });
+    } =
+      await supabaseClient
+        .auth
+        .signInWithPassword({
+          email,
+          password
+        });
+
 
     if (error) {
       throw error;
     }
 
+
     currentUser =
       data.user;
 
+
     await loadUserProfile();
+
 
     showMessage(
       "accountMessage",
@@ -1650,9 +1790,11 @@ async function loginUser(event) {
       "success"
     );
 
+
     document
       .getElementById("logoutBtn")
       .classList.remove("hidden");
+
 
     setTimeout(() => {
 
@@ -1681,20 +1823,31 @@ async function loginUser(event) {
 
 async function logout() {
 
-  await supabaseClient.auth.signOut();
+  await supabaseClient
+    .auth
+    .signOut();
+
 
   currentUser = null;
   currentProfile = null;
+
 
   document
     .getElementById("logoutBtn")
     .classList.add("hidden");
 
+
   updateNotificationBadge(0);
 
-  showSection("homeSection");
 
-  alert("Vous êtes déconnecté.");
+  showSection(
+    "homeSection"
+  );
+
+
+  alert(
+    "Vous êtes déconnecté."
+  );
 }
 
 
@@ -1706,14 +1859,20 @@ async function loadUserProfile() {
 
   if (!currentUser) return;
 
+
   const {
     data,
     error
-  } = await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id", currentUser.id)
-    .maybeSingle();
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
 
   if (error) {
 
@@ -1725,30 +1884,61 @@ async function loadUserProfile() {
     return;
   }
 
+
   currentProfile =
     data;
 
+
   if (!data) return;
 
-  document
-    .getElementById("professionalProfession")
-    .value =
-    data.profession || "";
 
-  document
-    .getElementById("professionalQuartier")
-    .value =
-    data.quartier || "";
+  const professionInput =
+    document.getElementById(
+      "professionalProfession"
+    );
 
-  document
-    .getElementById("professionalServices")
-    .value =
-    data.services || "";
+  const quartierInput =
+    document.getElementById(
+      "professionalQuartier"
+    );
 
-  document
-    .getElementById("professionalDescription")
-    .value =
-    data.description || "";
+  const servicesInput =
+    document.getElementById(
+      "professionalServices"
+    );
+
+  const descriptionInput =
+    document.getElementById(
+      "professionalDescription"
+    );
+
+
+  if (professionInput) {
+
+    professionInput.value =
+      data.profession || "";
+  }
+
+
+  if (quartierInput) {
+
+    quartierInput.value =
+      data.quartier || "";
+  }
+
+
+  if (servicesInput) {
+
+    servicesInput.value =
+      data.services || "";
+  }
+
+
+  if (descriptionInput) {
+
+    descriptionInput.value =
+      data.description || "";
+  }
 }
 
 
@@ -1760,44 +1950,63 @@ async function loadDashboard() {
 
   if (!currentUser) return;
 
-  hideMessage("dashboardMessage");
+
+  hideMessage(
+    "dashboardMessage"
+  );
+
 
   await loadUserProfile();
+
 
   if (!currentProfile) {
 
     document
-      .getElementById("userInformation")
+      .getElementById(
+        "userInformation"
+      )
       .innerHTML =
       "<p>Profil introuvable.</p>";
 
     return;
   }
 
+
   document
-    .getElementById("userInformation")
+    .getElementById(
+      "userInformation"
+    )
     .innerHTML = `
 
       <p>
         <strong>Nom :</strong>
-        ${escapeHTML(currentProfile.full_name)}
+        ${escapeHTML(
+          currentProfile.full_name
+        )}
       </p>
 
       <p>
         <strong>Téléphone :</strong>
-        ${escapeHTML(currentProfile.phone)}
+        ${escapeHTML(
+          currentProfile.phone
+        )}
       </p>
 
       <p>
         <strong>Ville :</strong>
-        ${escapeHTML(currentProfile.city)}
+        ${escapeHTML(
+          currentProfile.city
+        )}
       </p>
 
       <p>
         <strong>Type de compte :</strong>
-        ${escapeHTML(currentProfile.user_type)}
+        ${escapeHTML(
+          currentProfile.user_type
+        )}
       </p>
   `;
+
 
   const professionalCard =
     document.getElementById(
@@ -1819,40 +2028,60 @@ async function loadDashboard() {
       "notificationsCard"
     );
 
+
   if (
     currentProfile.user_type ===
     "professionnel"
   ) {
 
     professionalCard
-      .classList.remove("hidden");
+      .classList.remove(
+        "hidden"
+      );
 
     professionalRequestsCard
-      .classList.remove("hidden");
+      .classList.remove(
+        "hidden"
+      );
 
     clientRequestsCard
-      .classList.add("hidden");
+      .classList.add(
+        "hidden"
+      );
 
     notificationsCard
-      .classList.add("hidden");
+      .classList.add(
+        "hidden"
+      );
+
 
     updateNotificationBadge(0);
+
 
     await loadProfessionalRequests();
 
   } else {
 
     professionalCard
-      .classList.add("hidden");
+      .classList.add(
+        "hidden"
+      );
 
     professionalRequestsCard
-      .classList.add("hidden");
+      .classList.add(
+        "hidden"
+      );
 
     clientRequestsCard
-      .classList.remove("hidden");
+      .classList.remove(
+        "hidden"
+      );
 
     notificationsCard
-      .classList.remove("hidden");
+      .classList.remove(
+        "hidden"
+      );
+
 
     await loadClientRequests();
 
@@ -1869,6 +2098,7 @@ async function loadClientNotifications() {
 
   if (!currentUser) return;
 
+
   const container =
     document.getElementById(
       "notificationsList"
@@ -1879,33 +2109,43 @@ async function loadClientNotifications() {
       "notificationsCard"
     );
 
-  if (!container || !card) return;
+
+  if (!container || !card) {
+    return;
+  }
+
 
   container.innerHTML =
     "<p>Chargement des notifications...</p>";
+
 
   try {
 
     const {
       data,
       error
-    } = await supabaseClient
-      .from("service_requests")
-      .select("*")
-      .eq(
-        "client_id",
-        currentUser.id
-      )
-      .in(
-        "status",
-        ["acceptee", "refusee"]
-      )
-      .order(
-        "created_at",
-        {
-          ascending: false
-        }
-      );
+    } =
+      await supabaseClient
+        .from("service_requests")
+        .select("*")
+        .eq(
+          "client_id",
+          currentUser.id
+        )
+        .in(
+          "status",
+          [
+            "acceptee",
+            "refusee"
+          ]
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
 
     if (error) {
 
@@ -1917,12 +2157,15 @@ async function loadClientNotifications() {
       throw error;
     }
 
+
     const notifications =
       data || [];
+
 
     updateNotificationBadge(
       notifications.length
     );
+
 
     if (!notifications.length) {
 
@@ -1930,7 +2173,7 @@ async function loadClientNotifications() {
 
         <div class="notification-empty">
 
-          🔔 Aucune nouvelle notification.
+          🔔 Aucune notification pour le moment.
 
           <br><br>
 
@@ -1938,82 +2181,107 @@ async function loadClientNotifications() {
           le professionnel répondra à votre demande.
 
         </div>
+
       `;
 
       return;
     }
 
+
     container.innerHTML = "";
 
-    notifications.forEach(request => {
 
-      const item =
-        document.createElement("div");
+    notifications.forEach(
+      request => {
 
-      if (
-        request.status ===
-        "acceptee"
-      ) {
+        const item =
+          document.createElement(
+            "div"
+          );
 
-        item.className =
-          "notification-item notification-accepted";
 
-        item.innerHTML = `
+        if (
+          request.status ===
+          "acceptee"
+        ) {
 
-          <strong>
-            🟢 Demande acceptée
-          </strong>
+          item.className =
+            "notification-item notification-accepted";
 
-          <br>
 
-          Votre demande de
-          <strong>
-            ${escapeHTML(request.service)}
-          </strong>
-          a été acceptée par le professionnel.
+          item.innerHTML = `
 
-          <br>
+            <strong>
+              🟢 Demande acceptée
+            </strong>
 
-          <small>
-            📅 ${formatDate(request.created_at)}
-          </small>
-        `;
+            <br><br>
 
-      } else {
+            Votre demande de
+            <strong>
+              ${escapeHTML(
+                request.service
+              )}
+            </strong>
+            a été acceptée par le professionnel.
 
-        item.className =
-          "notification-item notification-refused";
+            <br><br>
 
-        item.innerHTML = `
+            <small>
+              📅 ${formatDate(
+                request.created_at
+              )}
+            </small>
 
-          <strong>
-            🔴 Demande refusée
-          </strong>
+          `;
 
-          <br>
+        } else {
 
-          Votre demande de
-          <strong>
-            ${escapeHTML(request.service)}
-          </strong>
-          a été refusée par le professionnel.
+          item.className =
+            "notification-item notification-refused";
 
-          <br>
 
-          <small>
-            📅 ${formatDate(request.created_at)}
-          </small>
-        `;
+          item.innerHTML = `
+
+            <strong>
+              🔴 Demande refusée
+            </strong>
+
+            <br><br>
+
+            Votre demande de
+            <strong>
+              ${escapeHTML(
+                request.service
+              )}
+            </strong>
+            a été refusée par le professionnel.
+
+            <br><br>
+
+            <small>
+              📅 ${formatDate(
+                request.created_at
+              )}
+            </small>
+
+          `;
+        }
+
+
+        container.appendChild(
+          item
+        );
       }
-
-      container.appendChild(item);
-    });
+    );
 
   } catch (error) {
 
     console.error(error);
 
+
     updateNotificationBadge(0);
+
 
     container.innerHTML = `
 
@@ -2021,9 +2289,12 @@ async function loadClientNotifications() {
 
         ❌ Impossible de charger les notifications :
 
-        ${escapeHTML(error.message)}
+        ${escapeHTML(
+          error.message
+        )}
 
       </div>
+
     `;
   }
 }
@@ -2033,14 +2304,18 @@ async function loadClientNotifications() {
    BADGE NOTIFICATION
 ========================================================= */
 
-function updateNotificationBadge(count) {
+function updateNotificationBadge(
+  count
+) {
 
   const badge =
     document.getElementById(
       "notificationBadge"
     );
 
+
   if (!badge) return;
+
 
   if (count > 0) {
 
@@ -2048,6 +2323,7 @@ function updateNotificationBadge(count) {
       count > 9
         ? "9+"
         : count;
+
 
     badge.style.display =
       "flex";
@@ -2064,9 +2340,12 @@ function updateNotificationBadge(count) {
    PROFIL PROFESSIONNEL
 ========================================================= */
 
-async function saveProfessionalProfile(event) {
+async function saveProfessionalProfile(
+  event
+) {
 
   event.preventDefault();
+
 
   if (!currentUser) {
 
@@ -2079,49 +2358,73 @@ async function saveProfessionalProfile(event) {
     return;
   }
 
+
   const profession =
     document
-      .getElementById("professionalProfession")
-      .value.trim();
+      .getElementById(
+        "professionalProfession"
+      )
+      .value
+      .trim();
+
 
   const quartier =
     document
-      .getElementById("professionalQuartier")
-      .value.trim();
+      .getElementById(
+        "professionalQuartier"
+      )
+      .value
+      .trim();
+
 
   const services =
     document
-      .getElementById("professionalServices")
-      .value.trim();
+      .getElementById(
+        "professionalServices"
+      )
+      .value
+      .trim();
+
 
   const description =
     document
-      .getElementById("professionalDescription")
-      .value.trim();
+      .getElementById(
+        "professionalDescription"
+      )
+      .value
+      .trim();
+
 
   try {
 
     const {
       error
-    } = await supabaseClient
-      .from("profiles")
-      .update({
-        profession,
-        quartier,
-        services,
-        description
-      })
-      .eq("id", currentUser.id);
+    } =
+      await supabaseClient
+        .from("profiles")
+        .update({
+          profession,
+          quartier,
+          services,
+          description
+        })
+        .eq(
+          "id",
+          currentUser.id
+        );
+
 
     if (error) {
       throw error;
     }
+
 
     showMessage(
       "dashboardMessage",
       "✅ Profil professionnel enregistré avec succès !",
       "success"
     );
+
 
     await loadUserProfile();
 
@@ -2148,17 +2451,23 @@ async function searchProfessionals() {
 
   const profession =
     document
-      .getElementById("searchProfession")
+      .getElementById(
+        "searchProfession"
+      )
       .value
       .trim()
       .toLowerCase();
 
+
   const city =
     document
-      .getElementById("searchCity")
+      .getElementById(
+        "searchCity"
+      )
       .value
       .trim()
       .toLowerCase();
+
 
   try {
 
@@ -2171,6 +2480,7 @@ async function searchProfessionals() {
           "professionnel"
         );
 
+
     if (city) {
 
       query =
@@ -2180,46 +2490,72 @@ async function searchProfessionals() {
         );
     }
 
+
     const {
       data,
       error
     } = await query;
 
+
     if (error) {
       throw error;
     }
 
+
     let professionals =
       data || [];
+
 
     if (profession) {
 
       professionals =
-        professionals.filter(profile => {
+        professionals.filter(
+          profile => {
 
-          const p =
-            (profile.profession || "")
+            const p =
+              (
+                profile.profession ||
+                ""
+              )
               .toLowerCase();
 
-          const s =
-            (profile.services || "")
+
+            const s =
+              (
+                profile.services ||
+                ""
+              )
               .toLowerCase();
 
-          const d =
-            (profile.description || "")
+
+            const d =
+              (
+                profile.description ||
+                ""
+              )
               .toLowerCase();
 
-          return (
-            p.includes(profession) ||
-            s.includes(profession) ||
-            d.includes(profession)
-          );
-        });
+
+            return (
+              p.includes(
+                profession
+              ) ||
+              s.includes(
+                profession
+              ) ||
+              d.includes(
+                profession
+              )
+            );
+          }
+        );
     }
+
 
     displayProfessionals(
       professionals
     );
+
 
     showSection(
       "professionalsSection"
@@ -2228,6 +2564,7 @@ async function searchProfessionals() {
   } catch (error) {
 
     console.error(error);
+
 
     showMessage(
       "searchMessage",
@@ -2252,7 +2589,9 @@ function displayProfessionals(
       "professionalsGrid"
     );
 
+
   grid.innerHTML = "";
+
 
   if (!professionals.length) {
 
@@ -2272,126 +2611,152 @@ function displayProfessionals(
         </p>
 
       </div>
+
     `;
 
     return;
   }
 
-  professionals.forEach(profile => {
 
-    const card =
-      document.createElement("div");
+  professionals.forEach(
+    profile => {
 
-    card.className =
-      "professional-card";
+      const card =
+        document.createElement(
+          "div"
+        );
 
-    const profession =
-      escapeHTML(
-        profile.profession ||
-        "Professionnel"
+
+      card.className =
+        "professional-card";
+
+
+      const profession =
+        escapeHTML(
+          profile.profession ||
+          "Professionnel"
+        );
+
+
+      const name =
+        escapeHTML(
+          profile.full_name ||
+          "Nom non renseigné"
+        );
+
+
+      const city =
+        escapeHTML(
+          profile.city ||
+          "Ville non renseignée"
+        );
+
+
+      const quartier =
+        escapeHTML(
+          profile.quartier ||
+          "Non renseigné"
+        );
+
+
+      const services =
+        escapeHTML(
+          profile.services ||
+          "Non renseigné"
+        );
+
+
+      const description =
+        escapeHTML(
+          profile.description ||
+          "Aucune description disponible."
+        );
+
+
+      const phone =
+        escapeHTML(
+          profile.phone ||
+          ""
+        );
+
+
+      card.innerHTML = `
+
+        <h3>
+          ${profession}
+        </h3>
+
+        <p>
+          👤 <strong>${name}</strong>
+        </p>
+
+        <p>
+          📍 <strong>Ville :</strong>
+          ${city}
+        </p>
+
+        <p>
+          🏘️ <strong>Quartier :</strong>
+          ${quartier}
+        </p>
+
+        <p>
+          🛠️ <strong>Services :</strong>
+          ${services}
+        </p>
+
+        <p>
+          📝 ${description}
+        </p>
+
+        <div class="professional-actions">
+
+          ${
+            phone
+              ? `
+                <a
+                  href="tel:${phone}"
+                  style="
+                    text-decoration:none;
+                    flex:1;
+                  "
+                >
+
+                  <button
+                    class="primary-btn"
+                    style="width:100%;"
+                  >
+                    📞 Contacter
+                  </button>
+
+                </a>
+              `
+              : ""
+          }
+
+
+          <button
+            class="green-btn"
+            style="flex:1;"
+            onclick="openRequestModal(
+              '${escapeJS(profile.id)}',
+              '${escapeJS(name)}',
+              '${escapeJS(profession)}'
+            )"
+          >
+            📨 Demander
+          </button>
+
+        </div>
+
+      `;
+
+
+      grid.appendChild(
+        card
       );
-
-    const name =
-      escapeHTML(
-        profile.full_name ||
-        "Nom non renseigné"
-      );
-
-    const city =
-      escapeHTML(
-        profile.city ||
-        "Ville non renseignée"
-      );
-
-    const quartier =
-      escapeHTML(
-        profile.quartier ||
-        "Non renseigné"
-      );
-
-    const services =
-      escapeHTML(
-        profile.services ||
-        "Non renseigné"
-      );
-
-    const description =
-      escapeHTML(
-        profile.description ||
-        "Aucune description disponible."
-      );
-
-    const phone =
-      escapeHTML(
-        profile.phone ||
-        ""
-      );
-
-    card.innerHTML = `
-
-      <h3>
-        ${profession}
-      </h3>
-
-      <p>
-        👤 <strong>${name}</strong>
-      </p>
-
-      <p>
-        📍 <strong>Ville :</strong> ${city}
-      </p>
-
-      <p>
-        🏘️ <strong>Quartier :</strong> ${quartier}
-      </p>
-
-      <p>
-        🛠️ <strong>Services :</strong> ${services}
-      </p>
-
-      <p>
-        📝 ${description}
-      </p>
-
-      <div class="professional-actions">
-
-        ${
-          phone
-          ? `
-            <a
-              href="tel:${phone}"
-              style="text-decoration:none;flex:1;"
-            >
-
-              <button
-                class="primary-btn"
-                style="width:100%;"
-              >
-                📞 Contacter
-              </button>
-
-            </a>
-          `
-          : ""
-        }
-
-        <button
-          class="green-btn"
-          style="flex:1;"
-          onclick="openRequestModal(
-            '${escapeJS(profile.id)}',
-            '${escapeJS(name)}',
-            '${escapeJS(profession)}'
-          )"
-        >
-          📨 Demander
-        </button>
-
-      </div>
-    `;
-
-    grid.appendChild(card);
-  });
+    }
+  );
 }
 
 
@@ -2399,7 +2764,9 @@ function displayProfessionals(
    SERVICE
 ========================================================= */
 
-function selectService(service) {
+function selectService(
+  service
+) {
 
   document
     .getElementById(
@@ -2407,6 +2774,7 @@ function selectService(service) {
     )
     .value =
     service;
+
 
   searchProfessionals();
 }
@@ -2428,14 +2796,17 @@ async function openRequestModal(
       "accountSection"
     );
 
+
     showMessage(
       "accountMessage",
       "🔐 Connectez-vous ou créez un compte client pour envoyer une demande.",
       "info"
     );
 
+
     return;
   }
+
 
   if (
     currentProfile &&
@@ -2447,8 +2818,10 @@ async function openRequestModal(
       "Un compte professionnel ne peut pas envoyer une demande en tant que client."
     );
 
+
     return;
   }
+
 
   document
     .getElementById(
@@ -2457,12 +2830,14 @@ async function openRequestModal(
     .value =
     professionalId;
 
+
   document
     .getElementById(
       "requestProfessionalName"
     )
     .value =
     professionalName;
+
 
   document
     .getElementById(
@@ -2471,45 +2846,57 @@ async function openRequestModal(
     .value =
     profession;
 
+
   document
     .getElementById(
       "requestDescription"
     )
-    .value = "";
+    .value =
+    "";
+
 
   document
     .getElementById(
       "requestCity"
     )
     .value =
-    currentProfile?.city || "";
+    currentProfile?.city ||
+    "";
+
 
   document
     .getElementById(
       "requestQuartier"
     )
     .value =
-    currentProfile?.quartier || "";
+    currentProfile?.quartier ||
+    "";
+
 
   document
     .getElementById(
       "requestPhone"
     )
     .value =
-    currentProfile?.phone || "";
+    currentProfile?.phone ||
+    "";
+
 
   hideMessage(
     "requestModalMessage"
   );
+
 
   const modal =
     document.getElementById(
       "requestModal"
     );
 
+
   modal.classList.remove(
     "hidden"
   );
+
 
   modal.style.display =
     "flex";
@@ -2523,9 +2910,11 @@ function closeRequestModal() {
       "requestModal"
     );
 
+
   modal.classList.add(
     "hidden"
   );
+
 
   modal.style.display =
     "none";
@@ -2542,6 +2931,7 @@ async function submitServiceRequest(
 
   event.preventDefault();
 
+
   if (!currentUser) {
 
     showMessage(
@@ -2553,6 +2943,7 @@ async function submitServiceRequest(
     return;
   }
 
+
   const professionalId =
     document
       .getElementById(
@@ -2560,6 +2951,7 @@ async function submitServiceRequest(
       )
       .value
       .trim();
+
 
   const service =
     document
@@ -2569,6 +2961,7 @@ async function submitServiceRequest(
       .value
       .trim();
 
+
   const description =
     document
       .getElementById(
@@ -2576,6 +2969,7 @@ async function submitServiceRequest(
       )
       .value
       .trim();
+
 
   const city =
     document
@@ -2585,6 +2979,7 @@ async function submitServiceRequest(
       .value
       .trim();
 
+
   const quartier =
     document
       .getElementById(
@@ -2593,6 +2988,7 @@ async function submitServiceRequest(
       .value
       .trim();
 
+
   const phone =
     document
       .getElementById(
@@ -2600,6 +2996,7 @@ async function submitServiceRequest(
       )
       .value
       .trim();
+
 
   if (
     !professionalId ||
@@ -2617,6 +3014,7 @@ async function submitServiceRequest(
 
     return;
   }
+
 
   try {
 
@@ -2642,19 +3040,25 @@ async function submitServiceRequest(
         "en_attente"
     };
 
+
     console.log(
       "Envoi demande :",
       requestData
     );
 
+
     const {
       data,
       error
-    } = await supabaseClient
-      .from("service_requests")
-      .insert(requestData)
-      .select()
-      .single();
+    } =
+      await supabaseClient
+        .from("service_requests")
+        .insert(
+          requestData
+        )
+        .select()
+        .single();
+
 
     if (error) {
 
@@ -2666,10 +3070,12 @@ async function submitServiceRequest(
       throw error;
     }
 
+
     console.log(
       "Demande créée :",
       data
     );
+
 
     showMessage(
       "requestModalMessage",
@@ -2677,9 +3083,11 @@ async function submitServiceRequest(
       "success"
     );
 
+
     setTimeout(() => {
 
       closeRequestModal();
+
 
       showSection(
         "dashboardSection"
@@ -2691,9 +3099,11 @@ async function submitServiceRequest(
 
     console.error(error);
 
+
     let message =
       error.message ||
       "Une erreur est survenue.";
+
 
     if (
       message.includes(
@@ -2704,6 +3114,7 @@ async function submitServiceRequest(
       message =
         "Accès refusé par Supabase. Vérifiez les politiques RLS de service_requests.";
     }
+
 
     showMessage(
       "requestModalMessage",
@@ -2723,32 +3134,37 @@ async function loadProfessionalRequests() {
 
   if (!currentUser) return;
 
+
   const container =
     document.getElementById(
       "professionalRequests"
     );
 
+
   container.innerHTML =
     "<p>Chargement des demandes...</p>";
+
 
   try {
 
     const {
       data,
       error
-    } = await supabaseClient
-      .from("service_requests")
-      .select("*")
-      .eq(
-        "professional_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending: false
-        }
-      );
+    } =
+      await supabaseClient
+        .from("service_requests")
+        .select("*")
+        .eq(
+          "professional_id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
 
     if (error) {
 
@@ -2760,7 +3176,11 @@ async function loadProfessionalRequests() {
       throw error;
     }
 
-    if (!data || !data.length) {
+
+    if (
+      !data ||
+      !data.length
+    ) {
 
       container.innerHTML = `
 
@@ -2776,138 +3196,157 @@ async function loadProfessionalRequests() {
           </p>
 
         </div>
+
       `;
 
       return;
     }
 
-    container.innerHTML = "";
 
-    data.forEach(request => {
+    container.innerHTML =
+      "";
 
-      const card =
-        document.createElement(
-          "div"
-        );
 
-      card.className =
-        "request-card";
+    data.forEach(
+      request => {
 
-      card.innerHTML = `
+        const card =
+          document.createElement(
+            "div"
+          );
 
-        <h3>
-          📨 ${escapeHTML(
-            request.service
-          )}
-        </h3>
 
-        <p>
-          <strong>Description :</strong><br>
-          ${escapeHTML(
-            request.description
-          )}
-        </p>
+        card.className =
+          "request-card";
 
-        <p>
-          👤 <strong>Client :</strong>
-          ${escapeHTML(
-            request.phone ||
-            "Non renseigné"
-          )}
-        </p>
 
-        <p>
-          📍 <strong>Ville :</strong>
-          ${escapeHTML(
-            request.city ||
-            "Non renseignée"
-          )}
-        </p>
+        card.innerHTML = `
 
-        <p>
-          🏘️ <strong>Quartier :</strong>
-          ${escapeHTML(
-            request.quartier ||
-            "Non renseigné"
-          )}
-        </p>
+          <h3>
+            📨 ${escapeHTML(
+              request.service
+            )}
+          </h3>
 
-        <p>
-          📅 ${formatDate(
-            request.created_at
-          )}
-        </p>
+          <p>
+            <strong>Description :</strong><br>
+            ${escapeHTML(
+              request.description
+            )}
+          </p>
 
-        <span
-          class="status ${getStatusClass(
-            request.status
-          )}"
-        >
-          ${getStatusText(
-            request.status
-          )}
-        </span>
+          <p>
+            👤 <strong>Client :</strong>
+            ${escapeHTML(
+              request.phone ||
+              "Non renseigné"
+            )}
+          </p>
 
-        ${
-          request.status ===
-          "en_attente"
-          ? `
+          <p>
+            📍 <strong>Ville :</strong>
+            ${escapeHTML(
+              request.city ||
+              "Non renseignée"
+            )}
+          </p>
 
-            <div class="request-actions">
+          <p>
+            🏘️ <strong>Quartier :</strong>
+            ${escapeHTML(
+              request.quartier ||
+              "Non renseigné"
+            )}
+          </p>
 
-              <button
-                class="green-btn"
-                onclick="updateRequestStatus(
-                  '${escapeJS(request.id)}',
-                  'acceptee'
-                )"
-              >
-                ✅ Accepter
-              </button>
+          <p>
+            📅 ${formatDate(
+              request.created_at
+            )}
+          </p>
 
-              <button
-                class="red-btn"
-                onclick="updateRequestStatus(
-                  '${escapeJS(request.id)}',
-                  'refusee'
-                )"
-              >
-                ❌ Refuser
-              </button>
+          <span
+            class="status ${getStatusClass(
+              request.status
+            )}"
+          >
+            ${getStatusText(
+              request.status
+            )}
+          </span>
 
-              ${
-                request.phone
-                ? `
-                  <a
-                    href="tel:${escapeHTML(
-                      request.phone
-                    )}"
-                    style="text-decoration:none;"
+
+          ${
+            request.status ===
+            "en_attente"
+              ? `
+
+                <div class="request-actions">
+
+                  <button
+                    class="green-btn"
+                    onclick="updateRequestStatus(
+                      '${escapeJS(request.id)}',
+                      'acceptee'
+                    )"
                   >
+                    ✅ Accepter
+                  </button>
 
-                    <button class="primary-btn">
-                      📞 Appeler
-                    </button>
 
-                  </a>
-                `
-                : ""
-              }
+                  <button
+                    class="red-btn"
+                    onclick="updateRequestStatus(
+                      '${escapeJS(request.id)}',
+                      'refusee'
+                    )"
+                  >
+                    ❌ Refuser
+                  </button>
 
-            </div>
-          `
-          : ""
-        }
-      `;
 
-      container.appendChild(
-        card
-      );
-    });
+                  ${
+                    request.phone
+                      ? `
+                        <a
+                          href="tel:${escapeHTML(
+                            request.phone
+                          )}"
+                          style="
+                            text-decoration:none;
+                          "
+                        >
+
+                          <button
+                            class="primary-btn"
+                          >
+                            📞 Appeler
+                          </button>
+
+                        </a>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              `
+              : ""
+          }
+
+        `;
+
+
+        container.appendChild(
+          card
+        );
+      }
+    );
 
   } catch (error) {
 
     console.error(error);
+
 
     container.innerHTML = `
 
@@ -2924,6 +3363,7 @@ async function loadProfessionalRequests() {
         </p>
 
       </div>
+
     `;
   }
 }
@@ -2940,26 +3380,30 @@ async function updateRequestStatus(
 
   if (!currentUser) return;
 
+
   try {
 
     const {
       data,
       error
-    } = await supabaseClient
-      .from("service_requests")
-      .update({
-        status: newStatus
-      })
-      .eq(
-        "id",
-        requestId
-      )
-      .eq(
-        "professional_id",
-        currentUser.id
-      )
-      .select()
-      .single();
+    } =
+      await supabaseClient
+        .from("service_requests")
+        .update({
+          status:
+            newStatus
+        })
+        .eq(
+          "id",
+          requestId
+        )
+        .eq(
+          "professional_id",
+          currentUser.id
+        )
+        .select()
+        .single();
+
 
     if (error) {
 
@@ -2971,16 +3415,19 @@ async function updateRequestStatus(
       throw error;
     }
 
+
     console.log(
       "Demande mise à jour :",
       data
     );
+
 
     await loadProfessionalRequests();
 
   } catch (error) {
 
     console.error(error);
+
 
     alert(
       "Impossible de modifier la demande : " +
@@ -2998,32 +3445,37 @@ async function loadClientRequests() {
 
   if (!currentUser) return;
 
+
   const container =
     document.getElementById(
       "clientRequests"
     );
 
+
   container.innerHTML =
     "<p>Chargement des demandes...</p>";
+
 
   try {
 
     const {
       data,
       error
-    } = await supabaseClient
-      .from("service_requests")
-      .select("*")
-      .eq(
-        "client_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending: false
-        }
-      );
+    } =
+      await supabaseClient
+        .from("service_requests")
+        .select("*")
+        .eq(
+          "client_id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
 
     if (error) {
 
@@ -3035,7 +3487,11 @@ async function loadClientRequests() {
       throw error;
     }
 
-    if (!data || !data.length) {
+
+    if (
+      !data ||
+      !data.length
+    ) {
 
       container.innerHTML = `
 
@@ -3050,80 +3506,93 @@ async function loadClientRequests() {
           </p>
 
         </div>
+
       `;
+
 
       updateNotificationBadge(0);
 
       return;
     }
 
-    container.innerHTML = "";
 
-    data.forEach(request => {
+    container.innerHTML =
+      "";
 
-      const card =
-        document.createElement(
-          "div"
+
+    data.forEach(
+      request => {
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "request-card";
+
+
+        card.innerHTML = `
+
+          <h3>
+            🛠️ ${escapeHTML(
+              request.service
+            )}
+          </h3>
+
+          <p>
+            <strong>Votre demande :</strong><br>
+            ${escapeHTML(
+              request.description
+            )}
+          </p>
+
+          <p>
+            📍 ${escapeHTML(
+              request.city ||
+              ""
+            )}
+
+            ${
+              request.quartier
+                ? " - " +
+                  escapeHTML(
+                    request.quartier
+                  )
+                : ""
+            }
+          </p>
+
+          <p>
+            📅 ${formatDate(
+              request.created_at
+            )}
+          </p>
+
+          <span
+            class="status ${getStatusClass(
+              request.status
+            )}"
+          >
+            ${getStatusText(
+              request.status
+            )}
+          </span>
+
+        `;
+
+
+        container.appendChild(
+          card
         );
-
-      card.className =
-        "request-card";
-
-      card.innerHTML = `
-
-        <h3>
-          🛠️ ${escapeHTML(
-            request.service
-          )}
-        </h3>
-
-        <p>
-          <strong>Votre demande :</strong><br>
-          ${escapeHTML(
-            request.description
-          )}
-        </p>
-
-        <p>
-          📍 ${escapeHTML(
-            request.city || ""
-          )}
-
-          ${
-            request.quartier
-            ? " - " +
-              escapeHTML(
-                request.quartier
-              )
-            : ""
-          }
-        </p>
-
-        <p>
-          📅 ${formatDate(
-            request.created_at
-          )}
-        </p>
-
-        <span
-          class="status ${getStatusClass(
-            request.status
-          )}"
-        >
-          ${getStatusText(
-            request.status
-          )}
-        </span>
-      `;
-
-      container.appendChild(
-        card
-      );
-    });
+      }
+    );
 
   } catch (error) {
 
     console.error(error);
+
 
     container.innerHTML = `
 
@@ -3140,6 +3609,7 @@ async function loadClientRequests() {
         </p>
 
       </div>
+
     `;
   }
 }
@@ -3149,46 +3619,85 @@ async function loadClientRequests() {
    STATUT
 ========================================================= */
 
-function getStatusClass(status) {
+function getStatusClass(
+  status
+) {
 
-  if (status === "acceptee") {
+  if (
+    status ===
+    "acceptee"
+  ) {
+
     return "status-acceptee";
   }
 
-  if (status === "refusee") {
+
+  if (
+    status ===
+    "refusee"
+  ) {
+
     return "status-refusee";
   }
+
 
   return "status-en-attente";
 }
 
 
-function getStatusText(status) {
+function getStatusText(
+  status
+) {
 
-  if (status === "acceptee") {
+  if (
+    status ===
+    "acceptee"
+  ) {
+
     return "✅ Demande acceptée";
   }
 
-  if (status === "refusee") {
+
+  if (
+    status ===
+    "refusee"
+  ) {
+
     return "❌ Demande refusée";
   }
+
 
   return "⏳ En attente";
 }
 
 
-function formatDate(dateString) {
+/* =========================================================
+   DATE
+========================================================= */
 
-  if (!dateString) return "";
+function formatDate(
+  dateString
+) {
+
+  if (!dateString) {
+    return "";
+  }
+
 
   const date =
-    new Date(dateString);
+    new Date(
+      dateString
+    );
+
 
   return date.toLocaleString(
     "fr-FR",
     {
-      dateStyle: "short",
-      timeStyle: "short"
+      dateStyle:
+        "short",
+
+      timeStyle:
+        "short"
     }
   );
 }
@@ -3202,16 +3711,22 @@ async function checkSession() {
 
   const {
     data
-  } = await supabaseClient
-    .auth
-    .getSession();
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
 
-  if (data.session) {
+
+  if (
+    data.session
+  ) {
 
     currentUser =
       data.session.user;
 
+
     await loadUserProfile();
+
 
     document
       .getElementById(
@@ -3229,6 +3744,7 @@ async function checkSession() {
     currentProfile =
       null;
 
+
     document
       .getElementById(
         "logoutBtn"
@@ -3237,49 +3753,83 @@ async function checkSession() {
         "hidden"
       );
 
-    updateNotificationBadge(0);
+
+    updateNotificationBadge(
+      0
+    );
   }
 }
 
 
-supabaseClient.auth.onAuthStateChange(
-  async (event, session) => {
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-    if (session) {
+supabaseClient
+  .auth
+  .onAuthStateChange(
+    async (
+      event,
+      session
+    ) => {
 
-      currentUser =
-        session.user;
+      if (session) {
 
-      await loadUserProfile();
+        currentUser =
+          session.user;
 
-      document
-        .getElementById(
-          "logoutBtn"
-        )
-        .classList.remove(
-          "hidden"
+
+        await loadUserProfile();
+
+
+        document
+          .getElementById(
+            "logoutBtn"
+          )
+          .classList.remove(
+            "hidden"
+          );
+
+
+        /*
+          Si le client est connecté,
+          on actualise le badge.
+        */
+
+        if (
+          currentProfile &&
+          currentProfile.user_type !==
+          "professionnel"
+        ) {
+
+          await loadClientNotifications();
+        }
+
+      } else {
+
+        currentUser =
+          null;
+
+        currentProfile =
+          null;
+
+
+        document
+          .getElementById(
+            "logoutBtn"
+          )
+          .classList.add(
+            "hidden"
+          );
+
+
+        updateNotificationBadge(
+          0
         );
+      }
 
-    } else {
-
-      currentUser =
-        null;
-
-      currentProfile =
-        null;
-
-      document
-        .getElementById(
-          "logoutBtn"
-        )
-        .classList.add(
-          "hidden"
-        );
-
-      updateNotificationBadge(0);
     }
-  }
-);
+  );
 
 
 /* =========================================================
@@ -3294,7 +3844,9 @@ document.addEventListener(
       "homeSection"
     );
 
+
     await checkSession();
+
 
     await searchProfessionals();
 
