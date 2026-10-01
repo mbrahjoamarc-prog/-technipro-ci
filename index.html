@@ -13,33 +13,43 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
 
     body {
+      font-family: Arial, sans-serif;
       background: #f5f7fa;
       color: #222;
     }
 
     header {
-      background: #0b5ed7;
+      background: #0d6efd;
       color: white;
-      padding: 15px 5%;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 25px;
+      font-size: 24px;
       font-weight: bold;
+      cursor: pointer;
     }
 
     nav {
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
@@ -47,148 +57,162 @@
       border: none;
       background: transparent;
       color: white;
+      padding: 9px 12px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 15px;
-      padding: 8px;
-      position: relative;
+      font-weight: bold;
     }
 
     nav button:hover {
-      text-decoration: underline;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .notification-wrapper {
+      position: relative;
     }
 
     .notification-badge {
       position: absolute;
       top: -5px;
       right: -3px;
+      min-width: 19px;
+      height: 19px;
       background: #dc3545;
       color: white;
       border-radius: 50%;
-      min-width: 18px;
-      height: 18px;
-      padding: 2px 5px;
       font-size: 11px;
-      font-weight: bold;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0b5ed7, #084298);
+      background: linear-gradient(135deg, #0d6efd, #004bb5);
       color: white;
-      padding: 70px 5%;
+      padding: 55px 20px;
       text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
+      border-radius: 15px;
       margin-bottom: 30px;
     }
 
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      margin-bottom: 25px;
+      font-size: 17px;
+    }
+
     .search-box {
+      background: white;
+      color: #222;
+      padding: 20px;
+      border-radius: 12px;
       max-width: 900px;
       margin: auto;
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
       display: grid;
       grid-template-columns: 1fr 1fr auto;
       gap: 10px;
     }
 
     input,
-    select,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 7px;
       font-size: 15px;
+      outline: none;
     }
 
     textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #0d6efd;
     }
 
     button {
       cursor: pointer;
     }
 
-    .primary-btn {
-      background: #0b5ed7;
-      color: white;
+    .btn {
       border: none;
-      border-radius: 8px;
-      padding: 12px 18px;
-      font-size: 15px;
+      padding: 11px 17px;
+      border-radius: 7px;
       font-weight: bold;
+      font-size: 14px;
     }
 
-    .primary-btn:hover {
-      background: #084298;
+    .btn-primary {
+      background: #0d6efd;
+      color: white;
     }
 
-    .green-btn {
+    .btn-primary:hover {
+      background: #0b5ed7;
+    }
+
+    .btn-success {
       background: #198754;
       color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 18px;
-      font-size: 15px;
-      font-weight: bold;
     }
 
-    .green-btn:hover {
-      background: #146c43;
-    }
-
-    .red-btn {
+    .btn-danger {
       background: #dc3545;
       color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 15px;
-      font-weight: bold;
     }
 
-    .gray-btn {
+    .btn-warning {
+      background: #ffc107;
+      color: #222;
+    }
+
+    .btn-secondary {
       background: #6c757d;
       color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 15px;
-      font-weight: bold;
     }
 
-    .yellow-btn {
-      background: #ffc107;
-      color: #212529;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 15px;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 50px 5%;
+    .btn-light {
+      background: #f8f9fa;
+      color: #222;
+      border: 1px solid #ddd;
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 30px;
+      margin-bottom: 20px;
+      font-size: 28px;
     }
 
     .services-grid,
     .professional-grid,
-    .requests-grid {
+    .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
@@ -196,47 +220,42 @@
 
     .service-card,
     .professional-card,
+    .dashboard-card,
     .request-card,
-    .account-card,
-    .dashboard-card {
+    .notification-card,
+    .form-card {
       background: white;
-      padding: 25px;
+      padding: 22px;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
     .service-card {
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
 
-    .service-card h3 {
-      margin: 15px 0 10px;
+    .service-card:hover {
+      transform: translateY(-3px);
     }
 
     .service-icon {
-      font-size: 45px;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .professional-card {
+      position: relative;
     }
 
     .professional-card h3 {
-      color: #0b5ed7;
       margin-bottom: 8px;
     }
 
-    .professional-card p {
-      margin: 8px 0;
-      line-height: 1.5;
-    }
-
-    .professional-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
-    .professional-actions button {
-      flex: 1;
-      min-width: 120px;
+    .professional-info {
+      line-height: 1.7;
+      margin-top: 10px;
     }
 
     .rating-box {
@@ -276,12 +295,20 @@
       letter-spacing: 1px;
     }
 
-    .hidden {
-      display: none !important;
+    .review-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
     }
 
-    .form-container {
-      max-width: 600px;
+    .review-card p {
+      margin: 7px 0;
+      line-height: 1.5;
+    }
+
+    .form-card {
+      max-width: 650px;
       margin: auto;
     }
 
@@ -295,79 +322,49 @@
       font-weight: bold;
     }
 
-    .switch-form {
-      text-align: center;
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
       margin-top: 15px;
-    }
-
-    .switch-form button {
-      background: none;
-      border: none;
-      color: #0b5ed7;
-      font-weight: bold;
     }
 
     .message {
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 7px;
       margin: 15px 0;
       display: none;
     }
 
-    .success {
+    .message.success {
+      display: block;
       background: #d1e7dd;
       color: #0f5132;
     }
 
-    .error {
+    .message.error {
+      display: block;
       background: #f8d7da;
       color: #842029;
     }
 
-    .info {
+    .message.info {
+      display: block;
       background: #cff4fc;
       color: #055160;
     }
 
-    .dashboard-info {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    .dashboard-info p {
-      margin: 8px 0;
-    }
-
     .request-card {
-      border-left: 5px solid #0b5ed7;
+      margin-bottom: 15px;
     }
 
-    .request-card h3 {
-      color: #0b5ed7;
-      margin-bottom: 12px;
-    }
-
-    .request-card p {
-      margin: 8px 0;
-      line-height: 1.5;
-    }
-
-    .request-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
-    .status {
+    .request-status {
       display: inline-block;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 13px;
+      padding: 5px 9px;
+      border-radius: 15px;
+      font-size: 12px;
       font-weight: bold;
-      margin-top: 5px;
+      margin: 7px 0;
     }
 
     .status-en-attente {
@@ -386,63 +383,48 @@
     }
 
     .notification-card {
-      border-left: 5px solid #0b5ed7;
-      margin-top: 20px;
+      margin-bottom: 12px;
+      border-left: 5px solid #0d6efd;
     }
 
-    .notification-card h2 {
-      margin-bottom: 15px;
+    .notification-card.unread {
+      background: #eef5ff;
     }
 
-    .notification-item {
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      line-height: 1.5;
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
     }
 
-    .notification-item:last-child {
-      margin-bottom: 0;
+    .modal.active {
+      display: flex;
     }
 
-    .notification-accepted {
-      background: #d1e7dd;
-      color: #0f5132;
-      border-left: 4px solid #198754;
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 25px;
+      border-radius: 14px;
+      position: relative;
     }
 
-    .notification-refused {
-      background: #f8d7da;
-      color: #842029;
-      border-left: 4px solid #dc3545;
-    }
-
-    .notification-new {
-      background: #cff4fc;
-      color: #055160;
-      border-left: 4px solid #0b5ed7;
-    }
-
-    .notification-empty {
-      background: #f8f9fa;
-      color: #6c757d;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .notification-read-btn {
-      margin-top: 12px;
+    .modal-close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
       border: none;
-      border-radius: 7px;
-      padding: 9px 13px;
-      background: #ffffff;
-      color: #0b5ed7;
-      font-weight: bold;
+      background: transparent;
+      font-size: 28px;
       cursor: pointer;
-    }
-
-    .notification-read-btn:hover {
-      background: #e9ecef;
     }
 
     .star-selector {
@@ -465,50 +447,34 @@
       color: #f5a623;
     }
 
-    .review-card {
-      background: #f8f9fa;
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 10px;
-    }
-
-    .review-card p {
-      margin: 7px 0;
-      line-height: 1.5;
+    .empty-state {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      color: #6c757d;
     }
 
     footer {
+      margin-top: 50px;
       background: #212529;
       color: white;
       text-align: center;
-      padding: 30px;
-      margin-top: 30px;
+      padding: 25px;
     }
 
     @media (max-width: 700px) {
+      .search-box {
+        grid-template-columns: 1fr;
+      }
 
       .hero h1 {
         font-size: 30px;
       }
 
-      .search-box {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        justify-content: center;
-      }
-
       nav {
-        justify-content: center;
-      }
-
-      .professional-actions {
-        flex-direction: column;
-      }
-
-      .professional-actions button {
         width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -517,839 +483,635 @@
 <body>
 
 <header>
+  <div class="header-container">
 
-  <div class="logo">
-    🔧 TechniPro CI
+    <div class="logo" onclick="showSection('homeSection')">
+      🔧 TechniPro CI
+    </div>
+
+    <nav>
+      <button onclick="showSection('homeSection')">
+        Accueil
+      </button>
+
+      <button onclick="showSection('professionalsSection'); searchProfessionals();">
+        Professionnels
+      </button>
+
+      <button onclick="showSection('servicesSection')">
+        Services
+      </button>
+
+      <button onclick="showSection('accountSection')">
+        Mon compte
+      </button>
+
+      <div class="notification-wrapper">
+        <button onclick="showSection('dashboardSection'); loadDashboard();">
+          🔔 Notifications
+        </button>
+        <span
+          id="notificationBadge"
+          class="notification-badge hidden"
+        >0</span>
+      </div>
+
+      <button
+        id="logoutBtn"
+        class="hidden"
+        onclick="logout()"
+      >
+        Déconnexion
+      </button>
+    </nav>
+
   </div>
-
-  <nav>
-
-    <button onclick="showSection('homeSection')">
-      Accueil
-    </button>
-
-    <button onclick="showSection('servicesSection')">
-      Services
-    </button>
-
-    <button onclick="showSection('professionalsSection')">
-      Professionnels
-    </button>
-
-    <button onclick="showSection('accountSection')">
-      Mon compte
-    </button>
-
-    <button onclick="showSection('dashboardSection')">
-      Mon espace
-      <span
-        id="notificationBadge"
-        class="notification-badge"
-      >0</span>
-    </button>
-
-    <button
-      id="logoutBtn"
-      onclick="logout()"
-      class="hidden"
-    >
-      Déconnexion
-    </button>
-
-  </nav>
-
 </header>
 
 
-<section id="homeSection">
+<main class="container">
 
-  <div class="hero">
+  <!-- ACCUEIL -->
+  <section id="homeSection" class="active">
 
-    <h1>
-      Trouvez le professionnel qu'il vous faut
-    </h1>
+    <div class="hero">
 
-    <p>
-      TechniPro CI vous met en relation avec des professionnels
-      près de chez vous.
-    </p>
+      <h1>Bienvenue sur TechniPro CI</h1>
 
-    <div class="search-box">
+      <p>
+        Trouvez facilement un professionnel près de chez vous
+        en Côte d’Ivoire.
+      </p>
 
-      <input
-        type="text"
-        id="searchProfession"
-        placeholder="Ex : Électricien, plombier..."
-      >
+      <div class="search-box">
 
-      <select id="searchCity">
+        <input
+          id="searchProfession"
+          type="text"
+          placeholder="Ex : Électricien"
+        >
 
-        <option value="">Toutes les villes</option>
+        <input
+          id="searchCity"
+          type="text"
+          placeholder="Ex : Abidjan"
+        >
 
-        <option value="Abidjan">Abidjan</option>
-        <option value="Bouaké">Bouaké</option>
-        <option value="Yamoussoukro">Yamoussoukro</option>
-        <option value="Korhogo">Korhogo</option>
-        <option value="San-Pédro">San-Pédro</option>
-        <option value="Daloa">Daloa</option>
-        <option value="Man">Man</option>
-        <option value="Abengourou">Abengourou</option>
-        <option value="Grand-Bassam">Grand-Bassam</option>
+        <button
+          class="btn btn-primary"
+          onclick="runProfessionalSearch()"
+        >
+          🔎 Rechercher
+        </button>
 
-      </select>
-
-      <button
-        class="primary-btn"
-        onclick="searchProfessionals()"
-      >
-        🔎 Rechercher
-      </button>
+      </div>
 
     </div>
 
-  </div>
 
-</section>
+    <h2 class="section-title">
+      Services populaires
+    </h2>
 
+    <div class="services-grid">
 
-<section id="servicesSection">
-
-  <h2 class="section-title">
-    Nos services
-  </h2>
-
-  <div class="services-grid">
-
-    <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <h3>Électricien</h3>
-      <p>Installations et dépannages électriques.</p>
-      <button
-        class="primary-btn"
+      <div
+        class="service-card"
         onclick="selectService('Électricien')"
       >
-        Rechercher
-      </button>
-    </div>
+        <div class="service-icon">⚡</div>
+        <h3>Électricité</h3>
+        <p>Installation et dépannage électrique.</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-icon">🚰</div>
-      <h3>Plombier</h3>
-      <p>Installation et réparation de plomberie.</p>
-      <button
-        class="primary-btn"
+      <div
+        class="service-card"
         onclick="selectService('Plombier')"
       >
-        Rechercher
-      </button>
-    </div>
+        <div class="service-icon">🚰</div>
+        <h3>Plomberie</h3>
+        <p>Réparation et installation sanitaire.</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-icon">🧱</div>
-      <h3>Maçon</h3>
-      <p>Travaux de construction et rénovation.</p>
-      <button
-        class="primary-btn"
-        onclick="selectService('Maçon')"
-      >
-        Rechercher
-      </button>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🎨</div>
-      <h3>Peintre</h3>
-      <p>Peinture intérieure et extérieure.</p>
-      <button
-        class="primary-btn"
-        onclick="selectService('Peintre')"
-      >
-        Rechercher
-      </button>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🪚</div>
-      <h3>Menuisier</h3>
-      <p>Travaux de menuiserie et fabrication.</p>
-      <button
-        class="primary-btn"
-        onclick="selectService('Menuisier')"
-      >
-        Rechercher
-      </button>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🚗</div>
-      <h3>Mécanicien</h3>
-      <p>Entretien et réparation automobile.</p>
-      <button
-        class="primary-btn"
-        onclick="selectService('Mécanicien')"
-      >
-        Rechercher
-      </button>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">❄️</div>
-      <h3>Climatisation</h3>
-      <p>Installation et dépannage de climatiseurs.</p>
-      <button
-        class="primary-btn"
+      <div
+        class="service-card"
         onclick="selectService('Climatisation')"
       >
-        Rechercher
-      </button>
-    </div>
+        <div class="service-icon">❄️</div>
+        <h3>Climatisation</h3>
+        <p>Installation et entretien de climatiseurs.</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-icon">💻</div>
-      <h3>Informatique</h3>
-      <p>Assistance informatique et dépannage.</p>
-      <button
-        class="primary-btn"
-        onclick="selectService('Informatique')"
+      <div
+        class="service-card"
+        onclick="selectService('Mécanicien')"
       >
-        Rechercher
-      </button>
+        <div class="service-icon">🔧</div>
+        <h3>Mécanique</h3>
+        <p>Entretien et réparation automobile.</p>
+      </div>
+
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<section id="professionalsSection">
+  <!-- SERVICES -->
+  <section id="servicesSection">
 
-  <h2 class="section-title">
-    Professionnels disponibles
-  </h2>
+    <h2 class="section-title">
+      Nos services
+    </h2>
 
-  <div
-    id="searchMessage"
-    class="message"
-  ></div>
+    <div class="services-grid">
 
-  <div
-    id="professionalsGrid"
-    class="professional-grid"
-  ></div>
+      <div
+        class="service-card"
+        onclick="selectService('Électricien')"
+      >
+        <div class="service-icon">⚡</div>
+        <h3>Électricien</h3>
+        <p>Installation, dépannage et maintenance.</p>
+      </div>
 
-</section>
+      <div
+        class="service-card"
+        onclick="selectService('Plombier')"
+      >
+        <div class="service-icon">🚰</div>
+        <h3>Plombier</h3>
+        <p>Installation et réparation plomberie.</p>
+      </div>
+
+      <div
+        class="service-card"
+        onclick="selectService('Climatisation')"
+      >
+        <div class="service-icon">❄️</div>
+        <h3>Climatisation</h3>
+        <p>Entretien et dépannage climatisation.</p>
+      </div>
+
+      <div
+        class="service-card"
+        onclick="selectService('Mécanicien')"
+      >
+        <div class="service-icon">🚗</div>
+        <h3>Mécanicien</h3>
+        <p>Réparation et entretien automobile.</p>
+      </div>
+
+    </div>
+
+  </section>
 
 
-<section id="accountSection">
+  <!-- PROFESSIONNELS -->
+  <section id="professionalsSection">
 
-  <h2 class="section-title">
-    Mon compte
-  </h2>
-
-  <div class="form-container">
+    <h2 class="section-title">
+      Professionnels disponibles
+    </h2>
 
     <div
-      id="accountMessage"
+      id="searchMessage"
       class="message"
     ></div>
 
     <div
-      id="registerCard"
-      class="account-card"
+      id="professionalsGrid"
+      class="professional-grid"
+    ></div>
+
+  </section>
+
+
+  <!-- COMPTE -->
+  <section id="accountSection">
+
+    <div
+      id="loginForm"
+      class="form-card"
     >
 
-      <h2 style="margin-bottom:20px;">
-        Créer un compte
+      <h2 class="section-title">
+        Connexion
       </h2>
 
-      <form onsubmit="registerUser(event)">
+      <div
+        id="accountMessage"
+        class="message"
+      ></div>
 
-        <div class="form-group">
-          <label>Nom complet</label>
-          <input
-            type="text"
-            id="registerName"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>Téléphone</label>
-          <input
-            type="tel"
-            id="registerPhone"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>Ville</label>
-
-          <select
-            id="registerCity"
-            required
-          >
-            <option value="">
-              Choisir une ville
-            </option>
-
-            <option value="Abidjan">Abidjan</option>
-            <option value="Bouaké">Bouaké</option>
-            <option value="Yamoussoukro">Yamoussoukro</option>
-            <option value="Korhogo">Korhogo</option>
-            <option value="San-Pédro">San-Pédro</option>
-            <option value="Daloa">Daloa</option>
-            <option value="Man">Man</option>
-            <option value="Abengourou">Abengourou</option>
-            <option value="Grand-Bassam">Grand-Bassam</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Type de compte</label>
-
-          <select
-            id="registerType"
-            required
-          >
-            <option value="">
-              Choisir
-            </option>
-
-            <option value="client">
-              Client
-            </option>
-
-            <option value="professionnel">
-              Professionnel
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-
-          <input
-            type="email"
-            id="registerEmail"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>Mot de passe</label>
-
-          <input
-            type="password"
-            id="registerPassword"
-            required
-            minlength="6"
-          >
-        </div>
-
-        <button
-          type="submit"
-          class="primary-btn"
-          style="width:100%;"
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="Votre email"
         >
-          Créer mon compte
-        </button>
-
-      </form>
-
-      <div class="switch-form">
-
-        Déjà inscrit ?
-
-        <button onclick="showLoginForm()">
-          Se connecter
-        </button>
-
       </div>
+
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Votre mot de passe"
+        >
+      </div>
+
+      <button
+        class="btn btn-primary"
+        onclick="loginUser()"
+      >
+        Se connecter
+      </button>
+
+      <button
+        class="btn btn-light"
+        onclick="showRegisterForm()"
+      >
+        Créer un compte
+      </button>
 
     </div>
 
 
     <div
-      id="loginCard"
-      class="account-card hidden"
+      id="registerForm"
+      class="form-card hidden"
     >
 
-      <h2 style="margin-bottom:20px;">
-        Se connecter
+      <h2 class="section-title">
+        Créer un compte
       </h2>
 
-      <form onsubmit="loginUser(event)">
+      <div
+        id="registerMessage"
+        class="message"
+      ></div>
 
-        <div class="form-group">
-          <label>Email</label>
+      <div class="form-group">
+        <label>Nom complet</label>
+        <input
+          id="registerFullName"
+          type="text"
+          placeholder="Nom et prénom"
+        >
+      </div>
 
-          <input
-            type="email"
-            id="loginEmail"
-            required
-          >
-        </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input
+          id="registerPhone"
+          type="text"
+          placeholder="Numéro de téléphone"
+        >
+      </div>
 
-        <div class="form-group">
-          <label>Mot de passe</label>
+      <div class="form-group">
+        <label>Ville</label>
+        <input
+          id="registerCity"
+          type="text"
+          placeholder="Ville"
+        >
+      </div>
 
-          <input
-            type="password"
-            id="loginPassword"
-            required
-          >
-        </div>
+      <div class="form-group">
+        <label>Type de compte</label>
+        <select id="registerUserType">
+          <option value="client">Client</option>
+          <option value="professionnel">
+            Professionnel
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          id="registerEmail"
+          type="email"
+          placeholder="Votre email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input
+          id="registerPassword"
+          type="password"
+          placeholder="Mot de passe"
+        >
+      </div>
+
+      <div class="form-actions">
 
         <button
-          type="submit"
-          class="primary-btn"
-          style="width:100%;"
+          class="btn btn-primary"
+          onclick="registerUser()"
         >
-          Se connecter
+          Créer mon compte
         </button>
 
-      </form>
-
-      <div class="switch-form">
-
-        Pas encore de compte ?
-
-        <button onclick="showRegisterForm()">
-          Créer un compte
+        <button
+          class="btn btn-light"
+          onclick="showLoginForm()"
+        >
+          Retour connexion
         </button>
 
       </div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<section id="dashboardSection">
+  <!-- DASHBOARD -->
+  <section id="dashboardSection">
 
-  <h2 class="section-title">
-    Mon espace
-  </h2>
-
-  <div class="form-container">
+    <h2 class="section-title">
+      Mon tableau de bord
+    </h2>
 
     <div
       id="dashboardMessage"
       class="message"
     ></div>
 
-    <div id="dashboardContent">
+
+    <div class="dashboard-grid">
 
       <div class="dashboard-card">
 
-        <h2>
-          Mon profil
-        </h2>
-
-        <div
-          id="userInformation"
-          class="dashboard-info"
-        >
-          Chargement...
-        </div>
-
-      </div>
-
-
-      <div
-        id="notificationsCard"
-        class="dashboard-card notification-card hidden"
-      >
-
-        <h2>
+        <h3>
           🔔 Notifications
-        </h2>
+        </h3>
 
-        <div id="notificationsList"></div>
-
-      </div>
-
-
-      <div
-        id="professionalNotificationsCard"
-        class="dashboard-card notification-card hidden"
-      >
-
-        <h2>
-          🔔 Nouvelles demandes
-        </h2>
-
-        <div id="professionalNotificationsList"></div>
+        <div
+          id="notificationsContainer"
+          style="margin-top:15px;"
+        ></div>
 
       </div>
 
-
       <div
+        class="dashboard-card"
         id="professionalProfileCard"
-        class="dashboard-card"
-        style="margin-top:20px;"
       >
 
-        <h2>
-          Mon profil professionnel
-        </h2>
+        <h3>
+          👤 Mon profil professionnel
+        </h3>
 
-        <p style="margin:10px 0 20px;">
-          Complétez votre profil afin que les clients puissent vous trouver.
+        <p style="margin:10px 0;">
+          Présentez vos services aux clients.
         </p>
 
-        <form onsubmit="saveProfessionalProfile(event)">
-
-          <div class="form-group">
-            <label>Profession</label>
-
-            <input
-              type="text"
-              id="professionalProfession"
-              placeholder="Ex : Électricien"
-            >
-          </div>
-
-          <div class="form-group">
-            <label>Quartier</label>
-
-            <input
-              type="text"
-              id="professionalQuartier"
-              placeholder="Ex : Abobo Anonkoua-Kouté"
-            >
-          </div>
-
-          <div class="form-group">
-            <label>Services proposés</label>
-
-            <input
-              type="text"
-              id="professionalServices"
-              placeholder="Ex : Installation, dépannage, réparation"
-            >
-          </div>
-
-          <div class="form-group">
-            <label>Description</label>
-
-            <textarea
-              id="professionalDescription"
-              placeholder="Présentez votre activité..."
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="green-btn"
-            style="width:100%;"
-          >
-            💾 Enregistrer mon profil professionnel
-          </button>
-
-        </form>
-
-      </div>
-
-
-      <div
-        id="professionalRequestsCard"
-        class="dashboard-card"
-        style="margin-top:20px;"
-      >
-
-        <h2>
-          📨 Demandes de services reçues
-        </h2>
-
-        <p style="margin:10px 0 20px;">
-          Les clients qui vous envoient une demande apparaîtront ici.
-        </p>
-
-        <div
-          id="professionalRequests"
-          class="requests-grid"
-        ></div>
-
-      </div>
-
-
-      <div
-        id="clientRequestsCard"
-        class="dashboard-card"
-        style="margin-top:20px;"
-      >
-
-        <h2>
-          📋 Mes demandes de services
-        </h2>
-
-        <p style="margin:10px 0 20px;">
-          Retrouvez ici les demandes que vous avez envoyées.
-        </p>
-
-        <div
-          id="clientRequests"
-          class="requests-grid"
-        ></div>
+        <button
+          class="btn btn-primary"
+          onclick="showSection('professionalProfileSection')"
+        >
+          Modifier mon profil
+        </button>
 
       </div>
 
     </div>
 
-  </div>
 
-</section>
+    <div style="margin-top:25px;">
+
+      <h3 style="margin-bottom:15px;">
+        📋 Demandes reçues
+      </h3>
+
+      <div
+        id="professionalRequestsContainer"
+      ></div>
+
+    </div>
 
 
-<footer>
+    <div style="margin-top:25px;">
 
-  <p>
-    © 2026 TechniPro CI — Tous droits réservés.
-  </p>
+      <h3 style="margin-bottom:15px;">
+        📋 Mes demandes
+      </h3>
 
-</footer>
+      <div
+        id="clientRequestsContainer"
+      ></div>
+
+    </div>
+
+  </section>
 
 
-<div
-  id="requestModal"
-  class="hidden"
-  style="
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    z-index:9999;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-  "
->
+  <!-- PROFIL PROFESSIONNEL -->
+  <section id="professionalProfileSection">
 
-  <div
-    style="
-      background:white;
-      width:100%;
-      max-width:600px;
-      max-height:90vh;
-      overflow:auto;
-      border-radius:15px;
-      padding:25px;
-    "
-  >
+    <div class="form-card">
 
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:20px;
-      "
-    >
-
-      <h2>
-        📨 Demander un service
+      <h2 class="section-title">
+        Mon profil professionnel
       </h2>
 
-      <button
-        onclick="closeRequestModal()"
-        style="
-          border:none;
-          background:none;
-          font-size:25px;
-        "
-      >
-        ×
-      </button>
+      <div
+        id="profileMessage"
+        class="message"
+      ></div>
+
+      <div class="form-group">
+        <label>Profession</label>
+
+        <input
+          id="professionalProfession"
+          type="text"
+          placeholder="Ex : Électricien"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Quartier</label>
+
+        <input
+          id="professionalQuartier"
+          type="text"
+          placeholder="Ex : Abobo"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Services proposés</label>
+
+        <input
+          id="professionalServices"
+          type="text"
+          placeholder="Ex : Installation électrique, dépannage"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+
+        <textarea
+          id="professionalDescription"
+          placeholder="Présentez vos services..."
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-success"
+          onclick="saveProfessionalProfile()"
+        >
+          💾 Enregistrer mon profil professionnel
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          onclick="showSection('dashboardSection'); loadDashboard();"
+        >
+          Retour
+        </button>
+
+      </div>
 
     </div>
 
+  </section>
+
+</main>
+
+
+<!-- MODAL DEMANDE -->
+<div
+  id="requestModal"
+  class="modal"
+>
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      onclick="closeRequestModal()"
+    >
+      ×
+    </button>
+
+    <h2>
+      Demander ce service
+    </h2>
+
     <div
-      id="requestModalMessage"
+      id="requestMessage"
       class="message"
     ></div>
 
-    <form onsubmit="submitServiceRequest(event)">
+    <input
+      id="requestProfessionalId"
+      type="hidden"
+    >
+
+    <div class="form-group">
+      <label>Service</label>
 
       <input
-        type="hidden"
-        id="requestProfessionalId"
+        id="requestService"
+        type="text"
+        readonly
       >
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
+      <label>Ville</label>
 
-        <label>
-          Professionnel
-        </label>
-
-        <input
-          type="text"
-          id="requestProfessionalName"
-          readonly
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Service demandé
-        </label>
-
-        <input
-          type="text"
-          id="requestService"
-          required
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Décrivez votre besoin
-        </label>
-
-        <textarea
-          id="requestDescription"
-          required
-        ></textarea>
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Votre ville
-        </label>
-
-        <input
-          type="text"
-          id="requestCity"
-          required
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Votre quartier
-        </label>
-
-        <input
-          type="text"
-          id="requestQuartier"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Votre téléphone
-        </label>
-
-        <input
-          type="tel"
-          id="requestPhone"
-          required
-        >
-
-      </div>
-
-      <button
-        type="submit"
-        class="green-btn"
-        style="width:100%;"
+      <input
+        id="requestCity"
+        type="text"
+        placeholder="Votre ville"
       >
-        📤 Envoyer la demande
-      </button>
+    </div>
 
-    </form>
+    <div class="form-group">
+      <label>Quartier</label>
+
+      <input
+        id="requestQuartier"
+        type="text"
+        placeholder="Votre quartier"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Téléphone</label>
+
+      <input
+        id="requestPhone"
+        type="text"
+        placeholder="Votre numéro"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Description du besoin</label>
+
+      <textarea
+        id="requestDescription"
+        placeholder="Expliquez votre besoin..."
+      ></textarea>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      onclick="submitServiceRequest()"
+    >
+      Envoyer la demande
+    </button>
 
   </div>
 
 </div>
 
 
+<!-- MODAL AVIS -->
 <div
   id="reviewModal"
-  class="hidden"
-  style="
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    z-index:10000;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-  "
+  class="modal"
 >
 
-  <div
-    style="
-      background:white;
-      width:100%;
-      max-width:550px;
-      max-height:90vh;
-      overflow:auto;
-      border-radius:15px;
-      padding:25px;
-    "
-  >
+  <div class="modal-content">
 
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:20px;
-      "
+    <button
+      class="modal-close"
+      onclick="closeReviewModal()"
     >
+      ×
+    </button>
 
-      <h2>
-        ⭐ Noter le professionnel
-      </h2>
-
-      <button
-        onclick="closeReviewModal()"
-        style="
-          border:none;
-          background:none;
-          font-size:25px;
-        "
-      >
-        ×
-      </button>
-
-    </div>
+    <h2>
+      ⭐ Laisser un avis
+    </h2>
 
     <div
-      id="reviewModalMessage"
+      id="reviewMessage"
       class="message"
     ></div>
 
     <input
-      type="hidden"
       id="reviewRequestId"
+      type="hidden"
     >
 
-    <div class="form-group">
-
-      <label>
-        Professionnel
-      </label>
-
-      <input
-        type="text"
-        id="reviewProfessionalName"
-        readonly
-      >
-
-    </div>
+    <input
+      id="reviewProfessionalId"
+      type="hidden"
+    >
 
     <div class="form-group">
 
@@ -1365,66 +1127,56 @@
         <button
           type="button"
           onclick="selectRating(1)"
-          data-rating="1"
         >★</button>
 
         <button
           type="button"
           onclick="selectRating(2)"
-          data-rating="2"
         >★</button>
 
         <button
           type="button"
           onclick="selectRating(3)"
-          data-rating="3"
         >★</button>
 
         <button
           type="button"
           onclick="selectRating(4)"
-          data-rating="4"
         >★</button>
 
         <button
           type="button"
           onclick="selectRating(5)"
-          data-rating="5"
         >★</button>
 
       </div>
 
-      <div
-        id="selectedRatingText"
-        style="
-          color:#6c757d;
-          margin-bottom:10px;
-        "
+      <input
+        id="reviewRating"
+        type="hidden"
+        value="0"
       >
-        Sélectionnez une note.
-      </div>
 
     </div>
 
     <div class="form-group">
 
       <label>
-        Votre commentaire
+        Commentaire
       </label>
 
       <textarea
         id="reviewComment"
-        placeholder="Partagez votre expérience avec ce professionnel..."
+        placeholder="Votre expérience..."
       ></textarea>
 
     </div>
 
     <button
-      class="green-btn"
-      style="width:100%;"
+      class="btn btn-primary"
       onclick="submitReview()"
     >
-      ⭐ Publier mon avis
+      Publier mon avis
     </button>
 
   </div>
@@ -1432,135 +1184,1327 @@
 </div>
 
 
+<footer>
+  <p>
+    © 2026 TechniPro CI — Mise en relation entre clients et professionnels.
+  </p>
+</footer>
+
+
 <script>
 
-const SUPABASE_URL =
-  "https://spznzkneagjawragvijg.supabase.co";
+  /* =========================================================
+     SUPABASE
+  ========================================================= */
 
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
+  const SUPABASE_URL =
+    "https://spznzkneagjawragvijg.supabase.co";
 
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_TOsljgq5aaJlv9QbKjbY5Q_ARtv6O_T";
 
-let currentUser = null;
-let currentProfile = null;
-let selectedRating = 0;
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
 
-/* =========================================================
-   OUTILS
-========================================================= */
+  /* =========================================================
+     VARIABLES
+  ========================================================= */
 
-function escapeHTML(value) {
+  let currentUser = null;
+  let currentProfile = null;
+  let selectedRating = 0;
 
-  if (
-    value === null ||
-    value === undefined
-  ) {
-    return "";
+
+  /* =========================================================
+     UTILITAIRES
+  ========================================================= */
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
   }
 
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+
+  function escapeJS(value) {
+
+    return String(value ?? "")
+      .replace(/\\/g, "\\\\")
+      .replace(/'/g, "\\'")
+      .replace(/"/g, '\\"')
+      .replace(/\n/g, "\\n")
+      .replace(/\r/g, "\\r");
+
+  }
 
 
-function escapeJS(value) {
+  function showMessage(
+    elementId,
+    message,
+    type = "info"
+  ) {
 
-  return String(value || "")
-    .replace(/\\/g, "\\\\")
-    .replace(/'/g, "\\'")
-    .replace(/"/g, '\\"')
-    .replace(/\n/g, "\\n")
-    .replace(/\r/g, "\\r");
-}
+    const element =
+      document.getElementById(elementId);
+
+    if (!element) return;
+
+    element.textContent = message;
+
+    element.className =
+      "message " + type;
+
+  }
 
 
-function showMessage(
-  elementId,
-  message,
-  type
-) {
+  function hideMessage(elementId) {
 
-  const element =
-    document.getElementById(
-      elementId
+    const element =
+      document.getElementById(elementId);
+
+    if (!element) return;
+
+    element.textContent = "";
+
+    element.className =
+      "message";
+
+  }
+
+
+  function showSection(sectionId) {
+
+    const sections =
+      document.querySelectorAll("main section");
+
+    sections.forEach(
+      section => {
+        section.classList.remove("active");
+      }
     );
 
-  if (!element) return;
+    const target =
+      document.getElementById(sectionId);
 
-  element.className =
-    "message " + type;
-
-  element.textContent =
-    message;
-
-  element.style.display =
-    "block";
-}
-
-
-function hideMessage(elementId) {
-
-  const element =
-    document.getElementById(
-      elementId
-    );
-
-  if (!element) return;
-
-  element.style.display =
-    "none";
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showSection(sectionId) {
-
-  const sections = [
-    "homeSection",
-    "servicesSection",
-    "professionalsSection",
-    "accountSection",
-    "dashboardSection"
-  ];
-
-  sections.forEach(id => {
-
-    const section =
-      document.getElementById(id);
-
-    if (section) {
-
-      section.style.display =
-        id === sectionId
-        ? "block"
-        : "none";
+    if (target) {
+      target.classList.add("active");
     }
 
-  });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
 
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  /* =========================================================
+     AUTH FORMS
+  ========================================================= */
+
+  function showLoginForm() {
+
+    document
+      .getElementById("loginForm")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("registerForm")
+      .classList.add("hidden");
+
+    hideMessage("accountMessage");
+    hideMessage("registerMessage");
+
+  }
 
 
-  if (
-    sectionId ===
-    "dashboardSection"
+  function showRegisterForm() {
+
+    document
+      .getElementById("loginForm")
+      .classList.add("hidden");
+
+    document
+      .getElementById("registerForm")
+      .classList.remove("hidden");
+
+    hideMessage("accountMessage");
+    hideMessage("registerMessage");
+
+  }
+
+
+  /* =========================================================
+     INSCRIPTION
+  ========================================================= */
+
+  async function registerUser() {
+
+    const fullName =
+      document
+        .getElementById("registerFullName")
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById("registerPhone")
+        .value
+        .trim();
+
+    const city =
+      document
+        .getElementById("registerCity")
+        .value
+        .trim();
+
+    const userType =
+      document
+        .getElementById("registerUserType")
+        .value;
+
+    const email =
+      document
+        .getElementById("registerEmail")
+        .value
+        .trim();
+
+    const password =
+      document
+        .getElementById("registerPassword")
+        .value;
+
+
+    if (
+      !fullName ||
+      !email ||
+      !password
+    ) {
+
+      showMessage(
+        "registerMessage",
+        "Veuillez remplir les champs obligatoires.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    try {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signUp({
+          email,
+          password
+        });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      if (!data.user) {
+
+        showMessage(
+          "registerMessage",
+          "Inscription effectuée. Vérifiez votre email si nécessaire.",
+          "success"
+        );
+
+        return;
+      }
+
+
+      const {
+        error: profileError
+      } =
+        await supabaseClient
+          .from("profiles")
+          .insert({
+            id: data.user.id,
+            full_name: fullName,
+            phone: phone,
+            city: city,
+            user_type: userType
+          });
+
+
+      if (profileError) {
+        throw profileError;
+      }
+
+
+      showMessage(
+        "registerMessage",
+        "✅ Compte créé avec succès !",
+        "success"
+      );
+
+
+      currentUser =
+        data.user;
+
+
+      await loadUserProfile();
+
+      await refreshNotificationBadge();
+
+
+      setTimeout(
+        () => {
+          showSection("homeSection");
+        },
+        1000
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR INSCRIPTION :",
+        error
+      );
+
+      showMessage(
+        "registerMessage",
+        "❌ " + error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     CONNEXION
+  ========================================================= */
+
+  async function loginUser() {
+
+    const email =
+      document
+        .getElementById("loginEmail")
+        .value
+        .trim();
+
+    const password =
+      document
+        .getElementById("loginPassword")
+        .value;
+
+
+    if (!email || !password) {
+
+      showMessage(
+        "accountMessage",
+        "Veuillez entrer votre email et votre mot de passe.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    try {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      currentUser =
+        data.user;
+
+
+      await loadUserProfile();
+
+
+      document
+        .getElementById("logoutBtn")
+        .classList.remove("hidden");
+
+
+      await refreshNotificationBadge();
+
+
+      showMessage(
+        "accountMessage",
+        "✅ Connexion réussie !",
+        "success"
+      );
+
+
+      showSection("homeSection");
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR CONNEXION :",
+        error
+      );
+
+      showMessage(
+        "accountMessage",
+        "❌ " + error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     DECONNEXION
+  ========================================================= */
+
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    currentUser = null;
+    currentProfile = null;
+
+    document
+      .getElementById("logoutBtn")
+      .classList.add("hidden");
+
+    updateNotificationBadge(0);
+
+    showSection("homeSection");
+
+  }
+
+
+  /* =========================================================
+     PROFIL UTILISATEUR
+  ========================================================= */
+
+  async function loadUserProfile() {
+
+    if (!currentUser) {
+      return;
+    }
+
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq(
+          "id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+
+    if (error) {
+
+      console.error(
+        "❌ ERREUR PROFIL :",
+        error
+      );
+
+      return;
+    }
+
+
+    currentProfile =
+      data;
+
+
+    if (
+      currentProfile &&
+      currentProfile.user_type === "professionnel"
+    ) {
+
+      document
+        .getElementById("professionalProfileCard")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("professionalProfession")
+        .value =
+        currentProfile.profession || "";
+
+
+      document
+        .getElementById("professionalQuartier")
+        .value =
+        currentProfile.quartier || "";
+
+
+      document
+        .getElementById("professionalServices")
+        .value =
+        currentProfile.services || "";
+
+
+      document
+        .getElementById("professionalDescription")
+        .value =
+        currentProfile.description || "";
+
+    }
+
+  }
+
+
+  /* =========================================================
+     SAUVEGARDE PROFIL PROFESSIONNEL
+  ========================================================= */
+
+  async function saveProfessionalProfile() {
+
+    if (!currentUser) {
+
+      showMessage(
+        "profileMessage",
+        "Vous devez être connecté.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const profession =
+      document
+        .getElementById("professionalProfession")
+        .value
+        .trim();
+
+    const quartier =
+      document
+        .getElementById("professionalQuartier")
+        .value
+        .trim();
+
+    const services =
+      document
+        .getElementById("professionalServices")
+        .value
+        .trim();
+
+    const description =
+      document
+        .getElementById("professionalDescription")
+        .value
+        .trim();
+
+
+    if (!profession) {
+
+      showMessage(
+        "profileMessage",
+        "Veuillez indiquer votre profession.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    try {
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .update({
+            profession,
+            quartier,
+            services,
+            description,
+            user_type: "professionnel"
+          })
+          .eq(
+            "id",
+            currentUser.id
+          );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      await loadUserProfile();
+
+
+      showMessage(
+        "profileMessage",
+        "✅ Profil professionnel enregistré avec succès !",
+        "success"
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR PROFIL PROFESSIONNEL :",
+        error
+      );
+
+      showMessage(
+        "profileMessage",
+        "❌ " + error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     ETOILES
+  ========================================================= */
+
+  function getStarsHTML(rating) {
+
+    const rounded =
+      Math.round(
+        Number(rating) || 0
+      );
+
+    let stars = "";
+
+    for (
+      let i = 1;
+      i <= 5;
+      i++
+    ) {
+
+      stars +=
+        i <= rounded
+          ? "★"
+          : "☆";
+
+    }
+
+    return stars;
+
+  }
+
+
+  /* =========================================================
+     RECHERCHE PROFESSIONNELS
+     
+     IMPORTANT :
+     Cette fonction NE fait PAS showSection().
+     Ainsi, au rafraîchissement, la page reste sur Accueil.
+  ========================================================= */
+
+  async function searchProfessionals() {
+
+    const professionInput =
+      document.getElementById(
+        "searchProfession"
+      );
+
+    const cityInput =
+      document.getElementById(
+        "searchCity"
+      );
+
+    const grid =
+      document.getElementById(
+        "professionalsGrid"
+      );
+
+
+    if (
+      !professionInput ||
+      !cityInput ||
+      !grid
+    ) {
+
+      console.error(
+        "❌ Éléments de recherche introuvables."
+      );
+
+      return;
+
+    }
+
+
+    const profession =
+      professionInput.value
+        .trim()
+        .toLowerCase();
+
+    const city =
+      cityInput.value
+        .trim()
+        .toLowerCase();
+
+
+    try {
+
+      /* =====================================================
+         1. CHARGER LES PROFESSIONNELS
+      ===================================================== */
+
+      let query =
+        supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq(
+            "user_type",
+            "professionnel"
+          );
+
+
+      if (city) {
+
+        query =
+          query.ilike(
+            "city",
+            city
+          );
+
+      }
+
+
+      const {
+        data,
+        error
+      } =
+        await query;
+
+
+      if (error) {
+
+        console.error(
+          "❌ ERREUR PROFESSIONNELS :",
+          error
+        );
+
+        throw error;
+
+      }
+
+
+      let professionals =
+        data || [];
+
+
+      /* =====================================================
+         2. FILTRER PAR PROFESSION
+      ===================================================== */
+
+      if (profession) {
+
+        professionals =
+          professionals.filter(
+            profile => {
+
+              const p =
+                String(
+                  profile.profession || ""
+                )
+                .toLowerCase();
+
+              const s =
+                String(
+                  profile.services || ""
+                )
+                .toLowerCase();
+
+              const d =
+                String(
+                  profile.description || ""
+                )
+                .toLowerCase();
+
+
+              return (
+                p.includes(profession) ||
+                s.includes(profession) ||
+                d.includes(profession)
+              );
+
+            }
+          );
+
+      }
+
+
+      console.log(
+        "👨‍🔧 PROFESSIONNELS TROUVÉS :",
+        professionals
+      );
+
+
+      /* =====================================================
+         3. ID PROFESSIONNELS
+      ===================================================== */
+
+      const professionalIds =
+        professionals
+          .map(
+            profile =>
+              String(
+                profile.id || ""
+              )
+              .trim()
+              .toLowerCase()
+          )
+          .filter(Boolean);
+
+
+      console.log(
+        "🆔 ID PROFESSIONNELS :",
+        professionalIds
+      );
+
+
+      /* =====================================================
+         4. CHARGER TOUS LES AVIS
+         
+         On récupère tous les avis puis on filtre
+         côté JavaScript. Cela évite tout problème
+         avec .in() et permet de vérifier clairement
+         les données reçues.
+      ===================================================== */
+
+      let reviews = [];
+
+
+      const {
+        data: reviewData,
+        error: reviewError
+      } =
+        await supabaseClient
+          .from("reviews")
+          .select(
+            "id, professional_id, rating, comment, created_at"
+          )
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+
+      if (reviewError) {
+
+        console.error(
+          "❌ ERREUR CHARGEMENT AVIS :",
+          reviewError
+        );
+
+      } else {
+
+        const professionalIdSet =
+          new Set(
+            professionalIds
+          );
+
+
+        reviews =
+          (reviewData || [])
+            .filter(
+              review =>
+                professionalIdSet.has(
+                  String(
+                    review.professional_id || ""
+                  )
+                  .trim()
+                  .toLowerCase()
+                )
+            );
+
+
+        console.log(
+          "⭐ AVIS RÉCUPÉRÉS DE SUPABASE :",
+          reviewData
+        );
+
+
+        console.log(
+          "⭐ AVIS CORRESPONDANT AUX PROFESSIONNELS :",
+          reviews
+        );
+
+      }
+
+
+      /* =====================================================
+         5. REGROUPER LES AVIS
+      ===================================================== */
+
+      const reviewsByProfessional = {};
+
+
+      reviews.forEach(
+        review => {
+
+          const professionalId =
+            String(
+              review.professional_id || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+          if (!professionalId) {
+            return;
+          }
+
+
+          if (
+            !reviewsByProfessional[
+              professionalId
+            ]
+          ) {
+
+            reviewsByProfessional[
+              professionalId
+            ] = [];
+
+          }
+
+
+          reviewsByProfessional[
+            professionalId
+          ].push(review);
+
+        }
+      );
+
+
+      console.log(
+        "📚 AVIS GROUPÉS :",
+        reviewsByProfessional
+      );
+
+
+      /* =====================================================
+         6. AJOUTER NOTES ET AVIS AUX PROFILS
+      ===================================================== */
+
+      professionals =
+        professionals.map(
+          profile => {
+
+            const profileId =
+              String(
+                profile.id || ""
+              )
+              .trim()
+              .toLowerCase();
+
+
+            const profileReviews =
+              reviewsByProfessional[
+                profileId
+              ] || [];
+
+
+            const total =
+              profileReviews.reduce(
+                (
+                  sum,
+                  review
+                ) => {
+
+                  return (
+                    sum +
+                    Number(
+                      review.rating || 0
+                    )
+                  );
+
+                },
+                0
+              );
+
+
+            const average =
+              profileReviews.length > 0
+                ? total /
+                  profileReviews.length
+                : 0;
+
+
+            console.log(
+              "⭐ PROFESSIONNEL :",
+              profile.full_name,
+              "| ID :",
+              profileId,
+              "| AVIS :",
+              profileReviews.length,
+              "| MOYENNE :",
+              average
+            );
+
+
+            return {
+
+              ...profile,
+
+              reviews:
+                profileReviews,
+
+              ratingAverage:
+                average,
+
+              ratingCount:
+                profileReviews.length
+
+            };
+
+          }
+        );
+
+
+      console.log(
+        "✅ PROFESSIONNELS AVEC NOTES :",
+        professionals
+      );
+
+
+      displayProfessionals(
+        professionals
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR RECHERCHE PROFESSIONNELS :",
+        error
+      );
+
+
+      showMessage(
+        "searchMessage",
+        "❌ Impossible de rechercher les professionnels : " +
+        error.message,
+        "error"
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     LANCER UNE RECHERCHE DEPUIS L'ACCUEIL
+  ========================================================= */
+
+  async function runProfessionalSearch() {
+
+    await searchProfessionals();
+
+    showSection(
+      "professionalsSection"
+    );
+
+  }
+
+
+  /* =========================================================
+     AFFICHAGE PROFESSIONNELS
+  ========================================================= */
+
+  function displayProfessionals(
+    professionals
+  ) {
+
+    const grid =
+      document.getElementById(
+        "professionalsGrid"
+      );
+
+
+    if (!grid) {
+      return;
+    }
+
+
+    grid.innerHTML = "";
+
+
+    if (
+      !professionals ||
+      professionals.length === 0
+    ) {
+
+      grid.innerHTML = `
+        <div class="empty-state">
+          <h3>Aucun professionnel trouvé</h3>
+          <p>
+            Essayez une autre profession ou une autre ville.
+          </p>
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    professionals.forEach(
+      profile => {
+
+        const ratingCount =
+          Number(
+            profile.ratingCount || 0
+          );
+
+        const ratingAverage =
+          Number(
+            profile.ratingAverage || 0
+          );
+
+
+        let ratingHTML = "";
+
+
+        if (ratingCount > 0) {
+
+          ratingHTML = `
+            <div class="rating-box">
+
+              <span class="stars">
+                ${getStarsHTML(ratingAverage)}
+              </span>
+
+              <span class="rating-number">
+                ${ratingAverage.toFixed(1)}/5
+              </span>
+
+              <span class="rating-count">
+                (${ratingCount}
+                ${ratingCount > 1 ? "avis" : "avis"})
+              </span>
+
+            </div>
+          `;
+
+        } else {
+
+          ratingHTML = `
+            <div class="rating-box">
+
+              <span class="stars">
+                ☆☆☆☆☆
+              </span>
+
+              <span class="rating-count">
+                Aucun avis
+              </span>
+
+            </div>
+          `;
+
+        }
+
+
+        let latestReviewHTML = "";
+
+
+        if (
+          profile.reviews &&
+          profile.reviews.length > 0
+        ) {
+
+          const latestReview =
+            profile.reviews[0];
+
+
+          latestReviewHTML = `
+            <div class="review-preview">
+
+              <div class="review-stars">
+                ${getStarsHTML(
+                  latestReview.rating
+                )}
+              </div>
+
+              ${
+                latestReview.comment
+                  ? `
+                    <div>
+                      ${escapeHTML(
+                        latestReview.comment
+                      )}
+                    </div>
+                  `
+                  : ""
+              }
+
+            </div>
+          `;
+
+        }
+
+
+        const card =
+          document.createElement("div");
+
+
+        card.className =
+          "professional-card";
+
+
+        card.innerHTML = `
+
+          <h3>
+            ${escapeHTML(
+              profile.profession ||
+              "Professionnel"
+            )}
+          </h3>
+
+          <p>
+            👤
+            <strong>
+              ${escapeHTML(
+                profile.full_name ||
+                "Nom non renseigné"
+              )}
+            </strong>
+          </p>
+
+          ${ratingHTML}
+
+          <div class="professional-info">
+
+            <div>
+              📍 Ville :
+              ${escapeHTML(
+                profile.city ||
+                "Non renseignée"
+              )}
+            </div>
+
+            <div>
+              🏘️ Quartier :
+              ${escapeHTML(
+                profile.quartier ||
+                "Non renseigné"
+              )}
+            </div>
+
+            <div>
+              🛠️ Services :
+              ${escapeHTML(
+                profile.services ||
+                "Non renseignés"
+              )}
+            </div>
+
+            <div>
+              📝
+              ${escapeHTML(
+                profile.description ||
+                "Aucune description"
+              )}
+            </div>
+
+          </div>
+
+          ${latestReviewHTML}
+
+          <div class="form-actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="openRequestModal(
+                '${escapeJS(profile.id)}',
+                '${escapeJS(
+                  profile.profession ||
+                  profile.services ||
+                  ""
+                )}'
+              )"
+            >
+              📩 Demander ce service
+            </button>
+
+          </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     SELECTION SERVICE
+  ========================================================= */
+
+  function selectService(service) {
+
+    document
+      .getElementById(
+        "searchProfession"
+      )
+      .value = service;
+
+
+    showSection(
+      "homeSection"
+    );
+
+
+    document
+      .getElementById(
+        "searchProfession"
+      )
+      .focus();
+
+  }
+
+
+  /* =========================================================
+     MODAL DEMANDE
+  ========================================================= */
+
+  function openRequestModal(
+    professionalId,
+    service
   ) {
 
     if (!currentUser) {
@@ -1571,141 +2515,80 @@ function showSection(sectionId) {
 
       showMessage(
         "accountMessage",
-        "Veuillez vous connecter pour accéder à votre espace.",
+        "Veuillez vous connecter pour envoyer une demande.",
         "info"
       );
 
       return;
     }
 
-    loadDashboard();
+
+    document
+      .getElementById(
+        "requestProfessionalId"
+      )
+      .value = professionalId;
+
+
+    document
+      .getElementById(
+        "requestService"
+      )
+      .value = service;
+
+
+    document
+      .getElementById(
+        "requestCity"
+      )
+      .value =
+      currentProfile?.city || "";
+
+
+    document
+      .getElementById(
+        "requestPhone"
+      )
+      .value =
+      currentProfile?.phone || "";
+
+
+    hideMessage(
+      "requestMessage"
+    );
+
+
+    document
+      .getElementById(
+        "requestModal"
+      )
+      .classList.add("active");
+
   }
-}
 
 
-/* =========================================================
-   COMPTE
-========================================================= */
+  function closeRequestModal() {
 
-function showLoginForm() {
-
-  document
-    .getElementById("registerCard")
-    .classList.add("hidden");
-
-  document
-    .getElementById("loginCard")
-    .classList.remove("hidden");
-
-  hideMessage("accountMessage");
-}
-
-
-function showRegisterForm() {
-
-  document
-    .getElementById("loginCard")
-    .classList.add("hidden");
-
-  document
-    .getElementById("registerCard")
-    .classList.remove("hidden");
-
-  hideMessage("accountMessage");
-}
-
-
-/* =========================================================
-   INSCRIPTION
-========================================================= */
-
-async function registerUser(event) {
-
-  event.preventDefault();
-
-  hideMessage("accountMessage");
-
-
-  const fullName =
     document
-      .getElementById("registerName")
-      .value
-      .trim();
+      .getElementById(
+        "requestModal"
+      )
+      .classList.remove("active");
 
-  const phone =
-    document
-      .getElementById("registerPhone")
-      .value
-      .trim();
-
-  const city =
-    document
-      .getElementById("registerCity")
-      .value;
-
-  const userType =
-    document
-      .getElementById("registerType")
-      .value;
-
-  const email =
-    document
-      .getElementById("registerEmail")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("registerPassword")
-      .value;
+  }
 
 
-  try {
+  /* =========================================================
+     ENVOYER DEMANDE
+  ========================================================= */
 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .auth
-        .signUp({
-          email,
-          password
-        });
+  async function submitServiceRequest() {
 
-
-    if (error) {
-      throw error;
-    }
-
-
-    if (!data.user) {
-      throw new Error(
-        "Le compte n'a pas pu être créé."
-      );
-    }
-
-
-    const {
-      error: profileError
-    } =
-      await supabaseClient
-        .from("profiles")
-        .insert({
-          id: data.user.id,
-          full_name: fullName,
-          phone,
-          city,
-          user_type: userType
-        });
-
-
-    if (profileError) {
+    if (!currentUser) {
 
       showMessage(
-        "accountMessage",
-        "Compte créé, mais le profil n'a pas pu être enregistré : " +
-        profileError.message,
+        "requestMessage",
+        "Vous devez être connecté.",
         "error"
       );
 
@@ -1713,389 +2596,135 @@ async function registerUser(event) {
     }
 
 
-    showMessage(
-      "accountMessage",
-      "✅ Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
-      "success"
-    );
+    const professionalId =
+      document
+        .getElementById(
+          "requestProfessionalId"
+        )
+        .value;
+
+    const service =
+      document
+        .getElementById(
+          "requestService"
+        )
+        .value
+        .trim();
+
+    const description =
+      document
+        .getElementById(
+          "requestDescription"
+        )
+        .value
+        .trim();
+
+    const city =
+      document
+        .getElementById(
+          "requestCity"
+        )
+        .value
+        .trim();
+
+    const quartier =
+      document
+        .getElementById(
+          "requestQuartier"
+        )
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById(
+          "requestPhone"
+        )
+        .value
+        .trim();
 
 
-    document
-      .getElementById("registerCard")
-      .classList.add("hidden");
+    if (
+      !professionalId ||
+      !service ||
+      !description
+    ) {
 
-    document
-      .getElementById("loginCard")
-      .classList.remove("hidden");
+      showMessage(
+        "requestMessage",
+        "Veuillez remplir les informations nécessaires.",
+        "error"
+      );
 
-  } catch (error) {
-
-    console.error(error);
-
-    showMessage(
-      "accountMessage",
-      "❌ " + error.message,
-      "error"
-    );
-  }
-}
-
-
-/* =========================================================
-   CONNEXION
-========================================================= */
-
-async function loginUser(event) {
-
-  event.preventDefault();
-
-  hideMessage("accountMessage");
-
-
-  const email =
-    document
-      .getElementById("loginEmail")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("loginPassword")
-      .value;
-
-
-  try {
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .auth
-        .signInWithPassword({
-          email,
-          password
-        });
-
-
-    if (error) {
-      throw error;
+      return;
     }
 
 
-    currentUser =
-      data.user;
+    try {
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("service_requests")
+          .insert({
+            client_id: currentUser.id,
+            professional_id: professionalId,
+            service,
+            description,
+            city,
+            quartier,
+            phone,
+            status: "en_attente"
+          });
 
 
-    await loadUserProfile();
-
-    await searchProfessionals();
-
-
-    showMessage(
-      "accountMessage",
-      "✅ Connexion réussie !",
-      "success"
-    );
+      if (error) {
+        throw error;
+      }
 
 
-    document
-      .getElementById("logoutBtn")
-      .classList.remove("hidden");
-
-
-    setTimeout(() => {
-
-      showSection(
-        "dashboardSection"
+      showMessage(
+        "requestMessage",
+        "✅ Votre demande a été envoyée au professionnel.",
+        "success"
       );
 
-    }, 700);
 
-  } catch (error) {
-
-    console.error(error);
-
-    showMessage(
-      "accountMessage",
-      "❌ " + error.message,
-      "error"
-    );
-  }
-}
+      setTimeout(
+        closeRequestModal,
+        1200
+      );
 
 
-/* =========================================================
-   DECONNEXION
-========================================================= */
+    } catch (error) {
 
-async function logout() {
+      console.error(
+        "❌ ERREUR DEMANDE :",
+        error
+      );
 
-  await supabaseClient
-    .auth
-    .signOut();
+      showMessage(
+        "requestMessage",
+        "❌ " + error.message,
+        "error"
+      );
 
+    }
 
-  currentUser = null;
-  currentProfile = null;
-
-
-  document
-    .getElementById("logoutBtn")
-    .classList.add("hidden");
-
-
-  updateNotificationBadge(0);
-
-
-  showSection("homeSection");
-
-
-  alert("Vous êtes déconnecté.");
-}
-
-
-/* =========================================================
-   PROFIL
-========================================================= */
-
-async function loadUserProfile() {
-
-  if (!currentUser) return;
-
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id", currentUser.id)
-      .maybeSingle();
-
-
-  if (error) {
-
-    console.error(
-      "Erreur chargement profil :",
-      error
-    );
-
-    return;
   }
 
 
-  currentProfile = data;
+  /* =========================================================
+     NOTIFICATIONS
+  ========================================================= */
 
+  async function loadClientNotifications() {
 
-  if (!data) return;
+    if (!currentUser) {
+      return;
+    }
 
-
-  const professionInput =
-    document.getElementById(
-      "professionalProfession"
-    );
-
-  const quartierInput =
-    document.getElementById(
-      "professionalQuartier"
-    );
-
-  const servicesInput =
-    document.getElementById(
-      "professionalServices"
-    );
-
-  const descriptionInput =
-    document.getElementById(
-      "professionalDescription"
-    );
-
-
-  if (professionInput)
-    professionInput.value =
-      data.profession || "";
-
-  if (quartierInput)
-    quartierInput.value =
-      data.quartier || "";
-
-  if (servicesInput)
-    servicesInput.value =
-      data.services || "";
-
-  if (descriptionInput)
-    descriptionInput.value =
-      data.description || "";
-}
-
-
-/* =========================================================
-   TABLEAU DE BORD
-========================================================= */
-
-async function loadDashboard() {
-
-  if (!currentUser) return;
-
-
-  hideMessage("dashboardMessage");
-
-
-  await loadUserProfile();
-
-
-  if (!currentProfile) {
-
-    document.getElementById(
-      "userInformation"
-    ).innerHTML =
-      "<p>Profil introuvable.</p>";
-
-    return;
-  }
-
-
-  document.getElementById(
-    "userInformation"
-  ).innerHTML = `
-
-    <p>
-      <strong>Nom :</strong>
-      ${escapeHTML(currentProfile.full_name)}
-    </p>
-
-    <p>
-      <strong>Téléphone :</strong>
-      ${escapeHTML(currentProfile.phone)}
-    </p>
-
-    <p>
-      <strong>Ville :</strong>
-      ${escapeHTML(currentProfile.city)}
-    </p>
-
-    <p>
-      <strong>Type de compte :</strong>
-      ${escapeHTML(currentProfile.user_type)}
-    </p>
-
-  `;
-
-
-  const professionalCard =
-    document.getElementById(
-      "professionalProfileCard"
-    );
-
-  const professionalRequestsCard =
-    document.getElementById(
-      "professionalRequestsCard"
-    );
-
-  const clientRequestsCard =
-    document.getElementById(
-      "clientRequestsCard"
-    );
-
-  const notificationsCard =
-    document.getElementById(
-      "notificationsCard"
-    );
-
-  const professionalNotificationsCard =
-    document.getElementById(
-      "professionalNotificationsCard"
-    );
-
-
-  if (
-    currentProfile.user_type ===
-    "professionnel"
-  ) {
-
-    professionalCard.classList.remove(
-      "hidden"
-    );
-
-    professionalRequestsCard.classList.remove(
-      "hidden"
-    );
-
-    clientRequestsCard.classList.add(
-      "hidden"
-    );
-
-    notificationsCard.classList.add(
-      "hidden"
-    );
-
-    professionalNotificationsCard.classList.remove(
-      "hidden"
-    );
-
-
-    await loadProfessionalRequests();
-
-    await loadProfessionalNotifications();
-
-  } else {
-
-    professionalCard.classList.add(
-      "hidden"
-    );
-
-    professionalRequestsCard.classList.add(
-      "hidden"
-    );
-
-    clientRequestsCard.classList.remove(
-      "hidden"
-    );
-
-    notificationsCard.classList.remove(
-      "hidden"
-    );
-
-    professionalNotificationsCard.classList.add(
-      "hidden"
-    );
-
-
-    await loadClientRequests();
-
-    await loadClientNotifications();
-
-  }
-
-  await refreshNotificationBadge();
-}
-
-
-/* =========================================================
-   NOTIFICATIONS CLIENT
-========================================================= */
-
-async function loadClientNotifications() {
-
-  if (!currentUser) return;
-
-
-  const container =
-    document.getElementById(
-      "notificationsList"
-    );
-
-
-  if (!container) return;
-
-
-  container.innerHTML =
-    "<p>Chargement des notifications...</p>";
-
-
-  try {
 
     const {
       data,
@@ -2115,10 +2744,6 @@ async function loadClientNotifications() {
             "refusee"
           ]
         )
-        .eq(
-          "client_notification_read",
-          false
-        )
         .order(
           "created_at",
           {
@@ -2127,168 +2752,134 @@ async function loadClientNotifications() {
         );
 
 
-    if (error) throw error;
+    if (error) {
+
+      console.error(
+        "❌ NOTIFICATIONS CLIENT :",
+        error
+      );
+
+      return;
+    }
 
 
-    const notifications =
-      data || [];
+    const container =
+      document.getElementById(
+        "notificationsContainer"
+      );
 
 
-    if (!notifications.length) {
+    if (!container) {
+      return;
+    }
+
+
+    if (
+      !data ||
+      data.length === 0
+    ) {
 
       container.innerHTML = `
-
-        <div class="notification-empty">
-          🔔 Aucune nouvelle notification.
+        <div class="empty-state">
+          Aucune notification.
         </div>
-
       `;
 
       return;
+
     }
 
 
     container.innerHTML = "";
 
 
-    notifications.forEach(
+    data.forEach(
       request => {
 
-        const item =
-          document.createElement(
-            "div"
+        const card =
+          document.createElement("div");
+
+
+        card.className =
+          "notification-card " +
+          (
+            !request.client_notification_read
+              ? "unread"
+              : ""
           );
 
 
-        if (
-          request.status ===
-          "acceptee"
-        ) {
+        card.innerHTML = `
 
-          item.className =
-            "notification-item notification-accepted";
+          <strong>
+            ${
+              request.status === "acceptee"
+                ? "✅ Demande acceptée"
+                : "❌ Demande refusée"
+            }
+          </strong>
 
+          <p>
+            Service :
+            ${escapeHTML(request.service)}
+          </p>
 
-          item.innerHTML = `
+          <p>
+            ${escapeHTML(request.description)}
+          </p>
 
-            <strong>
-              🟢 Demande acceptée
-            </strong>
+          ${
+            !request.client_notification_read
+              ? `
+                <button
+                  class="btn btn-primary"
+                  onclick="markClientNotificationRead(
+                    '${escapeJS(request.id)}'
+                  )"
+                >
+                  ✓ J’ai lu
+                </button>
+              `
+              : ""
+          }
 
-            <br><br>
+          ${
+            request.status === "acceptee"
+              ? `
+                <button
+                  class="btn btn-warning"
+                  onclick="openReviewModal(
+                    '${escapeJS(request.id)}',
+                    '${escapeJS(request.professional_id)}'
+                  )"
+                >
+                  ⭐ Laisser un avis
+                </button>
+              `
+              : ""
+          }
 
-            Votre demande de
-            <strong>
-              ${escapeHTML(request.service)}
-            </strong>
-            a été acceptée par le professionnel.
-
-            <br><br>
-
-            <small>
-              📅 ${formatDate(request.created_at)}
-            </small>
-
-            <br>
-
-            <button
-              class="notification-read-btn"
-              onclick="markClientNotificationRead(
-                '${escapeJS(request.id)}',
-                this
-              )"
-            >
-              ✓ J'ai lu
-            </button>
-
-          `;
-
-        } else {
-
-          item.className =
-            "notification-item notification-refused";
-
-
-          item.innerHTML = `
-
-            <strong>
-              🔴 Demande refusée
-            </strong>
-
-            <br><br>
-
-            Votre demande de
-            <strong>
-              ${escapeHTML(request.service)}
-            </strong>
-            a été refusée par le professionnel.
-
-            <br><br>
-
-            <small>
-              📅 ${formatDate(request.created_at)}
-            </small>
-
-            <br>
-
-            <button
-              class="notification-read-btn"
-              onclick="markClientNotificationRead(
-                '${escapeJS(request.id)}',
-                this
-              )"
-            >
-              ✓ J'ai lu
-            </button>
-
-          `;
-        }
+        `;
 
 
-        container.appendChild(item);
+        container.appendChild(card);
+
       }
     );
 
-  } catch (error) {
-
-    console.error(error);
-
-    container.innerHTML = `
-
-      <div class="notification-empty">
-
-        ❌ Impossible de charger les notifications :
-
-        ${escapeHTML(error.message)}
-
-      </div>
-
-    `;
   }
-}
 
 
-async function markClientNotificationRead(
-  requestId,
-  button
-) {
+  async function markClientNotificationRead(
+    requestId
+  ) {
 
-  if (!currentUser) return;
+    try {
 
-
-  try {
-
-    button.disabled = true;
-
-    button.textContent =
-      "Lecture...";
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-        .rpc(
+      const {
+        error
+      } =
+        await supabaseClient.rpc(
           "mark_client_notification_read",
           {
             p_request_id:
@@ -2297,85 +2888,34 @@ async function markClientNotificationRead(
         );
 
 
-    if (error) throw error;
+      if (error) {
+        throw error;
+      }
 
 
-    const item =
-      button.closest(
-        ".notification-item"
+      await loadClientNotifications();
+
+      await refreshNotificationBadge();
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR NOTIFICATION CLIENT :",
+        error
       );
 
-
-    if (item) {
-      item.remove();
     }
 
-
-    await refreshClientNotificationBadge();
-
-
-    const container =
-      document.getElementById(
-        "notificationsList"
-      );
-
-
-    if (
-      container &&
-      !container.querySelector(
-        ".notification-item"
-      )
-    ) {
-
-      container.innerHTML = `
-
-        <div class="notification-empty">
-          🔔 Aucune nouvelle notification.
-        </div>
-
-      `;
-    }
-
-  } catch (error) {
-
-    console.error(error);
-
-    button.disabled = false;
-
-    button.textContent =
-      "✓ J'ai lu";
-
-    alert(
-      "Impossible de marquer la notification comme lue : " +
-      error.message
-    );
   }
-}
 
 
-/* =========================================================
-   NOTIFICATIONS PROFESSIONNEL
-========================================================= */
+  async function loadProfessionalNotifications() {
 
-async function loadProfessionalNotifications() {
+    if (!currentUser) {
+      return;
+    }
 
-  if (!currentUser) return;
-
-
-  const container =
-    document.getElementById(
-      "professionalNotificationsList"
-    );
-
-
-  if (!container) return;
-
-
-  container.innerHTML =
-    "<p>Chargement des notifications...</p>";
-
-
-  try {
 
     const {
       data,
@@ -2392,10 +2932,6 @@ async function loadProfessionalNotifications() {
           "status",
           "en_attente"
         )
-        .eq(
-          "professional_notification_read",
-          false
-        )
         .order(
           "created_at",
           {
@@ -2404,144 +2940,142 @@ async function loadProfessionalNotifications() {
         );
 
 
-    if (error) throw error;
+    if (error) {
 
-
-    const notifications =
-      data || [];
-
-
-    if (!notifications.length) {
-
-      container.innerHTML = `
-
-        <div class="notification-empty">
-          🔔 Aucune nouvelle demande.
-        </div>
-
-      `;
+      console.error(
+        "❌ NOTIFICATIONS PROFESSIONNEL :",
+        error
+      );
 
       return;
     }
 
 
-    container.innerHTML = "";
+    const container =
+      document.getElementById(
+        "notificationsContainer"
+      );
 
 
-    notifications.forEach(
+    if (!container) {
+      return;
+    }
+
+
+    if (
+      !data ||
+      data.length === 0
+    ) {
+
+      if (
+        !container.innerHTML.trim()
+      ) {
+
+        container.innerHTML = `
+          <div class="empty-state">
+            Aucune notification.
+          </div>
+        `;
+
+      }
+
+      return;
+
+    }
+
+
+    data.forEach(
       request => {
 
-        const item =
-          document.createElement(
-            "div"
+        const exists =
+          document.getElementById(
+            "notification-" +
+            request.id
           );
 
 
-        item.className =
-          "notification-item notification-new";
+        if (exists) {
+          return;
+        }
 
 
-        item.innerHTML = `
+        const card =
+          document.createElement("div");
+
+
+        card.id =
+          "notification-" +
+          request.id;
+
+
+        card.className =
+          "notification-card " +
+          (
+            !request.professional_notification_read
+              ? "unread"
+              : ""
+          );
+
+
+        card.innerHTML = `
 
           <strong>
-            🔵 Nouvelle demande de service
+            📩 Nouvelle demande
           </strong>
 
-          <br><br>
-
-          Un client vous a envoyé une demande pour :
-
-          <strong>
+          <p>
+            Service :
             ${escapeHTML(request.service)}
-          </strong>
+          </p>
 
-          <br><br>
+          <p>
+            ${escapeHTML(request.description)}
+          </p>
 
-          📝 ${escapeHTML(request.description)}
-
-          <br><br>
-
-          📍 ${escapeHTML(request.city || "")}
-
-          ${
-            request.quartier
+          <p>
+            📍 ${escapeHTML(request.city || "")}
+            ${request.quartier
               ? " - " +
                 escapeHTML(request.quartier)
+              : ""}
+          </p>
+
+          ${
+            !request.professional_notification_read
+              ? `
+                <button
+                  class="btn btn-primary"
+                  onclick="markProfessionalNotificationRead(
+                    '${escapeJS(request.id)}'
+                  )"
+                >
+                  ✓ J’ai lu
+                </button>
+              `
               : ""
           }
-
-          <br><br>
-
-          📞 ${escapeHTML(
-            request.phone ||
-            "Téléphone non renseigné"
-          )}
-
-          <br><br>
-
-          <small>
-            📅 ${formatDate(request.created_at)}
-          </small>
-
-          <br>
-
-          <button
-            class="notification-read-btn"
-            onclick="markProfessionalNotificationRead(
-              '${escapeJS(request.id)}',
-              this
-            )"
-          >
-            ✓ J'ai lu
-          </button>
 
         `;
 
 
-        container.appendChild(item);
+        container.appendChild(card);
+
       }
     );
 
-  } catch (error) {
-
-    console.error(error);
-
-    container.innerHTML = `
-
-      <div class="notification-empty">
-
-        ❌ Impossible de charger les notifications :
-
-        ${escapeHTML(error.message)}
-
-      </div>
-
-    `;
   }
-}
 
 
-async function markProfessionalNotificationRead(
-  requestId,
-  button
-) {
+  async function markProfessionalNotificationRead(
+    requestId
+  ) {
 
-  if (!currentUser) return;
+    try {
 
-
-  try {
-
-    button.disabled = true;
-
-    button.textContent =
-      "Lecture...";
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-        .rpc(
+      const {
+        error
+      } =
+        await supabaseClient.rpc(
           "mark_professional_notification_read",
           {
             p_request_id:
@@ -2550,1663 +3084,238 @@ async function markProfessionalNotificationRead(
         );
 
 
-    if (error) throw error;
+      if (error) {
+        throw error;
+      }
 
 
-    const item =
-      button.closest(
-        ".notification-item"
+      await loadProfessionalNotifications();
+
+      await refreshNotificationBadge();
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR NOTIFICATION PROFESSIONNEL :",
+        error
       );
 
-
-    if (item) {
-      item.remove();
     }
 
+  }
 
-    await refreshProfessionalNotificationBadge();
 
+  /* =========================================================
+     BADGE NOTIFICATIONS
+  ========================================================= */
 
-    const container =
+  function updateNotificationBadge(
+    count
+  ) {
+
+    const badge =
       document.getElementById(
-        "professionalNotificationsList"
+        "notificationBadge"
       );
+
+
+    if (!badge) {
+      return;
+    }
 
 
     if (
-      container &&
-      !container.querySelector(
-        ".notification-item"
-      )
+      Number(count) > 0
     ) {
 
-      container.innerHTML = `
+      badge.textContent =
+        count;
 
-        <div class="notification-empty">
-          🔔 Aucune nouvelle demande.
-        </div>
+      badge.classList.remove(
+        "hidden"
+      );
 
-      `;
+    } else {
+
+      badge.classList.add(
+        "hidden"
+      );
+
     }
 
-  } catch (error) {
-
-    console.error(error);
-
-    button.disabled = false;
-
-    button.textContent =
-      "✓ J'ai lu";
-
-    alert(
-      "Impossible de marquer la notification comme lue : " +
-      error.message
-    );
-  }
-}
-
-
-/* =========================================================
-   BADGE
-========================================================= */
-
-function updateNotificationBadge(count) {
-
-  const badge =
-    document.getElementById(
-      "notificationBadge"
-    );
-
-
-  if (!badge) return;
-
-
-  if (count > 0) {
-
-    badge.textContent =
-      count > 9
-        ? "9+"
-        : count;
-
-    badge.style.display =
-      "flex";
-
-  } else {
-
-    badge.style.display =
-      "none";
-  }
-}
-
-
-async function refreshClientNotificationBadge() {
-
-  if (!currentUser) return;
-
-
-  const {
-    count,
-    error
-  } =
-    await supabaseClient
-      .from("service_requests")
-      .select(
-        "id",
-        {
-          count: "exact",
-          head: true
-        }
-      )
-      .eq(
-        "client_id",
-        currentUser.id
-      )
-      .in(
-        "status",
-        [
-          "acceptee",
-          "refusee"
-        ]
-      )
-      .eq(
-        "client_notification_read",
-        false
-      );
-
-
-  if (error) {
-
-    console.error(error);
-
-    updateNotificationBadge(0);
-
-    return;
   }
 
 
-  updateNotificationBadge(
-    count || 0
-  );
-}
+  async function refreshClientNotificationBadge() {
 
+    if (!currentUser) {
+      return 0;
+    }
 
-async function refreshProfessionalNotificationBadge() {
-
-  if (!currentUser) return;
-
-
-  const {
-    count,
-    error
-  } =
-    await supabaseClient
-      .from("service_requests")
-      .select(
-        "id",
-        {
-          count: "exact",
-          head: true
-        }
-      )
-      .eq(
-        "professional_id",
-        currentUser.id
-      )
-      .eq(
-        "status",
-        "en_attente"
-      )
-      .eq(
-        "professional_notification_read",
-        false
-      );
-
-
-  if (error) {
-
-    console.error(error);
-
-    updateNotificationBadge(0);
-
-    return;
-  }
-
-
-  updateNotificationBadge(
-    count || 0
-  );
-}
-
-
-async function refreshNotificationBadge() {
-
-  if (!currentUser) {
-
-    updateNotificationBadge(0);
-
-    return;
-  }
-
-
-  if (
-    currentProfile &&
-    currentProfile.user_type ===
-    "professionnel"
-  ) {
-
-    await refreshProfessionalNotificationBadge();
-
-  } else {
-
-    await refreshClientNotificationBadge();
-
-  }
-}
-
-
-/* =========================================================
-   PROFIL PROFESSIONNEL
-========================================================= */
-
-async function saveProfessionalProfile(
-  event
-) {
-
-  event.preventDefault();
-
-
-  if (!currentUser) {
-
-    showMessage(
-      "dashboardMessage",
-      "Veuillez vous connecter.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  const profession =
-    document
-      .getElementById(
-        "professionalProfession"
-      )
-      .value
-      .trim();
-
-
-  const quartier =
-    document
-      .getElementById(
-        "professionalQuartier"
-      )
-      .value
-      .trim();
-
-
-  const services =
-    document
-      .getElementById(
-        "professionalServices"
-      )
-      .value
-      .trim();
-
-
-  const description =
-    document
-      .getElementById(
-        "professionalDescription"
-      )
-      .value
-      .trim();
-
-
-  try {
 
     const {
+      count,
       error
     } =
       await supabaseClient
-        .from("profiles")
-        .update({
-          profession,
-          quartier,
-          services,
-          description
-        })
-        .eq(
+        .from("service_requests")
+        .select(
           "id",
-          currentUser.id
-        );
-
-
-    if (error) throw error;
-
-
-    showMessage(
-      "dashboardMessage",
-      "✅ Profil professionnel enregistré avec succès !",
-      "success"
-    );
-
-
-    await loadUserProfile();
-
-    await searchProfessionals();
-
-  } catch (error) {
-
-    console.error(error);
-
-    showMessage(
-      "dashboardMessage",
-      "❌ " + error.message,
-      "error"
-    );
-  }
-}
-
-
-/* =========================================================
-   RECHERCHE PROFESSIONNELS
-   CORRECTION COMPLETE DES AVIS
-========================================================= */
-
-async function searchProfessionals() {
-
-  const professionInput =
-    document.getElementById(
-      "searchProfession"
-    );
-
-  const cityInput =
-    document.getElementById(
-      "searchCity"
-    );
-
-  const grid =
-    document.getElementById(
-      "professionalsGrid"
-    );
-
-
-  if (
-    !professionInput ||
-    !cityInput ||
-    !grid
-  ) {
-
-    console.error(
-      "❌ Éléments de recherche introuvables."
-    );
-
-    return;
-  }
-
-
-  const profession =
-    professionInput.value
-      .trim()
-      .toLowerCase();
-
-
-  const city =
-    cityInput.value
-      .trim()
-      .toLowerCase();
-
-
-  try {
-
-    /* =====================================================
-       1. CHARGER LES PROFESSIONNELS
-    ===================================================== */
-
-    let query =
-      supabaseClient
-        .from("profiles")
-        .select("*")
+          {
+            count: "exact",
+            head: true
+          }
+        )
         .eq(
-          "user_type",
-          "professionnel"
+          "client_id",
+          currentUser.id
+        )
+        .in(
+          "status",
+          [
+            "acceptee",
+            "refusee"
+          ]
+        )
+        .eq(
+          "client_notification_read",
+          false
         );
-
-
-    if (city) {
-
-      query =
-        query.ilike(
-          "city",
-          city
-        );
-    }
-
-
-    const {
-      data,
-      error
-    } = await query;
 
 
     if (error) {
 
       console.error(
-        "❌ ERREUR PROFESSIONNELS :",
+        "❌ BADGE CLIENT :",
         error
       );
 
-      throw error;
+      return 0;
     }
 
 
-    let professionals =
-      data || [];
+    return count || 0;
+
+  }
 
 
-    /* =====================================================
-       2. FILTRER PAR PROFESSION
-    ===================================================== */
+  async function refreshProfessionalNotificationBadge() {
 
-    if (profession) {
-
-      professionals =
-        professionals.filter(
-          profile => {
-
-            const p =
-              String(
-                profile.profession || ""
-              )
-              .toLowerCase();
-
-            const s =
-              String(
-                profile.services || ""
-              )
-              .toLowerCase();
-
-            const d =
-              String(
-                profile.description || ""
-              )
-              .toLowerCase();
-
-
-            return (
-              p.includes(profession) ||
-              s.includes(profession) ||
-              d.includes(profession)
-            );
-
-          }
-        );
+    if (!currentUser) {
+      return 0;
     }
-
-
-    console.log(
-      "👨‍🔧 PROFESSIONNELS TROUVÉS :",
-      professionals
-    );
-
-
-    /* =====================================================
-       3. RÉCUPÉRER LES ID DES PROFESSIONNELS
-    ===================================================== */
-
-    const professionalIds =
-      professionals
-        .map(
-          profile =>
-            String(
-              profile.id || ""
-            ).trim()
-        )
-        .filter(Boolean);
-
-
-    console.log(
-      "🆔 ID PROFESSIONNELS :",
-      professionalIds
-    );
-
-
-    /* =====================================================
-       4. CHARGER LES AVIS
-    ===================================================== */
-
-    let reviews = [];
-
-
-    if (
-      professionalIds.length > 0
-    ) {
-
-      const {
-        data: reviewData,
-        error: reviewError
-      } =
-        await supabaseClient
-          .from("reviews")
-          .select(
-            "id, professional_id, rating, comment, created_at"
-          )
-          .in(
-            "professional_id",
-            professionalIds
-          )
-          .order(
-            "created_at",
-            {
-              ascending: false
-            }
-          );
-
-
-      if (reviewError) {
-
-        console.error(
-          "❌ ERREUR CHARGEMENT AVIS :",
-          reviewError
-        );
-
-        reviews = [];
-
-      } else {
-
-        reviews =
-          reviewData || [];
-
-
-        console.log(
-          "⭐ AVIS RÉCUPÉRÉS DE SUPABASE :",
-          reviews
-        );
-
-      }
-
-    } else {
-
-      console.log(
-        "⚠️ Aucun professionnel trouvé, donc aucun avis à charger."
-      );
-
-    }
-
-
-    /* =====================================================
-       5. REGROUPER LES AVIS
-    ===================================================== */
-
-    const reviewsByProfessional = {};
-
-
-    reviews.forEach(
-      review => {
-
-        const professionalId =
-          String(
-            review.professional_id || ""
-          )
-          .trim()
-          .toLowerCase();
-
-
-        if (!professionalId) {
-          return;
-        }
-
-
-        if (
-          !reviewsByProfessional[
-            professionalId
-          ]
-        ) {
-
-          reviewsByProfessional[
-            professionalId
-          ] = [];
-
-        }
-
-
-        reviewsByProfessional[
-          professionalId
-        ].push(review);
-
-      }
-    );
-
-
-    console.log(
-      "📚 AVIS GROUPÉS :",
-      reviewsByProfessional
-    );
-
-
-    /* =====================================================
-       6. AJOUTER LES NOTES À CHAQUE PROFESSIONNEL
-    ===================================================== */
-
-    professionals =
-      professionals.map(
-        profile => {
-
-          const profileId =
-            String(
-              profile.id || ""
-            )
-            .trim()
-            .toLowerCase();
-
-
-          const profileReviews =
-            reviewsByProfessional[
-              profileId
-            ] || [];
-
-
-          const total =
-            profileReviews.reduce(
-              (
-                sum,
-                review
-              ) => {
-
-                return (
-                  sum +
-                  Number(
-                    review.rating || 0
-                  )
-                );
-
-              },
-              0
-            );
-
-
-          const average =
-            profileReviews.length > 0
-              ? total /
-                profileReviews.length
-              : 0;
-
-
-          console.log(
-            "⭐ PROFESSIONNEL :",
-            profile.full_name,
-            "| ID :",
-            profileId,
-            "| AVIS :",
-            profileReviews.length,
-            "| MOYENNE :",
-            average
-          );
-
-
-          return {
-
-            ...profile,
-
-            reviews:
-              profileReviews,
-
-            ratingAverage:
-              average,
-
-            ratingCount:
-              profileReviews.length
-
-          };
-
-        }
-      );
-
-
-    console.log(
-      "✅ PROFESSIONNELS AVEC NOTES :",
-      professionals
-    );
-
-
-    /* =====================================================
-       7. AFFICHER
-    ===================================================== */
-
-    displayProfessionals(
-      professionals
-    );
-
-
-    showSection(
-      "professionalsSection"
-    );
-
-
-  } catch (error) {
-
-    console.error(
-      "❌ ERREUR RECHERCHE PROFESSIONNELS :",
-      error
-    );
-
-
-    showMessage(
-      "searchMessage",
-      "❌ Impossible de rechercher les professionnels : " +
-      error.message,
-      "error"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   AFFICHAGE DES ETOILES
-========================================================= */
-
-function getStarsHTML(
-  rating
-) {
-
-  const rounded =
-    Math.round(
-      Number(rating) || 0
-    );
-
-
-  let stars = "";
-
-
-  for (
-    let i = 1;
-    i <= 5;
-    i++
-  ) {
-
-    stars +=
-      i <= rounded
-        ? "★"
-        : "☆";
-  }
-
-
-  return stars;
-}
-
-
-/* =========================================================
-   AFFICHAGE PROFESSIONNELS
-========================================================= */
-
-function displayProfessionals(
-  professionals
-) {
-
-  const grid =
-    document.getElementById(
-      "professionalsGrid"
-    );
-
-
-  if (!grid) return;
-
-
-  grid.innerHTML = "";
-
-
-  if (!professionals.length) {
-
-    grid.innerHTML = `
-
-      <div
-        class="professional-card"
-        style="grid-column:1/-1;text-align:center;"
-      >
-
-        <h3>
-          😕 Aucun professionnel trouvé
-        </h3>
-
-        <p>
-          Essayez une autre profession ou une autre ville.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-  }
-
-
-  professionals.forEach(
-    profile => {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "professional-card";
-
-
-      const profession =
-        escapeHTML(
-          profile.profession ||
-          "Professionnel"
-        );
-
-
-      const name =
-        escapeHTML(
-          profile.full_name ||
-          "Nom non renseigné"
-        );
-
-
-      const city =
-        escapeHTML(
-          profile.city ||
-          "Ville non renseignée"
-        );
-
-
-      const quartier =
-        escapeHTML(
-          profile.quartier ||
-          "Non renseigné"
-        );
-
-
-      const services =
-        escapeHTML(
-          profile.services ||
-          "Non renseigné"
-        );
-
-
-      const description =
-        escapeHTML(
-          profile.description ||
-          "Aucune description disponible."
-        );
-
-
-      const phone =
-        escapeHTML(
-          profile.phone ||
-          ""
-        );
-
-
-      const ratingAverage =
-        Number(
-          profile.ratingAverage || 0
-        );
-
-
-      const ratingCount =
-        Number(
-          profile.ratingCount || 0
-        );
-
-
-      let ratingHTML = "";
-
-
-      if (
-        ratingCount > 0
-      ) {
-
-        ratingHTML = `
-
-          <div class="rating-box">
-
-            <span class="stars">
-              ${getStarsHTML(ratingAverage)}
-            </span>
-
-            <span class="rating-number">
-              ${ratingAverage.toFixed(1)}/5
-            </span>
-
-            <span class="rating-count">
-              (${ratingCount} avis)
-            </span>
-
-          </div>
-
-        `;
-
-      } else {
-
-        ratingHTML = `
-
-          <div class="rating-box">
-
-            <span class="stars">
-              ☆☆☆☆☆
-            </span>
-
-            <span class="rating-count">
-              Aucun avis
-            </span>
-
-          </div>
-
-        `;
-      }
-
-
-      card.innerHTML = `
-
-        <h3>
-          ${profession}
-        </h3>
-
-        <p>
-          👤 <strong>${name}</strong>
-        </p>
-
-        ${ratingHTML}
-
-        <p>
-          📍 <strong>Ville :</strong>
-          ${city}
-        </p>
-
-        <p>
-          🏘️ <strong>Quartier :</strong>
-          ${quartier}
-        </p>
-
-        <p>
-          🛠️ <strong>Services :</strong>
-          ${services}
-        </p>
-
-        <p>
-          📝 ${description}
-        </p>
-
-        ${
-          profile.reviews &&
-          profile.reviews.length
-            ? `
-
-              <div class="review-preview">
-
-                <strong>
-                  ⭐ Dernier avis
-                </strong>
-
-                <br>
-
-                <span class="review-stars">
-                  ${getStarsHTML(
-                    profile.reviews[0].rating
-                  )}
-                </span>
-
-                ${
-                  profile.reviews[0].comment
-                    ? `
-                      <p>
-                        « ${escapeHTML(
-                          profile.reviews[0].comment
-                        )} »
-                      </p>
-                    `
-                    : ""
-                }
-
-              </div>
-
-            `
-            : ""
-        }
-
-        <div class="professional-actions">
-
-          ${
-            phone
-              ? `
-                <a
-                  href="tel:${phone}"
-                  style="
-                    text-decoration:none;
-                    flex:1;
-                  "
-                >
-
-                  <button
-                    class="primary-btn"
-                    style="width:100%;"
-                  >
-                    📞 Contacter
-                  </button>
-
-                </a>
-              `
-              : ""
-          }
-
-
-          <button
-            class="green-btn"
-            style="flex:1;"
-            onclick="openRequestModal(
-              '${escapeJS(profile.id)}',
-              '${escapeJS(name)}',
-              '${escapeJS(profession)}'
-            )"
-          >
-            📨 Demander
-          </button>
-
-        </div>
-
-      `;
-
-
-      grid.appendChild(
-        card
-      );
-    }
-  );
-}
-
-
-/* =========================================================
-   SERVICE
-========================================================= */
-
-function selectService(
-  service
-) {
-
-  document
-    .getElementById(
-      "searchProfession"
-    )
-    .value =
-    service;
-
-
-  searchProfessionals();
-}
-
-
-/* =========================================================
-   MODAL DEMANDE
-========================================================= */
-
-async function openRequestModal(
-  professionalId,
-  professionalName,
-  profession
-) {
-
-  if (!currentUser) {
-
-    showSection(
-      "accountSection"
-    );
-
-    showMessage(
-      "accountMessage",
-      "🔐 Connectez-vous ou créez un compte client pour envoyer une demande.",
-      "info"
-    );
-
-    return;
-  }
-
-
-  if (
-    currentProfile &&
-    currentProfile.user_type ===
-    "professionnel"
-  ) {
-
-    alert(
-      "Un compte professionnel ne peut pas envoyer une demande en tant que client."
-    );
-
-    return;
-  }
-
-
-  document.getElementById(
-    "requestProfessionalId"
-  ).value =
-    professionalId;
-
-
-  document.getElementById(
-    "requestProfessionalName"
-  ).value =
-    professionalName;
-
-
-  document.getElementById(
-    "requestService"
-  ).value =
-    profession;
-
-
-  document.getElementById(
-    "requestDescription"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "requestCity"
-  ).value =
-    currentProfile?.city ||
-    "";
-
-
-  document.getElementById(
-    "requestQuartier"
-  ).value =
-    currentProfile?.quartier ||
-    "";
-
-
-  document.getElementById(
-    "requestPhone"
-  ).value =
-    currentProfile?.phone ||
-    "";
-
-
-  hideMessage(
-    "requestModalMessage"
-  );
-
-
-  const modal =
-    document.getElementById(
-      "requestModal"
-    );
-
-
-  modal.classList.remove(
-    "hidden"
-  );
-
-  modal.style.display =
-    "flex";
-}
-
-
-function closeRequestModal() {
-
-  const modal =
-    document.getElementById(
-      "requestModal"
-    );
-
-
-  modal.classList.add(
-    "hidden"
-  );
-
-  modal.style.display =
-    "none";
-}
-
-
-/* =========================================================
-   ENVOYER DEMANDE
-========================================================= */
-
-async function submitServiceRequest(
-  event
-) {
-
-  event.preventDefault();
-
-
-  if (!currentUser) {
-
-    showMessage(
-      "requestModalMessage",
-      "Veuillez vous connecter.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  const professionalId =
-    document
-      .getElementById(
-        "requestProfessionalId"
-      )
-      .value
-      .trim();
-
-
-  const service =
-    document
-      .getElementById(
-        "requestService"
-      )
-      .value
-      .trim();
-
-
-  const description =
-    document
-      .getElementById(
-        "requestDescription"
-      )
-      .value
-      .trim();
-
-
-  const city =
-    document
-      .getElementById(
-        "requestCity"
-      )
-      .value
-      .trim();
-
-
-  const quartier =
-    document
-      .getElementById(
-        "requestQuartier"
-      )
-      .value
-      .trim();
-
-
-  const phone =
-    document
-      .getElementById(
-        "requestPhone"
-      )
-      .value
-      .trim();
-
-
-  if (
-    !professionalId ||
-    !service ||
-    !description ||
-    !city ||
-    !phone
-  ) {
-
-    showMessage(
-      "requestModalMessage",
-      "Veuillez remplir tous les champs obligatoires.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  try {
-
-    const requestData = {
-
-      client_id:
-        currentUser.id,
-
-      professional_id:
-        professionalId,
-
-      service,
-
-      description,
-
-      city,
-
-      quartier,
-
-      phone,
-
-      status:
-        "en_attente"
-
-    };
 
 
     const {
-      data,
+      count,
       error
     } =
       await supabaseClient
         .from("service_requests")
-        .insert(
-          requestData
-        )
-        .select()
-        .single();
-
-
-    if (error) throw error;
-
-
-    showMessage(
-      "requestModalMessage",
-      "✅ Votre demande a été envoyée au professionnel !",
-      "success"
-    );
-
-
-    setTimeout(() => {
-
-      closeRequestModal();
-
-      showSection(
-        "dashboardSection"
-      );
-
-    }, 1000);
-
-  } catch (error) {
-
-    console.error(error);
-
-
-    let message =
-      error.message ||
-      "Une erreur est survenue.";
-
-
-    if (
-      message.includes(
-        "permission denied"
-      )
-    ) {
-
-      message =
-        "Accès refusé par Supabase. Vérifiez les politiques RLS de service_requests.";
-    }
-
-
-    showMessage(
-      "requestModalMessage",
-      "❌ Impossible d'envoyer la demande : " +
-      message,
-      "error"
-    );
-  }
-}
-
-
-/* =========================================================
-   DEMANDES PROFESSIONNEL
-========================================================= */
-
-async function loadProfessionalRequests() {
-
-  if (!currentUser) return;
-
-
-  const container =
-    document.getElementById(
-      "professionalRequests"
-    );
-
-
-  container.innerHTML =
-    "<p>Chargement des demandes...</p>";
-
-
-  try {
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("service_requests")
-        .select("*")
-        .eq(
-          "professional_id",
-          currentUser.id
-        )
-        .order(
-          "created_at",
-          {
-            ascending: false
-          }
-        );
-
-
-    if (error) throw error;
-
-
-    if (
-      !data ||
-      !data.length
-    ) {
-
-      container.innerHTML = `
-
-        <div class="request-card">
-
-          <h3>
-            Aucune demande pour le moment
-          </h3>
-
-          <p>
-            Les nouvelles demandes de clients apparaîtront ici.
-          </p>
-
-        </div>
-
-      `;
-
-      return;
-    }
-
-
-    container.innerHTML = "";
-
-
-    data.forEach(
-      request => {
-
-        const card =
-          document.createElement(
-            "div"
-          );
-
-
-        card.className =
-          "request-card";
-
-
-        card.innerHTML = `
-
-          <h3>
-            📨 ${escapeHTML(request.service)}
-          </h3>
-
-          <p>
-            <strong>Description :</strong><br>
-            ${escapeHTML(request.description)}
-          </p>
-
-          <p>
-            👤 <strong>Client :</strong>
-            ${escapeHTML(
-              request.phone ||
-              "Non renseigné"
-            )}
-          </p>
-
-          <p>
-            📍 <strong>Ville :</strong>
-            ${escapeHTML(
-              request.city ||
-              "Non renseignée"
-            )}
-          </p>
-
-          <p>
-            🏘️ <strong>Quartier :</strong>
-            ${escapeHTML(
-              request.quartier ||
-              "Non renseigné"
-            )}
-          </p>
-
-          <p>
-            📅 ${formatDate(request.created_at)}
-          </p>
-
-          <span
-            class="status ${getStatusClass(request.status)}"
-          >
-            ${getStatusText(request.status)}
-          </span>
-
-
-          ${
-            request.status ===
-            "en_attente"
-              ? `
-
-                <div class="request-actions">
-
-                  <button
-                    class="green-btn"
-                    onclick="updateRequestStatus(
-                      '${escapeJS(request.id)}',
-                      'acceptee'
-                    )"
-                  >
-                    ✅ Accepter
-                  </button>
-
-
-                  <button
-                    class="red-btn"
-                    onclick="updateRequestStatus(
-                      '${escapeJS(request.id)}',
-                      'refusee'
-                    )"
-                  >
-                    ❌ Refuser
-                  </button>
-
-
-                  ${
-                    request.phone
-                      ? `
-                        <a
-                          href="tel:${escapeHTML(request.phone)}"
-                          style="text-decoration:none;"
-                        >
-
-                          <button
-                            class="primary-btn"
-                          >
-                            📞 Appeler
-                          </button>
-
-                        </a>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              `
-              : ""
-          }
-
-        `;
-
-
-        container.appendChild(
-          card
-        );
-      }
-    );
-
-  } catch (error) {
-
-    console.error(error);
-
-
-    container.innerHTML = `
-
-      <div class="request-card">
-
-        <p style="color:#dc3545;">
-
-          ❌ Impossible de charger les demandes :
-
-          ${escapeHTML(error.message)}
-
-        </p>
-
-      </div>
-
-    `;
-  }
-}
-
-
-/* =========================================================
-   ACCEPTER / REFUSER
-========================================================= */
-
-async function updateRequestStatus(
-  requestId,
-  newStatus
-) {
-
-  if (!currentUser) return;
-
-
-  try {
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("service_requests")
-        .update({
-          status:
-            newStatus,
-
-          professional_notification_read:
-            true
-        })
-        .eq(
+        .select(
           "id",
-          requestId
+          {
+            count: "exact",
+            head: true
+          }
         )
         .eq(
           "professional_id",
           currentUser.id
         )
-        .select()
-        .single();
+        .eq(
+          "status",
+          "en_attente"
+        )
+        .eq(
+          "professional_notification_read",
+          false
+        );
 
 
-    if (error) throw error;
+    if (error) {
+
+      console.error(
+        "❌ BADGE PROFESSIONNEL :",
+        error
+      );
+
+      return 0;
+    }
 
 
-    await loadProfessionalRequests();
+    return count || 0;
 
-    await loadProfessionalNotifications();
-
-    await refreshProfessionalNotificationBadge();
-
-  } catch (error) {
-
-    console.error(error);
-
-    alert(
-      "Impossible de modifier la demande : " +
-      error.message
-    );
   }
-}
 
 
-/* =========================================================
-   DEMANDES CLIENT
-========================================================= */
+  async function refreshNotificationBadge() {
 
-async function loadClientRequests() {
+    if (!currentUser) {
 
-  if (!currentUser) return;
+      updateNotificationBadge(0);
+
+      return;
+
+    }
 
 
-  const container =
-    document.getElementById(
-      "clientRequests"
+    const clientCount =
+      await refreshClientNotificationBadge();
+
+
+    let professionalCount = 0;
+
+
+    if (
+      currentProfile &&
+      currentProfile.user_type ===
+      "professionnel"
+    ) {
+
+      professionalCount =
+        await refreshProfessionalNotificationBadge();
+
+    }
+
+
+    updateNotificationBadge(
+      clientCount +
+      professionalCount
     );
 
-
-  container.innerHTML =
-    "<p>Chargement des demandes...</p>";
+  }
 
 
-  try {
+  /* =========================================================
+     DEMANDES PROFESSIONNEL
+  ========================================================= */
+
+  async function loadProfessionalRequests() {
+
+    if (
+      !currentUser ||
+      !currentProfile ||
+      currentProfile.user_type !==
+      "professionnel"
+    ) {
+
+      return;
+
+    }
+
+
+    const container =
+      document.getElementById(
+        "professionalRequestsContainer"
+      );
+
+
+    if (!container) {
+      return;
+    }
+
 
     const {
       data,
@@ -4216,7 +3325,7 @@ async function loadClientRequests() {
         .from("service_requests")
         .select("*")
         .eq(
-          "client_id",
+          "professional_id",
           currentUser.id
         )
         .order(
@@ -4227,91 +3336,38 @@ async function loadClientRequests() {
         );
 
 
-    if (error) throw error;
+    if (error) {
+
+      console.error(
+        "❌ DEMANDES PROFESSIONNEL :",
+        error
+      );
+
+      container.innerHTML = `
+        <div class="empty-state">
+          Impossible de charger les demandes.
+        </div>
+      `;
+
+      return;
+
+    }
 
 
     if (
       !data ||
-      !data.length
+      data.length === 0
     ) {
 
       container.innerHTML = `
-
-        <div class="request-card">
-
-          <h3>
-            Aucune demande envoyée
-          </h3>
-
-          <p>
-            Vos demandes de services apparaîtront ici.
-          </p>
-
+        <div class="empty-state">
+          Aucune demande reçue.
         </div>
-
       `;
 
       return;
+
     }
-
-
-    const acceptedRequestIds =
-      data
-        .filter(
-          request =>
-            request.status ===
-            "acceptee"
-        )
-        .map(
-          request =>
-            request.id
-        );
-
-
-    let existingReviews = [];
-
-
-    if (
-      acceptedRequestIds.length
-    ) {
-
-      const {
-        data: reviewData,
-        error: reviewError
-      } =
-        await supabaseClient
-          .from("reviews")
-          .select(
-            "request_id"
-          )
-          .in(
-            "request_id",
-            acceptedRequestIds
-          );
-
-
-      if (reviewError) {
-
-        console.error(
-          "Erreur chargement avis :",
-          reviewError
-        );
-
-      } else {
-
-        existingReviews =
-          reviewData || [];
-      }
-    }
-
-
-    const reviewedRequestIds =
-      new Set(
-        existingReviews.map(
-          review =>
-            review.request_id
-        )
-      );
 
 
     container.innerHTML = "";
@@ -4321,429 +3377,518 @@ async function loadClientRequests() {
       request => {
 
         const card =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
 
         card.className =
           "request-card";
 
 
-        let reviewButton = "";
-
-
-        if (
-          request.status ===
-          "acceptee"
-        ) {
-
-          if (
-            reviewedRequestIds.has(
-              request.id
-            )
-          ) {
-
-            reviewButton = `
-
-              <div
-                style="
-                  margin-top:15px;
-                  padding:10px;
-                  background:#d1e7dd;
-                  color:#0f5132;
-                  border-radius:8px;
-                  font-weight:bold;
-                "
-              >
-                ⭐ Vous avez déjà noté ce professionnel.
-              </div>
-
-            `;
-
-          } else {
-
-            reviewButton = `
-
-              <button
-                class="yellow-btn"
-                style="margin-top:15px;"
-                onclick="openReviewModal(
-                  '${escapeJS(request.id)}',
-                  '${escapeJS(request.service)}'
-                )"
-              >
-                ⭐ Noter le professionnel
-              </button>
-
-            `;
-          }
-        }
-
-
         card.innerHTML = `
 
-          <h3>
-            🛠️ ${escapeHTML(request.service)}
-          </h3>
+          <h4>
+            ${escapeHTML(request.service)}
+          </h4>
 
           <p>
-            <strong>Votre demande :</strong><br>
             ${escapeHTML(request.description)}
           </p>
 
           <p>
             📍 ${escapeHTML(request.city || "")}
-
             ${
               request.quartier
                 ? " - " +
                   escapeHTML(request.quartier)
                 : ""
             }
-
           </p>
 
           <p>
-            📅 ${formatDate(request.created_at)}
+            📞 ${escapeHTML(request.phone || "")}
           </p>
 
           <span
-            class="status ${getStatusClass(request.status)}"
+            class="request-status
+              ${getStatusClass(request.status)}"
           >
             ${getStatusText(request.status)}
           </span>
 
-          ${reviewButton}
+          ${
+            request.status === "en_attente"
+              ? `
+                <div class="form-actions">
+
+                  <button
+                    class="btn btn-success"
+                    onclick="updateRequestStatus(
+                      '${escapeJS(request.id)}',
+                      'acceptee'
+                    )"
+                  >
+                    ✓ Accepter
+                  </button>
+
+                  <button
+                    class="btn btn-danger"
+                    onclick="updateRequestStatus(
+                      '${escapeJS(request.id)}',
+                      'refusee'
+                    )"
+                  >
+                    ✕ Refuser
+                  </button>
+
+                </div>
+              `
+              : ""
+          }
 
         `;
 
 
-        container.appendChild(
-          card
-        );
+        container.appendChild(card);
+
       }
     );
 
-  } catch (error) {
-
-    console.error(error);
-
-
-    container.innerHTML = `
-
-      <div class="request-card">
-
-        <p style="color:#dc3545;">
-
-          ❌ Impossible de charger vos demandes :
-
-          ${escapeHTML(error.message)}
-
-        </p>
-
-      </div>
-
-    `;
-  }
-}
-
-
-/* =========================================================
-   MODAL AVIS
-========================================================= */
-
-async function openReviewModal(
-  requestId,
-  service
-) {
-
-  if (!currentUser) {
-
-    showSection(
-      "accountSection"
-    );
-
-    return;
   }
 
 
-  try {
+  /* =========================================================
+     MODIFIER STATUT DEMANDE
+  ========================================================= */
 
-    const {
-      data: request,
-      error
-    } =
-      await supabaseClient
-        .from("service_requests")
-        .select("*")
-        .eq(
-          "id",
-          requestId
-        )
-        .eq(
-          "client_id",
-          currentUser.id
-        )
-        .maybeSingle();
+  async function updateRequestStatus(
+    requestId,
+    status
+  ) {
 
-
-    if (error) throw error;
-
-
-    if (!request) {
-
-      alert(
-        "Cette demande est introuvable."
-      );
-
+    if (!currentUser) {
       return;
     }
 
 
-    if (
-      request.status !==
-      "acceptee"
-    ) {
+    try {
 
-      alert(
-        "Cette demande ne peut pas encore être notée."
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("service_requests")
+          .update({
+            status
+          })
+          .eq(
+            "id",
+            requestId
+          )
+          .eq(
+            "professional_id",
+            currentUser.id
+          );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      await loadProfessionalRequests();
+
+      await loadProfessionalNotifications();
+
+      await refreshNotificationBadge();
+
+
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR STATUT DEMANDE :",
+        error
       );
 
+    }
+
+  }
+
+
+  /* =========================================================
+     DEMANDES CLIENT
+  ========================================================= */
+
+  async function loadClientRequests() {
+
+    if (!currentUser) {
       return;
     }
 
 
-    const {
-      data: professional,
-      error: professionalError
-    } =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "full_name, profession"
-        )
-        .eq(
-          "id",
-          request.professional_id
-        )
-        .maybeSingle();
-
-
-    if (professionalError) {
-      throw professionalError;
-    }
-
-
-    document.getElementById(
-      "reviewRequestId"
-    ).value =
-      requestId;
-
-
-    document.getElementById(
-      "reviewProfessionalName"
-    ).value =
-      professional?.full_name ||
-      "Professionnel";
-
-
-    document.getElementById(
-      "reviewComment"
-    ).value =
-      "";
-
-
-    selectedRating = 0;
-
-    updateStarSelector();
-
-
-    hideMessage(
-      "reviewModalMessage"
-    );
-
-
-    const modal =
+    const container =
       document.getElementById(
-        "reviewModal"
+        "clientRequestsContainer"
       );
 
 
-    modal.classList.remove(
-      "hidden"
-    );
-
-    modal.style.display =
-      "flex";
-
-  } catch (error) {
-
-    console.error(error);
-
-    alert(
-      "Impossible d'ouvrir le formulaire d'avis : " +
-      error.message
-    );
-  }
-}
-
-
-function closeReviewModal() {
-
-  const modal =
-    document.getElementById(
-      "reviewModal"
-    );
-
-
-  modal.classList.add(
-    "hidden"
-  );
-
-  modal.style.display =
-    "none";
-}
-
-
-/* =========================================================
-   SELECTION NOTE
-========================================================= */
-
-function selectRating(
-  rating
-) {
-
-  selectedRating =
-    Number(rating);
-
-
-  updateStarSelector();
-}
-
-
-function updateStarSelector() {
-
-  const buttons =
-    document.querySelectorAll(
-      "#starSelector button"
-    );
-
-
-  buttons.forEach(
-    button => {
-
-      const rating =
-        Number(
-          button.dataset.rating
-        );
-
-
-      if (
-        rating <=
-        selectedRating
-      ) {
-
-        button.classList.add(
-          "active"
-        );
-
-      } else {
-
-        button.classList.remove(
-          "active"
-        );
-      }
+    if (!container) {
+      return;
     }
-  );
 
-
-  const text =
-    document.getElementById(
-      "selectedRatingText"
-    );
-
-
-  if (!text) return;
-
-
-  const labels = {
-    1: "⭐ Très mauvais",
-    2: "⭐⭐ Mauvais",
-    3: "⭐⭐⭐ Moyen",
-    4: "⭐⭐⭐⭐ Bon",
-    5: "⭐⭐⭐⭐⭐ Excellent"
-  };
-
-
-  text.textContent =
-    labels[selectedRating] ||
-    "Sélectionnez une note.";
-}
-
-
-/* =========================================================
-   ENVOYER AVIS
-========================================================= */
-
-async function submitReview() {
-
-  if (!currentUser) {
-
-    showMessage(
-      "reviewModalMessage",
-      "Veuillez vous connecter.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  const requestId =
-    document
-      .getElementById(
-        "reviewRequestId"
-      )
-      .value;
-
-
-  const comment =
-    document
-      .getElementById(
-        "reviewComment"
-      )
-      .value
-      .trim();
-
-
-  if (!selectedRating) {
-
-    showMessage(
-      "reviewModalMessage",
-      "⭐ Veuillez sélectionner une note de 1 à 5.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  try {
 
     const {
       data,
       error
     } =
       await supabaseClient
-        .rpc(
+        .from("service_requests")
+        .select("*")
+        .eq(
+          "client_id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+    if (error) {
+
+      console.error(
+        "❌ DEMANDES CLIENT :",
+        error
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !data ||
+      data.length === 0
+    ) {
+
+      container.innerHTML = `
+        <div class="empty-state">
+          Vous n'avez envoyé aucune demande.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(
+      request => {
+
+        const card =
+          document.createElement("div");
+
+
+        card.className =
+          "request-card";
+
+
+        card.innerHTML = `
+
+          <h4>
+            ${escapeHTML(request.service)}
+          </h4>
+
+          <p>
+            ${escapeHTML(request.description)}
+          </p>
+
+          <span
+            class="request-status
+              ${getStatusClass(request.status)}"
+          >
+            ${getStatusText(request.status)}
+          </span>
+
+          ${
+            request.status === "acceptee"
+              ? `
+                <div style="margin-top:10px;">
+
+                  <button
+                    class="btn btn-warning"
+                    onclick="openReviewModal(
+                      '${escapeJS(request.id)}',
+                      '${escapeJS(request.professional_id)}'
+                    )"
+                  >
+                    ⭐ Laisser un avis
+                  </button>
+
+                </div>
+              `
+              : ""
+          }
+
+        `;
+
+
+        container.appendChild(card);
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     AVIS
+  ========================================================= */
+
+  function openReviewModal(
+    requestId,
+    professionalId
+  ) {
+
+    if (!currentUser) {
+
+      showSection(
+        "accountSection"
+      );
+
+      return;
+
+    }
+
+
+    document
+      .getElementById(
+        "reviewRequestId"
+      )
+      .value =
+      requestId;
+
+
+    document
+      .getElementById(
+        "reviewProfessionalId"
+      )
+      .value =
+      professionalId;
+
+
+    document
+      .getElementById(
+        "reviewRating"
+      )
+      .value = "0";
+
+
+    document
+      .getElementById(
+        "reviewComment"
+      )
+      .value = "";
+
+
+    selectedRating = 0;
+
+    updateStarSelector();
+
+    hideMessage(
+      "reviewMessage"
+    );
+
+
+    document
+      .getElementById(
+        "reviewModal"
+      )
+      .classList.add(
+        "active"
+      );
+
+  }
+
+
+  function closeReviewModal() {
+
+    document
+      .getElementById(
+        "reviewModal"
+      )
+      .classList.remove(
+        "active"
+      );
+
+  }
+
+
+  function selectRating(
+    rating
+  ) {
+
+    selectedRating =
+      Number(rating);
+
+
+    document
+      .getElementById(
+        "reviewRating"
+      )
+      .value =
+      selectedRating;
+
+
+    updateStarSelector();
+
+  }
+
+
+  function updateStarSelector() {
+
+    const buttons =
+      document.querySelectorAll(
+        "#starSelector button"
+      );
+
+
+    buttons.forEach(
+      (
+        button,
+        index
+      ) => {
+
+        if (
+          index + 1 <=
+          selectedRating
+        ) {
+
+          button.classList.add(
+            "active"
+          );
+
+        } else {
+
+          button.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     CREATION AVIS
+     
+     La fonction RPC existante est :
+     create_review
+  ========================================================= */
+
+  async function submitReview() {
+
+    if (!currentUser) {
+
+      showMessage(
+        "reviewMessage",
+        "Vous devez être connecté.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const requestId =
+      document
+        .getElementById(
+          "reviewRequestId"
+        )
+        .value;
+
+    const professionalId =
+      document
+        .getElementById(
+          "reviewProfessionalId"
+        )
+        .value;
+
+    const rating =
+      Number(
+        document
+          .getElementById(
+            "reviewRating"
+          )
+          .value
+      );
+
+    const comment =
+      document
+        .getElementById(
+          "reviewComment"
+        )
+        .value
+        .trim();
+
+
+    if (
+      !requestId ||
+      !professionalId
+    ) {
+
+      showMessage(
+        "reviewMessage",
+        "Informations de demande manquantes.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if (
+      rating < 1 ||
+      rating > 5
+    ) {
+
+      showMessage(
+        "reviewMessage",
+        "Veuillez sélectionner une note entre 1 et 5.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.rpc(
           "create_review",
           {
             p_request_id:
               requestId,
 
+            p_professional_id:
+              professionalId,
+
             p_rating:
-              selectedRating,
+              rating,
 
             p_comment:
               comment || null
@@ -4751,235 +3896,336 @@ async function submitReview() {
         );
 
 
-    if (error) throw error;
+      if (error) {
+        throw error;
+      }
 
 
-    showMessage(
-      "reviewModalMessage",
-      "✅ Votre avis a été publié avec succès !",
-      "success"
-    );
+      console.log(
+        "⭐ AVIS CRÉÉ :",
+        data
+      );
 
 
-    setTimeout(
-      async () => {
-
-        closeReviewModal();
-
-        await loadClientRequests();
-
-        await searchProfessionals();
-
-      },
-      1000
-    );
-
-  } catch (error) {
-
-    console.error(error);
-
-    showMessage(
-      "reviewModalMessage",
-      "❌ Impossible de publier votre avis : " +
-      error.message,
-      "error"
-    );
-  }
-}
+      showMessage(
+        "reviewMessage",
+        "✅ Votre avis a été publié avec succès !",
+        "success"
+      );
 
 
-/* =========================================================
-   STATUT
-========================================================= */
+      setTimeout(
+        async () => {
 
-function getStatusClass(status) {
+          closeReviewModal();
 
-  if (
-    status ===
-    "acceptee"
-  ) {
-    return "status-acceptee";
-  }
+          /*
+            On recharge les professionnels afin
+            que les nouvelles étoiles apparaissent
+            immédiatement.
+          */
 
+          await searchProfessionals();
 
-  if (
-    status ===
-    "refusee"
-  ) {
-    return "status-refusee";
-  }
+        },
+        1000
+      );
 
 
-  return "status-en-attente";
-}
+    } catch (error) {
+
+      console.error(
+        "❌ ERREUR CRÉATION AVIS :",
+        error
+      );
 
 
-function getStatusText(status) {
+      showMessage(
+        "reviewMessage",
+        "❌ " + error.message,
+        "error"
+      );
 
-  if (
-    status ===
-    "acceptee"
-  ) {
-    return "✅ Demande acceptée";
-  }
-
-
-  if (
-    status ===
-    "refusee"
-  ) {
-    return "❌ Demande refusée";
-  }
-
-
-  return "⏳ En attente";
-}
-
-
-/* =========================================================
-   DATE
-========================================================= */
-
-function formatDate(dateString) {
-
-  if (!dateString) {
-    return "";
-  }
-
-
-  const date =
-    new Date(dateString);
-
-
-  return date.toLocaleString(
-    "fr-FR",
-    {
-      dateStyle:
-        "short",
-
-      timeStyle:
-        "short"
     }
-  );
-}
+
+  }
 
 
-/* =========================================================
-   SESSION
-========================================================= */
+  /* =========================================================
+     STATUT
+  ========================================================= */
 
-async function checkSession() {
-
-  const {
-    data
-  } =
-    await supabaseClient
-      .auth
-      .getSession();
-
-
-  if (
-    data.session
+  function getStatusClass(
+    status
   ) {
 
-    currentUser =
-      data.session.user;
+    if (
+      status === "acceptee"
+    ) {
+
+      return "status-acceptee";
+
+    }
+
+    if (
+      status === "refusee"
+    ) {
+
+      return "status-refusee";
+
+    }
+
+    return "status-en-attente";
+
+  }
+
+
+  function getStatusText(
+    status
+  ) {
+
+    if (
+      status === "acceptee"
+    ) {
+
+      return "Acceptée";
+
+    }
+
+    if (
+      status === "refusee"
+    ) {
+
+      return "Refusée";
+
+    }
+
+    return "En attente";
+
+  }
+
+
+  function formatDate(
+    date
+  ) {
+
+    if (!date) {
+      return "";
+    }
+
+
+    try {
+
+      return new Date(
+        date
+      ).toLocaleDateString(
+        "fr-FR",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        }
+      );
+
+    } catch {
+
+      return "";
+
+    }
+
+  }
+
+
+  /* =========================================================
+     DASHBOARD
+  ========================================================= */
+
+  async function loadDashboard() {
+
+    if (!currentUser) {
+
+      showSection(
+        "accountSection"
+      );
+
+      showMessage(
+        "accountMessage",
+        "Veuillez vous connecter pour accéder au tableau de bord.",
+        "info"
+      );
+
+      return;
+
+    }
 
 
     await loadUserProfile();
 
+    await loadClientNotifications();
 
-    document
-      .getElementById("logoutBtn")
-      .classList.remove("hidden");
+    await loadProfessionalNotifications();
 
+    await loadProfessionalRequests();
+
+    await loadClientRequests();
 
     await refreshNotificationBadge();
 
-    await searchProfessionals();
-
-  } else {
-
-    currentUser = null;
-    currentProfile = null;
-
-
-    document
-      .getElementById("logoutBtn")
-      .classList.add("hidden");
-
-
-    updateNotificationBadge(0);
   }
-}
 
 
-/* =========================================================
-   AUTH STATE
-========================================================= */
+  /* =========================================================
+     SESSION
+  ========================================================= */
 
-supabaseClient
-  .auth
-  .onAuthStateChange(
-    async (
-      event,
-      session
-    ) => {
+  async function checkSession() {
 
-      if (session) {
-
-        currentUser =
-          session.user;
+    const {
+      data
+    } =
+      await supabaseClient
+        .auth
+        .getSession();
 
 
-        await loadUserProfile();
+    if (
+      data.session
+    ) {
+
+      currentUser =
+        data.session.user;
 
 
-        document
-          .getElementById("logoutBtn")
-          .classList.remove("hidden");
+      await loadUserProfile();
 
 
-        await refreshNotificationBadge();
-
-      } else {
-
-        currentUser = null;
-        currentProfile = null;
-
-
-        document
-          .getElementById("logoutBtn")
-          .classList.add("hidden");
+      document
+        .getElementById(
+          "logoutBtn"
+        )
+        .classList.remove(
+          "hidden"
+        );
 
 
-        updateNotificationBadge(0);
-      }
+      await refreshNotificationBadge();
+
+    } else {
+
+      currentUser = null;
+
+      currentProfile = null;
+
+
+      document
+        .getElementById(
+          "logoutBtn"
+        )
+        .classList.add(
+          "hidden"
+        );
+
+
+      updateNotificationBadge(
+        0
+      );
 
     }
-  );
+
+  }
 
 
-/* =========================================================
-   INITIALISATION
-========================================================= */
+  /* =========================================================
+     AUTH STATE CHANGE
+  ========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  async () => {
+  supabaseClient
+    .auth
+    .onAuthStateChange(
+      async (
+        event,
+        session
+      ) => {
 
-    showSection(
-      "homeSection"
+        if (session) {
+
+          currentUser =
+            session.user;
+
+
+          await loadUserProfile();
+
+
+          document
+            .getElementById(
+              "logoutBtn"
+            )
+            .classList.remove(
+              "hidden"
+            );
+
+
+          await refreshNotificationBadge();
+
+        } else {
+
+          currentUser = null;
+
+          currentProfile = null;
+
+
+          document
+            .getElementById(
+              "logoutBtn"
+            )
+            .classList.add(
+              "hidden"
+            );
+
+
+          updateNotificationBadge(
+            0
+          );
+
+        }
+
+      }
     );
 
 
-    await checkSession();
+  /* =========================================================
+     INITIALISATION
+     
+     IMPORTANT :
+     On affiche d'abord ACCUEIL.
+     
+     searchProfessionals() peut charger les données
+     en arrière-plan mais NE change plus la section.
+  ========================================================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+      /* Toujours commencer sur Accueil */
+      showSection(
+        "homeSection"
+      );
 
 
-    await searchProfessionals();
+      /* Vérifier la connexion */
+      await checkSession();
 
-  }
-);
+
+      /*
+        Charger les professionnels en arrière-plan.
+        Cette fonction ne fait plus showSection().
+        Donc l'utilisateur reste sur Accueil.
+      */
+      await searchProfessionals();
+
+    }
+  );
 
 </script>
 
