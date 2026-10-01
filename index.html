@@ -211,8 +211,18 @@
       color: white;
     }
 
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
     .btn-contact {
       background: #6f42c1;
+      color: white;
+    }
+
+    .btn-share {
+      background: #fd7e14;
       color: white;
     }
 
@@ -269,8 +279,17 @@
       margin-top: 10px;
     }
 
+    .professional-card .form-actions {
+      margin-top: 15px;
+    }
+
+    .professional-card .form-actions .btn {
+      flex: 1;
+      min-width: 150px;
+    }
+
     /* =====================================================
-       AVATAR PROFESSIONNEL
+       AVATAR
     ===================================================== */
 
     .professional-avatar {
@@ -309,6 +328,33 @@
       font-weight: bold;
       margin: 0 auto 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+    }
+
+    /* =====================================================
+       RECHERCHE
+    ===================================================== */
+
+    .search-result-header {
+      background: white;
+      padding: 15px 18px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-result-count {
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    .search-result-filters {
+      color: #6c757d;
+      font-size: 14px;
     }
 
     /* =====================================================
@@ -551,8 +597,13 @@
       margin-top: 20px;
     }
 
+    .profile-action-buttons .btn {
+      flex: 1;
+      min-width: 150px;
+    }
+
     /* =====================================================
-       ETOILES SELECTEUR
+       ETOILES
     ===================================================== */
 
     .star-selector {
@@ -581,6 +632,16 @@
       border-radius: 12px;
       text-align: center;
       color: #6c757d;
+      grid-column: 1 / -1;
+    }
+
+    .loading-state {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      color: #6c757d;
+      grid-column: 1 / -1;
     }
 
     footer {
@@ -615,9 +676,15 @@
         padding: 18px;
       }
 
+      .professional-card .form-actions .btn,
       .profile-action-buttons .btn,
       .form-actions .btn {
         width: 100%;
+        flex: none;
+      }
+
+      .search-result-header {
+        align-items: flex-start;
       }
 
     }
@@ -640,9 +707,7 @@
 
     <nav>
 
-      <button
-        onclick="showSection('homeSection')"
-      >
+      <button onclick="showSection('homeSection')">
         Accueil
       </button>
 
@@ -652,15 +717,11 @@
         Professionnels
       </button>
 
-      <button
-        onclick="showSection('servicesSection')"
-      >
+      <button onclick="showSection('servicesSection')">
         Services
       </button>
 
-      <button
-        onclick="showSection('accountSection')"
-      >
+      <button onclick="showSection('accountSection')">
         Mon compte
       </button>
 
@@ -840,9 +901,7 @@
        SERVICES
   ===================================================== -->
 
-  <section
-    id="servicesSection"
-  >
+  <section id="servicesSection">
 
     <h2 class="section-title">
       Nos services
@@ -938,9 +997,7 @@
        PROFESSIONNELS
   ===================================================== -->
 
-  <section
-    id="professionalsSection"
-  >
+  <section id="professionalsSection">
 
     <h2 class="section-title">
       Professionnels disponibles
@@ -950,6 +1007,34 @@
       id="searchMessage"
       class="message"
     ></div>
+
+    <div
+      id="searchResultHeader"
+      class="search-result-header hidden"
+    >
+
+      <div>
+        <div
+          id="searchResultCount"
+          class="search-result-count"
+        >
+          0 professionnel
+        </div>
+
+        <div
+          id="searchResultFilters"
+          class="search-result-filters"
+        ></div>
+      </div>
+
+      <button
+        class="btn btn-light"
+        onclick="clearProfessionalSearch()"
+      >
+        ✕ Effacer la recherche
+      </button>
+
+    </div>
 
     <div
       id="professionalsGrid"
@@ -963,9 +1048,7 @@
        COMPTE
   ===================================================== -->
 
-  <section
-    id="accountSection"
-  >
+  <section id="accountSection">
 
     <div
       id="loginForm"
@@ -1167,14 +1250,11 @@
        DASHBOARD
   ===================================================== -->
 
-  <section
-    id="dashboardSection"
-  >
+  <section id="dashboardSection">
 
     <h2 class="section-title">
       Mon tableau de bord
     </h2>
-
 
     <div
       id="dashboardMessage"
@@ -1256,16 +1336,13 @@
        PROFIL PROFESSIONNEL
   ===================================================== -->
 
-  <section
-    id="professionalProfileSection"
-  >
+  <section id="professionalProfileSection">
 
     <div class="form-card">
 
       <h2 class="section-title">
         Mon profil professionnel
       </h2>
-
 
       <div
         id="profileMessage"
@@ -1669,9 +1746,7 @@
   ========================================================= */
 
   let currentUser = null;
-
   let currentProfile = null;
-
   let selectedRating = 0;
 
 
@@ -1718,8 +1793,7 @@
       return;
     }
 
-    element.textContent =
-      message;
+    element.textContent = message;
 
     element.className =
       "message " + type;
@@ -1727,9 +1801,7 @@
   }
 
 
-  function hideMessage(
-    elementId
-  ) {
+  function hideMessage(elementId) {
 
     const element =
       document.getElementById(
@@ -1748,9 +1820,7 @@
   }
 
 
-  function showSection(
-    sectionId
-  ) {
+  function showSection(sectionId) {
 
     const sections =
       document.querySelectorAll(
@@ -1759,11 +1829,9 @@
 
     sections.forEach(
       section => {
-
         section.classList.remove(
           "active"
         );
-
       }
     );
 
@@ -1795,9 +1863,7 @@
      AVATAR / INITIALES
   ========================================================= */
 
-  function getInitials(
-    name
-  ) {
+  function getInitials(name) {
 
     const cleanName =
       String(name || "")
@@ -1833,7 +1899,230 @@
 
 
   /* =========================================================
-     AUTH FORMS
+     TELEPHONE / WHATSAPP
+  ========================================================= */
+
+  function normalizePhoneForWhatsApp(phone) {
+
+    let clean =
+      String(phone || "")
+        .trim()
+        .replace(/[^\d+]/g, "");
+
+
+    if (!clean) {
+      return "";
+    }
+
+
+    if (clean.startsWith("+")) {
+
+      return clean.substring(1);
+
+    }
+
+
+    if (clean.startsWith("225")) {
+
+      return clean;
+
+    }
+
+
+    if (clean.startsWith("0")) {
+
+      return "225" +
+        clean.substring(1);
+
+    }
+
+
+    return clean;
+
+  }
+
+
+  function openWhatsApp(phone, name = "") {
+
+    const whatsappNumber =
+      normalizePhoneForWhatsApp(
+        phone
+      );
+
+
+    if (!whatsappNumber) {
+
+      alert(
+        "Le numéro WhatsApp du professionnel n'est pas disponible."
+      );
+
+      return;
+
+    }
+
+
+    const message =
+      name
+        ? "Bonjour " +
+          name +
+          ", je vous contacte via TechniPro CI."
+        : "Bonjour, je vous contacte via TechniPro CI.";
+
+
+    const url =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(
+        message
+      );
+
+
+    window.open(
+      url,
+      "_blank"
+    );
+
+  }
+
+
+  function callProfessional(phone) {
+
+    const cleanPhone =
+      String(phone || "")
+        .trim();
+
+
+    if (!cleanPhone) {
+
+      alert(
+        "Le numéro de téléphone du professionnel n'est pas disponible."
+      );
+
+      return;
+
+    }
+
+
+    window.location.href =
+      "tel:" +
+      cleanPhone;
+
+  }
+
+
+  /* =========================================================
+     PARTAGE PROFIL
+  ========================================================= */
+
+  async function shareProfessionalProfile(
+    profile
+  ) {
+
+    if (!profile) {
+      return;
+    }
+
+
+    const name =
+      profile.full_name ||
+      "Professionnel";
+
+
+    const profession =
+      profile.profession ||
+      "Professionnel";
+
+
+    const city =
+      profile.city ||
+      "";
+
+
+    const text =
+      "Découvrez " +
+      name +
+      " sur TechniPro CI.\n" +
+      "Profession : " +
+      profession +
+      "\n" +
+      (
+        city
+          ? "Ville : " +
+            city
+          : ""
+      );
+
+
+    try {
+
+      if (
+        navigator.share
+      ) {
+
+        await navigator.share({
+
+          title:
+            name +
+            " - TechniPro CI",
+
+          text
+
+        });
+
+        return;
+
+      }
+
+
+      if (
+        navigator.clipboard
+      ) {
+
+        await navigator.clipboard.writeText(
+          text
+        );
+
+
+        alert(
+          "Informations du professionnel copiées."
+        );
+
+        return;
+
+      }
+
+
+      alert(
+        text
+      );
+
+
+    } catch (error) {
+
+      if (
+        error &&
+        error.name ===
+        "AbortError"
+      ) {
+
+        return;
+
+      }
+
+
+      console.error(
+        "❌ ERREUR PARTAGE :",
+        error
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     FORMULAIRES AUTH
   ========================================================= */
 
   function showLoginForm() {
@@ -2011,11 +2300,22 @@
         await supabaseClient
           .from("profiles")
           .insert({
-            id: data.user.id,
-            full_name: fullName,
-            phone: phone,
-            city: city,
-            user_type: userType
+
+            id:
+              data.user.id,
+
+            full_name:
+              fullName,
+
+            phone:
+              phone,
+
+            city:
+              city,
+
+            user_type:
+              userType
+
           });
 
 
@@ -2062,7 +2362,8 @@
 
       showMessage(
         "registerMessage",
-        "❌ " + error.message,
+        "❌ " +
+        error.message,
         "error"
       );
 
@@ -2170,7 +2471,8 @@
 
       showMessage(
         "accountMessage",
-        "❌ " + error.message,
+        "❌ " +
+        error.message,
         "error"
       );
 
@@ -2191,7 +2493,6 @@
 
 
     currentUser = null;
-
     currentProfile = null;
 
 
@@ -2257,17 +2558,17 @@
       data;
 
 
+    const profileCard =
+      document.getElementById(
+        "professionalProfileCard"
+      );
+
+
     if (
       currentProfile &&
       currentProfile.user_type ===
       "professionnel"
     ) {
-
-      const profileCard =
-        document.getElementById(
-          "professionalProfileCard"
-        );
-
 
       if (profileCard) {
 
@@ -2394,12 +2695,18 @@
         await supabaseClient
           .from("profiles")
           .update({
+
             profession,
+
             quartier,
+
             services,
+
             description,
+
             user_type:
               "professionnel"
+
           })
           .eq(
             "id",
@@ -2432,7 +2739,8 @@
 
       showMessage(
         "profileMessage",
-        "❌ " + error.message,
+        "❌ " +
+        error.message,
         "error"
       );
 
@@ -2479,9 +2787,6 @@
 
   /* =========================================================
      RECHERCHE PROFESSIONNELS
-     
-     IMPORTANT :
-     NE FAIT PAS showSection().
   ========================================================= */
 
   async function searchProfessionals() {
@@ -2531,6 +2836,22 @@
         .toLowerCase();
 
 
+    grid.innerHTML = `
+
+      <div class="loading-state">
+
+        🔎 Recherche des professionnels...
+
+      </div>
+
+    `;
+
+
+    hideMessage(
+      "searchMessage"
+    );
+
+
     try {
 
       /* =====================================================
@@ -2547,12 +2868,20 @@
           );
 
 
+      /*
+        Recherche souple sur la ville.
+        Exemple :
+        "Abid" peut trouver "Abidjan".
+      */
+
       if (city) {
 
         query =
           query.ilike(
             "city",
-            city
+            "%" +
+            city +
+            "%"
           );
 
       }
@@ -2582,7 +2911,7 @@
 
 
       /* =====================================================
-         2. FILTRE PROFESSION
+         2. FILTRE PROFESSION / SERVICE
       ===================================================== */
 
       if (profession) {
@@ -2633,14 +2962,8 @@
       }
 
 
-      console.log(
-        "👨‍🔧 PROFESSIONNELS TROUVÉS :",
-        professionals
-      );
-
-
       /* =====================================================
-         3. ID PROFESSIONNELS
+         3. AVIS
       ===================================================== */
 
       const professionalIds =
@@ -2655,13 +2978,6 @@
           )
           .filter(Boolean);
 
-
-      /* =====================================================
-         4. AVIS
-         
-         On conserve ici le système actuel.
-         Le problème des avis sera corrigé séparément.
-      ===================================================== */
 
       let reviews = [];
 
@@ -2678,7 +2994,8 @@
           .order(
             "created_at",
             {
-              ascending: false
+              ascending:
+                false
             }
           );
 
@@ -2716,7 +3033,7 @@
 
 
       /* =====================================================
-         5. REGROUPEMENT AVIS
+         4. REGROUPEMENT AVIS
       ===================================================== */
 
       const reviewsByProfessional =
@@ -2764,7 +3081,7 @@
 
 
       /* =====================================================
-         6. AJOUT NOTES
+         5. AJOUT NOTES
       ===================================================== */
 
       professionals =
@@ -2832,8 +3149,19 @@
         );
 
 
+      /* =====================================================
+         6. AFFICHAGE RESULTATS
+      ===================================================== */
+
       displayProfessionals(
         professionals
+      );
+
+
+      updateSearchResultHeader(
+        professionals.length,
+        profession,
+        city
       );
 
 
@@ -2843,6 +3171,23 @@
         "❌ ERREUR RECHERCHE PROFESSIONNELS :",
         error
       );
+
+
+      grid.innerHTML = `
+
+        <div class="empty-state">
+
+          <h3>
+            Erreur de recherche
+          </h3>
+
+          <p>
+            Impossible de charger les professionnels.
+          </p>
+
+        </div>
+
+      `;
 
 
       showMessage(
@@ -2858,17 +3203,120 @@
 
 
   /* =========================================================
+     EN-TETE RESULTATS
+  ========================================================= */
+
+  function updateSearchResultHeader(
+    count,
+    profession,
+    city
+  ) {
+
+    const header =
+      document.getElementById(
+        "searchResultHeader"
+      );
+
+
+    const countElement =
+      document.getElementById(
+        "searchResultCount"
+      );
+
+
+    const filtersElement =
+      document.getElementById(
+        "searchResultFilters"
+      );
+
+
+    if (!header) {
+      return;
+    }
+
+
+    header.classList.remove(
+      "hidden"
+    );
+
+
+    countElement.textContent =
+      count +
+      (
+        count > 1
+          ? " professionnels trouvés"
+          : " professionnel trouvé"
+      );
+
+
+    const filters = [];
+
+
+    if (profession) {
+
+      filters.push(
+        "Service : " +
+        profession
+      );
+
+    }
+
+
+    if (city) {
+
+      filters.push(
+        "Ville : " +
+        city
+      );
+
+    }
+
+
+    filtersElement.textContent =
+      filters.length
+        ? filters.join(" • ")
+        : "Tous les professionnels";
+
+  }
+
+
+  /* =========================================================
+     EFFACER RECHERCHE
+  ========================================================= */
+
+  function clearProfessionalSearch() {
+
+    document
+      .getElementById(
+        "searchProfession"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "searchCity"
+      )
+      .value = "";
+
+
+    searchProfessionals();
+
+  }
+
+
+  /* =========================================================
      RECHERCHE DEPUIS ACCUEIL
   ========================================================= */
 
   async function runProfessionalSearch() {
 
-    await searchProfessionals();
-
-
     showSection(
       "professionalsSection"
     );
+
+
+    await searchProfessionals();
 
   }
 
@@ -2901,6 +3349,7 @@
     ) {
 
       grid.innerHTML = `
+
         <div class="empty-state">
 
           <h3>
@@ -2912,6 +3361,7 @@
           </p>
 
         </div>
+
       `;
 
       return;
@@ -3083,9 +3533,7 @@
           ${ratingHTML}
 
 
-          <div
-            class="professional-info"
-          >
+          <div class="professional-info">
 
             <div>
               📍 Ville :
@@ -3128,9 +3576,7 @@
           ${latestReviewHTML}
 
 
-          <div
-            class="form-actions"
-          >
+          <div class="form-actions">
 
             <button
               class="btn btn-primary"
@@ -3140,7 +3586,7 @@
                 )}'
               )"
             >
-              👁️ Voir le profil
+              👤 Voir le profil
             </button>
 
 
@@ -3156,6 +3602,21 @@
                     )"
                   >
                     📞 Appeler
+                  </button>
+
+                  <button
+                    class="btn btn-whatsapp"
+                    onclick="openWhatsApp(
+                      '${escapeJS(
+                        profile.phone
+                      )}',
+                      '${escapeJS(
+                        profile.full_name ||
+                        ""
+                      )}'
+                    )"
+                  >
+                    💬 WhatsApp
                   </button>
                 `
                 : ""
@@ -3175,24 +3636,7 @@
                 )}'
               )"
             >
-              💬 Contacter
-            </button>
-
-
-            <button
-              class="btn btn-primary"
-              onclick="openRequestModal(
-                '${escapeJS(
-                  profile.id
-                )}',
-                '${escapeJS(
-                  profile.profession ||
-                  profile.services ||
-                  ""
-                )}'
-              )"
-            >
-              📩 Demander ce service
+              📩 Demander
             </button>
 
           </div>
@@ -3312,40 +3756,37 @@
 
     container.innerHTML = `
 
-      <div
-        class="profile-avatar-large"
-      >
+      <div class="profile-avatar-large">
         ${escapeHTML(
           avatar
         )}
       </div>
 
 
-      <div
-        class="professional-detail-name"
-      >
+      <div class="professional-detail-name">
+
         ${escapeHTML(
           profile.full_name ||
           "Professionnel"
         )}
+
       </div>
 
 
-      <div
-        class="professional-detail-profession"
-      >
+      <div class="professional-detail-profession">
+
         ${escapeHTML(
           profile.profession ||
           "Professionnel"
         )}
+
       </div>
 
 
-      <div
-        class="detail-info"
-      >
+      <div class="detail-info">
 
         <div>
+
           📍
           <strong>
             Ville :
@@ -3355,10 +3796,12 @@
             profile.city ||
             "Non renseignée"
           )}
+
         </div>
 
 
         <div>
+
           🏘️
           <strong>
             Quartier :
@@ -3368,10 +3811,12 @@
             profile.quartier ||
             "Non renseigné"
           )}
+
         </div>
 
 
         <div>
+
           🛠️
           <strong>
             Services :
@@ -3381,6 +3826,7 @@
             profile.services ||
             "Non renseignés"
           )}
+
         </div>
 
 
@@ -3388,6 +3834,7 @@
           phone
             ? `
               <div>
+
                 📞
                 <strong>
                   Téléphone :
@@ -3396,6 +3843,7 @@
                 ${escapeHTML(
                   phone
                 )}
+
               </div>
             `
             : ""
@@ -3404,9 +3852,7 @@
       </div>
 
 
-      <div
-        class="detail-description"
-      >
+      <div class="detail-description">
 
         <strong>
           📝 Présentation
@@ -3422,9 +3868,7 @@
       </div>
 
 
-      <div
-        class="profile-action-buttons"
-      >
+      <div class="profile-action-buttons">
 
         ${
           phone
@@ -3438,6 +3882,22 @@
                 )"
               >
                 📞 Appeler
+              </button>
+
+
+              <button
+                class="btn btn-whatsapp"
+                onclick="openWhatsApp(
+                  '${escapeJS(
+                    phone
+                  )}',
+                  '${escapeJS(
+                    profile.full_name ||
+                    ""
+                  )}'
+                )"
+              >
+                💬 WhatsApp
               </button>
             `
             : ""
@@ -3455,22 +3915,22 @@
             )}'
           )"
         >
-          💬 Contacter
+          📩 Demander ce service
         </button>
 
 
         <button
-          class="btn btn-primary"
-          onclick="closeProfessionalDetail(); openRequestModal(
-            '${escapeJS(
-              profile.id
-            )}',
-            '${escapeJS(
-              service
-            )}'
+          class="btn btn-share"
+          onclick="shareProfessionalProfile(
+            ${JSON.stringify(
+              profile
+            ).replace(
+              /</g,
+              "\\u003c"
+            )}
           )"
         >
-          📩 Demander ce service
+          📤 Partager
         </button>
 
 
@@ -3478,7 +3938,7 @@
           class="btn btn-secondary"
           onclick="closeProfessionalDetail()"
         >
-          Retour
+          Fermer
         </button>
 
       </div>
@@ -3512,38 +3972,6 @@
       );
 
     }
-
-  }
-
-
-  /* =========================================================
-     APPELER PROFESSIONNEL
-  ========================================================= */
-
-  function callProfessional(
-    phone
-  ) {
-
-    const cleanPhone =
-      String(
-        phone || ""
-      ).trim();
-
-
-    if (!cleanPhone) {
-
-      alert(
-        "Le numéro de téléphone du professionnel n'est pas disponible."
-      );
-
-      return;
-
-    }
-
-
-    window.location.href =
-      "tel:" +
-      cleanPhone;
 
   }
 
@@ -3640,9 +4068,13 @@
       "";
 
 
-    hideMessage(
-      "requestMessage"
-    );
+    document
+      .getElementById(
+        "requestQuartier"
+      )
+      .value =
+      currentProfile?.quartier ||
+      "";
 
 
     document
@@ -3653,13 +4085,9 @@
       "";
 
 
-    document
-      .getElementById(
-        "requestQuartier"
-      )
-      .value =
-      currentProfile?.quartier ||
-      "";
+    hideMessage(
+      "requestMessage"
+    );
 
 
     document
@@ -3785,6 +4213,7 @@
             "service_requests"
           )
           .insert({
+
             client_id:
               currentUser.id,
 
@@ -3803,6 +4232,7 @@
 
             status:
               "en_attente"
+
           });
 
 
@@ -3834,7 +4264,8 @@
 
       showMessage(
         "requestMessage",
-        "❌ " + error.message,
+        "❌ " +
+        error.message,
         "error"
       );
 
@@ -3844,7 +4275,7 @@
 
 
   /* =========================================================
-     NOTIFICATIONS
+     NOTIFICATIONS CLIENT
   ========================================================= */
 
   async function loadClientNotifications() {
@@ -4078,6 +4509,10 @@
 
   }
 
+
+  /* =========================================================
+     NOTIFICATIONS PROFESSIONNEL
+  ========================================================= */
 
   async function loadProfessionalNotifications() {
 
@@ -4673,9 +5108,7 @@
 
               ? `
 
-                <div
-                  class="form-actions"
-                >
+                <div class="form-actions">
 
                   <button
                     class="btn btn-success"
@@ -5186,6 +5619,7 @@
         await supabaseClient.rpc(
           "create_review",
           {
+
             p_request_id:
               requestId,
 
@@ -5197,6 +5631,7 @@
 
             p_comment:
               comment || null
+
           }
         );
 
@@ -5241,7 +5676,8 @@
 
       showMessage(
         "reviewMessage",
-        "❌ " + error.message,
+        "❌ " +
+        error.message,
         "error"
       );
 
@@ -5543,7 +5979,7 @@
 
 
   /* =========================================================
-     FERMETURE DES MODALES EN CLIQUANT À L'EXTÉRIEUR
+     FERMETURE DES MODALES
   ========================================================= */
 
   document.addEventListener(
@@ -5596,6 +6032,32 @@
         closeProfessionalDetail();
 
       }
+
+    }
+  );
+
+
+  /* =========================================================
+     TOUCHE ESCAPE POUR FERMER LES MODALES
+  ========================================================= */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key !==
+        "Escape"
+      ) {
+        return;
+      }
+
+
+      closeRequestModal();
+
+      closeReviewModal();
+
+      closeProfessionalDetail();
 
     }
   );
