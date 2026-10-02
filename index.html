@@ -5984,28 +5984,14 @@
 
     try {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.rpc(
-          "create_review",
-          {
-
-            p_request_id:
-              requestId,
-
-            p_professional_id:
-              professionalId,
-
-            p_rating:
-              rating,
-
-            p_comment:
-              comment || null
-
-          }
-        );
+const { data, error } = await supabaseClient.rpc(
+  "create_review",
+  {
+    p_request_id: requestId,
+    p_rating: rating,
+    p_comment: comment || null
+  }
+);
 
 
       if (error) {
