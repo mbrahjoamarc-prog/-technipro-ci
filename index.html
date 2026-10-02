@@ -6338,388 +6338,352 @@ const { data, error } = await supabaseClient.rpc(
 
   async function loadMessageConversations() {
 
-    const container =
-      document.getElementById(
-        "messagesSummaryContainer"
-      );
+  const container =
+    document.getElementById("messagesSummaryContainer");
 
+  if (!container) {
+    return;
+  }
 
-    if (!container) {
-      return;
+  if (!currentUser) {
+
+    container.innerHTML = `
+      <div class="empty-state">
+        Connectez-vous pour voir vos messages.
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="loading-state">
+      💬 Chargement des conversations...
+    </div>
+  `;
+
+  try {
+
+    const {
+      data: messages,
+      error
+    } = await supabaseClient
+      .from("messages")
+      .select("*")
+      .or(
+        "sender_id.eq." +
+        currentUser.id +
+        ",receiver_id.eq." +
+        currentUser.id
+      )
+      .order("created_at", {
+        ascending: false
+      });
+
+    if (error) {
+      throw error;
     }
 
-
-    if (!currentUser) {
+    if (!messages || messages.length === 0) {
 
       container.innerHTML = `
-
         <div class="empty-state">
-          Connectez-vous pour voir vos messages.
+          💬 Aucune conversation pour le moment.
         </div>
-
       `;
 
       return;
+    }
+
+    const conversations = {};
+
+    messages.forEach(message => {
+
+      const otherId =
+        message.sender_id === currentUser.id
+          ? message.receiver_id
+          : message.sender_id;
+
+      const requestKey =
+        message.request_id || "general";
+
+      const key =
+        otherId + "_" + requestKey;
+
+      if (!conversations[key]) {
+
+        conversations[key] = {
+
+          otherId: otherId,
+
+          requestId:
+            message.request_id,
+
+          latest:
+            message,
+
+          unreadCount:
+            0
+
+        };
+
+      }
+
+      if (
+        !message.is_read &&
+        message.receiver_id === currentUser.id
+      ) {
+
+        conversations[key].unreadCount++;
+
+      }
+
+    });
+
+    const conversationList =
+      Object.values(conversations);
+
+    /*
+      Récupérer les profils des autres utilisateurs.
+    */
+
+    const otherIds = [
+      ...new Set(
+        conversationList.map(
+          conversation =>
+            conversation.otherId
+        )
+      )
+    ];
+
+    let profiles = [];
+
+    if (otherIds.length > 0) {
+
+      const {
+        data: profileData,
+        error: profileError
+      } = await supabaseClient
+        .from("profiles")
+        .select(
+          "id, full_name, profession, user_type"
+        )
+        .in(
+          "id",
+          otherIds
+        );
+
+      if (profileError) {
+
+        console.error(
+          "❌ ERREUR RÉCUPÉRATION PROFILS MESSAGES :",
+          profileError
+        );
+
+      } else {
+
+        profiles =
+          profileData || [];
+
+      }
 
     }
 
+    /*
+      Création d'une correspondance :
+      profile.id -> profile
+    */
+
+    const profileMap = {};
+
+    profiles.forEach(profile => {
+
+      profileMap[
+        String(profile.id)
+      ] = profile;
+
+    });
+
+    container.innerHTML = "";
+
+    conversationList.forEach(
+      conversation => {
+
+        /*
+          Recherche du profil correspondant
+          à l'autre utilisateur.
+        */
+
+        const profile =
+          profileMap[
+            String(conversation.otherId)
+          ];
+
+        /*
+          Nom affiché.
+        */
+
+        let name = "";
+
+        if (
+          profile &&
+          profile.full_name &&
+          profile.full_name.trim() !== ""
+        ) {
+
+          name =
+            profile.full_name.trim();
+
+        } else if (
+          profile &&
+          profile.profession &&
+          profile.profession.trim() !== ""
+        ) {
+
+          name =
+            profile.profession.trim();
+
+        } else if (
+          profile &&
+          profile.user_type ===
+          "professionnel"
+        ) {
+
+          name =
+            "Professionnel";
+
+        } else {
+
+          name =
+            "Utilisateur";
+
+        }
+
+        const latestText =
+          conversation.latest.content ||
+          "";
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "message-summary-card " +
+          (
+            conversation.unreadCount > 0
+              ? "unread"
+              : ""
+          );
+
+        card.onclick = () => {
+
+          openMessagingModal(
+            conversation.otherId,
+            conversation.requestId || "",
+            name
+          );
+
+        };
+
+        card.innerHTML = `
+
+          <div class="message-summary-top">
+
+            <div class="message-summary-name">
+
+              💬
+              ${escapeHTML(name)}
+
+            </div>
+
+            <div>
+
+              ${
+                conversation.unreadCount > 0
+
+                  ? `
+                    <span class="message-unread-count">
+                      ${conversation.unreadCount}
+                    </span>
+                  `
+
+                  : ""
+              }
+
+            </div>
+
+          </div>
+
+          <div class="message-summary-date">
+
+            ${formatDateTime(
+              conversation.latest.created_at
+            )}
+
+          </div>
+
+          <div class="message-summary-preview">
+
+            ${escapeHTML(
+              latestText
+            )}
+
+          </div>
+
+          ${
+            conversation.requestId
+
+              ? `
+                <div
+                  style="
+                    margin-top:7px;
+                    font-size:12px;
+                    color:#0d6efd;
+                  "
+                >
+                  📋 Conversation liée à une demande
+                </div>
+              `
+
+              : `
+                <div
+                  style="
+                    margin-top:7px;
+                    font-size:12px;
+                    color:#6c757d;
+                  "
+                >
+                  💬 Conversation générale
+                </div>
+              `
+          }
+
+        `;
+
+        container.appendChild(card);
+
+      }
+    );
+
+  } catch (error) {
+
+    console.error(
+      "❌ ERREUR CONVERSATIONS :",
+      error
+    );
 
     container.innerHTML = `
 
-      <div class="loading-state">
-        💬 Chargement des conversations...
+      <div class="empty-state">
+
+        Impossible de charger les conversations.
+
       </div>
 
     `;
 
-
-    try {
-
-      const {
-        data: messages,
-        error
-      } =
-        await supabaseClient
-          .from("messages")
-          .select("*")
-          .or(
-            "sender_id.eq." +
-            currentUser.id +
-            ",receiver_id.eq." +
-            currentUser.id
-          )
-          .order(
-            "created_at",
-            {
-              ascending:
-                false
-            }
-          );
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      if (
-        !messages ||
-        messages.length === 0
-      ) {
-
-        container.innerHTML = `
-
-          <div class="empty-state">
-            💬 Aucune conversation pour le moment.
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      const conversations = {};
-
-
-      messages.forEach(
-        message => {
-
-          const otherId =
-            message.sender_id ===
-            currentUser.id
-              ? message.receiver_id
-              : message.sender_id;
-
-
-          const requestKey =
-            message.request_id ||
-            "general";
-
-
-          const key =
-            otherId +
-            "_" +
-            requestKey;
-
-
-          if (
-            !conversations[key]
-          ) {
-
-            conversations[key] = {
-
-              otherId,
-
-              requestId:
-                message.request_id,
-
-              latest:
-                message,
-
-              unreadCount:
-                0
-
-            };
-
-          }
-
-
-          if (
-            !message.is_read &&
-            message.receiver_id ===
-            currentUser.id
-          ) {
-
-            conversations[key]
-              .unreadCount++;
-
-          }
-
-        }
-      );
-
-
-      const conversationList =
-        Object.values(
-          conversations
-        );
-
-
-      const otherIds =
-        [
-          ...new Set(
-            conversationList.map(
-              conversation =>
-                conversation.otherId
-            )
-          )
-        ];
-
-
-      let profiles = [];
-
-
-      if (
-        otherIds.length > 0
-      ) {
-
-        const {
-          data: profileData,
-          error: profileError
-        } =
-          await supabaseClient
-            .from("profiles")
-            .select(
-              "id, full_name, profession, user_type"
-            )
-            .in(
-              "id",
-              otherIds
-            );
-
-
-        if (profileError) {
-
-          console.error(
-            "❌ PROFILS MESSAGES :",
-            profileError
-          );
-
-        } else {
-
-          profiles =
-            profileData || [];
-
-        }
-
-      }
-
-
-      const profileMap = {};
-
-
-      profiles.forEach(
-        profile => {
-
-          profileMap[
-            profile.id
-          ] =
-            profile;
-
-        }
-      );
-
-
-      container.innerHTML = "";
-
-
-      conversationList.forEach(
-        conversation => {
-
-          const profile =
-            profileMap[
-              conversation.otherId
-            ] || {};
-
-
-          const name =
-            profile.full_name ||
-            (
-              profile.user_type ===
-              "professionnel"
-                ? "Professionnel"
-                : "Utilisateur"
-            );
-
-
-          const latestText =
-            conversation.latest.content ||
-            "";
-
-
-          const card =
-            document.createElement(
-              "div"
-            );
-
-
-          card.className =
-            "message-summary-card " +
-            (
-              conversation.unreadCount >
-              0
-                ? "unread"
-                : ""
-            );
-
-
-          card.onclick =
-            () => {
-
-              openMessagingModal(
-                conversation.otherId,
-                conversation.requestId ||
-                "",
-                name
-              );
-
-            };
-
-
-          card.innerHTML = `
-
-            <div class="message-summary-top">
-
-              <div class="message-summary-name">
-
-                💬
-                ${escapeHTML(
-                  name
-                )}
-
-              </div>
-
-
-              <div>
-
-                ${
-                  conversation.unreadCount >
-                  0
-
-                    ? `
-                      <span class="message-unread-count">
-                        ${conversation.unreadCount}
-                      </span>
-                    `
-
-                    : ""
-                }
-
-              </div>
-
-            </div>
-
-
-            <div class="message-summary-date">
-
-              ${formatDateTime(
-                conversation.latest.created_at
-              )}
-
-            </div>
-
-
-            <div class="message-summary-preview">
-
-              ${escapeHTML(
-                latestText
-              )}
-
-            </div>
-
-
-            ${
-              conversation.requestId
-
-                ? `
-                  <div
-                    style="
-                      margin-top:7px;
-                      font-size:12px;
-                      color:#0d6efd;
-                    "
-                  >
-                    📋 Conversation liée à une demande
-                  </div>
-                `
-
-                : `
-                  <div
-                    style="
-                      margin-top:7px;
-                      font-size:12px;
-                      color:#6c757d;
-                    "
-                  >
-                    💬 Conversation générale
-                  </div>
-                `
-            }
-
-          `;
-
-
-          container.appendChild(
-            card
-          );
-
-        }
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        "❌ ERREUR CONVERSATIONS :",
-        error
-      );
-
-
-      container.innerHTML = `
-
-        <div class="empty-state">
-
-          Impossible de charger les conversations.
-
-        </div>
-
-      `;
-
-    }
-
   }
+
+}
 
 
   /* =========================================================
